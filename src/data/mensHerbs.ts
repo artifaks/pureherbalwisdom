@@ -1,0 +1,94 @@
+
+export const mensHerbs = [
+  {
+    id: 'saw-palmetto',
+    name: 'Saw Palmetto',
+    color: '#8D6E63',
+    benefits: [
+      'Supports prostate health',
+      'May help with urinary symptoms of BPH',
+      'Can help balance testosterone levels',
+      'Anti-inflammatory properties'
+    ],
+    oilPreparation: "1. Crush dried saw palmetto berries\n2. Mix with carrier oil at 1:4 ratio\n3. Warm infuse for 3-4 hours\n4. Strain and store in dark bottles",
+    tincturePreparation: "1. Fill jar halfway with crushed berries\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks in dark place\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'nettle-root',
+    name: 'Nettle Root',
+    color: '#33691E',
+    benefits: [
+      'Supports prostate health',
+      'May reduce inflammatory conditions',
+      'Can help manage benign prostate hyperplasia',
+      'Contains compounds that may inhibit DHT'
+    ],
+    oilPreparation: "1. Use dried nettle root, chopped\n2. Cover with olive oil in jar\n3. Warm infuse for 4-6 hours\n4. Store in cool, dark place",
+    tincturePreparation: "1. Fill jar 1/3 with dried nettle root\n2. Cover with vodka completely\n3. Store 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'ginseng',
+    name: 'Ginseng',
+    color: '#FFAB91',
+    benefits: [
+      'Increases energy and reduces fatigue',
+      'May improve erectile function',
+      'Adaptogen that helps body handle stress',
+      'Supports immune system function'
+    ],
+    oilPreparation: "1. Use dried ginseng root\n2. Cover with sesame or olive oil\n3. Slow infuse for 6-8 weeks\n4. Use in small amounts for massage",
+    tincturePreparation: "1. Chop ginseng root finely\n2. Use 1:5 ratio with 50% alcohol\n3. Steep for 8 weeks minimum\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'tribulus',
+    name: 'Tribulus',
+    color: '#FFD54F',
+    benefits: [
+      'May naturally support testosterone levels',
+      'Traditionally used for libido and vitality',
+      'Supports athletic performance and recovery',
+      'May help with reproductive health'
+    ],
+    oilPreparation: "1. Use powdered tribulus fruit/root\n2. Mix with jojoba oil at 1:5 ratio\n3. Solar infuse for 3 weeks\n4. Use for topical massage",
+    tincturePreparation: "1. Fill jar 1/3 with tribulus powder\n2. Cover with 80 proof vodka\n3. Steep for 4-6 weeks\n4. Take 20-40 drops 1-2 times daily"
+  },
+  {
+    id: 'ashwagandha',
+    name: 'Ashwagandha',
+    color: '#BCAAA4',
+    benefits: [
+      'Helps body adapt to stress',
+      'Supports healthy testosterone levels',
+      'May improve fertility and reproductive health',
+      'Traditional tonic for male vitality'
+    ],
+    oilPreparation: "1. Use powdered ashwagandha root\n2. Mix with sesame oil (traditional)\n3. Low heat for 3-4 hours\n4. Apply to lower back for energy support",
+    tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Add 2 parts honey for palatability\n3. Store for 6 weeks, shaking daily\n4. Take 1/4 teaspoon twice daily"
+  },
+  {
+    id: 'muira-puama',
+    name: 'Muira Puama',
+    color: '#795548',
+    benefits: [
+      'Known as "potency wood" in traditional medicine',
+      'Used to enhance male libido and performance',
+      'May support healthy testosterone levels',
+      'Traditional Brazilian remedy for vitality'
+    ],
+    oilPreparation: "1. Use dried muira puama bark/root\n2. Infuse in olive oil for 4 weeks\n3. Keep jar in warm place, shaking daily\n4. For external massage use only",
+    tincturePreparation: "1. Fill jar 1/4 with powdered herb\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks minimum\n4. Take 15-40 drops daily"
+  },
+  {
+    id: 'tongkat-ali',
+    name: 'Tongkat Ali',
+    color: '#5D4037',
+    benefits: [
+      'May naturally support hormonal balance',
+      'Traditional remedy for male energy and stamina',
+      'Supports healthy stress response',
+      'Used in traditional medicine for vitality'
+    ],
+    oilPreparation: "1. Typically not used in oil preparations\n2. Better utilized as powder or tincture\n3. Can be added to coconut oil for massage\n4. External use only",
+    tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Use 50% alcohol minimum\n3. Steep for 6-8 weeks in dark place\n4. Take 10-30 drops daily"
+  }
+];

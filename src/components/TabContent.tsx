@@ -1,15 +1,7 @@
 
 import React from 'react';
 import { Heart, Droplet, Beaker } from 'lucide-react';
-
-interface Herb {
-  id: string;
-  name: string;
-  color: string;
-  benefits: string[];
-  oilPreparation: string;
-  tincturePreparation: string;
-}
+import { Herb } from '@/data/types';
 
 interface TabContentProps {
   tab: 'benefits' | 'oil' | 'tincture';

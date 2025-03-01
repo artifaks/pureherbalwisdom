@@ -4,21 +4,13 @@ import { Heart, Droplet, Beaker } from 'lucide-react';
 import CategoryIcon from './CategoryIcon';
 import TabContent from './TabContent';
 import { cn } from '@/lib/utils';
-
-interface Herb {
-  id: string;
-  name: string;
-  color: string;
-  benefits: string[];
-  oilPreparation: string;
-  tincturePreparation: string;
-}
+import { Herb, HerbCategory } from '@/data/types';
 
 interface ContentAreaProps {
   activeHerb: Herb | null;
   activeTab: 'benefits' | 'oil' | 'tincture';
   setActiveTab: (tab: 'benefits' | 'oil' | 'tincture') => void;
-  activeCategory: 'heart' | 'stomach' | 'mens' | 'womens';
+  activeCategory: HerbCategory;
 }
 
 const ContentArea: React.FC<ContentAreaProps> = ({ 
