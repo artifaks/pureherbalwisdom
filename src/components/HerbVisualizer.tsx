@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import CategoryIcon from './CategoryIcon';
 import HerbCard from './HerbCard';
@@ -60,6 +59,32 @@ const HerbVisualizer: React.FC = () => {
       ],
       oilPreparation: "1. Collect linden flowers and leaves\n2. Cover with olive oil completely\n3. Solar infuse for 2-3 weeks\n4. Strain and use for chest rubs",
       tincturePreparation: "1. Fill jar with linden flowers\n2. Cover with 80 proof vodka\n3. Store for 4-6 weeks\n4. Use 20-30 drops as needed"
+    },
+    {
+      id: 'motherwort',
+      name: 'Motherwort',
+      color: '#9CCC65',
+      benefits: [
+        'Calms heart palpitations',
+        'May lower blood pressure',
+        'Helps with anxiety that affects heart rhythm',
+        'Traditional remedy for heart conditions'
+      ],
+      oilPreparation: "1. Harvest motherwort leaves and stems\n2. Dry and chop finely\n3. Cover with olive oil in a 1:5 ratio\n4. Infuse for 4 weeks in a dark place",
+      tincturePreparation: "1. Fill jar halfway with dried motherwort\n2. Cover completely with 100 proof alcohol\n3. Steep for 6-8 weeks\n4. Use 10-20 drops as needed for heart support"
+    },
+    {
+      id: 'garlic',
+      name: 'Garlic',
+      color: '#F5F5DC',
+      benefits: [
+        'May reduce cholesterol and blood pressure',
+        'Has antiplatelet effects that help blood flow',
+        'Contains allicin which supports heart health',
+        'Improves circulation throughout the body'
+      ],
+      oilPreparation: "1. Crush 10-15 garlic cloves\n2. Let sit for 15 minutes to activate compounds\n3. Mix with 1 cup olive oil\n4. Low heat for 30 minutes, then strain",
+      tincturePreparation: "1. Fill jar 1/3 full with minced garlic\n2. Cover with vodka or apple cider vinegar\n3. Store for 6 weeks in dark place\n4. Take 5-10 drops daily in water"
     }
   ];
 
@@ -103,6 +128,32 @@ const HerbVisualizer: React.FC = () => {
       ],
       oilPreparation: "1. Use dried chamomile flowers\n2. Cover with carrier oil\n3. Infuse using low heat\n4. Strain and store properly",
       tincturePreparation: "1. Fill jar with dried flowers\n2. Cover with vodka\n3. Store for 4 weeks\n4. Take before meals"
+    },
+    {
+      id: 'licorice',
+      name: 'Licorice',
+      color: '#D4AC0D',
+      benefits: [
+        'Coats and soothes digestive tract lining',
+        'May help with acid reflux and ulcers',
+        'Reduces inflammation in the stomach',
+        'Supports healing of stomach tissues'
+      ],
+      oilPreparation: "1. Chop dried licorice root\n2. Mix with jojoba or olive oil\n3. Double boiler infuse for 4 hours\n4. Store in dark amber bottles",
+      tincturePreparation: "1. Fill jar 1/4 with chopped licorice root\n2. Cover with vodka or glycerin\n3. Steep for 8 weeks\n4. Use 10-20 drops after meals"
+    },
+    {
+      id: 'fennel',
+      name: 'Fennel',
+      color: '#C0CA33',
+      benefits: [
+        'Eases bloating and gas pains',
+        'Supports healthy digestion',
+        'Has antispasmodic effects on digestive tract',
+        'Traditionally used for colic and indigestion'
+      ],
+      oilPreparation: "1. Crush fennel seeds lightly\n2. Add to olive or almond oil\n3. Warm infuse for 2 hours\n4. Use for digestive massage",
+      tincturePreparation: "1. Use 1 part crushed seeds to 5 parts alcohol\n2. Store for 4-6 weeks, shaking daily\n3. Strain through fine cloth\n4. Take 15-30 drops after meals"
     }
   ];
 
@@ -146,6 +197,32 @@ const HerbVisualizer: React.FC = () => {
       ],
       oilPreparation: "1. Use dried ginseng root\n2. Cover with sesame or olive oil\n3. Slow infuse for 6-8 weeks\n4. Use in small amounts for massage",
       tincturePreparation: "1. Chop ginseng root finely\n2. Use 1:5 ratio with 50% alcohol\n3. Steep for 8 weeks minimum\n4. Take 20-40 drops daily"
+    },
+    {
+      id: 'tribulus',
+      name: 'Tribulus',
+      color: '#FFD54F',
+      benefits: [
+        'May naturally support testosterone levels',
+        'Traditionally used for libido and vitality',
+        'Supports athletic performance and recovery',
+        'May help with reproductive health'
+      ],
+      oilPreparation: "1. Use powdered tribulus fruit/root\n2. Mix with jojoba oil at 1:5 ratio\n3. Solar infuse for 3 weeks\n4. Use for topical massage",
+      tincturePreparation: "1. Fill jar 1/3 with tribulus powder\n2. Cover with 80 proof vodka\n3. Steep for 4-6 weeks\n4. Take 20-40 drops 1-2 times daily"
+    },
+    {
+      id: 'ashwagandha',
+      name: 'Ashwagandha',
+      color: '#BCAAA4',
+      benefits: [
+        'Helps body adapt to stress',
+        'Supports healthy testosterone levels',
+        'May improve fertility and reproductive health',
+        'Traditional tonic for male vitality'
+      ],
+      oilPreparation: "1. Use powdered ashwagandha root\n2. Mix with sesame oil (traditional)\n3. Low heat for 3-4 hours\n4. Apply to lower back for energy support",
+      tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Add 2 parts honey for palatability\n3. Store for 6 weeks, shaking daily\n4. Take 1/4 teaspoon twice daily"
     }
   ];
 
@@ -189,6 +266,32 @@ const HerbVisualizer: React.FC = () => {
       ],
       oilPreparation: "1. Use dried black cohosh root\n2. Cover with carrier oil\n3. Warm infuse for 2-3 hours\n4. External use only for muscle tension",
       tincturePreparation: "1. Use 1 part root to 5 parts alcohol\n2. Store in dark place for 8 weeks\n3. Shake jar daily during extraction\n4. Take 10-30 drops up to twice daily"
+    },
+    {
+      id: 'dong-quai',
+      name: 'Dong Quai',
+      color: '#E6A0BC',
+      benefits: [
+        'Known as "female ginseng" in traditional Chinese medicine',
+        'Helps balance female hormones',
+        'May increase blood flow to reproductive organs',
+        'Traditionally used for menstrual irregularities'
+      ],
+      oilPreparation: "1. Use dried dong quai root\n2. Cover with sesame oil (traditional)\n3. Warm infuse for 6 hours\n4. Use for abdominal massage during cycles",
+      tincturePreparation: "1. Chop dong quai root into small pieces\n2. Use 1:4 ratio with 40% alcohol\n3. Steep for 8 weeks minimum\n4. Take 10-30 drops twice daily"
+    },
+    {
+      id: 'evening-primrose',
+      name: 'Evening Primrose',
+      color: '#FFEB3B',
+      benefits: [
+        'Rich in gamma-linolenic acid (GLA)',
+        'May help with PMS symptoms',
+        'Supports hormone balance',
+        'Can help with breast tenderness'
+      ],
+      oilPreparation: "1. Cold-pressed from seeds (best purchased pre-made)\n2. Store in refrigerator to prevent rancidity\n3. Take orally or use topically\n4. 1-2 teaspoons daily for women's health",
+      tincturePreparation: "1. Fill jar with crushed evening primrose seeds\n2. Cover with high-proof alcohol\n3. Store for 6 weeks in cool, dark place\n4. Take 20-30 drops daily"
     }
   ];
 
