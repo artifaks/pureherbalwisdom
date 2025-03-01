@@ -16,7 +16,7 @@ const HerbCard: React.FC<HerbCardProps> = ({ id, name, color, isActive, onClick 
       className={cn(
         "herb-card relative flex flex-col items-center justify-center p-5 rounded-xl cursor-pointer min-w-[120px]",
         "bg-white herb-card-shadow transition-all duration-300",
-        isActive ? "active ring-2 ring-accent/50" : "hover:bg-gray-50/80"
+        isActive ? "active ring-2 ring-accent/50 scale-105" : "hover:bg-gray-50/80 hover:scale-102"
       )}
       style={{ 
         borderTop: `4px solid ${color}`

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import CategoryIcon from './CategoryIcon';
 import HerbCard from './HerbCard';
@@ -85,6 +86,32 @@ const HerbVisualizer: React.FC = () => {
       ],
       oilPreparation: "1. Crush 10-15 garlic cloves\n2. Let sit for 15 minutes to activate compounds\n3. Mix with 1 cup olive oil\n4. Low heat for 30 minutes, then strain",
       tincturePreparation: "1. Fill jar 1/3 full with minced garlic\n2. Cover with vodka or apple cider vinegar\n3. Store for 6 weeks in dark place\n4. Take 5-10 drops daily in water"
+    },
+    {
+      id: 'cayenne',
+      name: 'Cayenne',
+      color: '#FF5252',
+      benefits: [
+        'Stimulates circulation throughout the body',
+        'Helps normalize blood pressure',
+        'May decrease platelet aggregation',
+        'Traditional heart tonic and blood mover'
+      ],
+      oilPreparation: "1. Mix 1 tablespoon of cayenne powder\n2. Add to 1 cup of olive oil\n3. Warm gently for 20 minutes\n4. External use only for circulation support",
+      tincturePreparation: "1. Add 2 tablespoons cayenne to jar\n2. Cover with apple cider vinegar\n3. Steep for 2-4 weeks\n4. Take 3-5 drops in water daily"
+    },
+    {
+      id: 'bilberry',
+      name: 'Bilberry',
+      color: '#5E35B1',
+      benefits: [
+        'Contains anthocyanins that strengthen blood vessels',
+        'Helps maintain healthy circulation',
+        'Supports vascular integrity',
+        'May help with capillary fragility'
+      ],
+      oilPreparation: "1. Crush dried bilberries\n2. Mix with olive oil at 1:5 ratio\n3. Infuse for 4-6 weeks\n4. Strain and refrigerate",
+      tincturePreparation: "1. Fill jar halfway with fresh or dried bilberries\n2. Cover with brandy or vodka\n3. Store for 6 weeks in cool place\n4. Take 20-30 drops twice daily"
     }
   ];
 
@@ -154,6 +181,32 @@ const HerbVisualizer: React.FC = () => {
       ],
       oilPreparation: "1. Crush fennel seeds lightly\n2. Add to olive or almond oil\n3. Warm infuse for 2 hours\n4. Use for digestive massage",
       tincturePreparation: "1. Use 1 part crushed seeds to 5 parts alcohol\n2. Store for 4-6 weeks, shaking daily\n3. Strain through fine cloth\n4. Take 15-30 drops after meals"
+    },
+    {
+      id: 'marshmallow',
+      name: 'Marshmallow',
+      color: '#B39DDB',
+      benefits: [
+        'Creates a protective layer on digestive tract',
+        'Soothes inflammation of stomach and intestines',
+        'Helps with acid reflux and heartburn',
+        'Traditional remedy for gastritis'
+      ],
+      oilPreparation: "1. Use dried marshmallow root powder\n2. Mix with cold-pressed oil at 1:4 ratio\n3. Macerate for 6 weeks, shaking daily\n4. Strain carefully through cheesecloth",
+      tincturePreparation: "1. Fill jar 1/3 with marshmallow root\n2. Cover with 1:1 alcohol/water mixture\n3. Steep for 6-8 weeks\n4. Take 1/4 teaspoon as needed"
+    },
+    {
+      id: 'slippery-elm',
+      name: 'Slippery Elm',
+      color: '#8D6E63',
+      benefits: [
+        'Creates protective mucilage for digestive tract',
+        'Soothes irritation and inflammation',
+        'Traditional remedy for ulcers and colitis',
+        'Supports overall digestive health'
+      ],
+      oilPreparation: "1. Mix slippery elm powder with carrier oil\n2. Not typically prepared as oil\n3. Best used as powder in warm water\n4. Can add to salves for skin preparations",
+      tincturePreparation: "1. Mix 1 part powdered bark with 5 parts alcohol\n2. Let sit for 4 weeks, shaking daily\n3. Filter through coffee filter\n4. Take 1/2 teaspoon as needed"
     }
   ];
 
@@ -223,6 +276,32 @@ const HerbVisualizer: React.FC = () => {
       ],
       oilPreparation: "1. Use powdered ashwagandha root\n2. Mix with sesame oil (traditional)\n3. Low heat for 3-4 hours\n4. Apply to lower back for energy support",
       tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Add 2 parts honey for palatability\n3. Store for 6 weeks, shaking daily\n4. Take 1/4 teaspoon twice daily"
+    },
+    {
+      id: 'muira-puama',
+      name: 'Muira Puama',
+      color: '#795548',
+      benefits: [
+        'Known as "potency wood" in traditional medicine',
+        'Used to enhance male libido and performance',
+        'May support healthy testosterone levels',
+        'Traditional Brazilian remedy for vitality'
+      ],
+      oilPreparation: "1. Use dried muira puama bark/root\n2. Infuse in olive oil for 4 weeks\n3. Keep jar in warm place, shaking daily\n4. For external massage use only",
+      tincturePreparation: "1. Fill jar 1/4 with powdered herb\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks minimum\n4. Take 15-40 drops daily"
+    },
+    {
+      id: 'tongkat-ali',
+      name: 'Tongkat Ali',
+      color: '#5D4037',
+      benefits: [
+        'May naturally support hormonal balance',
+        'Traditional remedy for male energy and stamina',
+        'Supports healthy stress response',
+        'Used in traditional medicine for vitality'
+      ],
+      oilPreparation: "1. Typically not used in oil preparations\n2. Better utilized as powder or tincture\n3. Can be added to coconut oil for massage\n4. External use only",
+      tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Use 50% alcohol minimum\n3. Steep for 6-8 weeks in dark place\n4. Take 10-30 drops daily"
     }
   ];
 
@@ -292,6 +371,32 @@ const HerbVisualizer: React.FC = () => {
       ],
       oilPreparation: "1. Cold-pressed from seeds (best purchased pre-made)\n2. Store in refrigerator to prevent rancidity\n3. Take orally or use topically\n4. 1-2 teaspoons daily for women's health",
       tincturePreparation: "1. Fill jar with crushed evening primrose seeds\n2. Cover with high-proof alcohol\n3. Store for 6 weeks in cool, dark place\n4. Take 20-30 drops daily"
+    },
+    {
+      id: 'mugwort',
+      name: 'Mugwort',
+      color: '#7E57C2',
+      benefits: [
+        'Traditional herb for menstrual regulation',
+        'May help with delayed periods',
+        'Used in traditional medicine for reproductive health',
+        'Has relaxing properties for menstrual discomfort'
+      ],
+      oilPreparation: "1. Harvest mugwort leaves and flowers\n2. Dry and chop finely\n3. Cover with olive oil and infuse for 4 weeks\n4. Use externally for lower abdomen massage",
+      tincturePreparation: "1. Fill jar 1/3 with dried mugwort\n2. Cover with 100 proof vodka\n3. Steep for 6-8 weeks in dark place\n4. Take 5-15 drops as needed"
+    },
+    {
+      id: 'shatavari',
+      name: 'Shatavari',
+      color: '#81C784',
+      benefits: [
+        'Ayurvedic tonic for women's reproductive health',
+        'Supports hormonal balance throughout life cycles',
+        'Traditional herb for fertility and lactation',
+        'Has cooling and nourishing properties'
+      ],
+      oilPreparation: "1. Use powdered shatavari root\n2. Mix with sesame oil at 1:4 ratio\n3. Warm infuse for 3-4 hours\n4. Use for gentle abdominal massage",
+      tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Use 40-50% alcohol solution\n3. Steep for 8 weeks, shaking daily\n4. Take 30-60 drops daily in water"
     }
   ];
 
