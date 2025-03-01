@@ -46,7 +46,7 @@ const HerbVisualizer: React.FC = () => {
   const renderCallToAction = () => {
     if (activeHerb === null) {
       return (
-        <div className="text-center my-12 py-8 glass rounded-2xl max-w-md mx-auto">
+        <div className="text-center my-6 py-8 glass rounded-2xl max-w-md mx-auto">
           <h2 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
             Discover Nature's Healing Power
           </h2>
@@ -93,7 +93,7 @@ const HerbVisualizer: React.FC = () => {
       />
       
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto p-6 md:p-8 lg:px-16 lg:py-8">
+      <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:px-12 lg:py-6">
         {renderCallToAction()}
         <ContentArea
           activeHerb={activeHerb}
