@@ -390,10 +390,10 @@ const HerbVisualizer: React.FC = () => {
       name: 'Shatavari',
       color: '#81C784',
       benefits: [
-        'Ayurvedic tonic for women's reproductive health',
-        'Supports hormonal balance throughout life cycles',
-        'Traditional herb for fertility and lactation',
-        'Has cooling and nourishing properties'
+        "Ayurvedic tonic for women's reproductive health",
+        "Supports hormonal balance throughout life cycles",
+        "Traditional herb for fertility and lactation",
+        "Has cooling and nourishing properties"
       ],
       oilPreparation: "1. Use powdered shatavari root\n2. Mix with sesame oil at 1:4 ratio\n3. Warm infuse for 3-4 hours\n4. Use for gentle abdominal massage",
       tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Use 40-50% alcohol solution\n3. Steep for 8 weeks, shaking daily\n4. Take 30-60 drops daily in water"
@@ -446,8 +446,8 @@ const HerbVisualizer: React.FC = () => {
               <span className="font-medium">
                 {category === 'heart' ? 'Heart' : 
                  category === 'stomach' ? 'Stomach' : 
-                 category === 'mens' ? 'Men\'s Health' : 
-                 'Women\'s Health'}
+                 category === 'mens' ? "Men's Health" : 
+                 "Women's Health"}
               </span>
             </button>
           ))}
