@@ -90,5 +90,31 @@ export const heartHerbs = [
     ],
     oilPreparation: "1. Crush dried bilberries\n2. Mix with olive oil at 1:5 ratio\n3. Infuse for 4-6 weeks\n4. Strain and refrigerate",
     tincturePreparation: "1. Fill jar halfway with fresh or dried bilberries\n2. Cover with brandy or vodka\n3. Store for 6 weeks in cool place\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'ginkgo',
+    name: 'Ginkgo',
+    color: '#C3D825',
+    benefits: [
+      'Improves blood flow to the brain and extremities',
+      'Contains powerful antioxidants',
+      'May support healthy cognitive function',
+      'Traditionally used for circulation issues'
+    ],
+    oilPreparation: "1. Use dried ginkgo leaves\n2. Infuse in almond oil at 1:5 ratio\n3. Keep in warm place for 4 weeks\n4. Strain and store in dark bottles",
+    tincturePreparation: "1. Fill jar 1/3 with dried ginkgo leaves\n2. Cover with 100 proof alcohol\n3. Let sit for 6-8 weeks, shaking daily\n4. Take 10-20 drops twice daily"
+  },
+  {
+    id: 'rose',
+    name: 'Rose',
+    color: '#F06292',
+    benefits: [
+      'Emotionally supports heart health through stress reduction',
+      'Contains antioxidants that protect cardiovascular system',
+      'May help reduce inflammation in blood vessels',
+      'Traditional heart opener in many cultures'
+    ],
+    oilPreparation: "1. Gather fresh rose petals\n2. Cover with jojoba or sweet almond oil\n3. Solar infuse for 3-4 weeks\n4. Use for heart-centered massage",
+    tincturePreparation: "1. Fill jar with fresh rose petals\n2. Cover with brandy or vodka\n3. Steep for 4 weeks in cool, dark place\n4. Use 20-30 drops for emotional support"
   }
 ];

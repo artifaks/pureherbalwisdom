@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ContentArea from './ContentArea';
 import CategoryHeader from './CategoryHeader';
 import HerbSelector from './HerbSelector';
+import WellnessBanner from './WellnessBanner';
 import { Herb, HerbCategory } from '@/data/types';
 import { heartHerbs } from '@/data/heartHerbs';
 import { stomachHerbs } from '@/data/stomachHerbs';
@@ -42,6 +43,9 @@ const HerbVisualizer: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      {/* Wellness Banner */}
+      <WellnessBanner />
+      
       {/* Header with Category Toggles */}
       <CategoryHeader 
         activeCategory={activeCategory} 

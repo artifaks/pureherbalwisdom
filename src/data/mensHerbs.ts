@@ -90,5 +90,31 @@ export const mensHerbs = [
     ],
     oilPreparation: "1. Typically not used in oil preparations\n2. Better utilized as powder or tincture\n3. Can be added to coconut oil for massage\n4. External use only",
     tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Use 50% alcohol minimum\n3. Steep for 6-8 weeks in dark place\n4. Take 10-30 drops daily"
+  },
+  {
+    id: 'maca',
+    name: 'Maca',
+    color: '#F9A825',
+    benefits: [
+      'Supports endurance and stamina',
+      'May help with hormonal balance naturally',
+      'Traditional Peruvian food for fertility and vitality',
+      'Adaptogen that helps with stress response'
+    ],
+    oilPreparation: "1. Not typically used as oil\n2. Best used as powder in foods\n3. Can be added to coconut oil for topical use\n4. External application only",
+    tincturePreparation: "1. Mix maca powder with glycerin at 1:4 ratio\n2. Add 25% alcohol as preservative\n3. Shake daily for 6 weeks\n4. Take 1/4-1/2 teaspoon daily"
+  },
+  {
+    id: 'pine-pollen',
+    name: 'Pine Pollen',
+    color: '#FFF176',
+    benefits: [
+      'Contains natural plant androgens',
+      'Rich in vitamins, minerals and amino acids',
+      'May support hormonal balance',
+      'Traditional Chinese tonic for longevity'
+    ],
+    oilPreparation: "1. Mix pine pollen with jojoba oil\n2. Not typically prepared as oil\n3. Better utilized as powder\n4. Can be added to salves for skin application",
+    tincturePreparation: "1. Fill jar 1/4 with pine pollen powder\n2. Cover with 100 proof alcohol\n3. Steep for 2 weeks, shaking daily\n4. Take 5-15 drops under tongue"
   }
 ];

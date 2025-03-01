@@ -90,5 +90,31 @@ export const womensHerbs = [
     ],
     oilPreparation: "1. Use powdered shatavari root\n2. Mix with sesame oil at 1:4 ratio\n3. Warm infuse for 3-4 hours\n4. Use for gentle abdominal massage",
     tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Use 40-50% alcohol solution\n3. Steep for 8 weeks, shaking daily\n4. Take 30-60 drops daily in water"
+  },
+  {
+    id: 'wild-yam',
+    name: 'Wild Yam',
+    color: '#FFB74D',
+    benefits: [
+      'Contains diosgenin, a precursor to progesterone',
+      'Used traditionally for menstrual cramps',
+      'May support female reproductive health',
+      'Has anti-inflammatory properties'
+    ],
+    oilPreparation: "1. Use dried wild yam root, chopped\n2. Infuse in olive oil at 1:5 ratio\n3. Double boiler method for 3 hours\n4. Use for massage over lower abdomen",
+    tincturePreparation: "1. Fill jar 1/4 with chopped wild yam root\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks, shaking daily\n4. Take 15-30 drops twice daily"
+  },
+  {
+    id: 'motherwort',
+    name: 'Motherwort',
+    color: '#8BC34A',
+    benefits: [
+      'Supports heart health during hormonal changes',
+      'May help ease anxiety during menopause',
+      'Traditionally used for delayed menstruation',
+      'Calming effect on the nervous system'
+    ],
+    oilPreparation: "1. Harvest fresh motherwort leaves\n2. Dry completely and chop\n3. Cover with olive oil and infuse for 6 weeks\n4. Use for massage over heart area and lower back",
+    tincturePreparation: "1. Fill jar 1/3 with dried motherwort herb\n2. Cover with brandy or vodka\n3. Steep for 4-6 weeks in dark place\n4. Take 10-20 drops up to 3 times daily"
   }
 ];

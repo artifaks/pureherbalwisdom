@@ -90,5 +90,31 @@ export const stomachHerbs = [
     ],
     oilPreparation: "1. Mix slippery elm powder with carrier oil\n2. Not typically prepared as oil\n3. Best used as powder in warm water\n4. Can add to salves for skin preparations",
     tincturePreparation: "1. Mix 1 part powdered bark with 5 parts alcohol\n2. Let sit for 4 weeks, shaking daily\n3. Filter through coffee filter\n4. Take 1/2 teaspoon as needed"
+  },
+  {
+    id: 'meadowsweet',
+    name: 'Meadowsweet',
+    color: '#F5F5DC',
+    benefits: [
+      'Natural source of salicylic acid compounds',
+      'Reduces excess stomach acid gently',
+      'Traditionally used for heartburn and ulcers',
+      'Soothes and protects the digestive lining'
+    ],
+    oilPreparation: "1. Use dried meadowsweet flowers\n2. Cover with olive oil in jar\n3. Solar infuse for 3-4 weeks\n4. Use topically for inflammation",
+    tincturePreparation: "1. Fill jar 1/3 with dried herb\n2. Cover with brandy or vodka\n3. Let sit for 6 weeks in cool place\n4. Take 15-30 drops before meals"
+  },
+  {
+    id: 'cardamom',
+    name: 'Cardamom',
+    color: '#9CCC65',
+    benefits: [
+      'Warms digestive system and improves absorption',
+      'Reduces gas and bloating effectively',
+      'Freshens breath and supports oral health',
+      'Ayurvedic remedy for sluggish digestion'
+    ],
+    oilPreparation: "1. Crush cardamom pods lightly\n2. Mix with sesame oil at 1:5 ratio\n3. Warm for 3 hours on low heat\n4. Strain and store in dark bottle",
+    tincturePreparation: "1. Fill jar 1/4 with crushed cardamom pods\n2. Cover with 80 proof vodka\n3. Steep for 4-6 weeks\n4. Take 10-15 drops after heavy meals"
   }
 ];
