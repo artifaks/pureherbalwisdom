@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -92,6 +91,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
@@ -115,6 +115,14 @@
   .focus-ring {
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent;
   }
+
+  @screen xs {
+    min-width: 475px;
+  }
+
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
 }
 
 .herb-card {
@@ -127,6 +135,12 @@
 
 .herb-card.active {
   transform: translateY(-4px);
+}
+
+@media (max-width: 640px) {
+  .herb-card:active {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 }
 
 .tab-content {

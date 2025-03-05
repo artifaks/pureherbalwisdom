@@ -42,21 +42,21 @@ const ColorLegend: React.FC = () => {
   ];
 
   return (
-    <div className="color-legend bg-amber-50/50 p-4 rounded-lg border border-amber-100 mb-4 mx-6">
-      <h3 className="text-amber-800 text-sm font-medium mb-2">Herb Category Color Guide</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+    <div className="color-legend bg-amber-50/50 p-3 sm:p-4 rounded-lg border border-amber-100 mb-3 sm:mb-4 mx-3 sm:mx-6">
+      <h3 className="text-amber-800 text-xs sm:text-sm font-medium mb-2">Herb Category Color Guide</h3>
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
         {categories.map((cat) => (
           <div key={cat.category} className="flex items-center">
             <div 
-              className="w-3 h-12 rounded-l-sm mr-2" 
+              className="w-2 sm:w-3 h-10 sm:h-12 rounded-l-sm mr-2" 
               style={{ backgroundColor: cat.color }}
             />
             <div className="flex flex-col">
               <div className="flex items-center">
                 {cat.icon}
-                <span className="ml-1 text-sm font-medium">{cat.name}</span>
+                <span className="ml-1 text-xs sm:text-sm font-medium">{cat.name}</span>
               </div>
-              <span className="text-xs text-gray-600">{cat.description}</span>
+              <span className="text-[10px] sm:text-xs text-gray-600 line-clamp-2">{cat.description}</span>
             </div>
           </div>
         ))}

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
@@ -90,23 +91,27 @@ const HerbCard: React.FC<HerbCardProps> = ({
   return (
     <div
       className={cn(
-        "herb-card relative flex flex-col items-center justify-center p-4 rounded-xl cursor-pointer",
+        "herb-card relative flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl",
         "bg-white herb-card-shadow transition-all duration-300",
-        isActive ? "active ring-2 ring-accent/50 scale-105" : "hover:bg-gray-50/80 hover:scale-102"
+        "active:bg-gray-50 touch-manipulation", // Improved touch feedback
+        isActive ? "active ring-2 ring-accent/50 scale-105" : "hover:bg-gray-50/80 hover:scale-102",
+        "w-full cursor-pointer" // Full width on all devices
       )}
       style={{ 
         borderTop: `4px solid ${categoryColor}`
       }}
       onClick={onClick}
+      aria-selected={isActive}
+      role="button"
     >
-      <div className="herb-icon-container w-10 h-10 rounded-full mb-2 flex items-center justify-center">
+      <div className="herb-icon-container w-8 h-8 sm:w-10 sm:h-10 rounded-full mb-2 flex items-center justify-center">
         {getHerbIcon(id, categoryColor)}
       </div>
       <span className="text-sm font-medium text-gray-800 text-center">{name}</span>
       
-      {/* Primary benefit line */}
+      {/* Primary benefit line - optimized for mobile */}
       {primaryBenefit && (
-        <p className="text-xs text-gray-600 mt-1 text-center line-clamp-2 max-w-[90%]">
+        <p className="text-xs text-gray-600 mt-1 text-center line-clamp-2 max-w-[95%] leading-tight">
           {primaryBenefit}
         </p>
       )}
