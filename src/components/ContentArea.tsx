@@ -1,23 +1,30 @@
-
 import React from 'react';
 import { Heart, Droplet, Beaker } from 'lucide-react';
 import CategoryIcon from './CategoryIcon';
 import TabContent from './TabContent';
+import ComplementaryHerbs from './ComplementaryHerbs';
 import { cn } from '@/lib/utils';
 import { Herb, HerbCategory } from '@/data/types';
+import { allHerbs } from '@/data/allHerbs';
 
 interface ContentAreaProps {
   activeHerb: Herb | null;
   activeTab: 'benefits' | 'oil' | 'tincture';
   setActiveTab: (tab: 'benefits' | 'oil' | 'tincture') => void;
   activeCategory: HerbCategory;
+  savedHerbs: Herb[];
+  onHerbSelect: (herb: Herb) => void;
+  onToggleSave: (herb: Herb) => void;
 }
 
 const ContentArea: React.FC<ContentAreaProps> = ({ 
   activeHerb, 
   activeTab, 
   setActiveTab, 
-  activeCategory 
+  activeCategory,
+  savedHerbs,
+  onHerbSelect,
+  onToggleSave
 }) => {
   if (!activeHerb) {
     return (
@@ -110,6 +117,15 @@ const ContentArea: React.FC<ContentAreaProps> = ({
       <div className="glass rounded-xl p-8 content-shadow">
         <TabContent tab={activeTab} herb={activeHerb} />
       </div>
+      
+      {/* Complementary Herbs Section */}
+      <ComplementaryHerbs 
+        activeHerb={activeHerb} 
+        allHerbs={allHerbs}
+        onHerbSelect={onHerbSelect}
+        savedHerbs={savedHerbs}
+        onToggleSave={onToggleSave}
+      />
     </div>
   );
 };

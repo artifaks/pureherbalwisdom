@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import ContentArea from './ContentArea';
 import HerbSelector from './HerbSelector';
@@ -209,6 +210,9 @@ const HerbVisualizer: React.FC = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           activeCategory={activeHerb?.category || 'heart'}
+          savedHerbs={savedHerbs}
+          onHerbSelect={handleHerbSelect}
+          onToggleSave={handleToggleSave}
         />
       </div>
       
