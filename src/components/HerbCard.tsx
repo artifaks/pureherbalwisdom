@@ -3,6 +3,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
 import { HerbCategory } from '@/data/types';
+import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2 } from 'lucide-react';
 
 interface HerbCardProps {
   id: string;
@@ -13,6 +14,49 @@ interface HerbCardProps {
   category?: HerbCategory;
   benefits?: string[];
 }
+
+// Function to get the appropriate herb icon based on herb ID
+const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
+  // Map herbs to their corresponding icons
+  const iconMapping: Record<string, React.ReactNode> = {
+    // Heart herbs (examples)
+    'hawthorn': <Leaf size={size} color={color} />,
+    'motherwort': <Flower size={size} color={color} />,
+    'arjuna': <TreeDeciduous size={size} color={color} />,
+    'garlic': <Sprout size={size} color={color} />,
+    
+    // Stomach herbs
+    'peppermint': <Leaf size={size} color={color} />,
+    'ginger': <Sprout size={size} color={color} />,
+    'chamomile': <Flower size={size} color={color} />,
+    'licorice': <Sprout size={size} color={color} />,
+    'fennel': <FlowerIcon size={size} color={color} />,
+    'marshmallow': <Flower2 size={size} color={color} />,
+    'slippery-elm': <TreeDeciduous size={size} color={color} />,
+    'meadowsweet': <Flower size={size} color={color} />,
+    'cardamom': <Sprout size={size} color={color} />,
+    'lemon-balm': <Leaf size={size} color={color} />,
+    'angelica': <FlowerIcon size={size} color={color} />,
+    'dandelion': <Flower size={size} color={color} />,
+    
+    // Men's herbs
+    'saw-palmetto': <TreeDeciduous size={size} color={color} />,
+    'nettle-root': <Sprout size={size} color={color} />,
+    'ginseng': <Sprout size={size} color={color} />,
+    'tribulus': <Flower size={size} color={color} />,
+    'ashwagandha': <Leaf size={size} color={color} />,
+    'muira-puama': <TreeDeciduous size={size} color={color} />,
+    'tongkat-ali': <Sprout size={size} color={color} />,
+    'maca': <Sprout size={size} color={color} />,
+    'pine-pollen': <TreeDeciduous size={size} color={color} />,
+    'horny-goat-weed': <Leaf size={size} color={color} />,
+    'fo-ti': <Leaf size={size} color={color} />,
+    'nettle-leaf': <Leaf size={size} color={color} />,
+  };
+
+  // Return the specific icon or a default leaf icon
+  return iconMapping[herbId] || <Leaf size={size} color={color} />;
+};
 
 const HerbCard: React.FC<HerbCardProps> = ({ 
   id, 
@@ -38,10 +82,9 @@ const HerbCard: React.FC<HerbCardProps> = ({
       }}
       onClick={onClick}
     >
-      <div 
-        className="herb-color-dot w-10 h-10 rounded-full mb-2 animate-pulse-soft" 
-        style={{ backgroundColor: color }}
-      />
+      <div className="herb-icon-container w-10 h-10 rounded-full mb-2 flex items-center justify-center">
+        {getHerbIcon(id, color)}
+      </div>
       <span className="text-sm font-medium text-gray-800 text-center">{name}</span>
       
       {/* Primary benefit line */}
