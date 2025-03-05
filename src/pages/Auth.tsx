@@ -8,11 +8,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { BookOpen } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [signupMessage, setSignupMessage] = useState<{ type: 'success' | 'error', message: string } | null>(null);
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
 
@@ -38,8 +40,14 @@ const Auth = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      await signUp(email, password);
-      // No redirect here as user needs to verify email first
+      setSignupMessage(null);
+      const result = await signUp(email, password);
+      
+      if (result.success) {
+        setSignupMessage({ type: 'success', message: result.message });
+      } else {
+        setSignupMessage({ type: 'error', message: result.message });
+      }
     } catch (error) {
       console.error('Error signing up:', error);
     } finally {
@@ -117,6 +125,13 @@ const Auth = () => {
               </CardHeader>
               <form onSubmit={handleSignUp}>
                 <CardContent className="space-y-4">
+                  {signupMessage && (
+                    <Alert className={signupMessage.type === 'success' ? 'bg-green-50' : 'bg-red-50'}>
+                      <AlertDescription>
+                        {signupMessage.message}
+                      </AlertDescription>
+                    </Alert>
+                  )}
                   <div className="space-y-2">
                     <Label htmlFor="signup-email">Email</Label>
                     <Input
@@ -137,6 +152,7 @@ const Auth = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       required
                     />
+                    <p className="text-xs text-gray-500">Password must be at least 6 characters</p>
                   </div>
                 </CardContent>
                 <CardFooter>

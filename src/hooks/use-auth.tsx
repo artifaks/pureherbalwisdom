@@ -11,7 +11,7 @@ type User = {
 type AuthContextType = {
   user: User;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<{ success: boolean; message: string }>;
   signOut: () => Promise<void>;
   loading: boolean;
 };
@@ -50,6 +50,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
+      toast({
+        title: "Sign In Successful",
+        description: "Welcome back!",
+      });
     } catch (error: any) {
       toast({
         title: "Sign In Failed",
@@ -62,19 +66,56 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signUp = async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signUp({ email, password });
-      if (error) throw error;
-      toast({
-        title: "Sign Up Successful",
-        description: "Please check your email for verification",
+      const { data, error } = await supabase.auth.signUp({ 
+        email, 
+        password,
+        options: {
+          // For development, you can disable email confirmation
+          // emailRedirectTo: window.location.origin
+        }
       });
+      
+      if (error) throw error;
+      
+      // Check if email confirmation is required
+      const needsEmailConfirmation = !data.session;
+      
+      if (needsEmailConfirmation) {
+        toast({
+          title: "Sign Up Successful",
+          description: "Please check your email for verification. If you don't see it, check your spam folder.",
+        });
+        return {
+          success: true,
+          message: "Please check your email for verification. If you don't see it, check your spam folder."
+        };
+      } else {
+        toast({
+          title: "Sign Up Successful",
+          description: "You are now logged in!",
+        });
+        return { success: true, message: "You are now logged in!" };
+      }
     } catch (error: any) {
+      // Handle existing user error gracefully
+      if (error.message.includes("User already registered")) {
+        toast({
+          title: "Account Exists",
+          description: "This email is already registered. Try signing in instead.",
+          variant: "destructive",
+        });
+        return { 
+          success: false, 
+          message: "This email is already registered. Try signing in instead." 
+        };
+      }
+      
       toast({
         title: "Sign Up Failed",
         description: error.message || "Failed to sign up",
         variant: "destructive",
       });
-      throw error;
+      return { success: false, message: error.message || "Failed to sign up" };
     }
   };
 
