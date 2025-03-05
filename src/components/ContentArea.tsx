@@ -23,23 +23,11 @@ const ContentArea: React.FC<ContentAreaProps> = ({
     return (
       <div className="flex flex-col items-center justify-center h-full p-6 animate-fade-in">
         <div className="glass p-10 rounded-2xl max-w-2xl text-center content-shadow">
-          <div className="flex justify-center mb-8">
-            <CategoryIcon category={activeCategory} size={80} className="animate-pulse-soft" />
-          </div>
           <h2 className="text-3xl font-bold text-gray-800 mb-6">
-            {activeCategory === 'heart' ? 'Heart-Healing Herbs Guide' : 
-             activeCategory === 'stomach' ? 'Stomach-Soothing Herbs Guide' :
-             activeCategory === 'mens' ? 'Men\'s Health Herbs Guide' :
-             'Women\'s Health Herbs Guide'}
+            Complete Herbal Reference Guide
           </h2>
           <p className="text-gray-600 mb-8 leading-relaxed">
-            {activeCategory === 'heart' 
-              ? 'Explore herbs known for their heart health benefits. Learn how each herb supports cardiovascular wellness and how to prepare medicinal oils and tinctures at home.'
-              : activeCategory === 'stomach'
-              ? 'Discover herbs that can help soothe digestive issues and promote stomach health. Learn about their benefits and how to prepare them for effective use at home.'
-              : activeCategory === 'mens'
-              ? 'These powerful herbs have been traditionally used to support men\'s health issues including prostate health, hormone balance, and vitality. Discover how to prepare and use them effectively.'
-              : 'Explore herbs specifically beneficial for women\'s health concerns such as menstrual issues, hormonal balance, and reproductive wellness. Learn how to create effective preparations at home.'}
+            Browse our comprehensive collection of medicinal herbs. Learn about their health benefits and how to prepare them as oils or tinctures for home use.
           </p>
           <p className="text-gray-700 font-medium">
             Select an herb from the collection above to begin your journey.
@@ -48,6 +36,14 @@ const ContentArea: React.FC<ContentAreaProps> = ({
       </div>
     );
   }
+
+  // Get category display name and color
+  const categoryDisplay = {
+    heart: {name: 'Heart Health', color: 'text-red-600'},
+    stomach: {name: 'Digestive Health', color: 'text-green-600'},
+    mens: {name: 'Men\'s Health', color: 'text-blue-600'},
+    womens: {name: 'Women\'s Health', color: 'text-pink-600'},
+  }[activeHerb.category || activeCategory];
 
   return (
     <div className="animate-fade-in">
@@ -58,7 +54,13 @@ const ContentArea: React.FC<ContentAreaProps> = ({
             className="w-14 h-14 rounded-full mr-5 flex items-center justify-center animate-scale-in"
             style={{ backgroundColor: activeHerb.color }}
           />
-          <h2 className="text-3xl font-bold text-gray-800 animate-slide-in">{activeHerb.name}</h2>
+          <div>
+            <h2 className="text-3xl font-bold text-gray-800 animate-slide-in">{activeHerb.name}</h2>
+            <div className="flex items-center mt-1">
+              <CategoryIcon category={activeHerb.category || activeCategory} size={16} className={`mr-2 ${categoryDisplay.color}`} />
+              <span className={`text-sm ${categoryDisplay.color}`}>{categoryDisplay.name}</span>
+            </div>
+          </div>
         </div>
         
         <div className="relative mb-8 border-b">

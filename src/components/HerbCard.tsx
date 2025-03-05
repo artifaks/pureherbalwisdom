@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import CategoryIcon from './CategoryIcon';
+import { HerbCategory } from '@/data/types';
 
 interface HerbCardProps {
   id: string;
@@ -8,13 +10,14 @@ interface HerbCardProps {
   color: string;
   isActive: boolean;
   onClick: () => void;
+  category?: HerbCategory;
 }
 
-const HerbCard: React.FC<HerbCardProps> = ({ id, name, color, isActive, onClick }) => {
+const HerbCard: React.FC<HerbCardProps> = ({ id, name, color, isActive, onClick, category }) => {
   return (
     <div
       className={cn(
-        "herb-card relative flex flex-col items-center justify-center p-5 rounded-xl cursor-pointer min-w-[120px]",
+        "herb-card relative flex flex-col items-center justify-center p-4 rounded-xl cursor-pointer",
         "bg-white herb-card-shadow transition-all duration-300",
         isActive ? "active ring-2 ring-accent/50 scale-105" : "hover:bg-gray-50/80 hover:scale-102"
       )}
@@ -24,10 +27,21 @@ const HerbCard: React.FC<HerbCardProps> = ({ id, name, color, isActive, onClick 
       onClick={onClick}
     >
       <div 
-        className="herb-color-dot w-12 h-12 rounded-full mb-3 animate-pulse-soft" 
+        className="herb-color-dot w-10 h-10 rounded-full mb-2 animate-pulse-soft" 
         style={{ backgroundColor: color }}
       />
-      <span className="text-sm font-medium text-gray-800 mt-1">{name}</span>
+      <span className="text-sm font-medium text-gray-800 text-center">{name}</span>
+      {category && (
+        <div className="flex items-center mt-2 text-xs text-gray-500">
+          <CategoryIcon category={category} size={12} className="mr-1" />
+          <span>
+            {category === 'heart' ? 'Heart' : 
+             category === 'stomach' ? 'Stomach' : 
+             category === 'mens' ? "Men's" : 
+             "Women's"}
+          </span>
+        </div>
+      )}
       {isActive && (
         <div className="absolute inset-0 rounded-xl bg-accent/5 animate-fade-in" />
       )}

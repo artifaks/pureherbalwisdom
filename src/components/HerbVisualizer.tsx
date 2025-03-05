@@ -1,42 +1,17 @@
 
 import React, { useState } from 'react';
 import ContentArea from './ContentArea';
-import CategoryHeader from './CategoryHeader';
 import HerbSelector from './HerbSelector';
 import WellnessBanner from './WellnessBanner';
-import { Herb, HerbCategory } from '@/data/types';
-import { heartHerbs } from '@/data/heartHerbs';
-import { stomachHerbs } from '@/data/stomachHerbs';
-import { mensHerbs } from '@/data/mensHerbs';
-import { womensHerbs } from '@/data/womensHerbs';
+import { Herb } from '@/data/types';
+import { allHerbs } from '@/data/allHerbs';
 import { Button } from './ui/button';
 import { Sparkles } from 'lucide-react';
 
 const HerbVisualizer: React.FC = () => {
-  // State for active herb, tab, and category
+  // State for active herb and tab
   const [activeHerb, setActiveHerb] = useState<Herb | null>(null);
   const [activeTab, setActiveTab] = useState<'benefits' | 'oil' | 'tincture'>('benefits');
-  const [activeCategory, setActiveCategory] = useState<HerbCategory>('heart');
-
-  // Category button colors
-  const categoryColors = {
-    heart: 'bg-red-100 text-red-800 border-red-200',
-    stomach: 'bg-green-100 text-green-800 border-green-200',
-    mens: 'bg-blue-100 text-blue-800 border-blue-200',
-    womens: 'bg-pink-100 text-pink-800 border-pink-200',
-  };
-
-  // Get current herbs based on category
-  const herbs = 
-    activeCategory === 'heart' ? heartHerbs : 
-    activeCategory === 'stomach' ? stomachHerbs : 
-    activeCategory === 'mens' ? mensHerbs : 
-    womensHerbs;
-
-  const handleCategoryChange = (category: HerbCategory) => {
-    setActiveCategory(category);
-    setActiveHerb(null);
-  };
 
   const handleHerbSelect = (herb: Herb) => {
     setActiveHerb(herb);
@@ -78,16 +53,14 @@ const HerbVisualizer: React.FC = () => {
       {/* Wellness Banner */}
       <WellnessBanner />
       
-      {/* Header with Category Toggles */}
-      <CategoryHeader 
-        activeCategory={activeCategory} 
-        handleCategoryChange={handleCategoryChange} 
-        categoryColors={categoryColors}
-      />
+      {/* Title for all herbs */}
+      <div className="glass sticky top-0 z-10 py-6 px-8 flex items-center justify-center">
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Comprehensive Herb Guide</h1>
+      </div>
       
-      {/* Herb Selection Boxes */}
+      {/* Herb Selection Boxes - All herbs */}
       <HerbSelector 
-        herbs={herbs} 
+        herbs={allHerbs} 
         activeHerb={activeHerb} 
         handleHerbSelect={handleHerbSelect}
       />
@@ -99,7 +72,7 @@ const HerbVisualizer: React.FC = () => {
           activeHerb={activeHerb}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          activeCategory={activeCategory}
+          activeCategory={activeHerb?.category || 'heart'}
         />
       </div>
       
