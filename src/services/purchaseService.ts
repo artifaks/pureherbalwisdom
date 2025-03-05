@@ -85,7 +85,8 @@ export const purchaseService = {
         price: parseFloat(book.price.replace('$', '')),
         type: book.type,
         popular: book.popular,
-        file_url: book.fileUrl
+        file_url: book.fileUrl,
+        cover_url: book.coverUrl
       }));
       
       const { error: insertError } = await supabase

@@ -7,7 +7,7 @@ export interface Ebook {
   type: string;
   popular: boolean;
   fileUrl?: string;
-  coverUrl?: string;  // New field for cover image
+  coverUrl?: string;  // Added coverUrl property
 }
 
 export interface Purchase {

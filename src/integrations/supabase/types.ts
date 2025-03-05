@@ -29,6 +29,7 @@ export type Database = {
       }
       ebooks: {
         Row: {
+          cover_url: string | null
           created_at: string
           description: string | null
           file_url: string | null
@@ -39,6 +40,7 @@ export type Database = {
           type: string
         }
         Insert: {
+          cover_url?: string | null
           created_at?: string
           description?: string | null
           file_url?: string | null
@@ -49,6 +51,7 @@ export type Database = {
           type: string
         }
         Update: {
+          cover_url?: string | null
           created_at?: string
           description?: string | null
           file_url?: string | null
