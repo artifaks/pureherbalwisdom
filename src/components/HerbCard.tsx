@@ -15,6 +15,7 @@ interface HerbCardProps {
   benefits?: string[];
   isSaved?: boolean;
   onToggleSave?: () => void;
+  size?: 'small' | 'default';  // Add the size prop
 }
 
 // Function to get the appropriate herb icon based on herb ID
@@ -85,7 +86,8 @@ const HerbCard: React.FC<HerbCardProps> = ({
   category,
   benefits,
   isSaved = false,
-  onToggleSave 
+  onToggleSave,
+  size = 'default'  // Add default value
 }) => {
   // Get the primary benefit (first in the array)
   const primaryBenefit = benefits && benefits.length > 0 ? benefits[0] : '';
@@ -107,7 +109,8 @@ const HerbCard: React.FC<HerbCardProps> = ({
         "bg-white herb-card-shadow transition-all duration-300",
         "active:bg-gray-50 touch-manipulation", // Improved touch feedback
         isActive ? "active ring-2 ring-accent/50 scale-105 z-10" : "hover:bg-gray-50/80 hover:scale-102 hover:shadow-md",
-        "w-full cursor-pointer" // Full width on all devices
+        "w-full cursor-pointer", // Full width on all devices
+        size === 'small' ? "p-2 sm:p-3" : "p-3 sm:p-4" // Apply different padding based on size
       )}
       style={{ 
         borderTop: `4px solid ${categoryColor}`
@@ -124,24 +127,30 @@ const HerbCard: React.FC<HerbCardProps> = ({
         title={isSaved ? "Remove from My Herbs" : "Add to My Herbs"}
       >
         {isSaved 
-          ? <Bookmark size={18} className="text-accent fill-accent" /> 
-          : <BookmarkPlus size={18} />
+          ? <Bookmark size={size === 'small' ? 14 : 18} className="text-accent fill-accent" /> 
+          : <BookmarkPlus size={size === 'small' ? 14 : 18} />
         }
       </button>
 
-      <div className="herb-icon-container w-8 h-8 sm:w-10 sm:h-10 rounded-full mb-2 flex items-center justify-center transition-transform duration-300">
-        {getHerbIcon(id, categoryColor)}
+      <div className={cn(
+        "herb-icon-container rounded-full mb-2 flex items-center justify-center transition-transform duration-300",
+        size === 'small' ? "w-6 h-6 sm:w-8 sm:h-8" : "w-8 h-8 sm:w-10 sm:h-10"
+      )}>
+        {getHerbIcon(id, categoryColor, size === 'small' ? 18 : 24)}
       </div>
-      <span className="text-sm font-medium text-gray-800 text-center">{name}</span>
+      <span className={cn(
+        "font-medium text-gray-800 text-center",
+        size === 'small' ? "text-xs" : "text-sm"
+      )}>{name}</span>
       
       {/* Primary benefit line - optimized for mobile */}
-      {primaryBenefit && (
+      {primaryBenefit && size !== 'small' && (
         <p className="text-xs text-gray-600 mt-1 text-center line-clamp-2 max-w-[95%] leading-tight">
           {primaryBenefit}
         </p>
       )}
       
-      {category && (
+      {category && size !== 'small' && (
         <div className="flex items-center mt-2 text-xs text-gray-500">
           <CategoryIcon category={category} size={12} className="mr-1" />
           <span>
