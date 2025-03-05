@@ -7,7 +7,7 @@ import SearchBar, { FilterOptions } from './SearchBar';
 import { Herb } from '@/data/types';
 import { allHerbs } from '@/data/allHerbs';
 import { Button } from './ui/button';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Leaf } from 'lucide-react';
 
 const HerbVisualizer: React.FC = () => {
   // State for active herb and tab
@@ -93,9 +93,13 @@ const HerbVisualizer: React.FC = () => {
       {/* Wellness Banner */}
       <WellnessBanner />
       
-      {/* Title for all herbs */}
+      {/* Title for all herbs - Updated with larger font and decorative element */}
       <div className="glass sticky top-0 z-10 py-6 px-8 flex items-center justify-center">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Comprehensive Herb Guide</h1>
+        <Leaf className="w-6 h-6 mr-2 text-amber-600" />
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 bg-gradient-to-r from-amber-700 to-amber-500 bg-clip-text text-transparent">
+          Comprehensive Herb Guide
+        </h1>
+        <Leaf className="w-6 h-6 ml-2 text-amber-600 transform rotate-180" />
       </div>
       
       {/* Search and Filter Bar */}
