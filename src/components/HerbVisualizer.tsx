@@ -1,14 +1,15 @@
-
 import React, { useState, useEffect } from 'react';
 import ContentArea from './ContentArea';
 import HerbSelector from './HerbSelector';
 import WellnessBanner from './WellnessBanner';
 import SearchBar, { FilterOptions } from './SearchBar';
 import ColorLegend from './ColorLegend';
+import MyHerbsSection from './MyHerbsSection';
 import { Herb } from '@/data/types';
 import { allHerbs } from '@/data/allHerbs';
 import { Button } from './ui/button';
-import { Sparkles, Leaf } from 'lucide-react';
+import { Sparkles, Leaf, BookmarkPlus } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const HerbVisualizer: React.FC = () => {
   // State for active herb and tab
@@ -16,10 +17,60 @@ const HerbVisualizer: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'benefits' | 'oil' | 'tincture'>('benefits');
   const [filteredHerbs, setFilteredHerbs] = useState<Herb[]>(allHerbs);
   const [searchApplied, setSearchApplied] = useState(false);
+  const [savedHerbs, setSavedHerbs] = useState<Herb[]>([]);
+  const { toast } = useToast();
+
+  // Load saved herbs from localStorage on mount
+  useEffect(() => {
+    const storedHerbs = localStorage.getItem('savedHerbs');
+    if (storedHerbs) {
+      try {
+        const parsedHerbs = JSON.parse(storedHerbs);
+        // Match against actual herb data to ensure we have the latest info
+        const validHerbs = parsedHerbs.map((savedHerbId: string) => 
+          allHerbs.find(herb => herb.id === savedHerbId)
+        ).filter(Boolean);
+        setSavedHerbs(validHerbs);
+      } catch (error) {
+        console.error('Error parsing saved herbs', error);
+      }
+    }
+  }, []);
+
+  // Save herbs to localStorage whenever the savedHerbs state changes
+  useEffect(() => {
+    if (savedHerbs.length > 0) {
+      // Only store the IDs to keep localStorage size small
+      const herbIds = savedHerbs.map(herb => herb.id);
+      localStorage.setItem('savedHerbs', JSON.stringify(herbIds));
+    } else {
+      localStorage.removeItem('savedHerbs');
+    }
+  }, [savedHerbs]);
 
   const handleHerbSelect = (herb: Herb) => {
     setActiveHerb(herb);
     setActiveTab('benefits');
+  };
+
+  const handleToggleSave = (herb: Herb) => {
+    const isCurrentlySaved = savedHerbs.some(savedHerb => savedHerb.id === herb.id);
+    
+    if (isCurrentlySaved) {
+      // Remove herb
+      setSavedHerbs(savedHerbs.filter(savedHerb => savedHerb.id !== herb.id));
+      toast({
+        description: `${herb.name} removed from your collection`,
+        variant: "default",
+      });
+    } else {
+      // Add herb
+      setSavedHerbs([...savedHerbs, herb]);
+      toast({
+        description: `${herb.name} added to your collection`,
+        variant: "default",
+      });
+    }
   };
 
   const handleSearchResults = (results: Herb[]) => {
@@ -128,6 +179,16 @@ const HerbVisualizer: React.FC = () => {
         </div>
       )}
       
+      {/* My Herbs Section - Shows user's saved herbs */}
+      {savedHerbs.length > 0 && (
+        <MyHerbsSection 
+          savedHerbs={savedHerbs}
+          activeHerb={activeHerb}
+          handleHerbSelect={handleHerbSelect}
+          onToggleSave={handleToggleSave}
+        />
+      )}
+      
       {/* Color Legend */}
       <ColorLegend />
       
@@ -136,6 +197,8 @@ const HerbVisualizer: React.FC = () => {
         herbs={filteredHerbs} 
         activeHerb={activeHerb} 
         handleHerbSelect={handleHerbSelect}
+        savedHerbs={savedHerbs}
+        onToggleSave={handleToggleSave}
       />
       
       {/* Main Content Area */}
@@ -148,6 +211,16 @@ const HerbVisualizer: React.FC = () => {
           activeCategory={activeHerb?.category || 'heart'}
         />
       </div>
+      
+      {/* Show My Herbs CTA if no saved herbs yet */}
+      {savedHerbs.length === 0 && (
+        <div className="glass py-4 px-6 mx-3 sm:mx-6 mt-4 mb-6 rounded-xl text-center">
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">Build Your Personal Herb Collection</h3>
+          <p className="text-gray-600 mb-3">
+            Save herbs you're interested in by clicking the bookmark icon <BookmarkPlus className="inline w-4 h-4" /> on any herb card.
+          </p>
+        </div>
+      )}
       
       {/* Footer */}
       <div className="glass py-4 px-6 text-center text-sm text-gray-600">

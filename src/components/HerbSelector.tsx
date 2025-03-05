@@ -8,12 +8,16 @@ interface HerbSelectorProps {
   herbs: Herb[];
   activeHerb: Herb | null;
   handleHerbSelect: (herb: Herb) => void;
+  savedHerbs: Herb[];
+  onToggleSave: (herb: Herb) => void;
 }
 
 const HerbSelector: React.FC<HerbSelectorProps> = ({ 
   herbs, 
   activeHerb, 
-  handleHerbSelect 
+  handleHerbSelect,
+  savedHerbs,
+  onToggleSave
 }) => {
   // Group herbs by category
   const categorizedHerbs = {
@@ -43,6 +47,11 @@ const HerbSelector: React.FC<HerbSelectorProps> = ({
     },
   };
 
+  // Check if herb is saved
+  const isHerbSaved = (herbId: string): boolean => {
+    return savedHerbs.some(herb => herb.id === herbId);
+  };
+
   return (
     <div className="glass-dark mx-3 sm:mx-6 my-4 p-2 sm:p-4 rounded-xl overflow-auto">
       {Object.entries(categorizedHerbs).map(([category, herbList]) => (
@@ -64,6 +73,8 @@ const HerbSelector: React.FC<HerbSelectorProps> = ({
                 onClick={() => handleHerbSelect(herb)}
                 category={herb.category}
                 benefits={herb.benefits}
+                isSaved={isHerbSaved(herb.id)}
+                onToggleSave={() => onToggleSave(herb)}
               />
             ))}
           </div>

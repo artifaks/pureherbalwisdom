@@ -3,7 +3,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
 import { HerbCategory } from '@/data/types';
-import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2 } from 'lucide-react';
+import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, BookmarkPlus, Bookmark } from 'lucide-react';
 
 interface HerbCardProps {
   id: string;
@@ -13,6 +13,8 @@ interface HerbCardProps {
   onClick: () => void;
   category?: HerbCategory;
   benefits?: string[];
+  isSaved?: boolean;
+  onToggleSave?: () => void;
 }
 
 // Function to get the appropriate herb icon based on herb ID
@@ -81,12 +83,22 @@ const HerbCard: React.FC<HerbCardProps> = ({
   isActive, 
   onClick, 
   category,
-  benefits 
+  benefits,
+  isSaved = false,
+  onToggleSave 
 }) => {
   // Get the primary benefit (first in the array)
   const primaryBenefit = benefits && benefits.length > 0 ? benefits[0] : '';
   // Use category color instead of individual herb color for border
   const categoryColor = getCategoryColor(category);
+
+  // Handler for bookmark click
+  const handleBookmarkClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering the card click
+    if (onToggleSave) {
+      onToggleSave();
+    }
+  };
 
   return (
     <div
@@ -104,6 +116,19 @@ const HerbCard: React.FC<HerbCardProps> = ({
       aria-selected={isActive}
       role="button"
     >
+      {/* Bookmark button */}
+      <button 
+        className="absolute top-2 right-2 text-gray-400 hover:text-accent transition-colors z-20"
+        onClick={handleBookmarkClick}
+        aria-label={isSaved ? "Remove from My Herbs" : "Add to My Herbs"}
+        title={isSaved ? "Remove from My Herbs" : "Add to My Herbs"}
+      >
+        {isSaved 
+          ? <Bookmark size={18} className="text-accent fill-accent" /> 
+          : <BookmarkPlus size={18} />
+        }
+      </button>
+
       <div className="herb-icon-container w-8 h-8 sm:w-10 sm:h-10 rounded-full mb-2 flex items-center justify-center transition-transform duration-300">
         {getHerbIcon(id, categoryColor)}
       </div>
