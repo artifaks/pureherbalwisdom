@@ -94,7 +94,7 @@ const HerbCard: React.FC<HerbCardProps> = ({
         "herb-card relative flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl",
         "bg-white herb-card-shadow transition-all duration-300",
         "active:bg-gray-50 touch-manipulation", // Improved touch feedback
-        isActive ? "active ring-2 ring-accent/50 scale-105" : "hover:bg-gray-50/80 hover:scale-102",
+        isActive ? "active ring-2 ring-accent/50 scale-105 z-10" : "hover:bg-gray-50/80 hover:scale-102 hover:shadow-md",
         "w-full cursor-pointer" // Full width on all devices
       )}
       style={{ 
@@ -104,7 +104,7 @@ const HerbCard: React.FC<HerbCardProps> = ({
       aria-selected={isActive}
       role="button"
     >
-      <div className="herb-icon-container w-8 h-8 sm:w-10 sm:h-10 rounded-full mb-2 flex items-center justify-center">
+      <div className="herb-icon-container w-8 h-8 sm:w-10 sm:h-10 rounded-full mb-2 flex items-center justify-center transition-transform duration-300">
         {getHerbIcon(id, categoryColor)}
       </div>
       <span className="text-sm font-medium text-gray-800 text-center">{name}</span>
@@ -128,7 +128,7 @@ const HerbCard: React.FC<HerbCardProps> = ({
         </div>
       )}
       {isActive && (
-        <div className="absolute inset-0 rounded-xl bg-accent/5 animate-fade-in" />
+        <div className="absolute inset-0 rounded-xl bg-accent/5 animate-pulse-soft" />
       )}
     </div>
   );

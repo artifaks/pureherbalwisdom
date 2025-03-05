@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -123,6 +124,12 @@
   .touch-manipulation {
     touch-action: manipulation;
   }
+  
+  .scale-102 {
+    --tw-scale-x: 1.02;
+    --tw-scale-y: 1.02;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
 }
 
 .herb-card {
@@ -135,6 +142,10 @@
 
 .herb-card.active {
   transform: translateY(-4px);
+}
+
+.herb-card:hover .herb-icon-container {
+  transform: scale(1.1) rotate(5deg);
 }
 
 @media (max-width: 640px) {
@@ -158,6 +169,21 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.herb-card.active {
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .category-button {
