@@ -4,22 +4,28 @@ import { Ebook } from '@/types/ebook';
 
 export const purchaseService = {
   async createPurchaseRecord(userId: string, ebookId: string | number, stripeSessionId: string) {
+    // Convert any numeric ID to string for database consistency
+    const stringEbookId = String(ebookId);
+    
     return await supabase
       .from('purchases')
       .insert({
         user_id: userId,
-        ebook_id: ebookId,
+        ebook_id: stringEbookId,
         stripe_session_id: stripeSessionId,
         payment_status: 'pending'
       });
   },
 
   async checkPurchaseStatus(userId: string, ebookId: string | number) {
+    // Convert any numeric ID to string for database consistency
+    const stringEbookId = String(ebookId);
+    
     const { data, error } = await supabase
       .from('purchases')
       .select('*')
       .eq('user_id', userId)
-      .eq('ebook_id', ebookId)
+      .eq('ebook_id', stringEbookId)
       .eq('payment_status', 'completed')
       .single();
     
@@ -32,9 +38,12 @@ export const purchaseService = {
   },
 
   async verifyPurchase(userId: string, ebookId: string | number, sessionId: string) {
+    // Convert any numeric ID to string for database consistency
+    const stringEbookId = String(ebookId);
+    
     try {
       const response = await supabase.functions.invoke('verify-purchase', {
-        body: { userId, ebookId, sessionId }
+        body: { userId, ebookId: stringEbookId, sessionId }
       });
       
       return response.data;

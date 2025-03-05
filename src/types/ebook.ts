@@ -1,6 +1,6 @@
 
 export interface Ebook {
-  id: number | string;
+  id: string;  // Changed from "number | string" to just "string"
   title: string;
   description: string;
   price: string;

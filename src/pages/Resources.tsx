@@ -147,7 +147,7 @@ const Resources = () => {
     if (sessionId && ebookId && user) {
       const verifyPayment = async () => {
         try {
-          await purchaseService.verifyPurchase(user.id, ebookId, sessionId);
+          await purchaseService.verifyPurchase(user.id, String(ebookId), sessionId);
           
           setPurchasedBooks(prev => ({
             ...prev,

@@ -20,6 +20,9 @@ serve(async (req) => {
   try {
     const { ebook, returnUrl } = await req.json();
     
+    // Ensure ebook.id is a string for consistency
+    ebook.id = String(ebook.id);
+    
     // Create a Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],

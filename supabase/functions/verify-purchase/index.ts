@@ -27,6 +27,9 @@ serve(async (req) => {
   try {
     const { sessionId, ebookId, userId } = await req.json();
     
+    // Ensure ebookId is a string
+    const stringEbookId = String(ebookId);
+    
     // Retrieve the checkout session to verify payment
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     
@@ -40,7 +43,7 @@ serve(async (req) => {
         })
         .eq("stripe_session_id", sessionId)
         .eq("user_id", userId)
-        .eq("ebook_id", ebookId);
+        .eq("ebook_id", stringEbookId);
       
       if (error) {
         throw new Error(`Failed to update purchase: ${error.message}`);
