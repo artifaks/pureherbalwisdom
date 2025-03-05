@@ -1,8 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ContentArea from './ContentArea';
 import HerbSelector from './HerbSelector';
 import WellnessBanner from './WellnessBanner';
+import SearchBar, { FilterOptions } from './SearchBar';
 import { Herb } from '@/data/types';
 import { allHerbs } from '@/data/allHerbs';
 import { Button } from './ui/button';
@@ -12,10 +13,49 @@ const HerbVisualizer: React.FC = () => {
   // State for active herb and tab
   const [activeHerb, setActiveHerb] = useState<Herb | null>(null);
   const [activeTab, setActiveTab] = useState<'benefits' | 'oil' | 'tincture'>('benefits');
+  const [filteredHerbs, setFilteredHerbs] = useState<Herb[]>(allHerbs);
+  const [searchApplied, setSearchApplied] = useState(false);
 
   const handleHerbSelect = (herb: Herb) => {
     setActiveHerb(herb);
     setActiveTab('benefits');
+  };
+
+  const handleSearchResults = (results: Herb[]) => {
+    setFilteredHerbs(results);
+    setSearchApplied(results.length !== allHerbs.length);
+  };
+
+  const handleFilterChange = (filters: FilterOptions) => {
+    let results = [...allHerbs];
+    
+    // Filter by condition (this is a simplified example - actual implementation would depend on your data structure)
+    if (filters.condition) {
+      // This is a simplified filter - you would need to adjust based on your actual data structure
+      results = results.filter(herb => 
+        herb.benefits.some(benefit => benefit.toLowerCase().includes(filters.condition.toLowerCase()))
+      );
+    }
+    
+    // Filter by preparation method
+    if (filters.preparationMethod) {
+      results = results.filter(herb => {
+        const oilMatch = filters.preparationMethod === 'oil' && herb.oilPreparation.length > 0;
+        const tinctureMatch = filters.preparationMethod === 'tincture' && herb.tincturePreparation.length > 0;
+        // For other preparation methods, you would need additional data fields
+        return oilMatch || tinctureMatch;
+      });
+    }
+    
+    // For potency filter, you would need to add a potency field to your herb data
+    // This is a placeholder implementation
+    if (filters.potency) {
+      // Placeholder implementation - adjust based on your data
+      results = results;
+    }
+    
+    setFilteredHerbs(results);
+    setSearchApplied(results.length !== allHerbs.length);
   };
 
   const renderCallToAction = () => {
@@ -58,9 +98,34 @@ const HerbVisualizer: React.FC = () => {
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Comprehensive Herb Guide</h1>
       </div>
       
+      {/* Search and Filter Bar */}
+      <SearchBar 
+        herbs={allHerbs} 
+        onSearchResults={handleSearchResults} 
+        onFilterChange={handleFilterChange}
+      />
+
+      {searchApplied && (
+        <div className="bg-amber-50 border-l-4 border-amber-500 p-3 mx-6 mt-4 flex justify-between items-center">
+          <p className="text-amber-800">
+            Showing {filteredHerbs.length} {filteredHerbs.length === 1 ? 'herb' : 'herbs'} matching your search criteria.
+          </p>
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={() => {
+              setFilteredHerbs(allHerbs);
+              setSearchApplied(false);
+            }}
+          >
+            Clear Search
+          </Button>
+        </div>
+      )}
+      
       {/* Herb Selection Boxes - All herbs */}
       <HerbSelector 
-        herbs={allHerbs} 
+        herbs={filteredHerbs} 
         activeHerb={activeHerb} 
         handleHerbSelect={handleHerbSelect}
       />
