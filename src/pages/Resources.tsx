@@ -1,12 +1,15 @@
 
-import React from 'react';
-import { BookOpen, Download } from 'lucide-react';
+import React, { useState } from 'react';
+import { BookOpen, Download, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
 // Define our resource items
-const resources = [
+const initialResources = [
   {
     id: 1,
     title: "Medicinal Herbs Field Guide",
@@ -59,11 +62,50 @@ const resources = [
 
 const Resources = () => {
   const { toast } = useToast();
+  const [resources, setResources] = useState(initialResources);
+  const [isAddingBook, setIsAddingBook] = useState(false);
+  const [newBook, setNewBook] = useState({
+    title: "",
+    description: "",
+    type: "e-book",
+  });
 
   const handleDownload = (title: string) => {
     toast({
       title: "Coming Soon!",
       description: `The download for "${title}" will be available soon.`,
+    });
+  };
+
+  const handleAddBookSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!newBook.title || !newBook.description) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all fields to add a new e-book.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const newId = Math.max(...resources.map(r => r.id)) + 1;
+    const bookToAdd = {
+      id: newId,
+      title: newBook.title,
+      description: newBook.description,
+      price: "$4.99", // Fixed price as requested
+      type: newBook.type,
+      popular: false,
+    };
+
+    setResources([...resources, bookToAdd]);
+    setNewBook({ title: "", description: "", type: "e-book" });
+    setIsAddingBook(false);
+    
+    toast({
+      title: "E-book Added",
+      description: `"${newBook.title}" has been added to your resources at $4.99.`,
     });
   };
 
@@ -80,14 +122,79 @@ const Resources = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mb-10">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Premium Herbal Resources</h2>
-          <p className="text-gray-600">
-            Expand your herbal knowledge with our curated collection of e-books, guides, and reference materials.
-            These resources provide in-depth information about medicinal plants, preparation methods, and
-            traditional uses to enhance your herbal practice.
-          </p>
+        <div className="mb-6 flex justify-between items-center">
+          <h2 className="text-2xl font-semibold text-gray-800">Premium Herbal Resources</h2>
+          <Button 
+            onClick={() => setIsAddingBook(true)} 
+            className="bg-amber-500 hover:bg-amber-600 text-white"
+          >
+            <Plus className="mr-1 h-4 w-4" />
+            Add E-Book at $4.99
+          </Button>
         </div>
+        
+        <p className="text-gray-600 mb-10">
+          Expand your herbal knowledge with our curated collection of e-books, guides, and reference materials.
+          These resources provide in-depth information about medicinal plants, preparation methods, and
+          traditional uses to enhance your herbal practice.
+        </p>
+
+        {/* Add Book Form */}
+        {isAddingBook && (
+          <Card className="mb-10 p-6">
+            <h3 className="text-xl font-semibold mb-4">Add New E-Book</h3>
+            <form onSubmit={handleAddBookSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="title">Title</Label>
+                <Input 
+                  id="title"
+                  value={newBook.title}
+                  onChange={e => setNewBook({...newBook, title: e.target.value})}
+                  placeholder="E-Book Title"
+                  required
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="description">Description</Label>
+                <Textarea 
+                  id="description"
+                  value={newBook.description}
+                  onChange={e => setNewBook({...newBook, description: e.target.value})}
+                  placeholder="Briefly describe your e-book content"
+                  required
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="type">Type</Label>
+                <select
+                  id="type"
+                  value={newBook.type}
+                  onChange={e => setNewBook({...newBook, type: e.target.value})}
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <option value="e-book">E-Book</option>
+                  <option value="guide">Guide</option>
+                  <option value="calendar">Calendar</option>
+                </select>
+              </div>
+              
+              <div className="flex gap-2 pt-2">
+                <Button type="submit" className="bg-amber-500 hover:bg-amber-600">
+                  Add E-Book
+                </Button>
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  onClick={() => setIsAddingBook(false)}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </Card>
+        )}
 
         {/* Resources Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
