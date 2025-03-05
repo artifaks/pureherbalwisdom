@@ -1,4 +1,3 @@
-
 export const stomachHerbs = [
   {
     id: 'peppermint',
@@ -116,5 +115,44 @@ export const stomachHerbs = [
     ],
     oilPreparation: "1. Crush cardamom pods lightly\n2. Mix with sesame oil at 1:5 ratio\n3. Warm for 3 hours on low heat\n4. Strain and store in dark bottle",
     tincturePreparation: "1. Fill jar 1/4 with crushed cardamom pods\n2. Cover with 80 proof vodka\n3. Steep for 4-6 weeks\n4. Take 10-15 drops after heavy meals"
+  },
+  {
+    id: 'lemon-balm',
+    name: 'Lemon Balm',
+    color: '#CDDC39',
+    benefits: [
+      'Calms nervous digestive issues',
+      'Reduces bloating and gas',
+      'Supports healthy digestion',
+      'Has mild sedative properties that help stress-related digestive problems'
+    ],
+    oilPreparation: "1. Use fresh lemon balm leaves\n2. Cover with olive oil completely\n3. Solar infuse for 2-3 weeks\n4. Strain and use for digestive massage",
+    tincturePreparation: "1. Fill jar with fresh lemon balm leaves\n2. Cover with 80 proof vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops before meals"
+  },
+  {
+    id: 'angelica',
+    name: 'Angelica',
+    color: '#A5D6A7',
+    benefits: [
+      'Warming digestive tonic',
+      'Helps stimulate appetite',
+      'Relieves gas and bloating',
+      'Traditional remedy for sluggish digestion'
+    ],
+    oilPreparation: "1. Use dried angelica root\n2. Cover with jojoba oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Chop angelica root finely\n2. Use 1:5 ratio with 50% alcohol\n3. Steep for 6 weeks minimum\n4. Take 10-20 drops before meals"
+  },
+  {
+    id: 'dandelion',
+    name: 'Dandelion',
+    color: '#FDD835',
+    benefits: [
+      'Supports liver and digestive function',
+      'Mild natural laxative properties',
+      'Helps stimulate bile production',
+      'Traditional remedy for indigestion'
+    ],
+    oilPreparation: "1. Use dried dandelion root\n2. Cover with olive oil\n3. Slow infuse for 4 weeks\n4. Apply to abdomen in clockwise motion",
+    tincturePreparation: "1. Fill jar 1/3 with dried dandelion root\n2. Cover with 100 proof vodka\n3. Store for 6 weeks in dark place\n4. Take 30-60 drops before meals"
   }
 ];

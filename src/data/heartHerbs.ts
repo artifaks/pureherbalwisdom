@@ -1,4 +1,3 @@
-
 export const heartHerbs = [
   {
     id: 'hawthorn',
@@ -116,5 +115,44 @@ export const heartHerbs = [
     ],
     oilPreparation: "1. Gather fresh rose petals\n2. Cover with jojoba or sweet almond oil\n3. Solar infuse for 3-4 weeks\n4. Use for heart-centered massage",
     tincturePreparation: "1. Fill jar with fresh rose petals\n2. Cover with brandy or vodka\n3. Steep for 4 weeks in cool, dark place\n4. Use 20-30 drops for emotional support"
+  },
+  {
+    id: 'hibiscus',
+    name: 'Hibiscus',
+    color: '#E91E63',
+    benefits: [
+      'May help lower blood pressure',
+      'Rich in antioxidants that support heart health',
+      'Helps maintain healthy cholesterol levels',
+      'Supports overall cardiovascular function'
+    ],
+    oilPreparation: "1. Use dried hibiscus flowers\n2. Cover with carrier oil at 1:4 ratio\n3. Solar infuse for 3-4 weeks\n4. Strain and store in dark bottles",
+    tincturePreparation: "1. Fill jar halfway with dried hibiscus flowers\n2. Cover with vodka or brandy\n3. Steep for 4 weeks, shaking daily\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'turmeric',
+    name: 'Turmeric',
+    color: '#FF9800',
+    benefits: [
+      'Powerful anti-inflammatory for cardiovascular system',
+      'Helps maintain healthy blood vessel function',
+      'May help reduce blood clotting risk',
+      'Supports overall heart health'
+    ],
+    oilPreparation: "1. Use powdered turmeric root\n2. Mix with organic olive oil at 1:5 ratio\n3. Warm infuse for 2-3 hours\n4. Use for topical application over heart area",
+    tincturePreparation: "1. Mix 1 part turmeric powder with 5 parts alcohol\n2. Add black pepper to increase bioavailability\n3. Steep for 6 weeks, shaking daily\n4. Take 15-30 drops with meals"
+  },
+  {
+    id: 'olive-leaf',
+    name: 'Olive Leaf',
+    color: '#7CB342',
+    benefits: [
+      'Supports healthy blood pressure levels',
+      'Contains oleuropein with antioxidant properties',
+      'Helps maintain healthy cholesterol profile',
+      'Traditional Mediterranean heart tonic'
+    ],
+    oilPreparation: "1. Use dried olive leaves\n2. Infuse in olive oil for 4-6 weeks\n3. Keep in warm, dark place\n4. Use for gentle chest massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried olive leaves\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
   }
 ];

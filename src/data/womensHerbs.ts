@@ -1,4 +1,3 @@
-
 export const womensHerbs = [
   {
     id: 'red-raspberry',
@@ -116,5 +115,44 @@ export const womensHerbs = [
     ],
     oilPreparation: "1. Harvest fresh motherwort leaves\n2. Dry completely and chop\n3. Cover with olive oil and infuse for 6 weeks\n4. Use for massage over heart area and lower back",
     tincturePreparation: "1. Fill jar 1/3 with dried motherwort herb\n2. Cover with brandy or vodka\n3. Steep for 4-6 weeks in dark place\n4. Take 10-20 drops up to 3 times daily"
+  },
+  {
+    id: 'vitex',
+    name: 'Vitex',
+    color: '#673AB7',
+    benefits: [
+      'Also known as Chaste Tree Berry',
+      'Supports healthy progesterone levels',
+      'May help with PMS and irregular cycles',
+      'Traditional remedy for female hormone balance'
+    ],
+    oilPreparation: "1. Use dried vitex berries\n2. Cover with jojoba oil\n3. Warm infuse for 4 hours\n4. Use for lymphatic massage",
+    tincturePreparation: "1. Fill jar 1/3 with crushed vitex berries\n2. Cover with vodka completely\n3. Store 6-8 weeks, shaking daily\n4. Take 20-40 drops each morning"
+  },
+  {
+    id: 'red-clover',
+    name: 'Red Clover',
+    color: '#EC407A',
+    benefits: [
+      'Contains phytoestrogens that support hormone balance',
+      'Traditionally used for menopausal symptoms',
+      'Supports healthy circulation in female reproductive system',
+      'Rich in isoflavones and nutrients'
+    ],
+    oilPreparation: "1. Use dried red clover blossoms\n2. Cover with almond oil\n3. Solar infuse for 3-4 weeks\n4. Use for breast and lymphatic massage",
+    tincturePreparation: "1. Fill jar with dried blossoms loosely\n2. Cover with 80 proof vodka\n3. Steep for 6 weeks in dark place\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'damiana',
+    name: 'Damiana',
+    color: '#FFA000',
+    benefits: [
+      'Traditional female libido enhancer',
+      'Supports reproductive system health',
+      'May help with menopausal mood changes',
+      'Used for hormonal balance and energy'
+    ],
+    oilPreparation: "1. Use dried damiana leaves\n2. Cover with jojoba or almond oil\n3. Warm infuse for 4 hours\n4. Use for sensual massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried herb\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks\n4. Take 20-30 drops as needed"
   }
 ];

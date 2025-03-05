@@ -1,4 +1,3 @@
-
 export const mensHerbs = [
   {
     id: 'saw-palmetto',
@@ -116,5 +115,44 @@ export const mensHerbs = [
     ],
     oilPreparation: "1. Mix pine pollen with jojoba oil\n2. Not typically prepared as oil\n3. Better utilized as powder\n4. Can be added to salves for skin application",
     tincturePreparation: "1. Fill jar 1/4 with pine pollen powder\n2. Cover with 100 proof alcohol\n3. Steep for 2 weeks, shaking daily\n4. Take 5-15 drops under tongue"
+  },
+  {
+    id: 'horny-goat-weed',
+    name: 'Horny Goat Weed',
+    color: '#9CCC65',
+    benefits: [
+      'May support healthy testosterone levels',
+      'Traditionally used for male vitality',
+      'Contains icariin that supports blood flow',
+      'Used in traditional Chinese medicine'
+    ],
+    oilPreparation: "1. Use dried leaves, chopped finely\n2. Cover with jojoba oil\n3. Warm infuse for 6 hours\n4. For external use only",
+    tincturePreparation: "1. Fill jar 1/4 with dried herb\n2. Cover with high-proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops daily"
+  },
+  {
+    id: 'fo-ti',
+    name: 'Fo-Ti',
+    color: '#795548',
+    benefits: [
+      'Traditional Chinese longevity herb',
+      'May support healthy hormone levels',
+      'Used to support reproductive health',
+      'Helps maintain energy and vitality'
+    ],
+    oilPreparation: "1. Use prepared fo-ti root pieces\n2. Cover with sesame oil\n3. Slow cook for 3-4 hours\n4. Use for massage over lower back",
+    tincturePreparation: "1. Use 1 part prepared root to 5 parts alcohol\n2. Store for 8 weeks in dark place\n3. Shake daily during extraction\n4. Take 15-30 drops twice daily"
+  },
+  {
+    id: 'nettle-leaf',
+    name: 'Nettle Leaf',
+    color: '#2E7D32',
+    benefits: [
+      'Rich in minerals that support male health',
+      'May help maintain healthy hormone balance',
+      'Supports kidney and adrenal function',
+      'Traditional tonic for male vitality'
+    ],
+    oilPreparation: "1. Use dried nettle leaves\n2. Cover with olive oil\n3. Infuse for 3-4 weeks\n4. For external use on muscles and joints",
+    tincturePreparation: "1. Fill jar 1/3 with dried nettle leaves\n2. Cover with apple cider vinegar or vodka\n3. Steep for 4 weeks\n4. Take 30-60 drops daily"
   }
 ];
