@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Download, Plus, Upload } from 'lucide-react';
+import { BookOpen, Download, Edit, Plus, Upload, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
@@ -9,7 +8,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { supabase } from '@/integrations/supabase/client';
 
-// Define our resource items with file URL field
 interface Resource {
   id: number;
   title: string;
@@ -20,7 +18,6 @@ interface Resource {
   fileUrl?: string;
 }
 
-// Define our initial resources
 const initialResources: Resource[] = [
   {
     id: 1,
@@ -80,9 +77,11 @@ const Resources = () => {
     title: "",
     description: "",
     type: "e-book",
+    price: "4.99",
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [editingResource, setEditingResource] = useState<Resource | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -93,7 +92,6 @@ const Resources = () => {
   const handleDownload = async (resource: Resource) => {
     if (resource.fileUrl) {
       try {
-        // If we have a real file URL, download it
         const { data, error } = await supabase.storage
           .from('e-books')
           .download(resource.fileUrl);
@@ -102,7 +100,6 @@ const Resources = () => {
           throw error;
         }
         
-        // Create a download link for the file
         const url = URL.createObjectURL(data);
         const a = document.createElement('a');
         a.href = url;
@@ -125,7 +122,6 @@ const Resources = () => {
         });
       }
     } else {
-      // For resources without files, show the coming soon message
       toast({
         title: "Coming Soon!",
         description: `The download for "${resource.title}" will be available soon.`,
@@ -136,7 +132,7 @@ const Resources = () => {
   const handleAddBookSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!newBook.title || !newBook.description) {
+    if (!newBook.title || !newBook.description || !newBook.price) {
       toast({
         title: "Missing Information",
         description: "Please fill in all fields to add a new e-book.",
@@ -157,7 +153,6 @@ const Resources = () => {
     setIsUploading(true);
 
     try {
-      // Upload the file to Supabase storage
       const fileExt = selectedFile.name.split('.').pop();
       const fileName = `${Date.now()}_${newBook.title.replace(/\s+/g, '_').toLowerCase()}.${fileExt}`;
       
@@ -174,20 +169,20 @@ const Resources = () => {
         id: newId,
         title: newBook.title,
         description: newBook.description,
-        price: "$4.99", // Fixed price as requested
+        price: `$${parseFloat(newBook.price).toFixed(2)}`,
         type: newBook.type,
         popular: false,
-        fileUrl: fileName, // Store the path to the file
+        fileUrl: fileName,
       };
 
       setResources([...resources, bookToAdd]);
-      setNewBook({ title: "", description: "", type: "e-book" });
+      setNewBook({ title: "", description: "", type: "e-book", price: "4.99" });
       setSelectedFile(null);
       setIsAddingBook(false);
       
       toast({
         title: "E-book Added",
-        description: `"${newBook.title}" has been added to your resources at $4.99.`,
+        description: `"${newBook.title}" has been added to your resources at $${parseFloat(newBook.price).toFixed(2)}.`,
       });
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -201,9 +196,45 @@ const Resources = () => {
     }
   };
 
+  const handleEditClick = (resource: Resource) => {
+    setEditingResource(resource);
+  };
+
+  const handleEditCancel = () => {
+    setEditingResource(null);
+  };
+
+  const handleEditSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!editingResource) return;
+    
+    const updatedResources = resources.map(resource => 
+      resource.id === editingResource.id 
+        ? editingResource 
+        : resource
+    );
+    
+    setResources(updatedResources);
+    setEditingResource(null);
+    
+    toast({
+      title: "Price Updated",
+      description: `"${editingResource.title}" price has been updated to ${editingResource.price}.`,
+    });
+  };
+
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (editingResource) {
+      const newPrice = `$${parseFloat(e.target.value).toFixed(2)}`;
+      setEditingResource({...editingResource, price: newPrice});
+    } else {
+      setNewBook({...newBook, price: e.target.value});
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-      {/* Header */}
       <div className="glass sticky top-0 z-10 py-6 px-8 flex items-center justify-center">
         <BookOpen className="w-6 h-6 mr-2 text-amber-600" />
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 bg-gradient-to-r from-amber-700 to-amber-500 bg-clip-text text-transparent">
@@ -212,7 +243,6 @@ const Resources = () => {
         <BookOpen className="w-6 h-6 ml-2 text-amber-600 transform rotate-180" />
       </div>
 
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-6 flex justify-between items-center">
           <h2 className="text-2xl font-semibold text-gray-800">Premium Herbal Resources</h2>
@@ -221,7 +251,7 @@ const Resources = () => {
             className="bg-amber-500 hover:bg-amber-600 text-white"
           >
             <Plus className="mr-1 h-4 w-4" />
-            Add E-Book at $4.99
+            Add E-Book
           </Button>
         </div>
         
@@ -231,7 +261,6 @@ const Resources = () => {
           traditional uses to enhance your herbal practice.
         </p>
 
-        {/* Add Book Form */}
         {isAddingBook && (
           <Card className="mb-10 p-6">
             <h3 className="text-xl font-semibold mb-4">Add New E-Book</h3>
@@ -270,6 +299,20 @@ const Resources = () => {
                   <option value="guide">Guide</option>
                   <option value="calendar">Calendar</option>
                 </select>
+              </div>
+              
+              <div>
+                <Label htmlFor="price">Price ($)</Label>
+                <Input 
+                  id="price"
+                  type="number"
+                  min="0.00"
+                  step="0.01"
+                  value={newBook.price}
+                  onChange={handlePriceChange}
+                  placeholder="4.99"
+                  required
+                />
               </div>
               
               <div>
@@ -315,7 +358,51 @@ const Resources = () => {
           </Card>
         )}
 
-        {/* Resources Grid */}
+        {editingResource && (
+          <Card className="mb-10 p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold">Edit Price: {editingResource.title}</h3>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={handleEditCancel}
+                className="h-8 w-8"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+            <form onSubmit={handleEditSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="edit-price">Price ($)</Label>
+                <Input 
+                  id="edit-price"
+                  type="number"
+                  min="0.00"
+                  step="0.01"
+                  value={editingResource.price.replace('$', '')}
+                  onChange={handlePriceChange}
+                  required
+                />
+              </div>
+              <div className="flex gap-2 pt-2">
+                <Button 
+                  type="submit" 
+                  className="bg-amber-500 hover:bg-amber-600"
+                >
+                  Save Price
+                </Button>
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  onClick={handleEditCancel}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </Card>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {resources.map((resource) => (
             <Card key={resource.id} className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -328,7 +415,17 @@ const Resources = () => {
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{resource.title}</h3>
                 <p className="text-gray-600 mb-4 flex-1">{resource.description}</p>
                 <div className="flex items-center justify-between mt-auto">
-                  <span className="text-lg font-bold text-amber-600">{resource.price}</span>
+                  <div className="flex items-center">
+                    <span className="text-lg font-bold text-amber-600">{resource.price}</span>
+                    <Button 
+                      onClick={() => handleEditClick(resource)}
+                      variant="ghost" 
+                      size="icon" 
+                      className="ml-1 h-8 w-8 text-gray-500 hover:text-amber-600"
+                    >
+                      <Edit className="h-3 w-3" />
+                    </Button>
+                  </div>
                   <Button 
                     onClick={() => handleDownload(resource)}
                     className="bg-amber-500 hover:bg-amber-600 text-white"
@@ -343,7 +440,6 @@ const Resources = () => {
           ))}
         </div>
 
-        {/* Subscription CTA */}
         <div className="mt-16 bg-white/70 rounded-xl p-8 shadow-sm">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Subscribe for Premium Access</h2>
           <p className="text-gray-600 mb-6">
@@ -377,7 +473,6 @@ const Resources = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="mt-auto py-6 border-t border-gray-200 bg-white/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-500 text-sm">
