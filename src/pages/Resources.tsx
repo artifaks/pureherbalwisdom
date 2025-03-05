@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { BookOpen, Download, Edit, Plus, Upload, X, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -49,9 +50,9 @@ const Resources = () => {
           }));
           setResources(formattedBooks);
         } else {
-          const initialResources = [
+          const initialResources: Ebook[] = [
             {
-              id: 1,
+              id: "1",  // Changed from number to string
               title: "Medicinal Herbs Field Guide",
               description: "A comprehensive guide to identifying and using medicinal herbs in the wild.",
               price: "$12.99",
@@ -59,7 +60,7 @@ const Resources = () => {
               popular: true,
             },
             {
-              id: 2,
+              id: "2",  // Changed from number to string
               title: "Herbal Preparations & Remedies",
               description: "Learn how to make tinctures, oils, salves, and more from common medicinal plants.",
               price: "$9.99",
@@ -67,7 +68,7 @@ const Resources = () => {
               popular: false,
             },
             {
-              id: 3,
+              id: "3",  // Changed from number to string
               title: "Herbs for Heart Health",
               description: "Detailed information on using herbs specifically for cardiovascular wellness.",
               price: "$7.99",
@@ -75,7 +76,7 @@ const Resources = () => {
               popular: false,
             },
             {
-              id: 4,
+              id: "4",  // Changed from number to string
               title: "Women's Herbal Wellness",
               description: "Natural approaches to women's health issues using traditional plant medicine.",
               price: "$8.99",
@@ -83,7 +84,7 @@ const Resources = () => {
               popular: true,
             },
             {
-              id: 5,
+              id: "5",  // Changed from number to string
               title: "Digestive Healing with Herbs",
               description: "Protocols for addressing common digestive concerns with herbal support.",
               price: "$6.99",
@@ -91,7 +92,7 @@ const Resources = () => {
               popular: false,
             },
             {
-              id: 6,
+              id: "6",  // Changed from number to string
               title: "Seasonal Foraging Calendar",
               description: "Month-by-month guide for when to harvest medicinal plants in your region.",
               price: "$4.99",
