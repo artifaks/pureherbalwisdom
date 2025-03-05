@@ -4,6 +4,7 @@ import ContentArea from './ContentArea';
 import HerbSelector from './HerbSelector';
 import WellnessBanner from './WellnessBanner';
 import SearchBar, { FilterOptions } from './SearchBar';
+import ColorLegend from './ColorLegend';
 import { Herb } from '@/data/types';
 import { allHerbs } from '@/data/allHerbs';
 import { Button } from './ui/button';
@@ -126,6 +127,9 @@ const HerbVisualizer: React.FC = () => {
           </Button>
         </div>
       )}
+      
+      {/* Color Legend */}
+      <ColorLegend />
       
       {/* Herb Selection Boxes - All herbs */}
       <HerbSelector 

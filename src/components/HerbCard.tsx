@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
@@ -58,6 +57,22 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
   return iconMapping[herbId] || <Leaf size={size} color={color} />;
 };
 
+// Get category-specific colors
+const getCategoryColor = (category?: HerbCategory): string => {
+  switch(category) {
+    case 'heart':
+      return '#e94057'; // Red for heart herbs
+    case 'stomach':
+      return '#4CAF50'; // Green for digestive herbs
+    case 'mens':
+      return '#8D6E63'; // Brown for men's herbs
+    case 'womens':
+      return '#C2185B'; // Pink for women's herbs
+    default:
+      return '#757575'; // Default gray
+  }
+};
+
 const HerbCard: React.FC<HerbCardProps> = ({ 
   id, 
   name, 
@@ -69,6 +84,8 @@ const HerbCard: React.FC<HerbCardProps> = ({
 }) => {
   // Get the primary benefit (first in the array)
   const primaryBenefit = benefits && benefits.length > 0 ? benefits[0] : '';
+  // Use category color instead of individual herb color for border
+  const categoryColor = getCategoryColor(category);
 
   return (
     <div
@@ -78,12 +95,12 @@ const HerbCard: React.FC<HerbCardProps> = ({
         isActive ? "active ring-2 ring-accent/50 scale-105" : "hover:bg-gray-50/80 hover:scale-102"
       )}
       style={{ 
-        borderTop: `4px solid ${color}`
+        borderTop: `4px solid ${categoryColor}`
       }}
       onClick={onClick}
     >
       <div className="herb-icon-container w-10 h-10 rounded-full mb-2 flex items-center justify-center">
-        {getHerbIcon(id, color)}
+        {getHerbIcon(id, categoryColor)}
       </div>
       <span className="text-sm font-medium text-gray-800 text-center">{name}</span>
       
