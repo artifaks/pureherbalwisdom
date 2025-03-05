@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Download, Edit, Plus, Upload, X, LogIn } from 'lucide-react';
+import { BookOpen, Download, Edit, Plus, Upload, X, LogIn, ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
@@ -27,6 +26,7 @@ const Resources = () => {
     price: "4.99",
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedCover, setSelectedCover] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [editingResource, setEditingResource] = useState<Ebook | null>(null);
   const [purchasedBooks, setPurchasedBooks] = useState<Record<string, boolean>>({});
@@ -46,7 +46,8 @@ const Resources = () => {
             price: `$${book.price.toFixed(2)}`,
             type: book.type,
             popular: book.popular,
-            fileUrl: book.file_url
+            fileUrl: book.file_url,
+            coverUrl: book.cover_url
           }));
           setResources(formattedBooks);
         } else {
@@ -181,6 +182,12 @@ const Resources = () => {
     }
   };
 
+  const handleCoverChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setSelectedCover(event.target.files[0]);
+    }
+  };
+
   const handlePurchase = async (resource: Ebook) => {
     if (!user) {
       toast({
@@ -305,17 +312,34 @@ const Resources = () => {
     setIsUploading(true);
 
     try {
+      // Upload PDF file
       const fileExt = selectedFile.name.split('.').pop();
       const fileName = `${Date.now()}_${newBook.title.replace(/\s+/g, '_').toLowerCase()}.${fileExt}`;
       
-      const { data, error } = await supabase.storage
+      const { data: fileData, error: fileError } = await supabase.storage
         .from('e-books')
         .upload(fileName, selectedFile);
       
-      if (error) {
-        throw error;
+      if (fileError) {
+        throw fileError;
       }
 
+      // Upload cover image if provided
+      let coverFileName = null;
+      if (selectedCover) {
+        const coverExt = selectedCover.name.split('.').pop();
+        coverFileName = `cover_${Date.now()}_${newBook.title.replace(/\s+/g, '_').toLowerCase()}.${coverExt}`;
+        
+        const { error: coverError } = await supabase.storage
+          .from('e-books')
+          .upload(coverFileName, selectedCover);
+        
+        if (coverError) {
+          throw coverError;
+        }
+      }
+
+      // Insert ebook into database
       const { data: insertData, error: insertError } = await supabase
         .from('ebooks')
         .insert({
@@ -324,7 +348,8 @@ const Resources = () => {
           price: parseFloat(newBook.price),
           type: newBook.type,
           popular: false,
-          file_url: fileName
+          file_url: fileName,
+          cover_url: coverFileName
         })
         .select()
         .single();
@@ -340,12 +365,14 @@ const Resources = () => {
         price: `$${insertData.price.toFixed(2)}`,
         type: insertData.type,
         popular: insertData.popular,
-        fileUrl: insertData.file_url
+        fileUrl: insertData.file_url,
+        coverUrl: insertData.cover_url
       };
       
       setResources([...resources, newEbook]);
       setNewBook({ title: "", description: "", type: "e-book", price: "4.99" });
       setSelectedFile(null);
+      setSelectedCover(null);
       setIsAddingBook(false);
       
       toast({
@@ -353,10 +380,10 @@ const Resources = () => {
         description: `"${newBook.title}" has been added to your resources at $${parseFloat(newBook.price).toFixed(2)}.`,
       });
     } catch (error: any) {
-      console.error('Error uploading file:', error);
+      console.error('Error uploading files:', error);
       toast({
         title: "Upload Failed",
-        description: error.message || "There was an error uploading your file. Please try again.",
+        description: error.message || "There was an error uploading your files. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -541,6 +568,25 @@ const Resources = () => {
               </div>
               
               <div>
+                <Label htmlFor="cover">Cover Image</Label>
+                <div className="flex items-center gap-2">
+                  <Input
+                    id="cover"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleCoverChange}
+                    className="flex-1"
+                  />
+                  {selectedCover && (
+                    <span className="text-sm text-green-600">
+                      {selectedCover.name}
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-gray-500 mt-1">Upload an attractive cover image for your e-book (optional)</p>
+              </div>
+              
+              <div>
                 <Label htmlFor="file">PDF File</Label>
                 <div className="flex items-center gap-2">
                   <Input
@@ -573,6 +619,7 @@ const Resources = () => {
                   onClick={() => {
                     setIsAddingBook(false);
                     setSelectedFile(null);
+                    setSelectedCover(null);
                   }}
                   disabled={isUploading}
                 >
@@ -641,7 +688,23 @@ const Resources = () => {
                     {resource.popular ? 'POPULAR RESOURCE' : resource.type.toUpperCase()}
                   </p>
                 </div>
+                
                 <div className="p-6 flex-1 flex flex-col">
+                  {/* Book cover image */}
+                  {resource.coverUrl ? (
+                    <div className="mb-4 w-full h-40 flex justify-center">
+                      <img 
+                        src={`${supabase.storage.from('e-books').getPublicUrl(resource.coverUrl).data.publicUrl}`}
+                        alt={`Cover of ${resource.title}`}
+                        className="h-full object-contain rounded-md shadow-sm"
+                      />
+                    </div>
+                  ) : (
+                    <div className="mb-4 w-full h-40 flex items-center justify-center bg-gray-100 rounded-md">
+                      <BookOpen className="h-16 w-16 text-gray-400" />
+                    </div>
+                  )}
+                  
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">{resource.title}</h3>
                   <p className="text-gray-600 mb-4 flex-1">{resource.description}</p>
                   <div className="flex items-center justify-between mt-auto">

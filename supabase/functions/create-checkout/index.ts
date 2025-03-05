@@ -47,6 +47,32 @@ serve(async (req) => {
       throw new Error(`Invalid price: ${ebook.price}`);
     }
     
+    // Prepare product data with image if available
+    const productData: any = {
+      name: ebook.title,
+      description: ebook.description || "Herbal e-book",
+      metadata: {
+        ebook_id: ebook.id
+      }
+    };
+    
+    // Add image if coverUrl is available
+    if (ebook.coverUrl) {
+      // Create a fully qualified URL for the cover image
+      const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2.0.0");
+      const supabaseUrl = Deno.env.get("SUPABASE_URL") || "";
+      const supabaseKey = Deno.env.get("SUPABASE_ANON_KEY") || "";
+      
+      if (supabaseUrl && supabaseKey) {
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        const { data } = supabase.storage.from('e-books').getPublicUrl(ebook.coverUrl);
+        
+        if (data && data.publicUrl) {
+          productData.images = [data.publicUrl];
+        }
+      }
+    }
+    
     // Create a Stripe checkout session with more complete settings
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -54,14 +80,7 @@ serve(async (req) => {
         {
           price_data: {
             currency: "usd",
-            product_data: {
-              name: ebook.title,
-              description: ebook.description || "Herbal e-book",
-              // Add metadata to help with fulfillment
-              metadata: {
-                ebook_id: ebook.id
-              }
-            },
+            product_data: productData,
             unit_amount: priceInCents,
           },
           quantity: 1,

@@ -1,12 +1,13 @@
 
 export interface Ebook {
-  id: string;  // Changed from "number | string" to just "string"
+  id: string;
   title: string;
   description: string;
   price: string;
   type: string;
   popular: boolean;
   fileUrl?: string;
+  coverUrl?: string;  // New field for cover image
 }
 
 export interface Purchase {
