@@ -2,7 +2,13 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@12.0.0?target=deno";
 
-const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+// Get the Stripe secret key from environment variables
+const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY");
+if (!stripeSecretKey) {
+  console.error("Missing STRIPE_SECRET_KEY environment variable");
+}
+
+const stripe = new Stripe(stripeSecretKey || "", {
   httpClient: Stripe.createFetchHttpClient(),
 });
 
@@ -22,6 +28,13 @@ serve(async (req) => {
     
     // Ensure ebook.id is a string for consistency
     ebook.id = String(ebook.id);
+    
+    // For debugging
+    console.log("Creating checkout session for:", { 
+      ebookId: ebook.id, 
+      title: ebook.title, 
+      price: ebook.price 
+    });
     
     // Create a Stripe checkout session
     const session = await stripe.checkout.sessions.create({
@@ -43,6 +56,8 @@ serve(async (req) => {
       success_url: `${returnUrl}?session_id={CHECKOUT_SESSION_ID}&ebook_id=${ebook.id}`,
       cancel_url: returnUrl,
     });
+
+    console.log("Checkout session created successfully:", { sessionId: session.id });
 
     // Return the session ID and URL
     return new Response(

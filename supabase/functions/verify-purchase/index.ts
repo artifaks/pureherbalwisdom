@@ -3,8 +3,14 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@12.0.0?target=deno";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.24.0";
 
+// Get the Stripe secret key from environment variables
+const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY");
+if (!stripeSecretKey) {
+  console.error("Missing STRIPE_SECRET_KEY environment variable");
+}
+
 // Initialize Stripe
-const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+const stripe = new Stripe(stripeSecretKey || "", {
   httpClient: Stripe.createFetchHttpClient(),
 });
 
@@ -30,10 +36,15 @@ serve(async (req) => {
     // Ensure ebookId is a string
     const stringEbookId = String(ebookId);
     
+    // Log the verification attempt
+    console.log("Verifying purchase:", { sessionId, ebookId: stringEbookId, userId });
+    
     // Retrieve the checkout session to verify payment
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     
     if (session.payment_status === "paid") {
+      console.log("Payment verified as paid");
+      
       // Update the purchase record in the database
       const { data, error } = await supabase
         .from("purchases")
@@ -46,6 +57,7 @@ serve(async (req) => {
         .eq("ebook_id", stringEbookId);
       
       if (error) {
+        console.error("Error updating purchase record:", error);
         throw new Error(`Failed to update purchase: ${error.message}`);
       }
       
@@ -62,10 +74,11 @@ serve(async (req) => {
         }
       );
     } else {
+      console.log("Payment not completed. Status:", session.payment_status);
       return new Response(
         JSON.stringify({ 
           success: false, 
-          message: "Payment not completed" 
+          message: `Payment not completed. Status: ${session.payment_status}` 
         }),
         { 
           headers: {
