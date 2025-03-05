@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import ContentArea from './ContentArea';
 import HerbSelector from './HerbSelector';
 import WellnessBanner from './WellnessBanner';
 import SearchBar, { FilterOptions } from './SearchBar';
 import ColorLegend from './ColorLegend';
 import MyHerbsSection from './MyHerbsSection';
+import HerbDetailModal from './HerbDetailModal';
 import { Herb } from '@/data/types';
 import { allHerbs } from '@/data/allHerbs';
 import { Button } from './ui/button';
@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 const HerbVisualizer: React.FC = () => {
   // State for active herb and tab
   const [activeHerb, setActiveHerb] = useState<Herb | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'benefits' | 'oil' | 'tincture'>('benefits');
   const [filteredHerbs, setFilteredHerbs] = useState<Herb[]>(allHerbs);
   const [searchApplied, setSearchApplied] = useState(false);
@@ -52,6 +53,11 @@ const HerbVisualizer: React.FC = () => {
   const handleHerbSelect = (herb: Herb) => {
     setActiveHerb(herb);
     setActiveTab('benefits');
+    setIsModalOpen(true); // Open modal when herb is selected
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleToggleSave = (herb: Herb) => {
@@ -146,7 +152,7 @@ const HerbVisualizer: React.FC = () => {
       {/* Wellness Banner */}
       <WellnessBanner />
       
-      {/* Title for all herbs - Updated with larger font and decorative element */}
+      {/* Title for all herbs */}
       <div className="glass sticky top-0 z-10 py-6 px-8 flex items-center justify-center">
         <Leaf className="w-6 h-6 mr-2 text-amber-600" />
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 bg-gradient-to-r from-amber-700 to-amber-500 bg-clip-text text-transparent">
@@ -202,19 +208,22 @@ const HerbVisualizer: React.FC = () => {
         onToggleSave={handleToggleSave}
       />
       
-      {/* Main Content Area */}
+      {/* Main Content Area with Call to Action */}
       <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:px-12 lg:py-6">
         {renderCallToAction()}
-        <ContentArea
-          activeHerb={activeHerb}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          activeCategory={activeHerb?.category || 'heart'}
-          savedHerbs={savedHerbs}
-          onHerbSelect={handleHerbSelect}
-          onToggleSave={handleToggleSave}
-        />
       </div>
+      
+      {/* Herb Detail Modal */}
+      <HerbDetailModal
+        activeHerb={activeHerb}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        savedHerbs={savedHerbs}
+        onHerbSelect={handleHerbSelect}
+        onToggleSave={handleToggleSave}
+      />
       
       {/* Show My Herbs CTA if no saved herbs yet */}
       {savedHerbs.length === 0 && (
