@@ -27,6 +27,39 @@ export type Database = {
         }
         Relationships: []
       }
+      ebooks: {
+        Row: {
+          created_at: string
+          description: string | null
+          file_url: string | null
+          id: string
+          popular: boolean
+          price: number
+          title: string
+          type: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          file_url?: string | null
+          id?: string
+          popular?: boolean
+          price: number
+          title: string
+          type: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          file_url?: string | null
+          id?: string
+          popular?: boolean
+          price?: number
+          title?: string
+          type?: string
+        }
+        Relationships: []
+      }
       herbs: {
         Row: {
           common_name: string
@@ -116,6 +149,44 @@ export type Database = {
           username?: string | null
         }
         Relationships: []
+      }
+      purchases: {
+        Row: {
+          created_at: string
+          ebook_id: string
+          id: string
+          payment_status: string
+          stripe_session_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          ebook_id: string
+          id?: string
+          payment_status?: string
+          stripe_session_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          ebook_id?: string
+          id?: string
+          payment_status?: string
+          stripe_session_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "purchases_ebook_id_fkey"
+            columns: ["ebook_id"]
+            isOneToOne: false
+            referencedRelation: "ebooks"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       subscriptions: {
         Row: {
