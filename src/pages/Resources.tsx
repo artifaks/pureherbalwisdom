@@ -1,15 +1,27 @@
 
-import React, { useState } from 'react';
-import { BookOpen, Download, Plus } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { BookOpen, Download, Plus, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { supabase } from '@/integrations/supabase/client';
 
-// Define our resource items
-const initialResources = [
+// Define our resource items with file URL field
+interface Resource {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  type: string;
+  popular: boolean;
+  fileUrl?: string;
+}
+
+// Define our initial resources
+const initialResources: Resource[] = [
   {
     id: 1,
     title: "Medicinal Herbs Field Guide",
@@ -62,22 +74,66 @@ const initialResources = [
 
 const Resources = () => {
   const { toast } = useToast();
-  const [resources, setResources] = useState(initialResources);
+  const [resources, setResources] = useState<Resource[]>(initialResources);
   const [isAddingBook, setIsAddingBook] = useState(false);
   const [newBook, setNewBook] = useState({
     title: "",
     description: "",
     type: "e-book",
   });
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
-  const handleDownload = (title: string) => {
-    toast({
-      title: "Coming Soon!",
-      description: `The download for "${title}" will be available soon.`,
-    });
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setSelectedFile(event.target.files[0]);
+    }
   };
 
-  const handleAddBookSubmit = (e: React.FormEvent) => {
+  const handleDownload = async (resource: Resource) => {
+    if (resource.fileUrl) {
+      try {
+        // If we have a real file URL, download it
+        const { data, error } = await supabase.storage
+          .from('e-books')
+          .download(resource.fileUrl);
+        
+        if (error) {
+          throw error;
+        }
+        
+        // Create a download link for the file
+        const url = URL.createObjectURL(data);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = resource.title + '.pdf';
+        document.body.appendChild(a);
+        a.click();
+        URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+        
+        toast({
+          title: "Download Started",
+          description: `"${resource.title}" is now downloading.`,
+        });
+      } catch (error) {
+        console.error('Error downloading file:', error);
+        toast({
+          title: "Download Failed",
+          description: "There was an error downloading the file. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } else {
+      // For resources without files, show the coming soon message
+      toast({
+        title: "Coming Soon!",
+        description: `The download for "${resource.title}" will be available soon.`,
+      });
+    }
+  };
+
+  const handleAddBookSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!newBook.title || !newBook.description) {
@@ -89,24 +145,60 @@ const Resources = () => {
       return;
     }
 
-    const newId = Math.max(...resources.map(r => r.id)) + 1;
-    const bookToAdd = {
-      id: newId,
-      title: newBook.title,
-      description: newBook.description,
-      price: "$4.99", // Fixed price as requested
-      type: newBook.type,
-      popular: false,
-    };
+    if (!selectedFile) {
+      toast({
+        title: "Missing File",
+        description: "Please upload a PDF file for your e-book.",
+        variant: "destructive",
+      });
+      return;
+    }
 
-    setResources([...resources, bookToAdd]);
-    setNewBook({ title: "", description: "", type: "e-book" });
-    setIsAddingBook(false);
-    
-    toast({
-      title: "E-book Added",
-      description: `"${newBook.title}" has been added to your resources at $4.99.`,
-    });
+    setIsUploading(true);
+
+    try {
+      // Upload the file to Supabase storage
+      const fileExt = selectedFile.name.split('.').pop();
+      const fileName = `${Date.now()}_${newBook.title.replace(/\s+/g, '_').toLowerCase()}.${fileExt}`;
+      
+      const { data, error } = await supabase.storage
+        .from('e-books')
+        .upload(fileName, selectedFile);
+      
+      if (error) {
+        throw error;
+      }
+
+      const newId = Math.max(...resources.map(r => r.id)) + 1;
+      const bookToAdd: Resource = {
+        id: newId,
+        title: newBook.title,
+        description: newBook.description,
+        price: "$4.99", // Fixed price as requested
+        type: newBook.type,
+        popular: false,
+        fileUrl: fileName, // Store the path to the file
+      };
+
+      setResources([...resources, bookToAdd]);
+      setNewBook({ title: "", description: "", type: "e-book" });
+      setSelectedFile(null);
+      setIsAddingBook(false);
+      
+      toast({
+        title: "E-book Added",
+        description: `"${newBook.title}" has been added to your resources at $4.99.`,
+      });
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      toast({
+        title: "Upload Failed",
+        description: "There was an error uploading your file. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   return (
@@ -180,14 +272,41 @@ const Resources = () => {
                 </select>
               </div>
               
+              <div>
+                <Label htmlFor="file">PDF File</Label>
+                <div className="flex items-center gap-2">
+                  <Input
+                    id="file"
+                    type="file"
+                    accept=".pdf"
+                    onChange={handleFileChange}
+                    className="flex-1"
+                    required
+                  />
+                  {selectedFile && (
+                    <span className="text-sm text-green-600">
+                      {selectedFile.name}
+                    </span>
+                  )}
+                </div>
+              </div>
+              
               <div className="flex gap-2 pt-2">
-                <Button type="submit" className="bg-amber-500 hover:bg-amber-600">
-                  Add E-Book
+                <Button 
+                  type="submit" 
+                  className="bg-amber-500 hover:bg-amber-600" 
+                  disabled={isUploading}
+                >
+                  {isUploading ? 'Uploading...' : 'Add E-Book'}
                 </Button>
                 <Button 
                   type="button" 
                   variant="outline" 
-                  onClick={() => setIsAddingBook(false)}
+                  onClick={() => {
+                    setIsAddingBook(false);
+                    setSelectedFile(null);
+                  }}
+                  disabled={isUploading}
                 >
                   Cancel
                 </Button>
@@ -211,8 +330,9 @@ const Resources = () => {
                 <div className="flex items-center justify-between mt-auto">
                   <span className="text-lg font-bold text-amber-600">{resource.price}</span>
                   <Button 
-                    onClick={() => handleDownload(resource.title)}
+                    onClick={() => handleDownload(resource)}
                     className="bg-amber-500 hover:bg-amber-600 text-white"
+                    disabled={isUploading}
                   >
                     <Download className="mr-1 h-4 w-4" />
                     Download
