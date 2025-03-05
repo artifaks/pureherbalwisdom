@@ -63,6 +63,7 @@ const HerbSelector: React.FC<HerbSelectorProps> = ({
                 isActive={activeHerb?.id === herb.id}
                 onClick={() => handleHerbSelect(herb)}
                 category={herb.category}
+                benefits={herb.benefits}
               />
             ))}
           </div>

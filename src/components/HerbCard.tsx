@@ -11,9 +11,21 @@ interface HerbCardProps {
   isActive: boolean;
   onClick: () => void;
   category?: HerbCategory;
+  benefits?: string[];
 }
 
-const HerbCard: React.FC<HerbCardProps> = ({ id, name, color, isActive, onClick, category }) => {
+const HerbCard: React.FC<HerbCardProps> = ({ 
+  id, 
+  name, 
+  color, 
+  isActive, 
+  onClick, 
+  category,
+  benefits 
+}) => {
+  // Get the primary benefit (first in the array)
+  const primaryBenefit = benefits && benefits.length > 0 ? benefits[0] : '';
+
   return (
     <div
       className={cn(
@@ -31,6 +43,14 @@ const HerbCard: React.FC<HerbCardProps> = ({ id, name, color, isActive, onClick,
         style={{ backgroundColor: color }}
       />
       <span className="text-sm font-medium text-gray-800 text-center">{name}</span>
+      
+      {/* Primary benefit line */}
+      {primaryBenefit && (
+        <p className="text-xs text-gray-600 mt-1 text-center line-clamp-2 max-w-[90%]">
+          {primaryBenefit}
+        </p>
+      )}
+      
       {category && (
         <div className="flex items-center mt-2 text-xs text-gray-500">
           <CategoryIcon category={category} size={12} className="mr-1" />
