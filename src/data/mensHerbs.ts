@@ -154,5 +154,44 @@ export const mensHerbs = [
     ],
     oilPreparation: "1. Use dried nettle leaves\n2. Cover with olive oil\n3. Infuse for 3-4 weeks\n4. For external use on muscles and joints",
     tincturePreparation: "1. Fill jar 1/3 with dried nettle leaves\n2. Cover with apple cider vinegar or vodka\n3. Steep for 4 weeks\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'pygeum',
+    name: 'Pygeum',
+    color: '#A1887F',
+    benefits: [
+      'Supports prostate health and urinary function',
+      'Traditional African remedy for male health',
+      'May reduce inflammation in the prostate',
+      'Often combined with saw palmetto for enhanced effects'
+    ],
+    oilPreparation: "1. Use powdered pygeum bark\n2. Mix with carrier oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. For external use only over lower abdomen",
+    tincturePreparation: "1. Fill jar 1/4 with pygeum powder\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-40 drops twice daily"
+  },
+  {
+    id: 'cordyceps',
+    name: 'Cordyceps',
+    color: '#FF8F00',
+    benefits: [
+      'Traditional Chinese tonic for male vitality',
+      'Supports energy, stamina and athletic performance',
+      'May enhance oxygen utilization',
+      'Adaptogenic properties for stress management'
+    ],
+    oilPreparation: "1. Not typically used as oil preparation\n2. Best used as powder or tincture\n3. Can be added to salves for muscle application\n4. External use only",
+    tincturePreparation: "1. Use powdered cordyceps mushroom\n2. Mix with 40% alcohol at 1:5 ratio\n3. Add 10% glycerin for better extraction\n4. Take 30-60 drops daily in warm water"
+  },
+  {
+    id: 'damiana-mens',
+    name: 'Damiana',
+    color: '#FFA726',
+    benefits: [
+      'Traditional male libido enhancer',
+      'May support healthy testosterone metabolism',
+      'Helps with stress-related sexual issues',
+      'Used for nervous system support in men'
+    ],
+    oilPreparation: "1. Use dried damiana leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for sensual massage oil",
+    tincturePreparation: "1. Fill jar 1/3 with dried damiana\n2. Cover with brandy or vodka\n3. Store for 4 weeks in dark place\n4. Take 20-40 drops as needed"
   }
 ];

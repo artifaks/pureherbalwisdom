@@ -154,5 +154,44 @@ export const stomachHerbs = [
     ],
     oilPreparation: "1. Use dried dandelion root\n2. Cover with olive oil\n3. Slow infuse for 4 weeks\n4. Apply to abdomen in clockwise motion",
     tincturePreparation: "1. Fill jar 1/3 with dried dandelion root\n2. Cover with 100 proof vodka\n3. Store for 6 weeks in dark place\n4. Take 30-60 drops before meals"
+  },
+  {
+    id: 'gentian',
+    name: 'Gentian',
+    color: '#FFEB3B',
+    benefits: [
+      'Stimulates digestive enzymes and bile production',
+      'Helps with appetite loss and digestive weakness',
+      'Traditional remedy for sluggish digestion',
+      'Supports healthy liver function'
+    ],
+    oilPreparation: "1. Use dried gentian root\n2. Infuse in olive oil at 1:5 ratio\n3. Warm for 3 hours on low heat\n4. For external use only as a digestive massage oil",
+    tincturePreparation: "1. Chop gentian root finely\n2. Use 1:5 ratio with 40% alcohol\n3. Steep for 6 weeks minimum\n4. Take 5-10 drops before meals (very bitter!)"
+  },
+  {
+    id: 'artichoke-leaf',
+    name: 'Artichoke Leaf',
+    color: '#4CAF50',
+    benefits: [
+      'Supports liver and gallbladder function',
+      'Helps with fat digestion and bile production',
+      'May reduce bloating after fatty meals',
+      'Traditional European digestive bitter'
+    ],
+    oilPreparation: "1. Use dried artichoke leaves\n2. Cover with olive oil\n3. Infuse for 3-4 weeks\n4. Strain and use for liver area massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried leaves\n2. Cover with 100 proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-30 drops before meals"
+  },
+  {
+    id: 'chamomile-german',
+    name: 'German Chamomile',
+    color: '#FFECB3',
+    benefits: [
+      'Stronger anti-inflammatory effects than common chamomile',
+      'Particularly effective for inflammatory bowel conditions',
+      'Helps with nervous digestive issues',
+      'Soothes digestive tract lining'
+    ],
+    oilPreparation: "1. Use dried blue chamomile flowers\n2. Cover with jojoba oil completely\n3. Infuse using low heat for 3 hours\n4. Will develop blue color from chamazulene content",
+    tincturePreparation: "1. Fill jar loosely with dried flowers\n2. Cover with 80 proof vodka\n3. Store for 4 weeks in dark place\n4. Take 30-60 drops before bed"
   }
 ];

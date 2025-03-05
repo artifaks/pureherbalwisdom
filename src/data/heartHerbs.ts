@@ -154,5 +154,44 @@ export const heartHerbs = [
     ],
     oilPreparation: "1. Use dried olive leaves\n2. Infuse in olive oil for 4-6 weeks\n3. Keep in warm, dark place\n4. Use for gentle chest massage",
     tincturePreparation: "1. Fill jar 1/3 with dried olive leaves\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'astragalus',
+    name: 'Astragalus',
+    color: '#F9A825',
+    benefits: [
+      'Strengthens and protects the cardiovascular system',
+      'Supports healthy immune function for heart health',
+      'Traditional Chinese tonic for heart qi',
+      'May support healthy blood pressure'
+    ],
+    oilPreparation: "1. Use dried astragalus root, sliced\n2. Cover with sesame oil\n3. Slow cook for 3-4 hours\n4. Use for chest and back massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried astragalus root\n2. Cover with 50% alcohol solution\n3. Store for 8 weeks, shaking daily\n4. Take 30-60 drops daily as tonic"
+  },
+  {
+    id: 'cactus-grandiflorus',
+    name: 'Night-Blooming Cereus',
+    color: '#66BB6A',
+    benefits: [
+      'Traditional heart remedy for palpitations',
+      'May help support normal heart rhythm',
+      'Supports overall heart function',
+      'Used in homeopathy for heart support'
+    ],
+    oilPreparation: "1. Rarely used as an oil preparation\n2. Better utilized as tincture\n3. For external use, mix prepared tincture with oil\n4. Apply over heart area for supportive effects",
+    tincturePreparation: "1. Use fresh cactus stems (must be correctly identified)\n2. Chop finely and fill jar 1/4 full\n3. Cover with 60% alcohol\n4. Take 5-10 drops under supervision"
+  },
+  {
+    id: 'coleus',
+    name: 'Coleus',
+    color: '#BA68C8',
+    benefits: [
+      'Contains forskolin which may support heart function',
+      'May help maintain healthy blood pressure',
+      'Traditionally used in Ayurvedic medicine',
+      'Supports healthy cardiovascular function'
+    ],
+    oilPreparation: "1. Use dried coleus root\n2. Cover with olive oil at 1:5 ratio\n3. Warm infuse for 4 hours\n4. Use for external application only",
+    tincturePreparation: "1. Fill jar 1/4 with dried coleus root\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks in dark place\n4. Take 20-30 drops under supervision"
   }
 ];

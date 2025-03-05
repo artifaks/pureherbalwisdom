@@ -27,6 +27,11 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'lemon-balm', reason: 'Lemon Balm adds nervous system support to Motherwort\'s heart benefits' },
     { herbId: 'skullcap', reason: 'Skullcap complements Motherwort\'s calming properties for stress-related heart issues' }
   ],
+  'astragalus': [
+    { herbId: 'hawthorn', reason: 'Hawthorn enhances Astragalus\'s cardiovascular strengthening effects' },
+    { herbId: 'ginger', reason: 'Ginger improves circulation alongside Astragalus\'s supportive properties' },
+    { herbId: 'garlic', reason: 'Garlic complements Astragalus with additional immune support for heart health' }
+  ],
   
   // Stomach herbs
   'ginger': [
@@ -39,6 +44,11 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'ginger', reason: 'Ginger adds warming properties to balance Peppermint\'s cooling effects' },
     { herbId: 'fennel', reason: 'Fennel works with Peppermint to reduce bloating and digestive discomfort' }
   ],
+  'gentian': [
+    { herbId: 'artichoke-leaf', reason: 'Artichoke Leaf enhances Gentian\'s digestive bitter effects for optimal digestion' },
+    { herbId: 'dandelion', reason: 'Dandelion adds liver support to Gentian\'s digestive stimulation' },
+    { herbId: 'ginger', reason: 'Ginger adds warming properties to balance Gentian\'s bitter, cooling nature' }
+  ],
   
   // Men's herbs
   'saw-palmetto': [
@@ -46,12 +56,22 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'pygeum', reason: 'Pygeum complements Saw Palmetto for comprehensive prostate health' },
     { herbId: 'ashwagandha', reason: 'Ashwagandha adds adaptogenic support to Saw Palmetto\'s hormonal benefits' }
   ],
+  'pygeum': [
+    { herbId: 'saw-palmetto', reason: 'Saw Palmetto works synergistically with Pygeum for prostate support' },
+    { herbId: 'nettle-root', reason: 'Nettle Root enhances Pygeum\'s anti-inflammatory effects' },
+    { herbId: 'cordyceps', reason: 'Cordyceps adds energy and vitality to Pygeum\'s structural support' }
+  ],
   
   // Women's herbs
-  'raspberry-leaf': [
+  'red-raspberry': [
     { herbId: 'nettle', reason: 'Nettle adds mineral support to Raspberry Leaf\'s female tonic properties' },
     { herbId: 'red-clover', reason: 'Red Clover complements Raspberry Leaf for hormonal balance' },
     { herbId: 'vitex', reason: 'Vitex enhances Raspberry Leaf\'s reproductive system support' }
+  ],
+  'nettle': [
+    { herbId: 'red-raspberry', reason: 'Red Raspberry adds reproductive tone to Nettle\'s mineral support' },
+    { herbId: 'red-clover', reason: 'Red Clover complements Nettle for female hormonal balance' },
+    { herbId: 'schisandra', reason: 'Schisandra adds adaptogenic support to Nettle\'s nourishing properties' }
   ],
   
   // Default pairings for herbs without specific matches

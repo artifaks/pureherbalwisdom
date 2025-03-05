@@ -154,5 +154,44 @@ export const womensHerbs = [
     ],
     oilPreparation: "1. Use dried damiana leaves\n2. Cover with jojoba or almond oil\n3. Warm infuse for 4 hours\n4. Use for sensual massage",
     tincturePreparation: "1. Fill jar 1/3 with dried herb\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks\n4. Take 20-30 drops as needed"
+  },
+  {
+    id: 'maca-womens',
+    name: 'Maca',
+    color: '#FFB74D',
+    benefits: [
+      'Supports female hormonal balance',
+      'May help reduce menopausal symptoms',
+      'Traditional fertility support for women',
+      'Adaptogen that helps with stress response'
+    ],
+    oilPreparation: "1. Not typically used as oil\n2. Best used as powder in foods\n3. Can be added to body butters for topical use\n4. External application only",
+    tincturePreparation: "1. Mix maca powder with glycerin at 1:4 ratio\n2. Add 25% alcohol as preservative\n3. Shake daily for 6 weeks\n4. Take 1/4-1/2 teaspoon daily"
+  },
+  {
+    id: 'nettle',
+    name: 'Nettle',
+    color: '#388E3C',
+    benefits: [
+      'Rich in minerals essential for female health',
+      'Supports healthy iron levels during menstruation',
+      'May help reduce water retention during cycles',
+      'Nourishing tonic for the female reproductive system'
+    ],
+    oilPreparation: "1. Use dried nettle leaves\n2. Cover with olive oil\n3. Infuse for 4 weeks in sunlight\n4. Use for massage over abdomen and lymph areas",
+    tincturePreparation: "1. Fill jar with fresh nettle leaves\n2. Cover with apple cider vinegar\n3. Store for 4-6 weeks in dark place\n4. Take 1-2 teaspoons daily"
+  },
+  {
+    id: 'schisandra',
+    name: 'Schisandra',
+    color: '#D32F2F',
+    benefits: [
+      'Adaptogen that supports female endocrine system',
+      'May help with stress-related hormonal imbalances',
+      'Traditional Chinese herb for female vitality',
+      'Supports liver function for hormonal detoxification'
+    ],
+    oilPreparation: "1. Use dried schisandra berries\n2. Cover with jojoba oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. Use for facial massage or lymphatic system",
+    tincturePreparation: "1. Fill jar 1/3 with dried berries\n2. Cover with 80 proof vodka\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops twice daily"
   }
 ];
