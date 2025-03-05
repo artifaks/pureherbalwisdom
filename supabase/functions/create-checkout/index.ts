@@ -33,10 +33,21 @@ serve(async (req) => {
     console.log("Creating checkout session for:", { 
       ebookId: ebook.id, 
       title: ebook.title, 
-      price: ebook.price 
+      price: ebook.price,
+      returnUrl
     });
     
-    // Create a Stripe checkout session
+    // Convert price from string format ($X.XX) to cents (integer)
+    const priceString = ebook.price.replace('$', '');
+    const priceInCents = Math.round(parseFloat(priceString) * 100);
+    
+    console.log(`Converted price: ${priceString} -> ${priceInCents} cents`);
+    
+    if (isNaN(priceInCents) || priceInCents <= 0) {
+      throw new Error(`Invalid price: ${ebook.price}`);
+    }
+    
+    // Create a Stripe checkout session with more complete settings
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -46,18 +57,34 @@ serve(async (req) => {
             product_data: {
               name: ebook.title,
               description: ebook.description || "Herbal e-book",
+              // Add metadata to help with fulfillment
+              metadata: {
+                ebook_id: ebook.id
+              }
             },
-            unit_amount: Math.round(parseFloat(ebook.price.replace("$", "")) * 100), // Convert price to cents
+            unit_amount: priceInCents,
           },
           quantity: 1,
         },
       ],
       mode: "payment",
       success_url: `${returnUrl}?session_id={CHECKOUT_SESSION_ID}&ebook_id=${ebook.id}`,
-      cancel_url: returnUrl,
+      cancel_url: `${returnUrl}?canceled=true`,
+      // Add metadata to the session for better tracking
+      metadata: {
+        ebook_id: ebook.id,
+        ebook_title: ebook.title
+      },
+      // Improve the customer experience with localization
+      locale: "auto",
+      // Allow customers to adjust quantity
+      allow_promotion_codes: true,
     });
 
-    console.log("Checkout session created successfully:", { sessionId: session.id });
+    console.log("Checkout session created successfully:", { 
+      sessionId: session.id,
+      url: session.url
+    });
 
     // Return the session ID and URL
     return new Response(
@@ -75,7 +102,10 @@ serve(async (req) => {
   } catch (error) {
     console.error("Error creating checkout session:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ 
+        error: error.message,
+        stack: error.stack
+      }),
       { 
         status: 500,
         headers: {
