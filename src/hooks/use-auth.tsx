@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
@@ -177,101 +176,71 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setIsLoading(true);
       
-      // Try finding the user by email directly in the auth system
-      const { data: authData, error: authError } = await supabase.auth.admin.listUsers();
+      console.log('Attempting to update user to admin:', email);
       
-      if (authError) {
-        console.error('Error fetching users:', authError);
+      const isSelfUpdate = user && user.email === email;
+      const userId = isSelfUpdate ? user.id : null;
+      
+      if (isSelfUpdate) {
+        console.log('Self update detected, using current user ID:', userId);
+        
+        const { error: updateError } = await supabase
+          .from('profiles')
+          .update({ role: 'admin' })
+          .eq('id', userId);
+        
+        if (updateError) {
+          console.error('Error updating user role:', updateError);
+          throw new Error('Could not update user role in profiles');
+        }
+        
+        setIsAdmin(true);
+        
         toast({
-          title: "Update failed",
-          description: "Could not access user records",
-          variant: "destructive",
+          title: "Success",
+          description: `You have been granted admin privileges`,
         });
+        
         return;
       }
       
-      // Find user with the matching email - explicitly define the type
-      type UserInfo = { id: string, email: string | null | undefined };
-      const users = authData?.users as UserInfo[];
-      
-      if (!users || users.length === 0) {
-        toast({
-          title: "No users found",
-          description: "The system contains no users",
-          variant: "destructive",
-        });
-        return;
-      }
-      
-      const matchedUser = users.find(u => u.email === email);
-      
-      if (!matchedUser || !matchedUser.id) {
-        toast({
-          title: "User not found",
-          description: "Could not find a user with that email address",
-          variant: "destructive",
-        });
-        return;
-      }
-      
-      const userId = matchedUser.id;
-      console.log('Found user:', userId);
-      
-      // Check if profile exists
-      const { data: existingProfile, error: profileCheckError } = await supabase
+      const { data: profiles, error: profilesError } = await supabase
         .from('profiles')
         .select('id')
-        .eq('id', userId)
-        .maybeSingle();
+        .eq('username', email);
+      
+      if (profilesError) {
+        console.error('Error searching profiles:', profilesError);
+        throw new Error('Could not search for user profiles');
+      }
+      
+      if (profiles && profiles.length > 0) {
+        const profileId = profiles[0].id;
+        console.log('Found profile with ID:', profileId);
         
-      if (profileCheckError) {
-        console.error('Error checking profile:', profileCheckError);
-      }
-      
-      // Create profile if it doesn't exist
-      if (!existingProfile) {
-        console.log('Creating new profile for user', userId);
-        const { error: insertError } = await supabase
+        const { error: updateError } = await supabase
           .from('profiles')
-          .insert({ id: userId, username: email });
-          
-        if (insertError) {
-          console.error('Error creating profile:', insertError);
-          toast({
-            title: "Update failed",
-            description: "Could not create user profile",
-            variant: "destructive",
-          });
-          return;
+          .update({ role: 'admin' })
+          .eq('id', profileId);
+        
+        if (updateError) {
+          console.error('Error updating user role:', updateError);
+          throw new Error('Could not update user role in profiles');
         }
-      }
-      
-      // Update the role to admin
-      console.log('Updating user role to admin');
-      const { error: updateError } = await supabase
-        .from('profiles')
-        .update({ role: 'admin' })
-        .eq('id', userId);
-      
-      if (updateError) {
-        console.error('Error updating user role:', updateError);
+        
         toast({
-          title: "Update failed",
-          description: "Could not update user role in profiles",
+          title: "Success",
+          description: `User ${email} has been granted admin privileges`,
+        });
+      } else {
+        console.log('No matching profile found, will create one');
+        
+        toast({
+          title: "User not found",
+          description: "The user must sign in at least once before they can be made an admin",
           variant: "destructive",
         });
-        return;
       }
-      
-      // Update local state if the current user is the one being updated
-      if (user && (user.email === email || user.id === userId)) {
-        setIsAdmin(true);
-      }
-      
-      toast({
-        title: "Success",
-        description: `User ${email} has been granted admin privileges`,
-      });
     } catch (error: any) {
       console.error('Update error:', error);
       toast({
