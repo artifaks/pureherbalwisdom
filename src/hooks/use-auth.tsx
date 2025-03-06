@@ -179,27 +179,45 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setIsLoading(true);
       
-      // First check if the user exists
-      const { data: userData, error: userError } = await supabase.auth.admin
-        .getUserByEmail(email)
-        .catch(() => {
-          // Fallback if admin API is not available
-          return supabase
-            .from('profiles')
-            .select('id')
-            .eq('username', email)
-            .maybeSingle();
-        });
+      // First try to find user by their email address directly in profiles table
+      const { data: profileData, error: profileError } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('username', email)
+        .maybeSingle();
       
-      if (userError || !userData) {
-        // Try looking up by username instead of email
-        const { data: usernameData, error: usernameError } = await supabase
-          .from('profiles')
-          .select('id')
-          .eq('username', email)
-          .maybeSingle();
+      if (profileError) {
+        console.error('Error finding user profile:', profileError);
+        toast({
+          title: "Update failed",
+          description: "Could not find user profile",
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      let userId = profileData?.id;
+      
+      // If we couldn't find by username in profiles, try to get user from auth table
+      if (!userId) {
+        // Look for the user by email in the auth users
+        const { data: userData, error: userError } = await supabase.auth
+          .admin.listUsers();
         
-        if (usernameError || !usernameData) {
+        if (userError) {
+          console.error('Error fetching users:', userError);
+          toast({
+            title: "Update failed",
+            description: "Could not access user records",
+            variant: "destructive",
+          });
+          return;
+        }
+        
+        // Find the user with matching email
+        const matchedUser = userData?.users?.find(u => u.email === email);
+        
+        if (!matchedUser) {
           toast({
             title: "User not found",
             description: "Could not find a user with that email address",
@@ -208,42 +226,36 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           return;
         }
         
-        // Update the user's role in the profiles table
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .update({ role: 'admin' })
-          .eq('id', usernameData.id);
-        
-        if (profileError) {
-          toast({
-            title: "Update failed",
-            description: "Could not update user role in profiles",
-            variant: "destructive",
-          });
-          return;
-        }
-      } else {
-        // We have the user data, update their role
-        const userId = userData.id || userData.user?.id;
-        
-        // Update the user's role in the profiles table
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .update({ role: 'admin' })
-          .eq('id', userId);
-        
-        if (profileError) {
-          toast({
-            title: "Update failed",
-            description: "Could not update user role in profiles",
-            variant: "destructive",
-          });
-          return;
-        }
+        userId = matchedUser.id;
+      }
+      
+      if (!userId) {
+        toast({
+          title: "User not found",
+          description: "Could not determine user ID",
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      // Update the user's role in the profiles table
+      const { error: updateError } = await supabase
+        .from('profiles')
+        .update({ role: 'admin' })
+        .eq('id', userId);
+      
+      if (updateError) {
+        console.error('Error updating user role:', updateError);
+        toast({
+          title: "Update failed",
+          description: "Could not update user role in profiles",
+          variant: "destructive",
+        });
+        return;
       }
       
       // If the current user is the one being updated, update the admin state
-      if (user && user.email === email) {
+      if (user && (user.email === email || user.id === userId)) {
         setIsAdmin(true);
       }
       
@@ -252,9 +264,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         description: `User ${email} has been granted admin privileges`,
       });
     } catch (error: any) {
+      console.error('Update error:', error);
       toast({
         title: "Update failed",
-        description: error.message,
+        description: error.message || "An unexpected error occurred",
         variant: "destructive",
       });
     } finally {
