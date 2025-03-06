@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
@@ -176,62 +177,63 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setIsLoading(true);
       
-      const { data: profileData, error: profileError } = await supabase
-        .from('profiles')
-        .select('id')
-        .eq('username', email)
-        .maybeSingle();
+      // Try finding the user by email directly in the auth system
+      const { data: authData, error: authError } = await supabase.auth.admin.listUsers();
       
-      if (profileError) {
-        console.error('Error finding user profile:', profileError);
+      if (authError) {
+        console.error('Error fetching users:', authError);
         toast({
           title: "Update failed",
-          description: "Could not find user profile",
+          description: "Could not access user records",
           variant: "destructive",
         });
         return;
       }
       
-      let userId = profileData?.id;
+      // Find user with the matching email
+      const users = authData?.users as Array<{ id: string, email?: string }>;
+      const matchedUser = users?.find(u => u.email === email);
       
-      if (!userId) {
-        const { data, error: userError } = await supabase.auth
-          .admin.listUsers();
-        
-        if (userError) {
-          console.error('Error fetching users:', userError);
-          toast({
-            title: "Update failed",
-            description: "Could not access user records",
-            variant: "destructive",
-          });
-          return;
-        }
-        
-        const users = data?.users as Array<{ id: string, email?: string }>;
-        const matchedUser = users?.find(u => u.email === email);
-        
-        if (!matchedUser) {
-          toast({
-            title: "User not found",
-            description: "Could not find a user with that email address",
-            variant: "destructive",
-          });
-          return;
-        }
-        
-        userId = matchedUser.id;
-      }
-      
-      if (!userId) {
+      if (!matchedUser || !matchedUser.id) {
         toast({
           title: "User not found",
-          description: "Could not determine user ID",
+          description: "Could not find a user with that email address",
           variant: "destructive",
         });
         return;
       }
       
+      const userId = matchedUser.id;
+      
+      // Check if profile exists
+      const { data: existingProfile, error: profileCheckError } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('id', userId)
+        .maybeSingle();
+        
+      if (profileCheckError) {
+        console.error('Error checking profile:', profileCheckError);
+      }
+      
+      // Create profile if it doesn't exist
+      if (!existingProfile) {
+        const { error: insertError } = await supabase
+          .from('profiles')
+          .insert({ id: userId, username: email });
+          
+        if (insertError) {
+          console.error('Error creating profile:', insertError);
+          toast({
+            title: "Update failed",
+            description: "Could not create user profile",
+            variant: "destructive",
+          });
+          return;
+        }
+      }
+      
+      // Update the role to admin
       const { error: updateError } = await supabase
         .from('profiles')
         .update({ role: 'admin' })
@@ -247,6 +249,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return;
       }
       
+      // Update local state if the current user is the one being updated
       if (user && (user.email === email || user.id === userId)) {
         setIsAdmin(true);
       }

@@ -34,6 +34,8 @@ const Admin = () => {
 
   const handleMakeAdmin = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email) return;
+    
     setIsLoading(true);
     try {
       await updateUserToAdmin(email);
