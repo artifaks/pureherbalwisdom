@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BlogPost } from '@/types/blog';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -61,9 +62,11 @@ const BlogPostList: React.FC<BlogPostListProps> = ({
             </div>
           </CardContent>
           <CardFooter className="flex justify-between bg-gray-50 py-3 px-6">
-            <Button variant="outline" className="text-amber-600 border-amber-300 hover:bg-amber-50">
-              Read More
-            </Button>
+            <Link to={`/blog/${post.id}`}>
+              <Button variant="outline" className="text-amber-600 border-amber-300 hover:bg-amber-50">
+                Read More
+              </Button>
+            </Link>
             {isAdmin && (
               <div className="flex space-x-2">
                 <Button

@@ -22,7 +22,7 @@ export const useBlogPosts = () => {
       setIsLoading(true);
       console.log('Fetching blog posts...');
       
-      // First get all blog posts
+      // Get all blog posts
       const { data: blogPostsData, error: blogPostsError } = await supabase
         .from('blog_posts')
         .select('*')
@@ -33,29 +33,30 @@ export const useBlogPosts = () => {
       }
       
       if (blogPostsData) {
-        // Get user profile information separately for each post
-        const postsWithAuthors = await Promise.all(
-          blogPostsData.map(async (post) => {
-            // Get author username from profiles table
-            const { data: profileData } = await supabase
-              .from('profiles')
-              .select('username')
-              .eq('id', post.user_id)
-              .single();
-            
-            // Format the post with author info
-            return {
-              id: post.id,
-              title: post.title,
-              content: post.content,
-              excerpt: post.excerpt || undefined,
-              author: profileData?.username || undefined,
-              created_at: post.created_at,
-              updated_at: post.updated_at,
-              user_id: post.user_id
-            } as BlogPost;
-          })
-        );
+        // Get all user profiles in a single query
+        const { data: profilesData } = await supabase
+          .from('profiles')
+          .select('id, username');
+        
+        // Create a map of user_id to username for quick lookup
+        const userMap = new Map();
+        if (profilesData) {
+          profilesData.forEach(profile => {
+            userMap.set(profile.id, profile.username);
+          });
+        }
+        
+        // Format posts with author info
+        const postsWithAuthors = blogPostsData.map(post => ({
+          id: post.id,
+          title: post.title,
+          content: post.content,
+          excerpt: post.excerpt || undefined,
+          author: userMap.get(post.user_id) || undefined,
+          created_at: post.created_at,
+          updated_at: post.updated_at,
+          user_id: post.user_id
+        } as BlogPost));
         
         setPosts(postsWithAuthors);
         console.log('Blog posts loaded:', postsWithAuthors.length);
