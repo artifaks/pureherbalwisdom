@@ -3,10 +3,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
-import { AdminUserAttributes } from "@supabase/supabase-js";
+import { User } from "@supabase/supabase-js";
 
 type AuthContextType = {
-  user: any | null;
+  user: User | null;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, username: string, isAdmin?: boolean) => Promise<void>;
   signOut: () => Promise<void>;
@@ -18,7 +18,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<any | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
@@ -190,9 +190,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return;
       }
       
-      // Find user with the matching email
-      const users = authData?.users as Array<{ id: string, email?: string }>;
-      const matchedUser = users?.find(u => u.email === email);
+      // Find user with the matching email - explicitly define the type
+      type UserInfo = { id: string, email: string | null | undefined };
+      const users = authData?.users as UserInfo[];
+      
+      if (!users || users.length === 0) {
+        toast({
+          title: "No users found",
+          description: "The system contains no users",
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      const matchedUser = users.find(u => u.email === email);
       
       if (!matchedUser || !matchedUser.id) {
         toast({
@@ -204,6 +215,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       
       const userId = matchedUser.id;
+      console.log('Found user:', userId);
       
       // Check if profile exists
       const { data: existingProfile, error: profileCheckError } = await supabase
@@ -218,6 +230,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       // Create profile if it doesn't exist
       if (!existingProfile) {
+        console.log('Creating new profile for user', userId);
         const { error: insertError } = await supabase
           .from('profiles')
           .insert({ id: userId, username: email });
@@ -234,6 +247,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       
       // Update the role to admin
+      console.log('Updating user role to admin');
       const { error: updateError } = await supabase
         .from('profiles')
         .update({ role: 'admin' })
