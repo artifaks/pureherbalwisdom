@@ -11,7 +11,7 @@ type AuthContextType = {
   signOut: () => Promise<void>;
   isLoading: boolean;
   isAdmin: boolean;
-  updateUserToAdmin: (email: string) => Promise<void>;
+  updateUserToAdmin: (email: string) => Promise<boolean>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -172,7 +172,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const updateUserToAdmin = async (email: string) => {
+  const updateUserToAdmin = async (email: string): Promise<boolean> => {
     try {
       setIsLoading(true);
       
@@ -201,7 +201,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           description: `You have been granted admin privileges`,
         });
         
-        return;
+        return true;
       }
       
       const { data: profiles, error: profilesError } = await supabase
@@ -232,14 +232,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           title: "Success",
           description: `User ${email} has been granted admin privileges`,
         });
+        
+        return true;
       } else {
-        console.log('No matching profile found, will create one');
+        console.log('No matching profile found');
         
         toast({
           title: "User not found",
           description: "The user must sign in at least once before they can be made an admin",
           variant: "destructive",
         });
+        
+        return false;
       }
     } catch (error: any) {
       console.error('Update error:', error);
@@ -248,6 +252,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         description: error.message || "An unexpected error occurred",
         variant: "destructive",
       });
+      return false;
     } finally {
       setIsLoading(false);
     }

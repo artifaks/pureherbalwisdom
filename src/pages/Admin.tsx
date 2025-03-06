@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/use-auth';
 import { useNavigate, Navigate } from 'react-router-dom';
@@ -37,15 +38,23 @@ const Admin = () => {
     
     setIsLoading(true);
     try {
-      await updateUserToAdmin(email);
-      setAdminStatus('success');
-      setStatusMessage(`User ${email} has been granted admin privileges.`);
+      const success = await updateUserToAdmin(email);
       
-      // If the current user made themselves admin, redirect to blog
-      if (user.email === email) {
-        setTimeout(() => {
-          navigate('/blog');
-        }, 2000);
+      if (success) {
+        setAdminStatus('success');
+        const isSelfUpdate = user.email === email;
+        
+        if (isSelfUpdate) {
+          setStatusMessage(`You have been granted admin privileges. Redirecting to blog...`);
+          setTimeout(() => {
+            navigate('/blog');
+          }, 2000);
+        } else {
+          setStatusMessage(`User ${email} has been granted admin privileges.`);
+        }
+      } else {
+        setAdminStatus('error');
+        setStatusMessage('The user must sign in at least once before they can be made an admin.');
       }
     } catch (error: any) {
       console.error('Error updating user:', error);
@@ -154,8 +163,14 @@ const Admin = () => {
                   type="button"
                   disabled={isLoading}
                   onClick={() => {
-                    setEmail(user.email || '');
-                    setTimeout(() => handleMakeAdmin(new Event('click') as any), 100);
+                    if (user && user.email) {
+                      setEmail(user.email);
+                      // Use setTimeout to ensure email is set before form submission
+                      setTimeout(() => {
+                        const event = new Event('submit', { cancelable: true });
+                        document.querySelector('form')?.dispatchEvent(event);
+                      }, 100);
+                    }
                   }}
                 >
                   {isLoading ? 'Processing...' : 'Make Me An Admin'}
