@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -47,6 +48,7 @@ export const useEbooks = () => {
           }));
           setResources(formattedBooks);
         } else {
+          // Create default resources if none exist
           const initialResources: Ebook[] = [
             {
               id: "1",
@@ -100,8 +102,26 @@ export const useEbooks = () => {
           
           setResources(initialResources);
           
+          // Only attempt migration if user is authenticated
           if (user) {
+            // The improved migration logic will prevent re-adding deleted books
             await purchaseService.migrateInitialEbooks(initialResources);
+            
+            // Re-fetch to ensure we have the actual database state
+            const refreshedData = await purchaseService.getAllEbooks();
+            if (refreshedData && refreshedData.length > 0) {
+              const refreshedBooks = refreshedData.map(book => ({
+                id: book.id,
+                title: book.title,
+                description: book.description || "",
+                price: `$${book.price.toFixed(2)}`,
+                type: book.type,
+                popular: book.popular,
+                fileUrl: book.file_url,
+                coverUrl: book.cover_url
+              }));
+              setResources(refreshedBooks);
+            }
           }
         }
       } catch (error) {

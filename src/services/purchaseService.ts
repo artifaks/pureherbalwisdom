@@ -79,6 +79,37 @@ export const purchaseService = {
     }
   },
   
+  // Function to check if initial migration was already done
+  async hasPreviouslyMigratedEbooks(): Promise<boolean> {
+    try {
+      // Check if migration was ever performed before by checking
+      // if there's a record of a deleted ebook or existing ebooks
+      const { count: currentCount, error: currentError } = await supabase
+        .from('ebooks')
+        .select('*', { count: 'exact', head: true });
+      
+      if (currentError) throw currentError;
+      
+      // If there are ebooks now, no need to check deletion history
+      if (currentCount && currentCount > 0) return true;
+      
+      // Check if we can find any deleted ebooks in the database history
+      // by looking for ebook-related purchase records
+      const { count: purchaseCount, error: purchaseError } = await supabase
+        .from('purchases')
+        .select('*', { count: 'exact', head: true });
+      
+      if (purchaseError) throw purchaseError;
+      
+      // If we find any purchase records, it means ebooks existed before
+      return purchaseCount > 0;
+    } catch (error) {
+      console.error('Error checking migration history:', error);
+      // Default to false so migration can happen if we can't determine
+      return false;
+    }
+  },
+  
   // Function to migrate initial ebooks
   async migrateInitialEbooks(initialEbooks: Ebook[]): Promise<void> {
     try {
@@ -91,9 +122,13 @@ export const purchaseService = {
         throw countError;
       }
       
-      // Only proceed with migration if there are no ebooks AT ALL
-      // This change prevents re-adding the sample ebooks after deletion
-      if (count === 0) {
+      // Check if we've already migrated ebooks before (to prevent re-adding after deletion)
+      const hasMigratedBefore = await this.hasPreviouslyMigratedEbooks();
+      
+      // Only proceed with migration if there are no ebooks AND we've never migrated before
+      if (count === 0 && !hasMigratedBefore) {
+        console.log('Migrating initial ebooks as no previous migration detected');
+        
         const ebooksForInsert = initialEbooks.map(ebook => ({
           title: ebook.title,
           description: ebook.description,
