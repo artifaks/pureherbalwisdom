@@ -507,33 +507,8 @@ export const useEbooks = () => {
     }
 
     try {
-      const { error } = await supabase
-        .from('ebooks')
-        .delete()
-        .eq('id', resource.id);
-
-      if (error) throw error;
-
-      if (resource.coverUrl) {
-        const { error: storageError } = await supabase.storage
-          .from('e-books')
-          .remove([resource.coverUrl]);
-        
-        if (storageError) {
-          console.error('Error deleting cover image:', storageError);
-        }
-      }
-
-      if (resource.fileUrl) {
-        const { error: storageError } = await supabase.storage
-          .from('e-books')
-          .remove([resource.fileUrl]);
-        
-        if (storageError) {
-          console.error('Error deleting e-book file:', storageError);
-        }
-      }
-
+      await purchaseService.deleteEbook(resource.id);
+      
       setResources(resources.filter(r => r.id !== resource.id));
 
       toast({

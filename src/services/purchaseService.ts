@@ -91,7 +91,8 @@ export const purchaseService = {
         throw countError;
       }
       
-      // Only proceed with migration if there are no ebooks
+      // Only proceed with migration if there are no ebooks AT ALL
+      // This change prevents re-adding the sample ebooks after deletion
       if (count === 0) {
         const ebooksForInsert = initialEbooks.map(ebook => ({
           title: ebook.title,
@@ -111,6 +112,60 @@ export const purchaseService = {
       }
     } catch (error) {
       console.error('Error migrating initial ebooks:', error);
+      throw error;
+    }
+  },
+  
+  // Function to delete an ebook
+  async deleteEbook(ebookId: string): Promise<void> {
+    try {
+      // First get the ebook to access its files
+      const { data: ebook, error: fetchError } = await supabase
+        .from('ebooks')
+        .select('file_url, cover_url')
+        .eq('id', ebookId)
+        .maybeSingle();
+      
+      if (fetchError) {
+        throw fetchError;
+      }
+      
+      // Delete the ebook from the database
+      const { error: deleteError } = await supabase
+        .from('ebooks')
+        .delete()
+        .eq('id', ebookId);
+      
+      if (deleteError) {
+        throw deleteError;
+      }
+      
+      // Delete associated files if they exist
+      if (ebook) {
+        const filesToDelete = [];
+        
+        if (ebook.file_url) {
+          filesToDelete.push(ebook.file_url);
+        }
+        
+        if (ebook.cover_url) {
+          filesToDelete.push(ebook.cover_url);
+        }
+        
+        if (filesToDelete.length > 0) {
+          const { error: storageError } = await supabase.storage
+            .from('e-books')
+            .remove(filesToDelete);
+          
+          if (storageError) {
+            console.error('Error deleting files:', storageError);
+            // Continue execution even if file deletion fails
+          }
+        }
+      }
+      
+    } catch (error) {
+      console.error('Error deleting ebook:', error);
       throw error;
     }
   }
