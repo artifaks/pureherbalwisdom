@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 import { Ebook } from '@/types/ebook';
 
@@ -82,79 +81,22 @@ export const purchaseService = {
   // Function to check if initial migration was already done
   async hasPreviouslyMigratedEbooks(): Promise<boolean> {
     try {
-      // Check if migration was ever performed before by checking
-      // if there's a record of a deleted ebook or existing ebooks
-      const { count: currentCount, error: currentError } = await supabase
-        .from('ebooks')
-        .select('*', { count: 'exact', head: true });
-      
-      if (currentError) throw currentError;
-      
-      // If there are ebooks now, no need to check deletion history
-      if (currentCount && currentCount > 0) return true;
-      
-      // Check if we can find any deleted ebooks in the database history
-      // by looking for ebook-related purchase records
-      const { count: purchaseCount, error: purchaseError } = await supabase
-        .from('purchases')
-        .select('*', { count: 'exact', head: true });
-      
-      if (purchaseError) throw purchaseError;
-      
-      // If we find any purchase records, it means ebooks existed before
-      return purchaseCount > 0;
+      return true;
     } catch (error) {
       console.error('Error checking migration history:', error);
-      // Default to false so migration can happen if we can't determine
-      return false;
+      return true;
     }
   },
   
-  // Function to migrate initial ebooks
+  // Function to migrate initial ebooks - this will now be disabled
   async migrateInitialEbooks(initialEbooks: Ebook[]): Promise<void> {
-    try {
-      // First check if ebooks table is actually empty
-      const { count, error: countError } = await supabase
-        .from('ebooks')
-        .select('*', { count: 'exact', head: true });
-      
-      if (countError) {
-        throw countError;
-      }
-      
-      // Check if we've already migrated ebooks before (to prevent re-adding after deletion)
-      const hasMigratedBefore = await this.hasPreviouslyMigratedEbooks();
-      
-      // Only proceed with migration if there are no ebooks AND we've never migrated before
-      if (count === 0 && !hasMigratedBefore) {
-        console.log('Migrating initial ebooks as no previous migration detected');
-        
-        const ebooksForInsert = initialEbooks.map(ebook => ({
-          title: ebook.title,
-          description: ebook.description,
-          price: parseFloat(ebook.price.replace('$', '')),
-          type: ebook.type,
-          popular: ebook.popular
-        }));
-        
-        const { error: insertError } = await supabase
-          .from('ebooks')
-          .insert(ebooksForInsert);
-        
-        if (insertError) {
-          throw insertError;
-        }
-      }
-    } catch (error) {
-      console.error('Error migrating initial ebooks:', error);
-      throw error;
-    }
+    console.log('Migration disabled - not adding sample ebooks');
+    return;
   },
   
   // Function to delete an ebook
   async deleteEbook(ebookId: string): Promise<void> {
     try {
-      // First get the ebook to access its files
       const { data: ebook, error: fetchError } = await supabase
         .from('ebooks')
         .select('file_url, cover_url')
@@ -165,7 +107,6 @@ export const purchaseService = {
         throw fetchError;
       }
       
-      // Delete the ebook from the database
       const { error: deleteError } = await supabase
         .from('ebooks')
         .delete()
@@ -175,7 +116,6 @@ export const purchaseService = {
         throw deleteError;
       }
       
-      // Delete associated files if they exist
       if (ebook) {
         const filesToDelete = [];
         
@@ -194,13 +134,75 @@ export const purchaseService = {
           
           if (storageError) {
             console.error('Error deleting files:', storageError);
-            // Continue execution even if file deletion fails
           }
         }
       }
-      
     } catch (error) {
       console.error('Error deleting ebook:', error);
+      throw error;
+    }
+  },
+  
+  // Function to purge sample ebooks
+  async purgeSampleEbooks(): Promise<void> {
+    try {
+      const sampleTitles = [
+        'Medicinal Herbs Field Guide',
+        'Herbal Preparations & Remedies',
+        'Herbs for Heart Health',
+        'Women's Herbal Wellness',
+        'Digestive Healing with Herbs',
+        'Seasonal Foraging Calendar'
+      ];
+      
+      const { data, error } = await supabase
+        .from('ebooks')
+        .select('id, title, file_url, cover_url')
+        .in('title', sampleTitles);
+      
+      if (error) {
+        throw error;
+      }
+      
+      if (data && data.length > 0) {
+        console.log(`Found ${data.length} sample ebooks to purge`);
+        
+        for (const ebook of data) {
+          if (ebook.file_url || ebook.cover_url) {
+            const filesToDelete = [];
+            
+            if (ebook.file_url) {
+              filesToDelete.push(ebook.file_url);
+            }
+            
+            if (ebook.cover_url) {
+              filesToDelete.push(ebook.cover_url);
+            }
+            
+            if (filesToDelete.length > 0) {
+              await supabase.storage
+                .from('e-books')
+                .remove(filesToDelete);
+            }
+          }
+        }
+        
+        const ebookIds = data.map(ebook => ebook.id);
+        const { error: deleteError } = await supabase
+          .from('ebooks')
+          .delete()
+          .in('id', ebookIds);
+        
+        if (deleteError) {
+          throw deleteError;
+        }
+        
+        console.log(`Successfully purged ${data.length} sample ebooks`);
+      } else {
+        console.log('No sample ebooks found to purge');
+      }
+    } catch (error) {
+      console.error('Error purging sample ebooks:', error);
       throw error;
     }
   }

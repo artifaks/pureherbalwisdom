@@ -2,6 +2,7 @@
 import React from 'react';
 import EbookCard from './EbookCard';
 import { Ebook } from '@/types/ebook';
+import { BookOpen } from 'lucide-react';
 
 interface EbookListProps {
   resources: Ebook[];
@@ -20,6 +21,18 @@ const EbookList: React.FC<EbookListProps> = ({
   handleEditClick,
   handleDeleteClick
 }) => {
+  if (resources.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-12 text-center">
+        <BookOpen className="h-16 w-16 text-gray-400 mb-4" />
+        <h3 className="text-xl font-semibold text-gray-700 mb-2">No eBooks Available</h3>
+        <p className="text-gray-500 max-w-md">
+          There are currently no eBooks in your library. Add new eBooks using the button above.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {resources.map((resource) => (

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -33,6 +32,17 @@ export const useEbooks = () => {
     const fetchResources = async () => {
       try {
         setIsLoading(true);
+        
+        // Purge sample ebooks first if user is admin
+        if (user?.email === 'artifaks7@gmail.com') {
+          try {
+            await purchaseService.purgeSampleEbooks();
+          } catch (error) {
+            console.error("Error purging sample ebooks:", error);
+          }
+        }
+        
+        // Then fetch all ebooks
         const data = await purchaseService.getAllEbooks();
         
         if (data && data.length > 0) {
@@ -48,81 +58,8 @@ export const useEbooks = () => {
           }));
           setResources(formattedBooks);
         } else {
-          // Create default resources if none exist
-          const initialResources: Ebook[] = [
-            {
-              id: "1",
-              title: "Medicinal Herbs Field Guide",
-              description: "A comprehensive guide to identifying and using medicinal herbs in the wild.",
-              price: "$12.99",
-              type: "e-book",
-              popular: true,
-            },
-            {
-              id: "2",
-              title: "Herbal Preparations & Remedies",
-              description: "Learn how to make tinctures, oils, salves, and more from common medicinal plants.",
-              price: "$9.99",
-              type: "e-book",
-              popular: false,
-            },
-            {
-              id: "3",
-              title: "Herbs for Heart Health",
-              description: "Detailed information on using herbs specifically for cardiovascular wellness.",
-              price: "$7.99",
-              type: "e-book",
-              popular: false,
-            },
-            {
-              id: "4",
-              title: "Women's Herbal Wellness",
-              description: "Natural approaches to women's health issues using traditional plant medicine.",
-              price: "$8.99",
-              type: "e-book",
-              popular: true,
-            },
-            {
-              id: "5",
-              title: "Digestive Healing with Herbs",
-              description: "Protocols for addressing common digestive concerns with herbal support.",
-              price: "$6.99",
-              type: "guide",
-              popular: false,
-            },
-            {
-              id: "6",
-              title: "Seasonal Foraging Calendar",
-              description: "Month-by-month guide for when to harvest medicinal plants in your region.",
-              price: "$4.99",
-              type: "calendar",
-              popular: true,
-            },
-          ];
-          
-          setResources(initialResources);
-          
-          // Only attempt migration if user is authenticated
-          if (user) {
-            // The improved migration logic will prevent re-adding deleted books
-            await purchaseService.migrateInitialEbooks(initialResources);
-            
-            // Re-fetch to ensure we have the actual database state
-            const refreshedData = await purchaseService.getAllEbooks();
-            if (refreshedData && refreshedData.length > 0) {
-              const refreshedBooks = refreshedData.map(book => ({
-                id: book.id,
-                title: book.title,
-                description: book.description || "",
-                price: `$${book.price.toFixed(2)}`,
-                type: book.type,
-                popular: book.popular,
-                fileUrl: book.file_url,
-                coverUrl: book.cover_url
-              }));
-              setResources(refreshedBooks);
-            }
-          }
+          // No default resources anymore
+          setResources([]);
         }
       } catch (error) {
         console.error("Error fetching resources:", error);
