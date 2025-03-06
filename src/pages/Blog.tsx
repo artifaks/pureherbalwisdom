@@ -92,6 +92,7 @@ const Blog = () => {
           <BlogPostList 
             posts={posts} 
             isAdmin={isAdmin}
+            isAuthenticated={!!user}
             onEditClick={(post) => setEditingPost(post)}
             onDeleteClick={(post) => setPostToDelete(post)}
           />

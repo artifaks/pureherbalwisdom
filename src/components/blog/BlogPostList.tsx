@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import { BlogPost } from '@/types/blog';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Edit, Trash2, Calendar, User } from 'lucide-react';
+import { Edit, Trash2, Calendar, User, Info } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 interface BlogPostListProps {
   posts: BlogPost[];
   isAdmin: boolean;
+  isAuthenticated: boolean;
   onEditClick: (post: BlogPost) => void;
   onDeleteClick: (post: BlogPost) => void;
 }
@@ -17,6 +19,7 @@ interface BlogPostListProps {
 const BlogPostList: React.FC<BlogPostListProps> = ({ 
   posts, 
   isAdmin,
+  isAuthenticated,
   onEditClick,
   onDeleteClick
 }) => {
@@ -29,12 +32,31 @@ const BlogPostList: React.FC<BlogPostListProps> = ({
             Click "Write New Post" to create your first blog post.
           </p>
         )}
+        {isAuthenticated && !isAdmin && (
+          <Alert className="mt-4 max-w-md mx-auto">
+            <Info className="h-4 w-4" />
+            <AlertTitle>Admin privileges required</AlertTitle>
+            <AlertDescription>
+              You are logged in, but you need admin privileges to create blog posts.
+            </AlertDescription>
+          </Alert>
+        )}
       </div>
     );
   }
 
   return (
     <div className="space-y-8">
+      {isAuthenticated && !isAdmin && posts.length > 0 && (
+        <Alert className="mb-6 border-amber-300 bg-amber-50">
+          <Info className="h-4 w-4 text-amber-600" />
+          <AlertTitle>Admin privileges required</AlertTitle>
+          <AlertDescription>
+            You are logged in, but you need admin privileges to create, edit, or delete blog posts.
+          </AlertDescription>
+        </Alert>
+      )}
+      
       {posts.map((post) => (
         <Card key={post.id} className="overflow-hidden border border-gray-200 hover:shadow-md transition duration-200">
           <CardHeader className="pb-3">
