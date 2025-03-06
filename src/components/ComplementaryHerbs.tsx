@@ -74,6 +74,28 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'schisandra', reason: 'Schisandra adds adaptogenic support to Nettle\'s nourishing properties' }
   ],
   
+  // Brain herbs
+  'ginkgo': [
+    { herbId: 'bacopa', reason: 'Bacopa complements Ginkgo\'s blood flow benefits with memory enhancement properties' },
+    { herbId: 'lions-mane', reason: 'Lion\'s Mane adds nerve-regenerating properties to Ginkgo\'s circulation benefits' },
+    { herbId: 'rosemary', reason: 'Rosemary enhances Ginkgo\'s cognitive benefits with additional neuroprotection' }
+  ],
+  'bacopa': [
+    { herbId: 'ginkgo', reason: 'Ginkgo adds circulatory support to Bacopa\'s cognitive enhancement effects' },
+    { herbId: 'brahmi', reason: 'Brahmi (Centella) complements Bacopa\'s cognitive effects for enhanced learning' },
+    { herbId: 'ashwagandha', reason: 'Ashwagandha adds stress reduction to Bacopa\'s memory benefits' }
+  ],
+  'lions-mane': [
+    { herbId: 'rosemary', reason: 'Rosemary adds antioxidant protection to Lion\'s Mane\'s neurogenesis effects' },
+    { herbId: 'ginkgo', reason: 'Ginkgo improves delivery of Lion\'s Mane\'s beneficial compounds to the brain' },
+    { herbId: 'rhodiola', reason: 'Rhodiola adds adaptogenic energy to support Lion\'s Mane\'s regenerative effects' }
+  ],
+  'peppermint': [
+    { herbId: 'rosemary', reason: 'Rosemary enhances Peppermint\'s mental stimulation with memory benefits' },
+    { herbId: 'sage', reason: 'Sage complements Peppermint\'s alertness with memory enhancement' },
+    { herbId: 'gotu-kola', reason: 'Gotu Kola adds calm focus to Peppermint\'s stimulating properties' }
+  ],
+  
   // Default pairings for herbs without specific matches
   'default': [
     { herbId: 'hawthorn', reason: 'Hawthorn provides heart support alongside this herb\'s benefits' },
