@@ -90,10 +90,30 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'ginkgo', reason: 'Ginkgo improves delivery of Lion\'s Mane\'s beneficial compounds to the brain' },
     { herbId: 'rhodiola', reason: 'Rhodiola adds adaptogenic energy to support Lion\'s Mane\'s regenerative effects' }
   ],
-  'peppermint': [
-    { herbId: 'rosemary', reason: 'Rosemary enhances Peppermint\'s mental stimulation with memory benefits' },
-    { herbId: 'sage', reason: 'Sage complements Peppermint\'s alertness with memory enhancement' },
-    { herbId: 'gotu-kola', reason: 'Gotu Kola adds calm focus to Peppermint\'s stimulating properties' }
+  'rosemary': [
+    { herbId: 'sage', reason: 'Sage enhances Rosemary\'s memory benefits with additional cognitive support' },
+    { herbId: 'ginkgo', reason: 'Ginkgo adds blood flow support to Rosemary\'s neuroprotective properties' },
+    { herbId: 'bacopa', reason: 'Bacopa complements Rosemary\'s antioxidant benefits with memory enhancement' }
+  ],
+  'sage': [
+    { herbId: 'rosemary', reason: 'Rosemary complements Sage\'s cognitive benefits for enhanced memory function' },
+    { herbId: 'ginkgo', reason: 'Ginkgo adds circulation support to Sage\'s cholinergic enhancement properties' },
+    { herbId: 'lions-mane', reason: 'Lion\'s Mane adds neurogenesis support to Sage\'s cognitive effects' }
+  ],
+  'brahmi': [
+    { herbId: 'bacopa', reason: 'Bacopa and Brahmi work synergistically for comprehensive cognitive enhancement' },
+    { herbId: 'gotu-kola', reason: 'Gotu Kola complements Brahmi for improved learning and mental clarity' },
+    { herbId: 'ashwagandha', reason: 'Ashwagandha adds stress management to Brahmi\'s cognitive benefits' }
+  ],
+  'gotu-kola': [
+    { herbId: 'brahmi', reason: 'Brahmi enhances Gotu Kola\'s effects on mental clarity and focus' },
+    { herbId: 'bacopa', reason: 'Bacopa adds memory enhancement to Gotu Kola\'s cognitive support' },
+    { herbId: 'ashwagandha', reason: 'Ashwagandha complements Gotu Kola with stress reduction properties' }
+  ],
+  'ashwagandha-brain': [
+    { herbId: 'bacopa', reason: 'Bacopa adds memory support to Ashwagandha\'s stress-reducing properties' },
+    { herbId: 'rhodiola', reason: 'Rhodiola enhances Ashwagandha\'s adaptogenic effects for mental performance' },
+    { herbId: 'gotu-kola', reason: 'Gotu Kola complements Ashwagandha\'s calming benefits with mental clarity' }
   ],
   
   // Default pairings for herbs without specific matches
@@ -121,7 +141,12 @@ const ComplementaryHerbs: React.FC<ComplementaryHerbsProps> = ({
 }) => {
   // Get pairings for the active herb or use default if none specified
   const getPairings = () => {
-    const pairings = herbPairings[activeHerb.id] || herbPairings['default'];
+    // For brain category ashwagandha, use the brain-specific key
+    const herbId = activeHerb.id === 'ashwagandha' && activeHerb.category === 'brain' 
+      ? 'ashwagandha-brain' 
+      : activeHerb.id;
+      
+    const pairings = herbPairings[herbId] || herbPairings['default'];
     return pairings.map(pairing => {
       const herb = allHerbs.find(h => h.id === pairing.herbId);
       return herb ? { ...pairing, herb } : null;
