@@ -28,12 +28,18 @@ export const useEbooks = () => {
   
   const isAdmin = user?.email === 'artifaks7@gmail.com'; // Replace with your admin email
 
+  const sanitizeFileName = (fileName: string): string => {
+    return fileName
+      .replace(/['":]/g, '') // Remove apostrophes, quotes, and colons
+      .replace(/\s+/g, '_') // Replace spaces with underscores
+      .replace(/[^\w.-]/g, ''); // Remove any remaining non-alphanumeric characters except underscores, periods, and hyphens
+  };
+
   useEffect(() => {
     const fetchResources = async () => {
       try {
         setIsLoading(true);
         
-        // Purge sample ebooks first if user is admin
         if (user?.email === 'artifaks7@gmail.com') {
           try {
             await purchaseService.purgeSampleEbooks();
@@ -42,7 +48,6 @@ export const useEbooks = () => {
           }
         }
         
-        // Then fetch all ebooks
         const data = await purchaseService.getAllEbooks();
         
         if (data && data.length > 0) {
@@ -58,7 +63,6 @@ export const useEbooks = () => {
           }));
           setResources(formattedBooks);
         } else {
-          // No default resources anymore
           setResources([]);
         }
       } catch (error) {
@@ -278,7 +282,8 @@ export const useEbooks = () => {
 
     try {
       const fileExt = selectedFile.name.split('.').pop();
-      const fileName = `${Date.now()}_${newBook.title.replace(/\s+/g, '_').toLowerCase()}.${fileExt}`;
+      const sanitizedTitle = sanitizeFileName(newBook.title.toLowerCase());
+      const fileName = `${Date.now()}_${sanitizedTitle}.${fileExt}`;
       
       const { data: fileData, error: fileError } = await supabase.storage
         .from('e-books')
@@ -291,7 +296,8 @@ export const useEbooks = () => {
       let coverFileName = null;
       if (selectedCover) {
         const coverExt = selectedCover.name.split('.').pop();
-        coverFileName = `cover_${Date.now()}_${newBook.title.replace(/\s+/g, '_').toLowerCase()}.${coverExt}`;
+        const sanitizedCoverName = sanitizeFileName(newBook.title.toLowerCase());
+        coverFileName = `cover_${Date.now()}_${sanitizedCoverName}.${coverExt}`;
         
         const { error: coverError } = await supabase.storage
           .from('e-books')
@@ -396,7 +402,8 @@ export const useEbooks = () => {
         }
         
         const coverExt = selectedCover.name.split('.').pop();
-        const coverFileName = `cover_${Date.now()}_${editingResource.title.replace(/\s+/g, '_').toLowerCase()}.${coverExt}`;
+        const sanitizedTitle = sanitizeFileName(editingResource.title.toLowerCase());
+        const coverFileName = `cover_${Date.now()}_${sanitizedTitle}.${coverExt}`;
         
         const { error: coverError } = await supabase.storage
           .from('e-books')
