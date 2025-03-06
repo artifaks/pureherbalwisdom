@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +10,7 @@ type AuthContextType = {
   signOut: () => Promise<void>;
   isLoading: boolean;
   isAdmin: boolean;
+  updateUserToAdmin: (email: string) => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -139,6 +139,61 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const updateUserToAdmin = async (email: string) => {
+    try {
+      setIsLoading(true);
+      
+      // First, we need to get the user ID from the email
+      const { data: userData, error: userError } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('username', email)
+        .maybeSingle();
+      
+      if (userError || !userData) {
+        toast({
+          title: "User not found",
+          description: "Could not find a user with that email address",
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      // Update the user's role in the profiles table
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .update({ role: 'admin' })
+        .eq('id', userData.id);
+      
+      if (profileError) {
+        toast({
+          title: "Update failed",
+          description: "Could not update user role in profiles",
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      // If the current user is the one being updated, update the admin state
+      if (user && user.email === email) {
+        setIsAdmin(true);
+      }
+      
+      toast({
+        title: "Success",
+        description: `User ${email} has been granted admin privileges`,
+      });
+    } catch (error: any) {
+      toast({
+        title: "Update failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -148,6 +203,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signOut,
         isLoading,
         isAdmin,
+        updateUserToAdmin,
       }}
     >
       {children}

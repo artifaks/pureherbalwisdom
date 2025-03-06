@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { BookOpen, Home, Leaf, FileText, LogOut } from 'lucide-react';
+import { BookOpen, Home, Leaf, FileText, LogOut, Shield } from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
 
@@ -29,7 +29,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, icon }) => {
 };
 
 const MainNavigation: React.FC = () => {
-  const { user, signOut } = useAuth();
+  const { user, signOut, isAdmin } = useAuth();
 
   const handleLogout = async () => {
     await signOut();
@@ -51,6 +51,10 @@ const MainNavigation: React.FC = () => {
           <NavItem to="/" label="Herbs" icon={<Home className="h-5 w-5" />} />
           <NavItem to="/resources" label="E-Books & Resources" icon={<BookOpen className="h-5 w-5" />} />
           <NavItem to="/blog" label="Blog" icon={<FileText className="h-5 w-5" />} />
+          
+          {isAdmin && (
+            <NavItem to="/admin" label="Admin" icon={<Shield className="h-5 w-5" />} />
+          )}
           
           {user ? (
             <Button 
