@@ -33,6 +33,7 @@ const Resources = () => {
     handleEditCancel,
     handleEditSubmit,
     handlePriceChange,
+    isAdmin,
   } = useEbooks();
 
   if (!user) {
@@ -44,10 +45,11 @@ const Resources = () => {
       <ResourceHeader 
         onAddBook={() => setIsAddingBook(true)} 
         isAuthenticated={!!user}
+        isAdmin={isAdmin}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {isAddingBook && (
+        {isAddingBook && isAdmin && (
           <AddEbookForm
             newBook={newBook}
             setNewBook={setNewBook}
@@ -68,7 +70,7 @@ const Resources = () => {
           />
         )}
 
-        {editingResource && (
+        {editingResource && isAdmin && (
           <EditEbookForm
             editingResource={editingResource}
             setEditingResource={setEditingResource}
@@ -88,7 +90,7 @@ const Resources = () => {
             purchasedBooks={purchasedBooks}
             isUploading={isUploading}
             handleDownload={handleDownload}
-            handleEditClick={handleEditClick}
+            handleEditClick={isAdmin ? handleEditClick : undefined}
           />
         )}
 

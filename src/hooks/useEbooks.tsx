@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -26,6 +25,8 @@ export const useEbooks = () => {
   const [editingResource, setEditingResource] = useState<Ebook | null>(null);
   const [purchasedBooks, setPurchasedBooks] = useState<Record<string, boolean>>({});
   const [isLoading, setIsLoading] = useState(true);
+  
+  const isAdmin = user?.email === 'artifaks7@gmail.com'; // Replace with your admin email
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -307,7 +308,6 @@ export const useEbooks = () => {
     setIsUploading(true);
 
     try {
-      // Upload PDF file
       const fileExt = selectedFile.name.split('.').pop();
       const fileName = `${Date.now()}_${newBook.title.replace(/\s+/g, '_').toLowerCase()}.${fileExt}`;
       
@@ -319,7 +319,6 @@ export const useEbooks = () => {
         throw fileError;
       }
 
-      // Upload cover image if provided
       let coverFileName = null;
       if (selectedCover) {
         const coverExt = selectedCover.name.split('.').pop();
@@ -334,7 +333,6 @@ export const useEbooks = () => {
         }
       }
 
-      // Insert ebook into database
       const { data: insertData, error: insertError } = await supabase
         .from('ebooks')
         .insert({
@@ -387,6 +385,7 @@ export const useEbooks = () => {
   };
 
   const handleEditClick = (resource: Ebook) => {
+    if (!isAdmin) return;
     setEditingResource(resource);
   };
 
@@ -475,5 +474,6 @@ export const useEbooks = () => {
     handleEditCancel,
     handleEditSubmit,
     handlePriceChange,
+    isAdmin,
   };
 };

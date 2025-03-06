@@ -6,9 +6,10 @@ import { Button } from '@/components/ui/button';
 interface ResourceHeaderProps {
   onAddBook: () => void;
   isAuthenticated: boolean;
+  isAdmin: boolean;
 }
 
-const ResourceHeader: React.FC<ResourceHeaderProps> = ({ onAddBook, isAuthenticated }) => {
+const ResourceHeader: React.FC<ResourceHeaderProps> = ({ onAddBook, isAuthenticated, isAdmin }) => {
   return (
     <>
       <div className="glass sticky top-0 z-10 py-6 px-8 flex items-center justify-center">
@@ -21,7 +22,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = ({ onAddBook, isAuthentica
 
       <div className="mb-6 flex justify-between items-center">
         <h2 className="text-2xl font-semibold text-gray-800">Premium Herbal Resources</h2>
-        {isAuthenticated && (
+        {isAuthenticated && isAdmin && (
           <Button 
             onClick={onAddBook} 
             className="bg-amber-500 hover:bg-amber-600 text-white"
