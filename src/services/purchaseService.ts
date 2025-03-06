@@ -3,104 +3,115 @@ import { supabase } from '@/integrations/supabase/client';
 import { Ebook } from '@/types/ebook';
 
 export const purchaseService = {
-  async createPurchaseRecord(userId: string, ebookId: string | number, stripeSessionId: string) {
-    // Convert any numeric ID to string for database consistency
-    const stringEbookId = String(ebookId);
-    
-    return await supabase
-      .from('purchases')
-      .insert({
-        user_id: userId,
-        ebook_id: stringEbookId,
-        stripe_session_id: stripeSessionId,
-        payment_status: 'pending'
-      });
-  },
-
-  async checkPurchaseStatus(userId: string, ebookId: string | number) {
-    // Convert any numeric ID to string for database consistency
-    const stringEbookId = String(ebookId);
-    
-    const { data, error } = await supabase
-      .from('purchases')
-      .select('*')
-      .eq('user_id', userId)
-      .eq('ebook_id', stringEbookId)
-      .eq('payment_status', 'completed')
-      .single();
-    
-    if (error && error.code !== 'PGRST116') {
-      // PGRST116 is the error for no rows returned
-      console.error('Error checking purchase status:', error);
-    }
-    
-    return !!data; // Return true if purchase exists and is completed
-  },
-
-  async verifyPurchase(userId: string, ebookId: string | number, sessionId: string) {
-    // Convert any numeric ID to string for database consistency
-    const stringEbookId = String(ebookId);
-    
+  // Function to check purchase status
+  async checkPurchaseStatus(userId: string, ebookId: string): Promise<boolean> {
     try {
-      const response = await supabase.functions.invoke('verify-purchase', {
-        body: { userId, ebookId: stringEbookId, sessionId }
+      const { data, error } = await supabase
+        .from('purchases')
+        .select('id')
+        .eq('user_id', userId)
+        .eq('ebook_id', ebookId)
+        .eq('payment_status', 'completed')
+        .single();
+      
+      if (error) {
+        return false;
+      }
+      
+      return !!data;
+    } catch (error) {
+      console.error('Error checking purchase status:', error);
+      return false;
+    }
+  },
+  
+  // Function to create a purchase record
+  async createPurchaseRecord(userId: string, ebookId: string, sessionId: string): Promise<void> {
+    try {
+      await supabase
+        .from('purchases')
+        .insert({
+          user_id: userId,
+          ebook_id: ebookId,
+          stripe_session_id: sessionId,
+          payment_status: 'pending'
+        });
+    } catch (error) {
+      console.error('Error creating purchase record:', error);
+      throw error;
+    }
+  },
+  
+  // Function to verify purchase
+  async verifyPurchase(userId: string, ebookId: string, sessionId: string): Promise<void> {
+    try {
+      const { error } = await supabase.functions.invoke('verify-purchase', {
+        body: { 
+          userId,
+          ebookId,
+          sessionId
+        }
       });
       
-      return response.data;
+      if (error) throw error;
     } catch (error) {
       console.error('Error verifying purchase:', error);
       throw error;
     }
   },
-
+  
+  // Function to get all ebooks from Supabase
   async getAllEbooks() {
-    const { data, error } = await supabase
-      .from('ebooks')
-      .select('*');
-    
-    if (error) {
+    try {
+      const { data, error } = await supabase
+        .from('ebooks')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        throw error;
+      }
+      
+      return data || [];
+    } catch (error) {
       console.error('Error fetching ebooks:', error);
       throw error;
     }
-    
-    return data;
   },
-
-  async migrateInitialEbooks(ebooks: Ebook[]) {
-    // This function will migrate the initial ebooks data to the database
-    const { data, error } = await supabase
-      .from('ebooks')
-      .select('*');
-    
-    if (error) {
-      console.error('Error checking ebooks:', error);
-      return false;
-    }
-    
-    // Only migrate if there are no ebooks yet
-    if (data && data.length === 0) {
-      const ebooksToInsert = ebooks.map(book => ({
-        title: book.title,
-        description: book.description,
-        price: parseFloat(book.price.replace('$', '')),
-        type: book.type,
-        popular: book.popular,
-        file_url: book.fileUrl,
-        cover_url: book.coverUrl
-      }));
-      
-      const { error: insertError } = await supabase
+  
+  // Function to migrate initial ebooks
+  async migrateInitialEbooks(initialEbooks: Ebook[]): Promise<void> {
+    try {
+      // First check if ebooks table is actually empty
+      const { count, error: countError } = await supabase
         .from('ebooks')
-        .insert(ebooksToInsert);
+        .select('*', { count: 'exact', head: true });
       
-      if (insertError) {
-        console.error('Error migrating ebooks:', insertError);
-        return false;
+      if (countError) {
+        throw countError;
       }
       
-      return true;
+      // Only proceed with migration if there are no ebooks
+      if (count === 0) {
+        const ebooksForInsert = initialEbooks.map(ebook => ({
+          title: ebook.title,
+          description: ebook.description,
+          price: parseFloat(ebook.price.replace('$', '')),
+          type: ebook.type,
+          popular: ebook.popular
+        }));
+        
+        const { error: insertError } = await supabase
+          .from('ebooks')
+          .insert(ebooksForInsert);
+        
+        if (insertError) {
+          throw insertError;
+        }
+      }
+    } catch (error) {
+      console.error('Error migrating initial ebooks:', error);
+      throw error;
     }
-    
-    return false;
   }
 };
