@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
@@ -22,20 +23,55 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  // Check if the current user is an admin
+  const checkAdminStatus = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', userId)
+        .single();
+      
+      if (error) {
+        console.error('Error checking admin status:', error);
+        return false;
+      }
+      
+      return data?.role === 'admin';
+    } catch (error) {
+      console.error('Failed to check admin status:', error);
+      return false;
+    }
+  };
+
   useEffect(() => {
     // Check for session on initial load
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setUser(session?.user ?? null);
-      setIsAdmin(session?.user?.user_metadata?.isAdmin === true);
+      
+      if (session?.user) {
+        const isUserAdmin = await checkAdminStatus(session.user.id);
+        setIsAdmin(isUserAdmin);
+      } else {
+        setIsAdmin(false);
+      }
+      
       setIsLoading(false);
     });
 
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user ?? null);
-      setIsAdmin(session?.user?.user_metadata?.isAdmin === true);
+      
+      if (session?.user) {
+        const isUserAdmin = await checkAdminStatus(session.user.id);
+        setIsAdmin(isUserAdmin);
+      } else {
+        setIsAdmin(false);
+      }
+      
       setIsLoading(false);
     });
 
@@ -143,35 +179,67 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setIsLoading(true);
       
-      // First, we need to get the user ID from the email
-      const { data: userData, error: userError } = await supabase
-        .from('profiles')
-        .select('id')
-        .eq('username', email)
-        .maybeSingle();
+      // First check if the user exists
+      const { data: userData, error: userError } = await supabase.auth.admin
+        .getUserByEmail(email)
+        .catch(() => {
+          // Fallback if admin API is not available
+          return supabase
+            .from('profiles')
+            .select('id')
+            .eq('username', email)
+            .maybeSingle();
+        });
       
       if (userError || !userData) {
-        toast({
-          title: "User not found",
-          description: "Could not find a user with that email address",
-          variant: "destructive",
-        });
-        return;
-      }
-      
-      // Update the user's role in the profiles table
-      const { error: profileError } = await supabase
-        .from('profiles')
-        .update({ role: 'admin' })
-        .eq('id', userData.id);
-      
-      if (profileError) {
-        toast({
-          title: "Update failed",
-          description: "Could not update user role in profiles",
-          variant: "destructive",
-        });
-        return;
+        // Try looking up by username instead of email
+        const { data: usernameData, error: usernameError } = await supabase
+          .from('profiles')
+          .select('id')
+          .eq('username', email)
+          .maybeSingle();
+        
+        if (usernameError || !usernameData) {
+          toast({
+            title: "User not found",
+            description: "Could not find a user with that email address",
+            variant: "destructive",
+          });
+          return;
+        }
+        
+        // Update the user's role in the profiles table
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .update({ role: 'admin' })
+          .eq('id', usernameData.id);
+        
+        if (profileError) {
+          toast({
+            title: "Update failed",
+            description: "Could not update user role in profiles",
+            variant: "destructive",
+          });
+          return;
+        }
+      } else {
+        // We have the user data, update their role
+        const userId = userData.id || userData.user?.id;
+        
+        // Update the user's role in the profiles table
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .update({ role: 'admin' })
+          .eq('id', userId);
+        
+        if (profileError) {
+          toast({
+            title: "Update failed",
+            description: "Could not update user role in profiles",
+            variant: "destructive",
+          });
+          return;
+        }
       }
       
       // If the current user is the one being updated, update the admin state

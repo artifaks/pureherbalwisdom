@@ -1,13 +1,13 @@
 
-import React, { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Navigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Shield } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const Auth = () => {
@@ -19,9 +19,42 @@ const Auth = () => {
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
 
-  // If user is already logged in, redirect to resources page
+  // If user is already logged in, show admin link option
   if (user) {
-    return <Navigate to="/resources" />;
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center p-4">
+        <div className="max-w-md w-full">
+          <div className="text-center mb-8">
+            <div className="flex justify-center items-center mb-4">
+              <BookOpen className="h-10 w-10 text-amber-600" />
+            </div>
+            <h1 className="text-3xl font-bold">You're already logged in</h1>
+            <p className="text-gray-600 mt-2">You can access these pages:</p>
+          </div>
+          
+          <div className="space-y-4">
+            <Link to="/resources">
+              <Button className="w-full bg-amber-500 hover:bg-amber-600">
+                Go to Resources
+              </Button>
+            </Link>
+            
+            <Link to="/admin">
+              <Button className="w-full flex items-center justify-center gap-2">
+                <Shield className="h-5 w-5" />
+                Access Admin Page
+              </Button>
+            </Link>
+            
+            <Link to="/">
+              <Button variant="outline" className="w-full">
+                Return to Home
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const handleSignIn = async (e: React.FormEvent) => {
