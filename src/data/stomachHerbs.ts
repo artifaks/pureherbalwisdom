@@ -232,5 +232,70 @@ export const stomachHerbs = [
     ],
     oilPreparation: "1. Crush caraway seeds lightly\n2. Cover with sweet almond oil\n3. Low heat for 2-3 hours\n4. Use for clockwise abdominal massage",
     tincturePreparation: "1. Fill jar 1/4 with crushed caraway seeds\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 15-20 drops after meals"
+  },
+  {
+    id: 'burdock',
+    name: 'Burdock Root',
+    color: '#8D6E63',
+    benefits: [
+      'Supports digestive function',
+      'Acts as a mild laxative',
+      'Has prebiotic properties',
+      'Traditional remedy for gut inflammation'
+    ],
+    oilPreparation: "1. Clean and finely chop burdock root\n2. Add to olive oil at 1:5 ratio\n3. Infuse in double boiler for 3 hours\n4. Strain and store in amber bottles",
+    tincturePreparation: "1. Fill jar 1/3 with chopped burdock root\n2. Cover with 100 proof alcohol\n3. Macerate for 6-8 weeks\n4. Take 20-30 drops before meals"
+  },
+  {
+    id: 'calendula',
+    name: 'Calendula',
+    color: '#FFA000',
+    benefits: [
+      'Soothes mucous membranes in digestive tract',
+      'Reduces inflammation in stomach and intestines',
+      'Helps heal gastric ulcers',
+      'Supports gut microbiome balance'
+    ],
+    oilPreparation: "1. Use dried calendula flowers\n2. Cover with olive or jojoba oil\n3. Infuse for 4 weeks in sunlight\n4. Strain and use for gut massage",
+    tincturePreparation: "1. Fill jar 2/3 with calendula flowers\n2. Cover with brandy or vodka\n3. Store for 4 weeks in dark place\n4. Take 15-20 drops with warm water"
+  },
+  {
+    id: 'turmeric',
+    name: 'Turmeric',
+    color: '#FF9800',
+    benefits: [
+      'Powerful anti-inflammatory for digestive tract',
+      'Stimulates bile production',
+      'Helps with irritable bowel syndrome',
+      'Supports microbiome diversity'
+    ],
+    oilPreparation: "1. Use fresh grated turmeric root\n2. Mix with coconut oil and black pepper\n3. Heat gently for 1-2 hours\n4. Strain and refrigerate",
+    tincturePreparation: "1. Fill jar 1/4 with fresh turmeric root\n2. Add cracked black pepper\n3. Cover with alcohol\n4. Macerate for 6 weeks, then strain"
+  },
+  {
+    id: 'yarrow',
+    name: 'Yarrow',
+    color: '#DCEDC8',
+    benefits: [
+      'Helps with digestive spasms',
+      'Has bitter properties that stimulate digestion',
+      'Traditional remedy for intestinal inflammation',
+      'Supports liver function'
+    ],
+    oilPreparation: "1. Use dried yarrow flowers and leaves\n2. Cover with olive oil\n3. Infuse for 3 weeks\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar 1/2 with yarrow\n2. Cover with 100 proof vodka\n3. Store for 4-6 weeks\n4. Take 10-15 drops before meals"
+  },
+  {
+    id: 'plantain',
+    name: 'Plantain Leaf',
+    color: '#7CB342',
+    benefits: [
+      'Creates protective mucilage for gut lining',
+      'Soothes inflammation in digestive tract',
+      'Helps with leaky gut syndrome',
+      'Traditional remedy for ulcerative colitis'
+    ],
+    oilPreparation: "1. Gather fresh plantain leaves\n2. Wilt slightly, then chop\n3. Cover with olive oil\n4. Infuse for 4 weeks in cool place",
+    tincturePreparation: "1. Fill jar with fresh plantain leaves\n2. Cover with apple cider vinegar or alcohol\n3. Store for 6 weeks\n4. Use 1/4 teaspoon as needed"
   }
 ];

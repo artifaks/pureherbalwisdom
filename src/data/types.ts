@@ -1,3 +1,4 @@
+
 export interface Herb {
   id: string;
   name: string;
@@ -8,4 +9,4 @@ export interface Herb {
   category?: HerbCategory;
 }
 
-export type HerbCategory = 'heart' | 'stomach' | 'mens' | 'womens';
+export type HerbCategory = 'heart' | 'stomach' | 'mens' | 'womens' | 'brain';
