@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -50,16 +51,19 @@ export const useEbooks = () => {
       const data = await purchaseService.getAllEbooks();
       
       if (data && data.length > 0) {
-        const formattedBooks = data.map(book => ({
-          id: book.id,
-          title: book.title,
-          description: book.description || "",
-          price: `$${book.price.toFixed(2)}`,
-          type: book.type,
-          popular: book.popular,
-          fileUrl: book.file_url,
-          coverUrl: book.cover_url
-        }));
+        // Filter to only include ebooks with a fileUrl (PDF attached)
+        const formattedBooks = data
+          .filter(book => book.file_url) // Only include books with a PDF file
+          .map(book => ({
+            id: book.id,
+            title: book.title,
+            description: book.description || "",
+            price: `$${book.price.toFixed(2)}`,
+            type: book.type,
+            popular: book.popular,
+            fileUrl: book.file_url,
+            coverUrl: book.cover_url
+          }));
         setResources(formattedBooks);
       } else {
         setResources([]);

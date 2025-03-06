@@ -66,6 +66,7 @@ export const purchaseService = {
       const { data, error } = await supabase
         .from('ebooks')
         .select('*')
+        .filter('file_url', 'not.is', null) // Only get ebooks with a PDF file
         .order('created_at', { ascending: false });
       
       if (error) {
