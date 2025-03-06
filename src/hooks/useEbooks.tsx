@@ -147,6 +147,12 @@ export const useEbooks = () => {
     }
   };
 
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (editingResource) {
+      setEditingResource({...editingResource, title: e.target.value});
+    }
+  };
+
   const handlePurchase = async (resource: Ebook) => {
     if (!user) {
       toast({
@@ -406,6 +412,7 @@ export const useEbooks = () => {
       const { error } = await supabase
         .from('ebooks')
         .update({
+          title: editingResource.title,
           price: parseFloat(editingResource.price.replace('$', '')),
           description: editingResource.description,
           cover_url: updatedCoverUrl
@@ -509,5 +516,6 @@ export const useEbooks = () => {
     handlePriceChange,
     isAdmin,
     handleDeleteEbook,
+    handleTitleChange,
   };
 };

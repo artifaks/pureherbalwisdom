@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 import { Ebook } from '@/types/ebook';
 
@@ -140,6 +139,23 @@ export const purchaseService = {
       }
     } catch (error) {
       console.error('Error deleting ebook:', error);
+      throw error;
+    }
+  },
+  
+  // Function to update an ebook title
+  async updateEbookTitle(ebookId: string, newTitle: string): Promise<void> {
+    try {
+      const { error } = await supabase
+        .from('ebooks')
+        .update({ title: newTitle })
+        .eq('id', ebookId);
+      
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      console.error('Error updating ebook title:', error);
       throw error;
     }
   },

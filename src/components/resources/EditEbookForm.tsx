@@ -14,6 +14,7 @@ interface EditEbookFormProps {
   onCancel: () => void;
   onSubmit: (e: React.FormEvent) => void;
   handlePriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleTitleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleDescriptionChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   handleCoverChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   selectedCover: File | null;
@@ -25,6 +26,7 @@ const EditEbookForm: React.FC<EditEbookFormProps> = ({
   onCancel,
   onSubmit,
   handlePriceChange,
+  handleTitleChange,
   handleDescriptionChange,
   handleCoverChange,
   selectedCover
@@ -32,7 +34,7 @@ const EditEbookForm: React.FC<EditEbookFormProps> = ({
   return (
     <Card className="mb-10 p-6">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold">Edit E-Book: {editingResource.title}</h3>
+        <h3 className="text-xl font-semibold">Edit E-Book</h3>
         <Button 
           variant="ghost" 
           size="icon" 
@@ -43,6 +45,19 @@ const EditEbookForm: React.FC<EditEbookFormProps> = ({
         </Button>
       </div>
       <form onSubmit={onSubmit} className="space-y-4">
+        {handleTitleChange && (
+          <div>
+            <Label htmlFor="edit-title">Title</Label>
+            <Input 
+              id="edit-title"
+              type="text"
+              value={editingResource.title}
+              onChange={handleTitleChange}
+              required
+            />
+          </div>
+        )}
+        
         <div>
           <Label htmlFor="edit-price">Price ($)</Label>
           <Input 
