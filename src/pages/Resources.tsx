@@ -1,4 +1,3 @@
-
 import React, { useEffect, useCallback, useState } from 'react';
 import { useEbooks } from '@/hooks/useEbooks';
 import MainNavigation from '@/components/MainNavigation';
@@ -6,7 +5,6 @@ import ResourceHeader from '@/components/resources/ResourceHeader';
 import EbookList from '@/components/resources/EbookList';
 import AddEbookForm from '@/components/resources/AddEbookForm';
 import EditEbookForm from '@/components/resources/EditEbookForm';
-import SubscriptionBanner from '@/components/resources/SubscriptionBanner';
 import AuthRequired from '@/components/resources/AuthRequired';
 
 const Resources = () => {
@@ -131,7 +129,7 @@ const Resources = () => {
           />
         )}
 
-        <SubscriptionBanner />
+        {/* SubscriptionBanner component removed */}
       </div>
 
       <div className="mt-auto py-6 border-t border-gray-200 bg-white/50">
