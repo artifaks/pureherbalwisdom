@@ -33,6 +33,7 @@ const Resources = () => {
     handleEditCancel,
     handleEditSubmit,
     handlePriceChange,
+    handleDescriptionChange,
     isAdmin,
   } = useEbooks();
 
@@ -77,6 +78,9 @@ const Resources = () => {
             onCancel={handleEditCancel}
             onSubmit={handleEditSubmit}
             handlePriceChange={handlePriceChange}
+            handleDescriptionChange={handleDescriptionChange}
+            handleCoverChange={handleCoverChange}
+            selectedCover={selectedCover}
           />
         )}
 

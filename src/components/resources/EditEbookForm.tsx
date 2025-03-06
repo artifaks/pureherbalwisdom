@@ -1,10 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { Ebook } from '@/types/ebook';
 
 interface EditEbookFormProps {
@@ -13,6 +14,9 @@ interface EditEbookFormProps {
   onCancel: () => void;
   onSubmit: (e: React.FormEvent) => void;
   handlePriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleDescriptionChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleCoverChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  selectedCover: File | null;
 }
 
 const EditEbookForm: React.FC<EditEbookFormProps> = ({
@@ -20,12 +24,15 @@ const EditEbookForm: React.FC<EditEbookFormProps> = ({
   setEditingResource,
   onCancel,
   onSubmit,
-  handlePriceChange
+  handlePriceChange,
+  handleDescriptionChange,
+  handleCoverChange,
+  selectedCover
 }) => {
   return (
     <Card className="mb-10 p-6">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold">Edit Price: {editingResource.title}</h3>
+        <h3 className="text-xl font-semibold">Edit E-Book: {editingResource.title}</h3>
         <Button 
           variant="ghost" 
           size="icon" 
@@ -48,12 +55,44 @@ const EditEbookForm: React.FC<EditEbookFormProps> = ({
             required
           />
         </div>
+        
+        <div>
+          <Label htmlFor="edit-description">Description</Label>
+          <Textarea 
+            id="edit-description"
+            value={editingResource.description}
+            onChange={handleDescriptionChange}
+            className="min-h-[100px]"
+            required
+          />
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-cover">Cover Image (Optional)</Label>
+          <Input 
+            id="edit-cover"
+            type="file"
+            accept="image/*"
+            onChange={handleCoverChange}
+          />
+          {selectedCover && (
+            <p className="text-sm text-green-600 mt-1">
+              New cover selected: {selectedCover.name}
+            </p>
+          )}
+          {editingResource.coverUrl && !selectedCover && (
+            <p className="text-sm text-gray-500 mt-1">
+              Current cover will be kept if no new image is selected
+            </p>
+          )}
+        </div>
+        
         <div className="flex gap-2 pt-2">
           <Button 
             type="submit" 
             className="bg-amber-500 hover:bg-amber-600"
           >
-            Save Price
+            Save Changes
           </Button>
           <Button 
             type="button" 

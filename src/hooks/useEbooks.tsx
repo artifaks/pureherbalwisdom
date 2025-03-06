@@ -184,6 +184,12 @@ export const useEbooks = () => {
     }
   };
 
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (editingResource) {
+      setEditingResource({...editingResource, description: e.target.value});
+    }
+  };
+
   const handlePurchase = async (resource: Ebook) => {
     if (!user) {
       toast({
@@ -387,10 +393,12 @@ export const useEbooks = () => {
   const handleEditClick = (resource: Ebook) => {
     if (!isAdmin) return;
     setEditingResource(resource);
+    setSelectedCover(null);
   };
 
   const handleEditCancel = () => {
     setEditingResource(null);
+    setSelectedCover(null);
   };
 
   const handleEditSubmit = async (e: React.FormEvent) => {
@@ -407,36 +415,75 @@ export const useEbooks = () => {
     
     if (!editingResource) return;
     
+    setIsUploading(true);
+    
     try {
+      let updatedCoverUrl = editingResource.coverUrl;
+      
+      if (selectedCover) {
+        if (editingResource.coverUrl) {
+          const { error: deleteError } = await supabase.storage
+            .from('e-books')
+            .remove([editingResource.coverUrl]);
+          
+          if (deleteError) {
+            console.error("Error deleting old cover:", deleteError);
+            // Continue anyway
+          }
+        }
+        
+        const coverExt = selectedCover.name.split('.').pop();
+        const coverFileName = `cover_${Date.now()}_${editingResource.title.replace(/\s+/g, '_').toLowerCase()}.${coverExt}`;
+        
+        const { error: coverError } = await supabase.storage
+          .from('e-books')
+          .upload(coverFileName, selectedCover);
+        
+        if (coverError) {
+          throw coverError;
+        }
+        
+        updatedCoverUrl = coverFileName;
+      }
+      
       const { error } = await supabase
         .from('ebooks')
         .update({
-          price: parseFloat(editingResource.price.replace('$', ''))
+          price: parseFloat(editingResource.price.replace('$', '')),
+          description: editingResource.description,
+          cover_url: updatedCoverUrl
         })
         .eq('id', editingResource.id);
       
       if (error) throw error;
       
-      const updatedResources = resources.map(resource => 
-        resource.id === editingResource.id 
-          ? editingResource 
-          : resource
-      );
+      const updatedResources = resources.map(resource => {
+        if (resource.id === editingResource.id) {
+          return {
+            ...editingResource,
+            coverUrl: updatedCoverUrl
+          };
+        }
+        return resource;
+      });
       
       setResources(updatedResources);
       setEditingResource(null);
+      setSelectedCover(null);
       
       toast({
-        title: "Price Updated",
-        description: `"${editingResource.title}" price has been updated to ${editingResource.price}.`,
+        title: "E-Book Updated",
+        description: `"${editingResource.title}" has been updated successfully.`,
       });
     } catch (error: any) {
-      console.error("Error updating price:", error);
+      console.error("Error updating e-book:", error);
       toast({
         title: "Update Failed",
-        description: error.message || "There was an error updating the price",
+        description: error.message || "There was an error updating the e-book",
         variant: "destructive",
       });
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -467,7 +514,7 @@ export const useEbooks = () => {
     purchasedBooks,
     handleFileChange,
     handleCoverChange,
-    handlePurchase,
+    handleDescriptionChange,
     handleDownload,
     handleAddBookSubmit,
     handleEditClick,
