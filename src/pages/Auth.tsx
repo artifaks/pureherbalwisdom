@@ -13,6 +13,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [signupMessage, setSignupMessage] = useState<{ type: 'success' | 'error', message: string } | null>(null);
   const { user, signIn, signUp } = useAuth();
@@ -41,15 +42,18 @@ const Auth = () => {
     try {
       setIsLoading(true);
       setSignupMessage(null);
-      const result = await signUp(email, password);
+      await signUp(email, password, username);
       
-      if (result.success) {
-        setSignupMessage({ type: 'success', message: result.message });
-      } else {
-        setSignupMessage({ type: 'error', message: result.message });
-      }
-    } catch (error) {
+      setSignupMessage({ 
+        type: 'success', 
+        message: 'Account created successfully! Check your email to confirm your account.' 
+      });
+    } catch (error: any) {
       console.error('Error signing up:', error);
+      setSignupMessage({ 
+        type: 'error', 
+        message: error.message || 'An error occurred during signup.'
+      });
     } finally {
       setIsLoading(false);
     }
@@ -140,6 +144,17 @@ const Auth = () => {
                       placeholder="your@email.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-username">Username</Label>
+                    <Input
+                      id="signup-username"
+                      type="text"
+                      placeholder="username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                       required
                     />
                   </div>

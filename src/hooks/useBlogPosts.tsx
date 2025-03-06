@@ -22,30 +22,43 @@ export const useBlogPosts = () => {
       setIsLoading(true);
       console.log('Fetching blog posts...');
       
-      const { data, error } = await supabase
+      // First get all blog posts
+      const { data: blogPostsData, error: blogPostsError } = await supabase
         .from('blog_posts')
-        .select('*, profiles(username)')
+        .select('*')
         .order('created_at', { ascending: false });
       
-      if (error) {
-        throw error;
+      if (blogPostsError) {
+        throw blogPostsError;
       }
       
-      if (data) {
-        // Format the data to match our BlogPost type
-        const formattedPosts: BlogPost[] = data.map(post => ({
-          id: post.id,
-          title: post.title,
-          content: post.content,
-          excerpt: post.excerpt || undefined,
-          author: post.profiles?.username || undefined,
-          created_at: post.created_at,
-          updated_at: post.updated_at,
-          user_id: post.user_id
-        }));
+      if (blogPostsData) {
+        // Get user profile information separately for each post
+        const postsWithAuthors = await Promise.all(
+          blogPostsData.map(async (post) => {
+            // Get author username from profiles table
+            const { data: profileData } = await supabase
+              .from('profiles')
+              .select('username')
+              .eq('id', post.user_id)
+              .single();
+            
+            // Format the post with author info
+            return {
+              id: post.id,
+              title: post.title,
+              content: post.content,
+              excerpt: post.excerpt || undefined,
+              author: profileData?.username || undefined,
+              created_at: post.created_at,
+              updated_at: post.updated_at,
+              user_id: post.user_id
+            } as BlogPost;
+          })
+        );
         
-        setPosts(formattedPosts);
-        console.log('Blog posts loaded:', formattedPosts.length);
+        setPosts(postsWithAuthors);
+        console.log('Blog posts loaded:', postsWithAuthors.length);
       }
     } catch (error) {
       console.error('Error fetching blog posts:', error);
