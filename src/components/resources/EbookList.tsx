@@ -23,7 +23,8 @@ const EbookList: React.FC<EbookListProps> = ({
   handleDeleteClick,
   refreshData
 }) => {
-  if (resources.length === 0) {
+  // Add a check for resources being undefined
+  if (!resources || resources.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
         <BookOpen className="h-16 w-16 text-gray-400 mb-4" />

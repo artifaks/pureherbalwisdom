@@ -1,3 +1,4 @@
+
 import React, { useEffect, useCallback, useState } from 'react';
 import { useEbooks } from '@/hooks/useEbooks';
 import MainNavigation from '@/components/MainNavigation';
@@ -6,8 +7,10 @@ import EbookList from '@/components/resources/EbookList';
 import AddEbookForm from '@/components/resources/AddEbookForm';
 import EditEbookForm from '@/components/resources/EditEbookForm';
 import AuthRequired from '@/components/resources/AuthRequired';
+import { useToast } from '@/hooks/use-toast';
 
 const Resources = () => {
+  const { toast } = useToast();
   const {
     user,
     resources,
@@ -48,9 +51,16 @@ const Resources = () => {
     fetchResources(); // Explicitly fetch resources when refresh is triggered
   }, [fetchResources]);
 
+  // Initial fetch on component mount
+  useEffect(() => {
+    console.log("Resources component mounted, fetching resources...");
+    fetchResources();
+  }, [fetchResources]);
+
   // Re-fetch data when forceRefresh changes
   useEffect(() => {
     if (forceRefresh > 0) {
+      console.log("Force refreshing resources...");
       fetchResources();
     }
   }, [forceRefresh, fetchResources]);
@@ -112,7 +122,10 @@ const Resources = () => {
 
         {isLoading ? (
           <div className="text-center py-20">
-            <p className="text-gray-600">Loading resources...</p>
+            <div className="flex flex-col items-center">
+              <div className="h-8 w-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p className="text-gray-600">Loading resources...</p>
+            </div>
           </div>
         ) : (
           <EbookList
@@ -122,14 +135,25 @@ const Resources = () => {
             handleDownload={handleDownload}
             handleEditClick={isAdmin ? handleEditClick : undefined}
             handleDeleteClick={isAdmin ? async (resource) => {
-              await handleDeleteEbook(resource);
-              refreshData();
+              try {
+                await handleDeleteEbook(resource);
+                toast({
+                  title: "E-book Deleted",
+                  description: `"${resource.title}" has been deleted successfully.`,
+                });
+                refreshData();
+              } catch (error: any) {
+                console.error('Error in delete handler:', error);
+                toast({
+                  title: "Delete Failed",
+                  description: error.message || "There was an error deleting the e-book",
+                  variant: "destructive",
+                });
+              }
             } : undefined}
             refreshData={refreshData}
           />
         )}
-
-        {/* SubscriptionBanner component removed */}
       </div>
 
       <div className="mt-auto py-6 border-t border-gray-200 bg-white/50">
