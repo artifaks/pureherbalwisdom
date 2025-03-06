@@ -97,25 +97,32 @@ export const purchaseService = {
   // Function to delete an ebook
   async deleteEbook(ebookId: string): Promise<void> {
     try {
+      console.log("PurchaseService: Deleting ebook with ID:", ebookId);
+      
+      // First, fetch the ebook to get file references
       const { data: ebook, error: fetchError } = await supabase
         .from('ebooks')
         .select('file_url, cover_url')
         .eq('id', ebookId)
-        .maybeSingle();
+        .single();
       
       if (fetchError) {
+        console.error("PurchaseService: Error fetching ebook:", fetchError);
         throw fetchError;
       }
       
+      // Delete the ebook record from database first
       const { error: deleteError } = await supabase
         .from('ebooks')
         .delete()
         .eq('id', ebookId);
       
       if (deleteError) {
+        console.error("PurchaseService: Error deleting ebook:", deleteError);
         throw deleteError;
       }
       
+      // Then delete any associated files if they exist
       if (ebook) {
         const filesToDelete = [];
         
@@ -128,17 +135,21 @@ export const purchaseService = {
         }
         
         if (filesToDelete.length > 0) {
+          console.log("PurchaseService: Deleting files:", filesToDelete);
           const { error: storageError } = await supabase.storage
             .from('e-books')
             .remove(filesToDelete);
           
           if (storageError) {
-            console.error('Error deleting files:', storageError);
+            console.error('PurchaseService: Error deleting files:', storageError);
+            // We don't throw here since the ebook record was already deleted
           }
         }
       }
+      
+      console.log("PurchaseService: Ebook successfully deleted");
     } catch (error) {
-      console.error('Error deleting ebook:', error);
+      console.error('PurchaseService: Error in deleteEbook:', error);
       throw error;
     }
   },
