@@ -38,6 +38,7 @@ const HerbDetailModal: React.FC<HerbDetailModalProps> = ({
     stomach: {name: 'Digestive Health', color: 'text-green-600'},
     mens: {name: 'Men\'s Health', color: 'text-blue-600'},
     womens: {name: 'Women\'s Health', color: 'text-pink-600'},
+    brain: {name: 'Brain Health', color: 'text-purple-600'}
   }[activeHerb.category || 'heart'];
 
   // Close modal when clicking backdrop

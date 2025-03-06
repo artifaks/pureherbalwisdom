@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Heart, Leaf, Sprout, Flower } from 'lucide-react';
+import { Heart, Leaf, Sprout, Flower, Brain } from 'lucide-react';
 import { HerbCategory } from '@/data/types';
 
 const ColorLegend: React.FC = () => {
@@ -38,6 +38,13 @@ const ColorLegend: React.FC = () => {
       color: '#C2185B',
       icon: <Flower size={16} className="text-herb-womens" />,
       description: 'Female reproductive & hormonal herbs'
+    },
+    {
+      category: 'brain',
+      name: "Brain Health",
+      color: '#9C27B0',
+      icon: <Brain size={16} className="text-herb-brain" />,
+      description: 'Cognitive function & focus herbs'
     }
   ];
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
 import { HerbCategory } from '@/data/types';
-import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, BookmarkPlus, Bookmark } from 'lucide-react';
+import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, BookmarkPlus, Bookmark, Brain } from 'lucide-react';
 
 interface HerbCardProps {
   id: string;
@@ -72,6 +72,8 @@ const getCategoryColor = (category?: HerbCategory): string => {
       return '#8D6E63'; // Brown for men's herbs
     case 'womens':
       return '#C2185B'; // Pink for women's herbs
+    case 'brain':
+      return '#9C27B0'; // Purple for brain herbs
     default:
       return '#757575'; // Default gray
   }
@@ -157,7 +159,8 @@ const HerbCard: React.FC<HerbCardProps> = ({
             {category === 'heart' ? 'Heart' : 
              category === 'stomach' ? 'Stomach' : 
              category === 'mens' ? "Men's" : 
-             "Women's"}
+             category === 'womens' ? "Women's" :
+             category === 'brain' ? "Brain" : ""}
           </span>
         </div>
       )}
