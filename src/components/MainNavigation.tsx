@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { BookOpen, Home, Leaf } from 'lucide-react';
+import { BookOpen, Home, Leaf, FileText } from 'lucide-react';
 
 interface NavItemProps {
   to: string;
@@ -42,6 +42,7 @@ const MainNavigation: React.FC = () => {
         <div className="flex items-center space-x-2">
           <NavItem to="/" label="Herbs" icon={<Home className="h-5 w-5" />} />
           <NavItem to="/resources" label="E-Books & Resources" icon={<BookOpen className="h-5 w-5" />} />
+          <NavItem to="/blog" label="Blog" icon={<FileText className="h-5 w-5" />} />
         </div>
       </div>
     </nav>
