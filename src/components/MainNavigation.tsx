@@ -32,8 +32,10 @@ const MainNavigation: React.FC = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo/Brand */}
         <div className="flex items-center">
-          <Leaf className="h-6 w-6 text-amber-600" />
-          <span className="ml-2 text-xl font-semibold text-gray-800">Herb Guide</span>
+          <NavLink to="/" className="flex items-center">
+            <Leaf className="h-6 w-6 text-amber-600" />
+            <span className="ml-2 text-xl font-semibold text-gray-800">Herb Guide</span>
+          </NavLink>
         </div>
         
         {/* Navigation Items */}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEbooks } from '@/hooks/useEbooks';
+import MainNavigation from '@/components/MainNavigation';
 import ResourceHeader from '@/components/resources/ResourceHeader';
 import EbookList from '@/components/resources/EbookList';
 import AddEbookForm from '@/components/resources/AddEbookForm';
@@ -43,13 +44,14 @@ const Resources = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-      <ResourceHeader 
-        onAddBook={() => setIsAddingBook(true)} 
-        isAuthenticated={!!user}
-        isAdmin={isAdmin}
-      />
-
+      <MainNavigation />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <ResourceHeader 
+          onAddBook={() => setIsAddingBook(true)} 
+          isAuthenticated={!!user}
+          isAdmin={isAdmin}
+        />
+
         {isAddingBook && isAdmin && (
           <AddEbookForm
             newBook={newBook}
