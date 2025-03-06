@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useEbooks } from '@/hooks/useEbooks';
 import ResourceHeader from '@/components/resources/ResourceHeader';
@@ -35,6 +34,7 @@ const Resources = () => {
     handlePriceChange,
     handleDescriptionChange,
     isAdmin,
+    handleDeleteEbook,
   } = useEbooks();
 
   if (!user) {
@@ -95,6 +95,7 @@ const Resources = () => {
             isUploading={isUploading}
             handleDownload={handleDownload}
             handleEditClick={isAdmin ? handleEditClick : undefined}
+            handleDeleteClick={isAdmin ? handleDeleteEbook : undefined}
           />
         )}
 

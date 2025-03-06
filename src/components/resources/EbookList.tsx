@@ -9,6 +9,7 @@ interface EbookListProps {
   isUploading: boolean;
   handleDownload: (resource: Ebook) => void;
   handleEditClick: (resource: Ebook) => void;
+  handleDeleteClick?: (resource: Ebook) => void;
 }
 
 const EbookList: React.FC<EbookListProps> = ({ 
@@ -16,7 +17,8 @@ const EbookList: React.FC<EbookListProps> = ({
   purchasedBooks,
   isUploading, 
   handleDownload, 
-  handleEditClick 
+  handleEditClick,
+  handleDeleteClick
 }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -27,6 +29,7 @@ const EbookList: React.FC<EbookListProps> = ({
           isPurchased={purchasedBooks[resource.id] || false}
           onDownload={handleDownload}
           onEditClick={handleEditClick}
+          onDeleteClick={handleDeleteClick}
         />
       ))}
     </div>

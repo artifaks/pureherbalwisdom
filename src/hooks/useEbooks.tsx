@@ -496,6 +496,60 @@ export const useEbooks = () => {
     }
   };
 
+  const handleDeleteEbook = async (resource: Ebook) => {
+    if (!user || !isAdmin) {
+      toast({
+        title: "Permission Denied",
+        description: "You don't have permission to delete e-books.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('ebooks')
+        .delete()
+        .eq('id', resource.id);
+
+      if (error) throw error;
+
+      if (resource.coverUrl) {
+        const { error: storageError } = await supabase.storage
+          .from('e-books')
+          .remove([resource.coverUrl]);
+        
+        if (storageError) {
+          console.error('Error deleting cover image:', storageError);
+        }
+      }
+
+      if (resource.fileUrl) {
+        const { error: storageError } = await supabase.storage
+          .from('e-books')
+          .remove([resource.fileUrl]);
+        
+        if (storageError) {
+          console.error('Error deleting e-book file:', storageError);
+        }
+      }
+
+      setResources(resources.filter(r => r.id !== resource.id));
+
+      toast({
+        title: "E-book Deleted",
+        description: `"${resource.title}" has been deleted successfully.`,
+      });
+    } catch (error: any) {
+      console.error('Error deleting e-book:', error);
+      toast({
+        title: "Delete Failed",
+        description: error.message || "There was an error deleting the e-book",
+        variant: "destructive",
+      });
+    }
+  };
+
   return {
     user,
     resources,
@@ -522,5 +576,6 @@ export const useEbooks = () => {
     handleEditSubmit,
     handlePriceChange,
     isAdmin,
+    handleDeleteEbook,
   };
 };

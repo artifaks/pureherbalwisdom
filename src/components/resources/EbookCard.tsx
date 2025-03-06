@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Download, Edit } from 'lucide-react';
+import { Download, Edit, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { BookOpen } from 'lucide-react';
@@ -12,13 +12,15 @@ interface EbookCardProps {
   isPurchased: boolean;
   onDownload: (resource: Ebook) => void;
   onEditClick: (resource: Ebook) => void;
+  onDeleteClick?: (resource: Ebook) => void;
 }
 
 const EbookCard: React.FC<EbookCardProps> = ({ 
   resource, 
   isPurchased, 
   onDownload, 
-  onEditClick 
+  onEditClick,
+  onDeleteClick 
 }) => {
   return (
     <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -57,6 +59,16 @@ const EbookCard: React.FC<EbookCardProps> = ({
             >
               <Edit className="h-3 w-3" />
             </Button>
+            {onDeleteClick && (
+              <Button 
+                onClick={() => onDeleteClick(resource)}
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8 text-gray-500 hover:text-red-600"
+              >
+                <Trash2 className="h-3 w-3" />
+              </Button>
+            )}
           </div>
           <Button 
             onClick={() => onDownload(resource)}
