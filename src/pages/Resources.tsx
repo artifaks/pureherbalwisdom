@@ -41,7 +41,10 @@ const Resources = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-      <ResourceHeader onAddBook={() => setIsAddingBook(true)} />
+      <ResourceHeader 
+        onAddBook={() => setIsAddingBook(true)} 
+        isAuthenticated={!!user}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {isAddingBook && (
