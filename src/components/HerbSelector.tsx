@@ -57,9 +57,18 @@ const HerbSelector: React.FC<HerbSelectorProps> = ({
     return savedHerbs.some(herb => herb.id === herbId);
   };
 
+  // Only display categories that have herbs
+  const categoriesToShow = Object.entries(categorizedHerbs).filter(
+    ([_, herbList]) => herbList.length > 0
+  );
+
+  console.log("Brain herbs count:", categorizedHerbs.brain.length);
+  console.log("All herbs count:", herbs.length);
+  console.log("Brain herbs:", categorizedHerbs.brain);
+
   return (
     <div className="glass-dark mx-3 sm:mx-6 my-4 p-2 sm:p-4 rounded-xl overflow-auto">
-      {Object.entries(categorizedHerbs).map(([category, herbList]) => (
+      {categoriesToShow.map(([category, herbList]) => (
         <div key={category} className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-lg transition-all duration-300 ${categoryConfig[category as HerbCategory].bgColor} ${activeHerb?.category === category ? 'ring-2 ring-accent/30 shadow-md' : ''}`}>
           <div className="flex items-center mb-2 sm:mb-3">
             <CategoryIcon category={category as HerbCategory} size={18} className="mr-2" />

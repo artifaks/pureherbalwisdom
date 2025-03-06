@@ -73,3 +73,6 @@ export const brainHerbs: Herb[] = [
     category: 'brain'
   }
 ];
+
+// For debugging
+console.log("Brain herbs exported:", brainHerbs.length);

@@ -12,5 +12,9 @@ export const allHerbs: Herb[] = [
   ...stomachHerbs.map(herb => ({ ...herb, category: 'stomach' as const })),
   ...mensHerbs.map(herb => ({ ...herb, category: 'mens' as const })),
   ...womensHerbs.map(herb => ({ ...herb, category: 'womens' as const })),
-  ...brainHerbs // These already have category assigned
+  ...brainHerbs.map(herb => ({ ...herb, category: 'brain' as const })) // Ensure category is added
 ];
+
+// For debugging
+console.log("Total herbs:", allHerbs.length);
+console.log("Brain herbs count:", brainHerbs.length);
