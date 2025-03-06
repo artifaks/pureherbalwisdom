@@ -1,8 +1,8 @@
-
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import { AdminUserAttributes } from "@supabase/supabase-js";
 
 type AuthContextType = {
   user: any | null;
@@ -23,7 +23,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Check if the current user is an admin
   const checkAdminStatus = async (userId: string) => {
     try {
       const { data, error } = await supabase
@@ -45,7 +44,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    // Check for session on initial load
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       setUser(session?.user ?? null);
       
@@ -59,7 +57,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setIsLoading(false);
     });
 
-    // Listen for auth changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (_event, session) => {
@@ -179,7 +176,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setIsLoading(true);
       
-      // First try to find user by their email address directly in profiles table
       const { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .select('id')
@@ -198,10 +194,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       let userId = profileData?.id;
       
-      // If we couldn't find by username in profiles, try to get user from auth table
       if (!userId) {
-        // Look for the user by email in the auth users
-        const { data: userData, error: userError } = await supabase.auth
+        const { data, error: userError } = await supabase.auth
           .admin.listUsers();
         
         if (userError) {
@@ -214,8 +208,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           return;
         }
         
-        // Find the user with matching email
-        const matchedUser = userData?.users?.find(u => u.email === email);
+        const users = data?.users as Array<{ id: string, email?: string }>;
+        const matchedUser = users?.find(u => u.email === email);
         
         if (!matchedUser) {
           toast({
@@ -238,7 +232,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return;
       }
       
-      // Update the user's role in the profiles table
       const { error: updateError } = await supabase
         .from('profiles')
         .update({ role: 'admin' })
@@ -254,7 +247,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return;
       }
       
-      // If the current user is the one being updated, update the admin state
       if (user && (user.email === email || user.id === userId)) {
         setIsAdmin(true);
       }
