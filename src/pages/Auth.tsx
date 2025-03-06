@@ -7,8 +7,10 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Shield } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Badge } from '@/components/ui/badge';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -16,6 +18,7 @@ const Auth = () => {
   const [username, setUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [signupMessage, setSignupMessage] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+  const [isAdminAccount, setIsAdminAccount] = useState(false);
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
 
@@ -42,7 +45,7 @@ const Auth = () => {
     try {
       setIsLoading(true);
       setSignupMessage(null);
-      await signUp(email, password, username);
+      await signUp(email, password, username, isAdminAccount);
       
       setSignupMessage({ 
         type: 'success', 
@@ -168,6 +171,24 @@ const Auth = () => {
                       required
                     />
                     <p className="text-xs text-gray-500">Password must be at least 6 characters</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox 
+                      id="admin-account" 
+                      checked={isAdminAccount} 
+                      onCheckedChange={(checked) => setIsAdminAccount(checked === true)}
+                    />
+                    <div className="grid gap-1.5 leading-none">
+                      <Label htmlFor="admin-account" className="flex items-center gap-2">
+                        Create as Admin account
+                        <Badge variant="outline" className="flex items-center gap-1 bg-amber-50">
+                          <Shield className="h-3 w-3" /> Admin
+                        </Badge>
+                      </Label>
+                      <p className="text-xs text-muted-foreground">
+                        Admin accounts can create, edit, and delete blog posts
+                      </p>
+                    </div>
                   </div>
                 </CardContent>
                 <CardFooter>
