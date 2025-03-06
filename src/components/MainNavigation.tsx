@@ -30,7 +30,6 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, icon }) => {
 
 const MainNavigation: React.FC = () => {
   const { user, signOut, isAdmin } = useAuth();
-  console.log('Navigation isAdmin:', isAdmin); // Debug log
 
   const handleLogout = async () => {
     await signOut();

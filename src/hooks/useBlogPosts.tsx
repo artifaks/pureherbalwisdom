@@ -33,36 +33,61 @@ export const useBlogPosts = () => {
       }
       
       if (blogPostsData) {
-        // Get all user profiles in a single query
-        const { data: profilesData } = await supabase
-          .from('profiles')
-          .select('id, username');
-        
-        // Create a map of user_id to username for quick lookup
-        const userMap = new Map();
-        if (profilesData) {
-          profilesData.forEach(profile => {
-            userMap.set(profile.id, profile.username);
-          });
+        try {
+          // Get all user profiles in a single query
+          const { data: profilesData } = await supabase
+            .from('profiles')
+            .select('id, username');
+          
+          // Create a map of user_id to username for quick lookup
+          const userMap = new Map();
+          if (profilesData) {
+            profilesData.forEach(profile => {
+              userMap.set(profile.id, profile.username);
+            });
+          }
+          
+          // Format posts with author info
+          const postsWithAuthors = blogPostsData.map(post => ({
+            id: post.id,
+            title: post.title,
+            content: post.content,
+            excerpt: post.excerpt || undefined,
+            author: userMap.get(post.user_id) || undefined,
+            created_at: post.created_at,
+            updated_at: post.updated_at,
+            user_id: post.user_id
+          } as BlogPost));
+          
+          setPosts(postsWithAuthors);
+          console.log('Blog posts loaded:', postsWithAuthors.length);
+        } catch (profileError) {
+          console.error('Error fetching profiles:', profileError);
+          // Still show posts even if profiles couldn't be fetched
+          const postsWithoutAuthors = blogPostsData.map(post => ({
+            id: post.id,
+            title: post.title,
+            content: post.content,
+            excerpt: post.excerpt || undefined,
+            created_at: post.created_at,
+            updated_at: post.updated_at,
+            user_id: post.user_id
+          } as BlogPost));
+          
+          setPosts(postsWithoutAuthors);
         }
-        
-        // Format posts with author info
-        const postsWithAuthors = blogPostsData.map(post => ({
-          id: post.id,
-          title: post.title,
-          content: post.content,
-          excerpt: post.excerpt || undefined,
-          author: userMap.get(post.user_id) || undefined,
-          created_at: post.created_at,
-          updated_at: post.updated_at,
-          user_id: post.user_id
-        } as BlogPost));
-        
-        setPosts(postsWithAuthors);
-        console.log('Blog posts loaded:', postsWithAuthors.length);
+      } else {
+        // Set empty array if no posts
+        setPosts([]);
       }
     } catch (error) {
       console.error('Error fetching blog posts:', error);
+      toast({
+        title: "Error loading blog posts",
+        description: "There was a problem loading the blog posts. Please try again.",
+        variant: "destructive",
+      });
+      setPosts([]);
     } finally {
       setIsLoading(false);
     }

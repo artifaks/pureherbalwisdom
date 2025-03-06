@@ -30,6 +30,7 @@ const Blog = () => {
   const [postToDelete, setPostToDelete] = useState<BlogPost | null>(null);
 
   const handleSubmitCreate = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
     try {
       await handleCreatePost(e);
@@ -39,6 +40,7 @@ const Blog = () => {
   };
 
   const handleSubmitUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
     try {
       await handleUpdatePost(e);
