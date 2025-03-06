@@ -148,12 +148,12 @@ export const purchaseService = {
   async purgeSampleEbooks(): Promise<void> {
     try {
       const sampleTitles = [
-        'Medicinal Herbs Field Guide',
-        'Herbal Preparations & Remedies',
-        'Herbs for Heart Health',
-        'Women's Herbal Wellness',
-        'Digestive Healing with Herbs',
-        'Seasonal Foraging Calendar'
+        "Medicinal Herbs Field Guide",
+        "Herbal Preparations & Remedies",
+        "Herbs for Heart Health",
+        "Women's Herbal Wellness",
+        "Digestive Healing with Herbs",
+        "Seasonal Foraging Calendar"
       ];
       
       const { data, error } = await supabase
