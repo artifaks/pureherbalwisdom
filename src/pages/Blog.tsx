@@ -1,19 +1,16 @@
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useToast } from '@/hooks/use-toast';
-import { useAuth } from '@/hooks/use-auth';
+import React, { useState } from 'react';
 import MainNavigation from '@/components/MainNavigation';
-import BlogPostList from '@/components/blog/BlogPostList';
 import BlogHeader from '@/components/blog/BlogHeader';
+import BlogPostList from '@/components/blog/BlogPostList';
 import AddPostForm from '@/components/blog/AddPostForm';
 import EditPostForm from '@/components/blog/EditPostForm';
-import { BlogPost } from '@/types/blog';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
+import { useAuth } from '@/hooks/use-auth';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
+import { BlogPost } from '@/types/blog';
 
 const Blog = () => {
-  const navigate = useNavigate();
-  const { toast } = useToast();
   const { user, isAdmin } = useAuth();
   const {
     posts,
@@ -26,26 +23,39 @@ const Blog = () => {
     setNewPost,
     handleCreatePost,
     handleUpdatePost,
-    handleDeletePost,
+    handleDeletePost
   } = useBlogPosts();
 
-  // Redirect to auth page if not logged in
-  useEffect(() => {
-    if (!user) {
-      navigate('/auth');
-    }
-  }, [user, navigate]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [postToDelete, setPostToDelete] = useState<BlogPost | null>(null);
 
-  if (!user) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p>Please log in to view the blog...</p>
-      </div>
-    );
-  }
+  const handleSubmitCreate = async (e: React.FormEvent) => {
+    setIsSubmitting(true);
+    try {
+      await handleCreatePost(e);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleSubmitUpdate = async (e: React.FormEvent) => {
+    setIsSubmitting(true);
+    try {
+      await handleUpdatePost(e);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const confirmDelete = async () => {
+    if (postToDelete) {
+      await handleDeletePost(postToDelete);
+      setPostToDelete(null);
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gray-50">
       <MainNavigation />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <BlogHeader 
@@ -54,100 +64,57 @@ const Blog = () => {
           isAdmin={isAdmin}
         />
 
-        {isAddingPost && isAdmin && (
+        {isAddingPost && (
           <AddPostForm
             newPost={newPost}
             setNewPost={setNewPost}
-            isSubmitting={false}
-            onCancel={() => {
-              setIsAddingPost(false);
-              setNewPost({
-                title: '',
-                content: '',
-                excerpt: '',
-              });
-            }}
-            onSubmit={async (e) => {
-              e.preventDefault();
-              try {
-                await handleCreatePost(e);
-                toast({
-                  title: "Success!",
-                  description: "Your post has been published.",
-                });
-              } catch (error) {
-                toast({
-                  variant: "destructive",
-                  title: "Error",
-                  description: "Failed to publish post. Please try again.",
-                });
-              }
-            }}
+            isSubmitting={isSubmitting}
+            onCancel={() => setIsAddingPost(false)}
+            onSubmit={handleSubmitCreate}
           />
         )}
 
-        {editingPost && isAdmin && (
+        {editingPost && (
           <EditPostForm
             post={editingPost}
             setEditingPost={setEditingPost}
-            isSubmitting={false}
+            isSubmitting={isSubmitting}
             onCancel={() => setEditingPost(null)}
-            onSubmit={async (e) => {
-              e.preventDefault();
-              try {
-                await handleUpdatePost(e);
-                toast({
-                  title: "Success!",
-                  description: "Your post has been updated.",
-                });
-              } catch (error) {
-                toast({
-                  variant: "destructive",
-                  title: "Error",
-                  description: "Failed to update post. Please try again.",
-                });
-              }
-            }}
+            onSubmit={handleSubmitUpdate}
           />
         )}
 
         {isLoading ? (
-          <div className="text-center py-20">
-            <p className="text-gray-600">Loading blog posts...</p>
+          <div className="flex justify-center my-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
           </div>
         ) : (
           <BlogPostList 
             posts={posts} 
             isAdmin={isAdmin}
             onEditClick={(post) => setEditingPost(post)}
-            onDeleteClick={async (post) => {
-              if (window.confirm("Are you sure you want to delete this post?")) {
-                try {
-                  await handleDeletePost(post);
-                  toast({
-                    title: "Success!",
-                    description: "Your post has been deleted.",
-                  });
-                } catch (error) {
-                  toast({
-                    variant: "destructive",
-                    title: "Error",
-                    description: "Failed to delete post. Please try again.",
-                  });
-                }
-              }
-            }}
+            onDeleteClick={(post) => setPostToDelete(post)}
           />
         )}
       </div>
 
-      <div className="mt-auto py-6 border-t border-gray-200 bg-white/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-500 text-sm">
-            © {new Date().getFullYear()} Herb Guide Blog. All rights reserved.
-          </p>
-        </div>
-      </div>
+      <AlertDialog open={!!postToDelete} onOpenChange={(open) => !open && setPostToDelete(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete the blog post "{postToDelete?.title}". 
+              This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDelete} className="bg-red-600 hover:bg-red-700">
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

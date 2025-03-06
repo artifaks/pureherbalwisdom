@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/use-auth';
 import { BlogPost } from '@/types/blog';
+import { toast } from '@/components/ui/use-toast';
 
 export const useBlogPosts = () => {
   const { user, isAdmin } = useAuth();
@@ -17,13 +18,10 @@ export const useBlogPosts = () => {
   });
 
   const fetchPosts = useCallback(async () => {
-    if (!user) return;
-    
     try {
       setIsLoading(true);
       console.log('Fetching blog posts...');
       
-      // Query to get all blog posts
       const { data, error } = await supabase
         .from('blog_posts')
         .select('*, profiles(username)')
@@ -54,7 +52,7 @@ export const useBlogPosts = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     fetchPosts();
@@ -97,9 +95,18 @@ export const useBlogPosts = () => {
       
       // Refresh posts
       fetchPosts();
-    } catch (error) {
+      
+      toast({
+        title: "Success",
+        description: "Blog post created successfully!",
+      });
+    } catch (error: any) {
       console.error('Error creating blog post:', error);
-      throw error;
+      toast({
+        title: "Error",
+        description: error.message || "Failed to create blog post",
+        variant: "destructive",
+      });
     }
   };
 
@@ -135,9 +142,18 @@ export const useBlogPosts = () => {
       
       // Refresh posts
       fetchPosts();
-    } catch (error) {
+      
+      toast({
+        title: "Success",
+        description: "Blog post updated successfully!",
+      });
+    } catch (error: any) {
       console.error('Error updating blog post:', error);
-      throw error;
+      toast({
+        title: "Error",
+        description: error.message || "Failed to update blog post",
+        variant: "destructive",
+      });
     }
   };
 
@@ -163,9 +179,18 @@ export const useBlogPosts = () => {
       
       // Refresh posts
       fetchPosts();
-    } catch (error) {
+      
+      toast({
+        title: "Success",
+        description: "Blog post deleted successfully!",
+      });
+    } catch (error: any) {
       console.error('Error deleting blog post:', error);
-      throw error;
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete blog post",
+        variant: "destructive",
+      });
     }
   };
 

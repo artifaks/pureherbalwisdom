@@ -1,149 +1,164 @@
 
-import { createContext, useContext, useEffect, useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/hooks/use-toast';
-
-type User = {
-  id: string;
-  email?: string;
-} | null;
+import { createContext, useContext, useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 type AuthContextType = {
-  user: User;
+  user: any | null;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string) => Promise<{ success: boolean; message: string }>;
+  signUp: (email: string, password: string, username: string, isAdmin?: boolean) => Promise<void>;
   signOut: () => Promise<void>;
-  loading: boolean;
+  isLoading: boolean;
+  isAdmin: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User>(null);
-  const [loading, setLoading] = useState(true);
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState<any | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
-    // Get initial session
-    const getInitialSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      setUser(data.session?.user ?? null);
-      setLoading(false);
-    };
-
-    getInitialSession();
+    // Check for session on initial load
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setIsAdmin(session?.user?.user_metadata?.isAdmin === true);
+      setIsLoading(false);
+    });
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_, session) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
-      }
-    );
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setIsAdmin(session?.user?.user_metadata?.isAdmin === true);
+      setIsLoading(false);
+    });
 
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   const signIn = async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) throw error;
+      setIsLoading(true);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        toast({
+          title: "Sign in failed",
+          description: error.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setUser(data.user);
+      setIsAdmin(data.user?.user_metadata?.isAdmin === true);
+      navigate("/");
       toast({
-        title: "Sign In Successful",
+        title: "Signed in successfully",
         description: "Welcome back!",
       });
     } catch (error: any) {
       toast({
-        title: "Sign In Failed",
-        description: error.message || "Failed to sign in",
+        title: "Sign in failed",
+        description: error.message,
         variant: "destructive",
       });
-      throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const signUp = async (email: string, password: string) => {
+  const signUp = async (email: string, password: string, username: string, isAdmin = false) => {
     try {
-      const { data, error } = await supabase.auth.signUp({ 
-        email, 
+      setIsLoading(true);
+      const { data, error } = await supabase.auth.signUp({
+        email,
         password,
         options: {
-          // For development, you can disable email confirmation
-          // emailRedirectTo: window.location.origin
-        }
+          data: {
+            username,
+            isAdmin,
+          },
+        },
       });
-      
-      if (error) throw error;
-      
-      // Check if email confirmation is required
-      const needsEmailConfirmation = !data.session;
-      
-      if (needsEmailConfirmation) {
+
+      if (error) {
         toast({
-          title: "Sign Up Successful",
-          description: "Please check your email for verification. If you don't see it, check your spam folder.",
-        });
-        return {
-          success: true,
-          message: "Please check your email for verification. If you don't see it, check your spam folder."
-        };
-      } else {
-        toast({
-          title: "Sign Up Successful",
-          description: "You are now logged in!",
-        });
-        return { success: true, message: "You are now logged in!" };
-      }
-    } catch (error: any) {
-      // Handle existing user error gracefully
-      if (error.message.includes("User already registered")) {
-        toast({
-          title: "Account Exists",
-          description: "This email is already registered. Try signing in instead.",
+          title: "Sign up failed",
+          description: error.message,
           variant: "destructive",
         });
-        return { 
-          success: false, 
-          message: "This email is already registered. Try signing in instead." 
-        };
+        return;
       }
-      
+
+      setUser(data.user);
+      setIsAdmin(data.user?.user_metadata?.isAdmin === true);
+      navigate("/");
       toast({
-        title: "Sign Up Failed",
-        description: error.message || "Failed to sign up",
+        title: "Signed up successfully",
+        description: "Welcome to the Herbal Guide!",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Sign up failed",
+        description: error.message,
         variant: "destructive",
       });
-      return { success: false, message: error.message || "Failed to sign up" };
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const signOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
+      setIsLoading(true);
+      await supabase.auth.signOut();
+      setUser(null);
+      setIsAdmin(false);
+      navigate("/");
+      toast({
+        title: "Signed out successfully",
+      });
     } catch (error: any) {
       toast({
-        title: "Sign Out Failed",
-        description: error.message || "Failed to sign out",
+        title: "Sign out failed",
+        description: error.message,
         variant: "destructive",
       });
-      throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signUp, signOut, loading }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        signIn,
+        signUp,
+        signOut,
+        isLoading,
+        isAdmin,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
-export const useAuth = () => {
+export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
-};
+}

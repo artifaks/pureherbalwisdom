@@ -5,7 +5,7 @@ export interface BlogPost {
   content: string;
   excerpt?: string;
   author?: string;
-  created_at?: string;
-  updated_at?: string;
+  created_at: string;
+  updated_at: string;
   user_id: string;
 }
