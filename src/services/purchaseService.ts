@@ -127,11 +127,13 @@ export const purchaseService = {
         const filesToDelete = [];
         
         if (ebook.file_url) {
-          filesToDelete.push(ebook.file_url);
+          const fileUrl = ebook.file_url.replace(/^.*\//, ''); // Extract filename from URL if needed
+          filesToDelete.push(fileUrl);
         }
         
         if (ebook.cover_url) {
-          filesToDelete.push(ebook.cover_url);
+          const coverUrl = ebook.cover_url.replace(/^.*\//, ''); // Extract filename from URL if needed
+          filesToDelete.push(coverUrl);
         }
         
         if (filesToDelete.length > 0) {
@@ -200,11 +202,13 @@ export const purchaseService = {
             const filesToDelete = [];
             
             if (ebook.file_url) {
-              filesToDelete.push(ebook.file_url);
+              const fileUrl = ebook.file_url.replace(/^.*\//, ''); // Extract filename from URL if needed
+              filesToDelete.push(fileUrl);
             }
             
             if (ebook.cover_url) {
-              filesToDelete.push(ebook.cover_url);
+              const coverUrl = ebook.cover_url.replace(/^.*\//, ''); // Extract filename from URL if needed
+              filesToDelete.push(coverUrl);
             }
             
             if (filesToDelete.length > 0) {

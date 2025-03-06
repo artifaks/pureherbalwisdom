@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect, useCallback } from 'react';
 import { useEbooks } from '@/hooks/useEbooks';
 import MainNavigation from '@/components/MainNavigation';
 import ResourceHeader from '@/components/resources/ResourceHeader';
@@ -39,6 +40,13 @@ const Resources = () => {
     handleDeleteEbook,
   } = useEbooks();
 
+  // Force a reload when resource modification operations occur
+  const [forceRefresh, setForceRefresh] = useState(0);
+  
+  const refreshData = useCallback(() => {
+    setForceRefresh(prev => prev + 1);
+  }, []);
+
   if (!user) {
     return <AuthRequired />;
   }
@@ -67,7 +75,10 @@ const Resources = () => {
               setSelectedFile(null);
               setSelectedCover(null);
             }}
-            onSubmit={handleAddBookSubmit}
+            onSubmit={async (e) => {
+              await handleAddBookSubmit(e);
+              refreshData();
+            }}
             handlePriceChange={handlePriceChange}
             handleFileChange={handleFileChange}
             handleCoverChange={handleCoverChange}
@@ -79,7 +90,10 @@ const Resources = () => {
             editingResource={editingResource}
             setEditingResource={setEditingResource}
             onCancel={handleEditCancel}
-            onSubmit={handleEditSubmit}
+            onSubmit={async (e) => {
+              await handleEditSubmit(e);
+              refreshData();
+            }}
             handlePriceChange={handlePriceChange}
             handleTitleChange={handleTitleChange}
             handleDescriptionChange={handleDescriptionChange}
@@ -99,7 +113,11 @@ const Resources = () => {
             isUploading={isUploading}
             handleDownload={handleDownload}
             handleEditClick={isAdmin ? handleEditClick : undefined}
-            handleDeleteClick={isAdmin ? handleDeleteEbook : undefined}
+            handleDeleteClick={isAdmin ? async (resource) => {
+              await handleDeleteEbook(resource);
+              refreshData();
+            } : undefined}
+            refreshData={refreshData}
           />
         )}
 

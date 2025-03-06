@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -488,56 +487,10 @@ export const useEbooks = () => {
     try {
       console.log("Attempting to delete ebook with ID:", resource.id);
       
-      // First, fetch the ebook to get file references
-      const { data: ebook, error: fetchError } = await supabase
-        .from('ebooks')
-        .select('file_url, cover_url')
-        .eq('id', resource.id)
-        .single();
-      
-      if (fetchError) {
-        console.error("Error fetching ebook details:", fetchError);
-        throw fetchError;
-      }
-      
-      // Delete files from storage if they exist
-      if (ebook) {
-        const filesToDelete = [];
-        
-        if (ebook.file_url) {
-          filesToDelete.push(ebook.file_url);
-        }
-        
-        if (ebook.cover_url) {
-          filesToDelete.push(ebook.cover_url);
-        }
-        
-        if (filesToDelete.length > 0) {
-          console.log("Attempting to delete files:", filesToDelete);
-          const { error: storageError } = await supabase.storage
-            .from('e-books')
-            .remove(filesToDelete);
-          
-          if (storageError) {
-            console.error('Error deleting files:', storageError);
-            // Continue with ebook deletion even if file deletion fails
-          }
-        }
-      }
-      
-      // Delete the ebook record from the database
-      const { error: deleteError } = await supabase
-        .from('ebooks')
-        .delete()
-        .eq('id', resource.id);
-      
-      if (deleteError) {
-        console.error("Error deleting ebook record:", deleteError);
-        throw deleteError;
-      }
+      await purchaseService.deleteEbook(resource.id);
       
       // Update the UI by removing the deleted ebook
-      setResources(resources.filter(r => r.id !== resource.id));
+      setResources(prevResources => prevResources.filter(r => r.id !== resource.id));
 
       toast({
         title: "E-book Deleted",

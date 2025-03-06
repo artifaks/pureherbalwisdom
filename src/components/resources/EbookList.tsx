@@ -11,6 +11,7 @@ interface EbookListProps {
   handleDownload: (resource: Ebook) => void;
   handleEditClick: (resource: Ebook) => void;
   handleDeleteClick?: (resource: Ebook) => void;
+  refreshData?: () => void;
 }
 
 const EbookList: React.FC<EbookListProps> = ({ 
@@ -19,7 +20,8 @@ const EbookList: React.FC<EbookListProps> = ({
   isUploading, 
   handleDownload, 
   handleEditClick,
-  handleDeleteClick
+  handleDeleteClick,
+  refreshData
 }) => {
   if (resources.length === 0) {
     return (
