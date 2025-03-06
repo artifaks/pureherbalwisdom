@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/use-auth';
 import { useNavigate, Navigate } from 'react-router-dom';
@@ -17,7 +16,6 @@ const Admin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Clear status message after 5 seconds
     if (adminStatus) {
       const timer = setTimeout(() => {
         setAdminStatus(null);
@@ -27,7 +25,6 @@ const Admin = () => {
     }
   }, [adminStatus]);
 
-  // Only authenticated users can access this page
   if (!user) {
     return <Navigate to="/auth" />;
   }
@@ -160,16 +157,11 @@ const Admin = () => {
               <CardFooter>
                 <Button 
                   className="w-full bg-amber-500 hover:bg-amber-600" 
-                  type="button"
+                  type="submit"
                   disabled={isLoading}
                   onClick={() => {
                     if (user && user.email) {
                       setEmail(user.email);
-                      // Use setTimeout to ensure email is set before form submission
-                      setTimeout(() => {
-                        const event = new Event('submit', { cancelable: true });
-                        document.querySelector('form')?.dispatchEvent(event);
-                      }, 100);
                     }
                   }}
                 >
