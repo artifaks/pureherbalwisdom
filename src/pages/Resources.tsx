@@ -38,14 +38,24 @@ const Resources = () => {
     handleTitleChange,
     isAdmin,
     handleDeleteEbook,
+    fetchResources,
   } = useEbooks();
 
   // Force a reload when resource modification operations occur
   const [forceRefresh, setForceRefresh] = useState(0);
   
   const refreshData = useCallback(() => {
+    console.log("Refreshing resource data...");
     setForceRefresh(prev => prev + 1);
-  }, []);
+    fetchResources(); // Explicitly fetch resources when refresh is triggered
+  }, [fetchResources]);
+
+  // Re-fetch data when forceRefresh changes
+  useEffect(() => {
+    if (forceRefresh > 0) {
+      fetchResources();
+    }
+  }, [forceRefresh, fetchResources]);
 
   if (!user) {
     return <AuthRequired />;

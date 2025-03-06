@@ -1,3 +1,4 @@
+
 import { supabase } from '@/integrations/supabase/client';
 import { Ebook } from '@/types/ebook';
 
@@ -94,7 +95,7 @@ export const purchaseService = {
     return;
   },
   
-  // Function to delete an ebook
+  // Function to delete an ebook - improved with better error handling and validation
   async deleteEbook(ebookId: string): Promise<void> {
     try {
       console.log("PurchaseService: Deleting ebook with ID:", ebookId);
@@ -111,7 +112,7 @@ export const purchaseService = {
         throw fetchError;
       }
       
-      // Delete the ebook record from database first
+      // Delete the ebook record from database
       const { error: deleteError } = await supabase
         .from('ebooks')
         .delete()
@@ -127,13 +128,21 @@ export const purchaseService = {
         const filesToDelete = [];
         
         if (ebook.file_url) {
-          const fileUrl = ebook.file_url.replace(/^.*\//, ''); // Extract filename from URL if needed
-          filesToDelete.push(fileUrl);
+          // Extract just the filename from the full path if needed
+          const fileUrl = ebook.file_url.includes('/') 
+            ? ebook.file_url.split('/').pop() 
+            : ebook.file_url;
+          
+          if (fileUrl) filesToDelete.push(fileUrl);
         }
         
         if (ebook.cover_url) {
-          const coverUrl = ebook.cover_url.replace(/^.*\//, ''); // Extract filename from URL if needed
-          filesToDelete.push(coverUrl);
+          // Extract just the filename from the full path if needed
+          const coverUrl = ebook.cover_url.includes('/') 
+            ? ebook.cover_url.split('/').pop() 
+            : ebook.cover_url;
+          
+          if (coverUrl) filesToDelete.push(coverUrl);
         }
         
         if (filesToDelete.length > 0) {
@@ -147,6 +156,17 @@ export const purchaseService = {
             // We don't throw here since the ebook record was already deleted
           }
         }
+      }
+      
+      // Also delete any purchase records for this ebook
+      const { error: purchaseDeleteError } = await supabase
+        .from('purchases')
+        .delete()
+        .eq('ebook_id', ebookId);
+      
+      if (purchaseDeleteError) {
+        console.error('PurchaseService: Error deleting purchase records:', purchaseDeleteError);
+        // We continue since the ebook itself was deleted
       }
       
       console.log("PurchaseService: Ebook successfully deleted");

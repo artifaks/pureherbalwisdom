@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -35,50 +35,50 @@ export const useEbooks = () => {
       .replace(/[^\w.-]/g, ''); // Remove any remaining non-alphanumeric characters except underscores, periods, and hyphens
   };
 
-  useEffect(() => {
-    const fetchResources = async () => {
-      try {
-        setIsLoading(true);
-        
-        if (user?.email === 'artifaks7@gmail.com') {
-          try {
-            await purchaseService.purgeSampleEbooks();
-          } catch (error) {
-            console.error("Error purging sample ebooks:", error);
-          }
+  const fetchResources = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      
+      if (user?.email === 'artifaks7@gmail.com') {
+        try {
+          await purchaseService.purgeSampleEbooks();
+        } catch (error) {
+          console.error("Error purging sample ebooks:", error);
         }
-        
-        const data = await purchaseService.getAllEbooks();
-        
-        if (data && data.length > 0) {
-          const formattedBooks = data.map(book => ({
-            id: book.id,
-            title: book.title,
-            description: book.description || "",
-            price: `$${book.price.toFixed(2)}`,
-            type: book.type,
-            popular: book.popular,
-            fileUrl: book.file_url,
-            coverUrl: book.cover_url
-          }));
-          setResources(formattedBooks);
-        } else {
-          setResources([]);
-        }
-      } catch (error) {
-        console.error("Error fetching resources:", error);
-        toast({
-          title: "Error",
-          description: "Failed to load resources",
-          variant: "destructive",
-        });
-      } finally {
-        setIsLoading(false);
       }
-    };
-
-    fetchResources();
+      
+      const data = await purchaseService.getAllEbooks();
+      
+      if (data && data.length > 0) {
+        const formattedBooks = data.map(book => ({
+          id: book.id,
+          title: book.title,
+          description: book.description || "",
+          price: `$${book.price.toFixed(2)}`,
+          type: book.type,
+          popular: book.popular,
+          fileUrl: book.file_url,
+          coverUrl: book.cover_url
+        }));
+        setResources(formattedBooks);
+      } else {
+        setResources([]);
+      }
+    } catch (error) {
+      console.error("Error fetching resources:", error);
+      toast({
+        title: "Error",
+        description: "Failed to load resources",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }, [toast, user]);
+
+  useEffect(() => {
+    fetchResources();
+  }, [fetchResources]);
 
   useEffect(() => {
     const checkPurchases = async () => {
@@ -489,13 +489,17 @@ export const useEbooks = () => {
       
       await purchaseService.deleteEbook(resource.id);
       
-      // Update the UI by removing the deleted ebook
+      // Update the UI immediately
       setResources(prevResources => prevResources.filter(r => r.id !== resource.id));
 
       toast({
         title: "E-book Deleted",
         description: `"${resource.title}" has been deleted successfully.`,
       });
+      
+      // Force a reload of resources to ensure state is in sync with database
+      fetchResources();
+      
     } catch (error: any) {
       console.error('Error deleting e-book:', error);
       toast({
@@ -534,5 +538,6 @@ export const useEbooks = () => {
     isAdmin,
     handleDeleteEbook,
     handleTitleChange,
+    fetchResources,
   };
 };
