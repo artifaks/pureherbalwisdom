@@ -193,5 +193,44 @@ export const stomachHerbs = [
     ],
     oilPreparation: "1. Use dried blue chamomile flowers\n2. Cover with jojoba oil completely\n3. Infuse using low heat for 3 hours\n4. Will develop blue color from chamazulene content",
     tincturePreparation: "1. Fill jar loosely with dried flowers\n2. Cover with 80 proof vodka\n3. Store for 4 weeks in dark place\n4. Take 30-60 drops before bed"
+  },
+  {
+    id: 'aloe-vera',
+    name: 'Aloe Vera',
+    color: '#66BB6A',
+    benefits: [
+      'Soothes irritated digestive tract lining',
+      'May help with acid reflux and heartburn',
+      'Supports healthy gut flora balance',
+      'Traditional remedy for digestive inflammation'
+    ],
+    oilPreparation: "1. Extract fresh aloe gel\n2. Not typically used as oil preparation\n3. Best used fresh or as juice\n4. Can be added to salves for external application",
+    tincturePreparation: "1. Mix fresh aloe gel with glycerin\n2. Add 25% alcohol as preservative\n3. Store for 2 weeks in refrigerator\n4. Take 1 teaspoon as needed for digestive issues"
+  },
+  {
+    id: 'milk-thistle',
+    name: 'Milk Thistle',
+    color: '#AB47BC',
+    benefits: [
+      'Supports liver and digestive function',
+      'Contains silymarin which protects liver cells',
+      'Helps with fat digestion and bile production',
+      'Traditional European remedy for digestive support'
+    ],
+    oilPreparation: "1. Use crushed milk thistle seeds\n2. Cover with olive oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. Use for massage over liver area",
+    tincturePreparation: "1. Fill jar 1/3 with crushed milk thistle seeds\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops before meals"
+  },
+  {
+    id: 'caraway',
+    name: 'Caraway',
+    color: '#795548',
+    benefits: [
+      'Excellent for relieving gas and bloating',
+      'Supports healthy digestion of rich foods',
+      'Calms intestinal spasms naturally',
+      'Traditional European digestive remedy'
+    ],
+    oilPreparation: "1. Crush caraway seeds lightly\n2. Cover with sweet almond oil\n3. Low heat for 2-3 hours\n4. Use for clockwise abdominal massage",
+    tincturePreparation: "1. Fill jar 1/4 with crushed caraway seeds\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 15-20 drops after meals"
   }
 ];

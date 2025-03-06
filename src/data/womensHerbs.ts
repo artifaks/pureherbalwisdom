@@ -193,5 +193,44 @@ export const womensHerbs = [
     ],
     oilPreparation: "1. Use dried schisandra berries\n2. Cover with jojoba oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. Use for facial massage or lymphatic system",
     tincturePreparation: "1. Fill jar 1/3 with dried berries\n2. Cover with 80 proof vodka\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops twice daily"
+  },
+  {
+    id: 'peony',
+    name: 'White Peony',
+    color: '#F8BBD0',
+    benefits: [
+      'Used in traditional Chinese medicine for women\'s health',
+      'Helps balance female hormones naturally',
+      'May reduce menstrual pain and cramping',
+      'Traditionally used with licorice for hormonal support'
+    ],
+    oilPreparation: "1. Use dried white peony root, chopped\n2. Cover with jojoba oil at 1:5 ratio\n3. Warm infuse for 3-4 hours\n4. Use for abdominal massage during cycles",
+    tincturePreparation: "1. Fill jar 1/3 with dried peony root\n2. Cover with 40% alcohol solution\n3. Steep for 6-8 weeks, shaking daily\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'angelica-sinensis',
+    name: 'Dong Quai',
+    color: '#D7CCC8',
+    benefits: [
+      'Known as "female ginseng" in Chinese medicine',
+      'Traditional blood tonic for women',
+      'Supports healthy menstrual cycle',
+      'May help with menopause symptoms'
+    ],
+    oilPreparation: "1. Use dried dong quai root, sliced\n2. Cover with sesame oil (traditional)\n3. Slow cook for 4 hours\n4. Use for massage over lower abdomen",
+    tincturePreparation: "1. Fill jar 1/4 with chopped dong quai root\n2. Cover with 50% alcohol solution\n3. Steep for 8 weeks, shaking daily\n4. Take 10-30 drops twice daily"
+  },
+  {
+    id: 'tulsi',
+    name: 'Holy Basil (Tulsi)',
+    color: '#4CAF50',
+    benefits: [
+      'Adaptogen that helps women manage stress',
+      'Supports hormonal balance during transitions',
+      'May help reduce hot flashes and night sweats',
+      'Sacred plant in Ayurvedic tradition for women\'s health'
+    ],
+    oilPreparation: "1. Use fresh tulsi leaves, dried slightly\n2. Cover with olive or coconut oil\n3. Solar infuse for 2-3 weeks\n4. Use for heart-centered massage",
+    tincturePreparation: "1. Fill jar with fresh tulsi leaves\n2. Cover with vodka completely\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-40 drops twice daily"
   }
 ];

@@ -193,5 +193,44 @@ export const heartHerbs = [
     ],
     oilPreparation: "1. Use dried coleus root\n2. Cover with olive oil at 1:5 ratio\n3. Warm infuse for 4 hours\n4. Use for external application only",
     tincturePreparation: "1. Fill jar 1/4 with dried coleus root\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks in dark place\n4. Take 20-30 drops under supervision"
+  },
+  {
+    id: 'ginger-heart',
+    name: 'Ginger',
+    color: '#FF9800',
+    benefits: [
+      'Improves circulation throughout the body',
+      'Contains anti-inflammatory compounds for heart health',
+      'May help lower blood pressure and cholesterol',
+      'Helps reduce blood clotting risk'
+    ],
+    oilPreparation: "1. Use dried ginger root, grated\n2. Cover with olive oil at 1:5 ratio\n3. Warm infuse for 3-4 hours\n4. Use for warming massage over chest area",
+    tincturePreparation: "1. Fill jar 1/3 with grated ginger root\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 10-30 drops in warm water"
+  },
+  {
+    id: 'goji-berry',
+    name: 'Goji Berry',
+    color: '#E53935',
+    benefits: [
+      'Rich in antioxidants that support heart health',
+      'May help lower blood pressure naturally',
+      'Supports healthy blood lipid levels',
+      'Traditional tonic in Chinese medicine for longevity'
+    ],
+    oilPreparation: "1. Use dried goji berries, lightly crushed\n2. Cover with jojoba oil at 1:4 ratio\n3. Infuse for 4 weeks in dark place\n4. Strain and use for heart meridian massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried goji berries\n2. Cover with brandy or vodka\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily in water"
+  },
+  {
+    id: 'reishi',
+    name: 'Reishi Mushroom',
+    color: '#8D6E63',
+    benefits: [
+      'Adaptogen that supports cardiovascular health',
+      'May help regulate blood pressure',
+      'Supports healthy immune function for heart health',
+      'Traditional Chinese medicine for heart energy'
+    ],
+    oilPreparation: "1. Use dried reishi slices\n2. Cover with olive or coconut oil\n3. Slow infuse for 6-8 weeks\n4. For external use only over heart area",
+    tincturePreparation: "1. Chop dried reishi mushroom into small pieces\n2. Use 1:5 ratio with 40% alcohol\n3. Steep for 8 weeks minimum\n4. Take 20-40 drops twice daily"
   }
 ];

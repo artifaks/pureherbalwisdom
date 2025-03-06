@@ -193,5 +193,45 @@ export const mensHerbs = [
     ],
     oilPreparation: "1. Use dried damiana leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for sensual massage oil",
     tincturePreparation: "1. Fill jar 1/3 with dried damiana\n2. Cover with brandy or vodka\n3. Store for 4 weeks in dark place\n4. Take 20-40 drops as needed"
+  },
+  {
+    id: 'fenugreek',
+    name: 'Fenugreek',
+    color: '#FFC107',
+    benefits: [
+      'May support healthy testosterone levels',
+      'Traditional herb for male vitality',
+      'Supports healthy libido and energy',
+      'Contains compounds that support muscle recovery'
+    ],
+    oilPreparation: "1. Use ground fenugreek seeds\n2. Cover with sesame oil at 1:4 ratio\n3. Warm infuse for 3 hours\n4. Use for massage over lower abdomen",
+    tincturePreparation: "1. Fill jar 1/3 with ground fenugreek seeds\n2. Cover with vodka completely\n3. Store for 6 weeks, shaking daily\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'he-shou-wu',
+    name: 'He Shou Wu',
+    color: '#4E342E',
+    benefits: [
+      'Traditional Chinese herb for male vitality',
+      'Supports healthy aging and longevity',
+      'May help maintain hair health and pigmentation',
+      'Used in traditional medicine for reproductive health'
+    ],
+    oilPreparation: "1. Use prepared he shou wu root\n2. Cover with sesame oil\n3. Slow cook for 4-6 hours\n4. Use for massage over kidney area (lower back)",
+    tincturePreparation: "1. Chop prepared root finely\n2. Use 1:5 ratio with 40% alcohol\n3. Steep for 8 weeks minimum\n4. Take 15-30 drops twice daily"
+  },
+  {
+    id: 'shilajit',
+    name: 'Shilajit',
+    color: '#212121',
+    benefits: [
+      'Rich in fulvic acid and minerals for male health',
+      'Traditional Ayurvedic tonic for vitality',
+      'Supports energy, stamina and endurance',
+      'May help with testosterone production and sperm health'
+    ],
+    oilPreparation: "1. Not typically used as oil preparation\n2. Best used as powder or resin\n3. Can be dissolved in warm water or milk\n4. Take small amount (rice grain size) daily",
+    tincturePreparation: "1. Mix purified shilajit resin with alcohol\n2. Use 1:3 ratio with 50% alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 5-10 drops in warm water"
   }
 ];
+
