@@ -1,4 +1,3 @@
-
 import { HerbPairing } from '@/data/types';
 
 // Stomach herb pairings
@@ -59,5 +58,20 @@ export const stomachHerbPairings: Record<string, HerbPairing[]> = {
       herbId: 'ginger',
       reason: 'These traditional digestive herbs combine to create a powerful blend for digestive comfort and function.'
     }
+  ],
+  'burdock-root': [
+    { herbId: 'dandelion', reason: 'Burdock Root and Dandelion together provide excellent liver support for optimal digestion' },
+    { herbId: 'ginger', reason: 'Ginger\'s warming properties complement Burdock\'s cleansing effects for digestive health' },
+    { herbId: 'fennel', reason: 'Fennel\'s carminative properties enhance Burdock\'s detoxifying benefits for the digestive system' }
+  ],
+  'plantain-leaf': [
+    { herbId: 'marshmallow', reason: 'Both herbs contain mucilage that soothes and protects the digestive tract lining' },
+    { herbId: 'calendula', reason: 'Plantain\'s soothing properties complement Calendula\'s healing effects for digestive tissues' },
+    { herbId: 'slippery-elm', reason: 'These two demulcent herbs work together to protect and heal the digestive mucosa' }
+  ],
+  'caraway-seed': [
+    { herbId: 'fennel', reason: 'Both carminative seeds work synergistically to reduce gas and bloating' },
+    { herbId: 'peppermint', reason: 'Caraway\'s warming properties balance with Peppermint\'s cooling effects for digestive comfort' },
+    { herbId: 'ginger', reason: 'Combines the digestive-stimulating properties of both herbs for comprehensive support' }
   ]
 };

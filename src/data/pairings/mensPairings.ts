@@ -1,4 +1,3 @@
-
 import { HerbPairing } from '@/data/types';
 
 // Men's herb pairings
@@ -59,5 +58,20 @@ export const mensHerbPairings: Record<string, HerbPairing[]> = {
       herbId: 'muira-puama',
       reason: 'These traditional South American herbs work synergistically to support male reproductive health and vitality.'
     }
+  ],
+  'pine-bark': [
+    { herbId: 'tongkat-ali', reason: 'Pine Bark\'s circulation support complements Tongkat Ali\'s hormonal effects for enhanced male vitality' },
+    { herbId: 'ginseng', reason: 'Pine Bark\'s antioxidant properties enhance Ginseng\'s energy-supporting effects' },
+    { herbId: 'maca', reason: 'These two powerful herbs work together to support overall male reproductive health and performance' }
+  ],
+  'stinging-nettle-mens': [
+    { herbId: 'saw-palmetto', reason: 'Stinging Nettle and Saw Palmetto are commonly paired for comprehensive prostate support' },
+    { herbId: 'pumpkin-seed-extract', reason: 'Both herbs contain compounds beneficial for prostate and urinary health' },
+    { herbId: 'ashwagandha', reason: 'Nettle\'s mineral content pairs well with Ashwagandha\'s stress-reducing properties for overall male health' }
+  ],
+  'pumpkin-seed-extract': [
+    { herbId: 'saw-palmetto', reason: 'Pumpkin Seed\'s zinc-rich profile complements the prostate support of Saw Palmetto' },
+    { herbId: 'stinging-nettle-mens', reason: 'These two herbs work synergistically to support prostate and urinary health' },
+    { herbId: 'nettle-root', reason: 'Both provide comprehensive support for male reproductive health and urinary function' }
   ]
 };

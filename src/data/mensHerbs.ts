@@ -271,5 +271,44 @@ export const mensHerbs = [
     ],
     oilPreparation: "1. Use dried damiana leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for massage",
     tincturePreparation: "1. Fill jar with damiana leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops as needed"
+  },
+  {
+    id: 'pine-bark',
+    name: 'Pine Bark Extract',
+    color: '#795548',
+    benefits: [
+      'Supports healthy circulation for male vitality',
+      'Contains powerful antioxidants beneficial for reproductive health',
+      'May help with endurance and physical performance',
+      'Supports vascular health important for male function'
+    ],
+    oilPreparation: "1. Use pine bark pieces\n2. Not typically used as oil\n3. Better as supplement or tincture\n4. For external use only",
+    tincturePreparation: "1. Fill jar with pine bark pieces\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-30 drops daily"
+  },
+  {
+    id: 'stinging-nettle-mens',
+    name: 'Stinging Nettle',
+    color: '#558B2F',
+    benefits: [
+      'Supports prostate health and urinary function',
+      'Contains compounds that may help regulate DHT levels',
+      'Rich in minerals essential for male reproductive health',
+      'Traditionally used for inflammation affecting male health'
+    ],
+    oilPreparation: "1. Use dried nettle leaves\n2. Cover with olive oil\n3. Solar infuse for 3 weeks\n4. Use for lower abdominal massage",
+    tincturePreparation: "1. Fill jar with dried nettle\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'pumpkin-seed-extract',
+    name: 'Pumpkin Seed Extract',
+    color: '#8D6E63',
+    benefits: [
+      'Rich in zinc and other nutrients for male reproductive health',
+      'Supports prostate health and urinary function',
+      'May help maintain healthy testosterone levels',
+      'Traditional remedy for men\'s health concerns'
+    ],
+    oilPreparation: "1. Use cold-pressed pumpkin seed oil\n2. Best purchased pre-made\n3. Can be used directly\n4. Apply to lower abdomen in massage",
+    tincturePreparation: "1. Fill jar with ground pumpkin seeds\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 30-60 drops daily"
   }
 ];

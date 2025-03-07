@@ -140,6 +140,23 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'chaste-tree-berry': <Sprout size={size} color={color} />,
     'licorice-root-womens': <Sprout size={size} color={color} />,
     'tribulus-womens': <Sprout size={size} color={color} />,
+    
+    // New herbs added
+    'ashwagandha-brain': <Brain size={size} color={color} />,
+    'peppermint-brain': <Leaf size={size} color={color} />,
+    'lemon-balm-brain': <Leaf size={size} color={color} />,
+    
+    'fennel-womens': <Sprout size={size} color={color} />,
+    'sage-womens': <Leaf size={size} color={color} />,
+    'cinnamon-bark-womens': <TreeDeciduous size={size} color={color} />,
+    
+    'burdock-root': <Sprout size={size} color={color} />,
+    'plantain-leaf': <Leaf size={size} color={color} />,
+    'caraway-seed': <Sprout size={size} color={color} />,
+    
+    'pine-bark': <TreeDeciduous size={size} color={color} />,
+    'stinging-nettle-mens': <Leaf size={size} color={color} />,
+    'pumpkin-seed-extract': <Sprout size={size} color={color} />,
   };
 
   // Handle special cases for herbs with duplicate IDs

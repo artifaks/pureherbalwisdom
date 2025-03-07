@@ -284,5 +284,44 @@ export const brainHerbs = [
     ],
     oilPreparation: "1. Use celastrus seeds\n2. Cold-press to extract oil\n3. Best purchased pre-made\n4. Use for scalp and temple massage",
     tincturePreparation: "1. Fill jar with crushed celastrus seeds\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 10-20 drops daily"
+  },
+  {
+    id: 'ashwagandha-brain',
+    name: 'Ashwagandha',
+    color: '#9575CD',
+    benefits: [
+      'Adaptogen that supports brain health',
+      'May help reduce stress and anxiety',
+      'Supports healthy cognitive function',
+      'Traditionally used to promote mental clarity'
+    ],
+    oilPreparation: "1. Use dried ashwagandha root\n2. Cover with sesame oil\n3. Warm infuse for 4 hours\n4. Use for head and neck massage",
+    tincturePreparation: "1. Fill jar with chopped ashwagandha root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'peppermint-brain',
+    name: 'Peppermint',
+    color: '#81C784',
+    benefits: [
+      'Supports mental alertness and clarity',
+      'Contains compounds that improve focus',
+      'May help with headaches and mental fatigue',
+      'Invigorating aroma enhances cognitive function'
+    ],
+    oilPreparation: "1. Use dried peppermint leaves\n2. Cover with jojoba oil\n3. Solar infuse for 2 weeks\n4. Use for temple massage",
+    tincturePreparation: "1. Fill jar with fresh peppermint leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops as needed"
+  },
+  {
+    id: 'lemon-balm-brain',
+    name: 'Lemon Balm',
+    color: '#AED581',
+    benefits: [
+      'Promotes calmness while supporting focus',
+      'May help reduce mental stress and anxiety',
+      'Supports GABA production in the brain',
+      'Traditionally used for nervous system support'
+    ],
+    oilPreparation: "1. Use fresh lemon balm leaves\n2. Cover with olive oil\n3. Solar infuse for 3 weeks\n4. Use for temple and neck massage",
+    tincturePreparation: "1. Fill jar with fresh lemon balm leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops as needed"
   }
 ];

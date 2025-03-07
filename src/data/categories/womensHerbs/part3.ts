@@ -1,4 +1,3 @@
-
 import { Herb } from '@/data/types';
 
 // Third part of women's herbs (items 31-40)
@@ -93,5 +92,44 @@ export const womensHerbsPart3: Herb[] = [
     ],
     oilPreparation: "1. Use dried tribulus fruit\n2. Cover with sesame oil (traditional)\n3. Warm infuse for 4 hours\n4. Use for lower abdominal massage",
     tincturePreparation: "1. Fill jar 1/3 with dried tribulus\n2. Cover with vodka completely\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'fennel-womens',
+    name: 'Fennel',
+    color: '#F48FB1',
+    benefits: [
+      'Supports healthy hormone balance in women',
+      'May help alleviate menstrual discomfort',
+      'Traditionally used to support milk production in nursing mothers',
+      'Helps with digestive issues related to hormonal changes'
+    ],
+    oilPreparation: "1. Use crushed fennel seeds\n2. Cover with sweet almond oil\n3. Warm infuse for 3 hours\n4. Use for gentle abdominal massage",
+    tincturePreparation: "1. Fill jar 1/3 with crushed fennel seeds\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops after meals"
+  },
+  {
+    id: 'sage-womens',
+    name: 'Sage',
+    color: '#C2185B',
+    benefits: [
+      'Traditionally used to reduce excessive sweating during menopause',
+      'May help manage hot flashes and night sweats',
+      'Supports hormonal balance during transitions',
+      'Contains compounds beneficial for female health'
+    ],
+    oilPreparation: "1. Use dried sage leaves\n2. Cover with olive oil\n3. Solar infuse for 3 weeks\n4. Use for light body massage",
+    tincturePreparation: "1. Fill jar with fresh sage leaves\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 10-20 drops twice daily"
+  },
+  {
+    id: 'cinnamon-bark-womens',
+    name: 'Cinnamon Bark',
+    color: '#D81B60',
+    benefits: [
+      'Supports healthy circulation in reproductive organs',
+      'May help with menstrual discomfort and cramping',
+      'Traditionally used for warming and strengthening',
+      'Supports healthy blood sugar which affects hormones'
+    ],
+    oilPreparation: "1. Use cinnamon bark pieces\n2. Cover with jojoba oil\n3. Warm infuse for 2 hours\n4. Use diluted for gentle abdominal massage",
+    tincturePreparation: "1. Fill jar 1/4 with cinnamon bark pieces\n2. Cover with vodka completely\n3. Store for 6 weeks, shaking daily\n4. Take 5-15 drops in warm water"
   }
 ];

@@ -271,5 +271,44 @@ export const stomachHerbs = [
     ],
     oilPreparation: "1. Use crushed coriander seeds\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use for abdominal massage",
     tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops after meals"
+  },
+  {
+    id: 'burdock-root',
+    name: 'Burdock Root',
+    color: '#8D6E63',
+    benefits: [
+      'Supports healthy liver function and digestion',
+      'Traditional digestive cleanser and detoxifier',
+      'May help with digestive inflammation',
+      'Rich in prebiotic fibers for gut health'
+    ],
+    oilPreparation: "1. Use dried burdock root pieces\n2. Cover with olive oil\n3. Warm infuse for 4 hours\n4. Use for abdominal lymphatic massage",
+    tincturePreparation: "1. Fill jar with chopped burdock root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops before meals"
+  },
+  {
+    id: 'plantain-leaf',
+    name: 'Plantain Leaf',
+    color: '#81C784',
+    benefits: [
+      'Soothes and heals digestive tract lining',
+      'Contains compounds that reduce inflammation',
+      'Traditionally used for ulcers and digestive damage',
+      'Gentle enough for sensitive systems'
+    ],
+    oilPreparation: "1. Use fresh plantain leaves\n2. Cover with olive oil\n3. Solar infuse for 3 weeks\n4. Use for gentle abdominal massage",
+    tincturePreparation: "1. Fill jar with fresh plantain leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops as needed"
+  },
+  {
+    id: 'caraway-seed',
+    name: 'Caraway Seed',
+    color: '#FFB74D',
+    benefits: [
+      'Powerful carminative that relieves gas and bloating',
+      'Supports healthy digestive function',
+      'May help with digestive spasms and colic',
+      'Traditional remedy for improving digestion of heavy foods'
+    ],
+    oilPreparation: "1. Use crushed caraway seeds\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 10-20 drops after meals"
   }
 ];

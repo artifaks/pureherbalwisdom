@@ -1,4 +1,3 @@
-
 import { HerbPairing } from '@/data/types';
 
 // Women's herb pairings
@@ -154,5 +153,20 @@ export const womensHerbPairings: Record<string, HerbPairing[]> = {
       herbId: 'ashwagandha',
       reason: 'Ashwagandha\'s stress-reducing properties complement Tribulus\'s hormonal support for women.'
     }
+  ],
+  'fennel-womens': [
+    { herbId: 'dong-quai', reason: 'Fennel\'s carminative properties complement Dong Quai\'s blood-moving effects for menstrual support' },
+    { herbId: 'red-raspberry', reason: 'Both herbs support healthy digestion and reproductive function in women' },
+    { herbId: 'fenugreek', reason: 'These herbs work together to support milk production and hormonal balance' }
+  ],
+  'sage-womens': [
+    { herbId: 'black-cohosh', reason: 'Sage\'s ability to reduce sweating pairs well with Black Cohosh\'s support for menopausal transitions' },
+    { herbId: 'vitex', reason: 'Sage complements Vitex\'s hormone-balancing properties for comprehensive menopause support' },
+    { herbId: 'red-clover', reason: 'Both herbs contain compounds beneficial during hormonal transitions' }
+  ],
+  'cinnamon-bark-womens': [
+    { herbId: 'ginger', reason: 'Both warming herbs support healthy circulation and menstrual comfort' },
+    { herbId: 'cramp-bark', reason: 'Cinnamon\'s warming properties enhance Cramp Bark\'s anti-spasmodic effects for menstrual comfort' },
+    { herbId: 'dong-quai', reason: 'Combines the circulation-enhancing properties of both herbs for reproductive health' }
   ]
 };
