@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Button } from './ui/button';
-import { Sparkles } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CallToAction: React.FC = () => {
   return (
@@ -15,16 +16,12 @@ const CallToAction: React.FC = () => {
       <Button 
         className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg transition-all 
                   transform hover:scale-105 font-medium shadow-md"
-        onClick={() => {
-          // Smooth scroll to the herbs section
-          document.querySelector('.glass-dark')?.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'center' 
-          });
-        }}
+        asChild
       >
-        <Sparkles className="mr-2 h-4 w-4" />
-        Start Exploring
+        <Link to="/resources">
+          <BookOpen className="mr-2 h-4 w-4" />
+          Start Exploring E-Books
+        </Link>
       </Button>
     </div>
   );
