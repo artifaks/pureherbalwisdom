@@ -199,7 +199,32 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'hawthorn', reason: 'Hawthorn provides heart support alongside this herb\'s benefits' },
     { herbId: 'ginger', reason: 'Ginger adds digestive support and improves absorption' },
     { herbId: 'nettle', reason: 'Nettle contributes mineral support and gentle detoxification' }
-  ]
+  ],
+  'hawthorne-berry': [
+    { herbId: 'hawthorn', reason: 'Traditional and berry forms of Hawthorn complement each other for comprehensive heart support' },
+    { herbId: 'rose', reason: 'Rose adds emotional heart support to Hawthorne Berry\'s physical benefits' },
+    { herbId: 'aronia-berry', reason: 'Aronia Berry enhances the antioxidant effects of Hawthorne Berry for heart health' }
+  ],
+  'aronia-berry': [
+    { herbId: 'hawthorne-berry', reason: 'Hawthorne Berry adds specific cardiac support to Aronia\'s antioxidant benefits' },
+    { herbId: 'bilberry', reason: 'Bilberry complements Aronia\'s vascular support with additional circulation benefits' },
+    { herbId: 'pomegranate', reason: 'Pomegranate enhances Aronia\'s antioxidant protection for the cardiovascular system' }
+  ],
+  'pomegranate': [
+    { herbId: 'aronia-berry', reason: 'Aronia Berry complements Pomegranate\'s antioxidant protection for the heart' },
+    { herbId: 'turmeric-heart', reason: 'Turmeric adds anti-inflammatory effects to Pomegranate\'s antioxidant benefits' },
+    { herbId: 'olive-leaf', reason: 'Olive Leaf enhances Pomegranate\'s arterial health support' }
+  ],
+  'reishi-heart': [
+    { herbId: 'hawthorn', reason: 'Hawthorn adds specific heart support to Reishi\'s adaptogenic benefits' },
+    { herbId: 'astragalus', reason: 'Astragalus complements Reishi\'s immune-supporting effects for heart health' },
+    { herbId: 'tulsi-heart', reason: 'Holy Basil enhances Reishi\'s adaptogenic support for heart health during stress' }
+  ],
+  'coleus': [
+    { herbId: 'hawthorn', reason: 'Hawthorn complements Coleus\'s effects on heart function' },
+    { herbId: 'cayenne', reason: 'Cayenne enhances Coleus\'s circulation-boosting benefits' },
+    { herbId: 'garlic', reason: 'Garlic adds complementary cardiovascular support to Coleus\'s effects' }
+  ],
 };
 
 interface ComplementaryHerbsProps {

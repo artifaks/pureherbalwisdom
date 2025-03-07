@@ -219,5 +219,70 @@ export const heartHerbs = [
     ],
     oilPreparation: "1. Use powdered turmeric or fresh root\n2. Mix with black pepper and olive oil\n3. Warm infuse for 3-4 hours\n4. Use for circulation-enhancing massage",
     tincturePreparation: "1. Fill jar 1/3 with turmeric powder\n2. Add pinch of black pepper\n3. Cover with 100 proof alcohol\n4. Steep for 6-8 weeks, take 10-30 drops daily"
+  },
+  {
+    id: 'hawthorne-berry',
+    name: 'Hawthorne Berry',
+    color: '#e94057',
+    benefits: [
+      'Supports overall heart function',
+      'May help strengthen blood vessels',
+      'Contains potent heart-supportive flavonoids',
+      'Traditional herb for long-term heart health'
+    ],
+    oilPreparation: "1. Use dried hawthorne berries\n2. Cover with jojoba oil\n3. Warm infuse for 4-6 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried hawthorne berries\n2. Cover with 100 proof alcohol\n3. Steep for 6-8 weeks, shaking daily\n4. Take 15-30 drops daily"
+  },
+  {
+    id: 'aronia-berry',
+    name: 'Aronia Berry',
+    color: '#4A0E67',
+    benefits: [
+      'Rich in heart-healthy antioxidants',
+      'Supports healthy blood vessel function',
+      'May help maintain healthy blood pressure',
+      'Contains anthocyanins that support heart health'
+    ],
+    oilPreparation: "1. Use dried aronia berries\n2. Cover with almond oil\n3. Infuse for 4 weeks in dark place\n4. Use for heart-supporting massage oil",
+    tincturePreparation: "1. Fill jar 1/4 with dried aronia berries\n2. Cover with brandy or vodka\n3. Steep for 4-6 weeks, shaking daily\n4. Take 10-20 drops 1-2 times daily"
+  },
+  {
+    id: 'pomegranate',
+    name: 'Pomegranate',
+    color: '#C70039',
+    benefits: [
+      'Supports arterial health',
+      'Rich in heart-protective antioxidants',
+      'May help maintain healthy cholesterol levels',
+      'Contains punicalagins that support cardiovascular function'
+    ],
+    oilPreparation: "1. Use dried pomegranate peels\n2. Cover with carrier oil\n3. Infuse for a month in dark place\n4. Use for circulation-enhancing massage",
+    tincturePreparation: "1. Fill jar 1/3 with pomegranate seeds and peel\n2. Cover with 80 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops daily"
+  },
+  {
+    id: 'reishi-heart',
+    name: 'Reishi',
+    color: '#8B4513',
+    benefits: [
+      'Adaptogen that supports cardiovascular health',
+      'May help modulate blood pressure',
+      'Traditional Chinese heart tonic',
+      'Supports overall cardiovascular wellness'
+    ],
+    oilPreparation: "1. Use powdered reishi mushroom\n2. Mix with jojoba oil at 1:5 ratio\n3. Warm infuse for 2-3 hours\n4. Use for stress-reducing heart massage",
+    tincturePreparation: "1. Fill jar 1/4 with reishi slices or powder\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks, shaking daily\n4. Take 15-30 drops twice daily"
+  },
+  {
+    id: 'coleus',
+    name: 'Coleus (Forskolin)',
+    color: '#9370DB',
+    benefits: [
+      'May help support healthy blood pressure',
+      'Traditionally used for heart health',
+      'Supports healthy circulation',
+      'Contains forskolin that influences heart muscle contraction'
+    ],
+    oilPreparation: "1. Use dried coleus root\n2. Cover with olive oil\n3. Warm infuse for 4 hours\n4. Use for circulation-enhancing massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried coleus root\n2. Cover with high-proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 10-20 drops under professional guidance"
   }
 ];

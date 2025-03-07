@@ -19,12 +19,18 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'rose': <Flower size={size} color={color} />,
     'olive-leaf': <Leaf size={size} color={color} />,
     'bilberry': <HeartPulse size={size} color={color} />,
-    // New heart herbs added now
+    // New heart herbs added previously
     'cacao': <HeartHandshake size={size} color={color} />,
     'cayenne': <HeartPulse size={size} color={color} />,
     'ginger-heart': <Sprout size={size} color={color} />,
     'tulsi-heart': <Leaf size={size} color={color} />,
     'turmeric-heart': <Sprout size={size} color={color} />,
+    // Additional new heart herbs
+    'hawthorne-berry': <HeartPulse size={size} color={color} />,
+    'aronia-berry': <HeartPulse size={size} color={color} />,
+    'pomegranate': <HeartHandshake size={size} color={color} />,
+    'reishi-heart': <Sprout size={size} color={color} />,
+    'coleus': <Leaf size={size} color={color} />,
     
     // Stomach herbs
     'peppermint': <Leaf size={size} color={color} />,
