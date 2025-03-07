@@ -106,6 +106,26 @@ export const getHerbPairingKey = (herb: Herb): string => {
   } else if (herb.id === 'tribulus-womens' && herb.category === 'womens') {
     return 'tribulus-womens';
   }
+  // New brain herbs
+  else if (herb.id === 'turmeric-brain' && herb.category === 'brain') {
+    return 'turmeric-brain';
+  } else if (herb.id === 'holy-basil-brain' && herb.category === 'brain') {
+    return 'holy-basil-brain';
+  } else if (herb.id === 'gotu-kola-supreme' && herb.category === 'brain') {
+    return 'gotu-kola-supreme';
+  } else if (herb.id === 'nootkatone' && herb.category === 'brain') {
+    return 'nootkatone';
+  } else if (herb.id === 'centella-asiatica' && herb.category === 'brain') {
+    return 'centella-asiatica';
+  } else if (herb.id === 'yerba-mate' && herb.category === 'brain') {
+    return 'yerba-mate';
+  } else if (herb.id === 'alpha-gpc' && herb.category === 'brain') {
+    return 'alpha-gpc';
+  } else if (herb.id === 'lemon-balm-brain' && herb.category === 'brain') {
+    return 'lemon-balm-brain';
+  } else if (herb.id === 'peppermint-brain' && herb.category === 'brain') {
+    return 'peppermint-brain';
+  }
   
   // Default to using the herb's id as the key
   return herb.id;
