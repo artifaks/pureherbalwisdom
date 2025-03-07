@@ -103,6 +103,33 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'nettle', reason: 'Nettle adds mineral support to Raspberry Seed\'s nutritive properties' }
   ],
   
+  // New added women's herb pairings
+  'rose-hips': [
+    { herbId: 'nettle', reason: 'Nettle complements Rose Hips\' vitamin and mineral content for hormonal health' },
+    { herbId: 'red-raspberry', reason: 'Red Raspberry enhances Rose Hips\' support for female reproductive health' },
+    { herbId: 'schisandra', reason: 'Schisandra adds adaptogenic support to Rose Hips\' antioxidant benefits' }
+  ],
+  'passionflower-womens': [
+    { herbId: 'vitex', reason: 'Vitex adds hormonal support to Passionflower\'s calming properties' },
+    { herbId: 'motherwort', reason: 'Motherwort enhances Passionflower\'s nervous system support for women' },
+    { herbId: 'lemon-balm', reason: 'Lemon Balm complements Passionflower\'s calming effects during PMS' }
+  ],
+  'shepherds-purse': [
+    { herbId: 'lady-mantle', reason: 'Lady\'s Mantle enhances Shepherd\'s Purse\'s astringent properties for female health' },
+    { herbId: 'nettle', reason: 'Nettle adds iron support to Shepherd\'s Purse\'s benefits for women\'s health' },
+    { herbId: 'yarrow', reason: 'Yarrow complements Shepherd\'s Purse\'s astringent properties for women' }
+  ],
+  'blue-cohosh': [
+    { herbId: 'black-cohosh', reason: 'Black Cohosh creates a traditional synergistic blend with Blue Cohosh' },
+    { herbId: 'cramp-bark', reason: 'Cramp Bark adds anti-spasmodic support to Blue Cohosh\'s women\'s health benefits' },
+    { herbId: 'ginger', reason: 'Ginger enhances circulation to complement Blue Cohosh\'s actions' }
+  ],
+  'false-unicorn-root': [
+    { herbId: 'wild-yam', reason: 'Wild Yam complements False Unicorn Root\'s female hormone-supporting properties' },
+    { herbId: 'vitex', reason: 'Vitex enhances False Unicorn Root\'s benefits for women\'s reproductive health' },
+    { herbId: 'black-cohosh', reason: 'Black Cohosh adds hormonal support to False Unicorn Root\'s benefits' }
+  ],
+  
   // Default pairings for herbs without specific matches
   'default': [
     { herbId: 'hawthorn', reason: 'Hawthorn provides heart support alongside this herb\'s benefits' },
@@ -200,6 +227,16 @@ const ComplementaryHerbs: React.FC<ComplementaryHerbsProps> = ({
       ? 'queens-cup'
       : activeHerb.id === 'raspberry-seed' && activeHerb.category === 'womens'
       ? 'raspberry-seed'
+      : activeHerb.id === 'rose-hips' && activeHerb.category === 'womens'
+      ? 'rose-hips'
+      : activeHerb.id === 'passionflower-womens' && activeHerb.category === 'womens'
+      ? 'passionflower-womens'
+      : activeHerb.id === 'shepherds-purse' && activeHerb.category === 'womens'
+      ? 'shepherds-purse'
+      : activeHerb.id === 'blue-cohosh' && activeHerb.category === 'womens'
+      ? 'blue-cohosh'
+      : activeHerb.id === 'false-unicorn-root' && activeHerb.category === 'womens'
+      ? 'false-unicorn-root'
       : activeHerb.id;
       
     const pairings = herbPairings[herbId] || herbPairings['default'];

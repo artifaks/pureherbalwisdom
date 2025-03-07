@@ -310,5 +310,70 @@ export const womensHerbs = [
     ],
     oilPreparation: "1. Cold-pressed from seeds (best purchased ready-made)\n2. Use as carrier oil for massage blends\n3. Store in dark bottle away from heat\n4. Apply to skin or take 1/2 tsp daily",
     tincturePreparation: "1. Crush dried raspberry seeds\n2. Cover with high-proof alcohol\n3. Steep for 6-8 weeks in dark place\n4. Take 20-30 drops daily"
+  },
+  {
+    id: 'rose-hips',
+    name: 'Rose Hips',
+    color: '#E91E63',
+    benefits: [
+      'Rich in vitamin C for immune support during hormonal changes',
+      'Contains antioxidants that benefit female reproductive health',
+      'May help reduce inflammation during menstruation',
+      'Supports adrenal health during hormonal transitions'
+    ],
+    oilPreparation: "1. Crush dried rose hips\n2. Cover with jojoba oil at 1:4 ratio\n3. Warm infuse for 4 hours\n4. Use for facial and body massage",
+    tincturePreparation: "1. Fill jar 1/3 with crushed rose hips\n2. Cover with 80 proof vodka\n3. Steep for 6 weeks in dark place\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'passionflower-womens',
+    name: 'Passionflower',
+    color: '#9C27B0',
+    benefits: [
+      'May help with hormonal anxiety and tension',
+      'Supports restful sleep during menstrual cycle',
+      'Can help ease menopausal nervousness',
+      'Traditionally used for menstrual discomfort'
+    ],
+    oilPreparation: "1. Use dried passionflower leaves and flowers\n2. Cover with olive or almond oil\n3. Infuse for 4 weeks in cool place\n4. Use for temple and neck massage to promote calm",
+    tincturePreparation: "1. Fill jar with dried herb loosely\n2. Cover with 100 proof vodka\n3. Steep for 4-6 weeks, shaking daily\n4. Take 15-30 drops before bed or during hormonal tension"
+  },
+  {
+    id: 'shepherds-purse',
+    name: 'Shepherd\'s Purse',
+    color: '#8BC34A',
+    benefits: [
+      'Traditionally used for heavy menstrual flow',
+      'Has astringent properties for female tissues',
+      'Supports healthy menstrual cycles',
+      'May help with postpartum recovery'
+    ],
+    oilPreparation: "1. Use dried shepherd's purse herb\n2. Cover with olive oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. Use for lower abdominal massage during cycles",
+    tincturePreparation: "1. Fill jar 1/3 with dried herb\n2. Cover with apple cider vinegar or vodka\n3. Steep for 4 weeks, shaking daily\n4. Take 10-20 drops three times daily as needed"
+  },
+  {
+    id: 'blue-cohosh',
+    name: 'Blue Cohosh',
+    color: '#3F51B5',
+    benefits: [
+      'Traditionally used by midwives for women\'s reproductive health',
+      'May help with menstrual cramps and discomfort',
+      'Supports hormonal balance',
+      'Used in traditional medicine to prepare for childbirth'
+    ],
+    oilPreparation: "1. Use dried blue cohosh root\n2. Cover with jojoba oil\n3. Warm infuse for 6 hours\n4. External use only for lower back massage",
+    tincturePreparation: "1. Fill jar 1/4 with chopped root\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks minimum\n4. Take only 5-10 drops under professional guidance"
+  },
+  {
+    id: 'false-unicorn-root',
+    name: 'False Unicorn Root',
+    color: '#9E9E9E',
+    benefits: [
+      'Traditionally used for ovarian and uterine support',
+      'May help with hormonal imbalances',
+      'Historical use for female reproductive health',
+      'Supports menstrual regularity'
+    ],
+    oilPreparation: "1. Use dried false unicorn root\n2. Cover with sweet almond oil\n3. Warm infuse for 3 hours\n4. Use for abdominal massage during cycle",
+    tincturePreparation: "1. Use 1 part root to 5 parts alcohol\n2. Use 100 proof vodka as menstruum\n3. Steep for 8 weeks minimum\n4. Take 10-15 drops daily under practitioner guidance"
   }
 ];
