@@ -1,4 +1,3 @@
-
 import { Herb } from '@/data/types';
 
 // Define pairings data for herbs
@@ -413,6 +412,77 @@ export const herbPairings: Record<string, { herbId: string; reason: string }[]> 
       reason: 'Shatavari-plus\'s nourishing properties complement vitex\'s hormone-balancing effects for female wellness.'
     }
   ],
+  // New women's herb pairings
+  'milk-thistle': [
+    {
+      herbId: 'dandelion',
+      reason: 'Dandelion enhances Milk Thistle\'s liver-supporting properties for hormone detoxification.'
+    },
+    {
+      herbId: 'turmeric',
+      reason: 'Turmeric adds anti-inflammatory support to Milk Thistle\'s liver-cleansing actions.'
+    },
+    {
+      herbId: 'schisandra',
+      reason: 'Schisandra complements Milk Thistle\'s liver-protective properties with adaptogenic support.'
+    }
+  ],
+  'maca-root-womens': [
+    {
+      herbId: 'ashwagandha',
+      reason: 'Ashwagandha\'s stress-reducing properties complement Maca\'s hormonal support for women.'
+    },
+    {
+      herbId: 'shatavari',
+      reason: 'These traditional fertility herbs work synergistically for comprehensive female reproductive support.'
+    },
+    {
+      herbId: 'tribulus-womens',
+      reason: 'Tribulus enhances Maca\'s hormone-balancing effects for female reproductive health.'
+    }
+  ],
+  'chaste-tree-berry': [
+    {
+      herbId: 'dong-quai',
+      reason: 'Dong Quai adds blood-moving properties to Chaste Tree Berry\'s hormonal balancing effects.'
+    },
+    {
+      herbId: 'black-cohosh',
+      reason: 'Black Cohosh complements Chaste Tree Berry for comprehensive menopausal support.'
+    },
+    {
+      herbId: 'evening-primrose-oil',
+      reason: 'Evening Primrose Oil adds essential fatty acids to support Chaste Tree Berry\'s hormonal benefits.'
+    }
+  ],
+  'licorice-root-womens': [
+    {
+      herbId: 'black-cohosh',
+      reason: 'Black Cohosh and Licorice Root work synergistically for menopausal symptom support.'
+    },
+    {
+      herbId: 'wild-yam',
+      reason: 'Wild Yam adds hormone-balancing properties to complement Licorice Root\'s adrenal support.'
+    },
+    {
+      herbId: 'tulsi',
+      reason: 'Tulsi enhances Licorice Root\'s stress-modulating effects on female hormonal health.'
+    }
+  ],
+  'tribulus-womens': [
+    {
+      herbId: 'maca-root-womens',
+      reason: 'Maca and Tribulus work synergistically to support female hormonal balance and vitality.'
+    },
+    {
+      herbId: 'shatavari',
+      reason: 'Shatavari adds nourishing properties to Tribulus\'s tonifying effects for women\'s health.'
+    },
+    {
+      herbId: 'ashwagandha',
+      reason: 'Ashwagandha\'s stress-reducing properties complement Tribulus\'s hormonal support for women.'
+    }
+  ],
 
   // Merged default herbs (combining both default entries)
   'default': [
@@ -438,4 +508,3 @@ export const herbPairings: Record<string, { herbId: string; reason: string }[]> 
     }
   ]
 };
-

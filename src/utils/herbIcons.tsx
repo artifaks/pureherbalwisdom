@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, Brain, HeartPulse, BookHeart, HandHeart, HeartHandshake } from 'lucide-react';
 import { HerbCategory } from '@/data/types';
@@ -127,6 +126,20 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'evening-primrose-oil': <Flower size={size} color={color} />,
     'queens-cup': <Flower2 size={size} color={color} />,
     'raspberry-seed': <Leaf size={size} color={color} />,
+    'rose-hips': <Flower size={size} color={color} />,
+    'passionflower-womens': <Flower size={size} color={color} />,
+    'shepherds-purse': <Leaf size={size} color={color} />,
+    'blue-cohosh': <Leaf size={size} color={color} />,
+    'false-unicorn-root': <Sprout size={size} color={color} />,
+    'ashoka-bark': <TreeDeciduous size={size} color={color} />,
+    'cranberry': <Sprout size={size} color={color} />,
+    'shatavari-plus': <Leaf size={size} color={color} />,
+    // Additional new women's herbs
+    'milk-thistle': <Leaf size={size} color={color} />,
+    'maca-root-womens': <Sprout size={size} color={color} />,
+    'chaste-tree-berry': <Sprout size={size} color={color} />,
+    'licorice-root-womens': <Sprout size={size} color={color} />,
+    'tribulus-womens': <Sprout size={size} color={color} />,
   };
 
   // Handle special cases for herbs with duplicate IDs

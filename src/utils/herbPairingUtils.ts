@@ -94,6 +94,18 @@ export const getHerbPairingKey = (herb: Herb): string => {
   } else if (herb.id === 'shatavari-plus' && herb.category === 'womens') {
     return 'shatavari-plus';
   }
+  // Additional new women's herbs
+  else if (herb.id === 'milk-thistle' && herb.category === 'womens') {
+    return 'milk-thistle';
+  } else if (herb.id === 'maca-root-womens' && herb.category === 'womens') {
+    return 'maca-root-womens';
+  } else if (herb.id === 'chaste-tree-berry' && herb.category === 'womens') {
+    return 'chaste-tree-berry';
+  } else if (herb.id === 'licorice-root-womens' && herb.category === 'womens') {
+    return 'licorice-root-womens';
+  } else if (herb.id === 'tribulus-womens' && herb.category === 'womens') {
+    return 'tribulus-womens';
+  }
   
   // Default to using the herb's id as the key
   return herb.id;
