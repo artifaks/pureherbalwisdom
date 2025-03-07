@@ -61,6 +61,38 @@ export const getHerbPairingKey = (herb: Herb): string => {
     return 'blue-cohosh';
   } else if (herb.id === 'false-unicorn-root' && herb.category === 'womens') {
     return 'false-unicorn-root';
+  } 
+  // New herb special cases
+  else if (herb.id === 'rhodiola-heart' && herb.category === 'heart') {
+    return 'rhodiola-heart';
+  } else if (herb.id === 'schisandra-heart' && herb.category === 'heart') {
+    return 'schisandra-heart';
+  } else if (herb.id === 'amla-heart' && herb.category === 'heart') {
+    return 'amla-heart';
+  } else if (herb.id === 'brahmi-enhanced' && herb.category === 'brain') {
+    return 'brahmi-enhanced';
+  } else if (herb.id === 'mucuna-brain' && herb.category === 'brain') {
+    return 'mucuna-brain';
+  } else if (herb.id === 'celastrus-brain' && herb.category === 'brain') {
+    return 'celastrus-brain';
+  } else if (herb.id === 'triphala' && herb.category === 'stomach') {
+    return 'triphala';
+  } else if (herb.id === 'fenugreek' && herb.category === 'stomach') {
+    return 'fenugreek';
+  } else if (herb.id === 'coriander-seed' && herb.category === 'stomach') {
+    return 'coriander-seed';
+  } else if (herb.id === 'tribulus-enhanced' && herb.category === 'mens') {
+    return 'tribulus-enhanced';
+  } else if (herb.id === 'horny-goat-enhanced' && herb.category === 'mens') {
+    return 'horny-goat-enhanced';
+  } else if (herb.id === 'damiana-mens' && herb.category === 'mens') {
+    return 'damiana-mens';
+  } else if (herb.id === 'ashoka-bark' && herb.category === 'womens') {
+    return 'ashoka-bark';
+  } else if (herb.id === 'cranberry' && herb.category === 'womens') {
+    return 'cranberry';
+  } else if (herb.id === 'shatavari-plus' && herb.category === 'womens') {
+    return 'shatavari-plus';
   }
   
   // Default to using the herb's id as the key

@@ -375,5 +375,44 @@ export const womensHerbs = [
     ],
     oilPreparation: "1. Use dried false unicorn root\n2. Cover with sweet almond oil\n3. Warm infuse for 3 hours\n4. Use for abdominal massage during cycle",
     tincturePreparation: "1. Use 1 part root to 5 parts alcohol\n2. Use 100 proof vodka as menstruum\n3. Steep for 8 weeks minimum\n4. Take 10-15 drops daily under practitioner guidance"
+  },
+  {
+    id: 'ashoka-bark',
+    name: 'Ashoka Bark',
+    color: '#D81B60',
+    benefits: [
+      'Traditional Ayurvedic herb for women\'s health',
+      'Supports healthy menstrual cycles',
+      'May help with uterine health and comfort',
+      'Historically used for female reproductive system'
+    ],
+    oilPreparation: "1. Use dried ashoka bark\n2. Cover with sesame oil\n3. Warm infuse for 4 hours\n4. Use for lower abdomen massage",
+    tincturePreparation: "1. Fill jar with ashoka bark pieces\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'cranberry',
+    name: 'Cranberry',
+    color: '#C2185B',
+    benefits: [
+      'Supports urinary tract health in women',
+      'Contains compounds that benefit female health',
+      'May help with cleansing and detoxification',
+      'Rich in antioxidants that support wellness'
+    ],
+    oilPreparation: "1. Use dried cranberries\n2. Cover with jojoba oil\n3. Not typically used as oil\n4. For external use only",
+    tincturePreparation: "1. Fill jar with fresh or dried cranberries\n2. Cover with glycerin and alcohol mix\n3. Store for 6 weeks, shaking daily\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'shatavari-plus',
+    name: 'Shatavari Plus',
+    color: '#8BC34A',
+    benefits: [
+      'Enhanced formula for female reproductive health',
+      'Contains adaptogenic compounds for hormonal balance',
+      'Traditionally used for all stages of women\'s lives',
+      'Nourishing tonic for female vitality'
+    ],
+    oilPreparation: "1. Use shatavari and supporting herbs\n2. Cover with sesame oil\n3. Warm infuse for 4 hours\n4. Use for abdominal and breast massage",
+    tincturePreparation: "1. Fill jar with herb blend\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 30-60 drops daily"
   }
 ];

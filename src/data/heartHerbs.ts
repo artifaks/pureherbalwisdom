@@ -1,4 +1,3 @@
-
 export const heartHerbs = [
   {
     id: 'hawthorn',
@@ -91,7 +90,6 @@ export const heartHerbs = [
     oilPreparation: "1. Use dried cactus pieces\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for heart area massage",
     tincturePreparation: "1. Fill jar with fresh cactus pieces\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 5-15 drops daily"
   },
-  // New heart herbs that were added previously
   {
     id: 'hibiscus',
     name: 'Hibiscus',
@@ -157,7 +155,6 @@ export const heartHerbs = [
     oilPreparation: "1. Use dried bilberries\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for circulatory massage",
     tincturePreparation: "1. Fill jar with fresh or dried bilberries\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
-  // New heart herbs
   {
     id: 'cacao',
     name: 'Cacao',
@@ -223,7 +220,6 @@ export const heartHerbs = [
     oilPreparation: "1. Use dried turmeric powder\n2. Mix with coconut oil and black pepper\n3. Warm slightly to incorporate\n4. Use for heart area massage",
     tincturePreparation: "1. Fill jar with fresh turmeric root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
-  // Previously added heart herbs
   {
     id: 'hawthorne-berry',
     name: 'Hawthorne Berry',
@@ -289,7 +285,6 @@ export const heartHerbs = [
     oilPreparation: "1. Use dried coleus root\n2. Cover with coconut oil\n3. Warm infuse for 3 hours\n4. Use for heart area massage",
     tincturePreparation: "1. Fill jar with chopped coleus root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-30 drops daily"
   },
-  // New heart herbs added now
   {
     id: 'motherwort-heart',
     name: 'Motherwort Heart',
@@ -328,5 +323,44 @@ export const heartHerbs = [
     ],
     oilPreparation: "1. Use dried dan shen root\n2. Cover with sesame oil\n3. Warm infuse for 4 hours\n4. Use for heart area massage",
     tincturePreparation: "1. Fill jar with chopped dan shen root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'rhodiola-heart',
+    name: 'Rhodiola Heart',
+    color: '#FF8A65',
+    benefits: [
+      'Adaptogen that protects the heart from stress',
+      'May help improve cardiovascular function',
+      'Supports healthy blood circulation',
+      'Contains compounds that benefit heart health'
+    ],
+    oilPreparation: "1. Use dried rhodiola root\n2. Cover with jojoba oil\n3. Warm infuse for 3-4 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with chopped rhodiola root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 15-30 drops daily"
+  },
+  {
+    id: 'schisandra-heart',
+    name: 'Schisandra Heart',
+    color: '#D32F2F',
+    benefits: [
+      'Adaptogen that supports cardiovascular health',
+      'May help maintain healthy blood pressure',
+      'Traditionally used in Chinese medicine for heart',
+      'Contains compounds that protect cardiovascular system'
+    ],
+    oilPreparation: "1. Use dried schisandra berries\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with dried schisandra berries\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-30 drops daily"
+  },
+  {
+    id: 'amla-heart',
+    name: 'Amla Heart',
+    color: '#81C784',
+    benefits: [
+      'Rich in vitamin C that supports heart health',
+      'May help maintain healthy cholesterol levels',
+      'Traditional Ayurvedic herb for cardiovascular strength',
+      'Contains antioxidants that protect the heart'
+    ],
+    oilPreparation: "1. Use dried amla fruit\n2. Cover with sesame oil\n3. Warm infuse for 3 hours\n4. Use for circulation massage",
+    tincturePreparation: "1. Fill jar with chopped amla fruit\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
   }
 ];

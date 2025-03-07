@@ -232,5 +232,44 @@ export const stomachHerbs = [
     ],
     oilPreparation: "1. Use dried catnip leaves\n2. Cover with olive oil in jar\n3. Solar infuse for 3 weeks\n4. Use for gentle abdominal massage",
     tincturePreparation: "1. Fill jar with fresh catnip leaves\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops as needed"
+  },
+  {
+    id: 'triphala',
+    name: 'Triphala',
+    color: '#8D6E63',
+    benefits: [
+      'Traditional Ayurvedic formula for digestion',
+      'Supports healthy elimination and detoxification',
+      'Contains three fruits that balance digestive function',
+      'May help with digestive discomfort and bloating'
+    ],
+    oilPreparation: "1. Use triphala powder\n2. Mix with sesame oil\n3. Not typically used as oil\n4. For external abdominal massage only",
+    tincturePreparation: "1. Mix triphala powder with glycerin and alcohol\n2. Use 1:2:2 ratio for proper extraction\n3. Store for 4 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon before bed"
+  },
+  {
+    id: 'fenugreek',
+    name: 'Fenugreek',
+    color: '#FFC107',
+    benefits: [
+      'Supports healthy digestion and metabolism',
+      'May help with digestive inflammation',
+      'Contains compounds that soothe digestive tract',
+      'Traditionally used for digestive complaints'
+    ],
+    oilPreparation: "1. Use ground fenugreek seeds\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with crushed fenugreek seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops before meals"
+  },
+  {
+    id: 'coriander-seed',
+    name: 'Coriander Seed',
+    color: '#FFCA28',
+    benefits: [
+      'Carminative that helps with gas and bloating',
+      'Supports healthy digestion and appetite',
+      'May help with digestive spasms and discomfort',
+      'Traditional digestive herb in many cultures'
+    ],
+    oilPreparation: "1. Use crushed coriander seeds\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops after meals"
   }
 ];

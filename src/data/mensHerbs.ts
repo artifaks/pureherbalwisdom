@@ -1,4 +1,3 @@
-
 export const mensHerbs = [
   {
     id: 'saw-palmetto',
@@ -233,5 +232,44 @@ export const mensHerbs = [
     ],
     oilPreparation: "1. Use dried cordyceps powder\n2. Not typically used as oil\n3. Better as tincture or powder\n4. For external use only",
     tincturePreparation: "1. Fill jar with cordyceps powder or pieces\n2. Use dual extraction with alcohol and water\n3. Follow mushroom dual extraction protocol\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'tribulus-enhanced',
+    name: 'Tribulus Enhanced',
+    color: '#8D6E63',
+    benefits: [
+      'Advanced formula for male reproductive health',
+      'Contains concentrated saponins for optimal results',
+      'Supports healthy testosterone levels',
+      'Traditional herb for male vitality and performance'
+    ],
+    oilPreparation: "1. Use tribulus fruit extract\n2. Mix with carrier oil\n3. Not typically used as oil\n4. For external massage use only",
+    tincturePreparation: "1. Fill jar with tribulus extract and herbs\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'horny-goat-enhanced',
+    name: 'Horny Goat Weed Plus',
+    color: '#9E9D24',
+    benefits: [
+      'Enhanced formula with added herbs',
+      'Contains icariin for male reproductive health',
+      'Supports healthy circulation and energy',
+      'Traditional Chinese herb for male vitality'
+    ],
+    oilPreparation: "1. Use dried herb blend\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with herb blend\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 15-30 drops daily"
+  },
+  {
+    id: 'damiana-mens',
+    name: 'Damiana',
+    color: '#FFA000',
+    benefits: [
+      'Traditional herb for male libido and energy',
+      'Supports healthy circulation and mood',
+      'May help with stress and fatigue',
+      'Used in traditional medicine for male vitality'
+    ],
+    oilPreparation: "1. Use dried damiana leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with damiana leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops as needed"
   }
 ];
