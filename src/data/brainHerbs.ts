@@ -141,6 +141,77 @@ export const brainHerbs: Herb[] = [
     oilPreparation: "1. Use fresh peppermint leaves\n2. Infuse in jojoba oil at 1:5 ratio\n3. Keep in sunny location for 2 weeks\n4. Use as temple and sinus massage",
     tincturePreparation: "1. Fill jar 3/4 with fresh peppermint\n2. Cover with vodka\n3. Macerate for 3-4 weeks\n4. Take 10-15 drops as needed",
     category: 'brain'
+  },
+  // New herbs
+  {
+    id: 'turmeric-brain',
+    name: 'Turmeric',
+    color: '#FFC107',
+    benefits: [
+      'Contains curcumin which supports brain health',
+      'Has powerful anti-inflammatory properties for neural tissue',
+      'Crosses the blood-brain barrier',
+      'Supports healthy cognitive aging'
+    ],
+    oilPreparation: "1. Mix powdered turmeric with black pepper\n2. Infuse in coconut oil at 1:4 ratio\n3. Heat gently for 1 hour\n4. Apply to temples for cognitive support",
+    tincturePreparation: "1. Fill jar 1/4 with turmeric powder\n2. Add pinch of black pepper to increase absorption\n3. Cover with 100 proof alcohol\n4. Take 15-30 drops daily",
+    category: 'brain'
+  },
+  {
+    id: 'ginger-brain',
+    name: 'Ginger',
+    color: '#FFCA28',
+    benefits: [
+      'Increases circulation to the brain',
+      'Contains compounds that protect against oxidative stress',
+      'Supports healthy inflammation response in neural tissue',
+      'Enhances alertness and cognitive function'
+    ],
+    oilPreparation: "1. Use fresh grated ginger root\n2. Cover with jojoba oil at 1:5 ratio\n3. Warm infuse for 4 hours\n4. Use for temples and forehead massage",
+    tincturePreparation: "1. Fill jar 1/3 with freshly grated ginger\n2. Cover with 80 proof vodka\n3. Steep for 6 weeks, shaking daily\n4. Take 10-20 drops as needed",
+    category: 'brain'
+  },
+  {
+    id: 'lemon-balm',
+    name: 'Lemon Balm',
+    color: '#C5E1A5',
+    benefits: [
+      'Calming effect that supports focus and concentration',
+      'May improve memory and cognitive performance',
+      'Contains compounds that support GABA function',
+      'Traditionally used for nervous system support'
+    ],
+    oilPreparation: "1. Use fresh lemon balm leaves\n2. Infuse in olive oil for 2-3 weeks\n3. Store in cool, dark place\n4. Apply to temples for calm focus",
+    tincturePreparation: "1. Fill jar 2/3 with fresh lemon balm\n2. Cover with 80 proof vodka\n3. Macerate for 4 weeks\n4. Take 20-40 drops as needed",
+    category: 'brain'
+  },
+  {
+    id: 'skullcap',
+    name: 'Skullcap',
+    color: '#90CAF9',
+    benefits: [
+      'Supports healthy neurotransmitter function',
+      'Calms the nervous system while maintaining mental clarity',
+      'May help with stress-related cognitive issues',
+      'Traditional nerve tonic that supports brain health'
+    ],
+    oilPreparation: "1. Use dried skullcap herb\n2. Cover with olive oil at 1:5 ratio\n3. Infuse for 3-4 weeks\n4. Use for temple and neck massage",
+    tincturePreparation: "1. Fill jar 1/2 with dried skullcap\n2. Cover with 100 proof alcohol\n3. Steep for 4-6 weeks\n4. Take 15-30 drops as needed",
+    category: 'brain'
+  },
+  {
+    id: 'holy-basil',
+    name: 'Holy Basil (Tulsi)',
+    color: '#66BB6A',
+    benefits: [
+      'Adaptogenic herb that protects the brain from stress',
+      'Supports cognitive function and mental clarity',
+      'Has antioxidant properties that protect neural tissue',
+      'Traditional Ayurvedic herb for consciousness and awareness'
+    ],
+    oilPreparation: "1. Use fresh holy basil leaves\n2. Infuse in sesame oil at 1:4 ratio\n3. Keep in warm place for 2 weeks\n4. Apply to crown of head and temples",
+    tincturePreparation: "1. Fill jar 2/3 with fresh holy basil\n2. Cover with 80 proof vodka\n3. Macerate for 4 weeks\n4. Take 20-40 drops twice daily",
+    category: 'brain'
   }
 ];
 

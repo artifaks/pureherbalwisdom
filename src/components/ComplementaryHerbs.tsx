@@ -115,6 +115,32 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'rhodiola', reason: 'Rhodiola enhances Ashwagandha\'s adaptogenic effects for mental performance' },
     { herbId: 'gotu-kola', reason: 'Gotu Kola complements Ashwagandha\'s calming benefits with mental clarity' }
   ],
+  // New herb pairings
+  'turmeric-brain': [
+    { herbId: 'ginger-brain', reason: 'Ginger enhances Turmeric\'s bioavailability and adds warming circulation support' },
+    { herbId: 'bacopa', reason: 'Bacopa adds memory enhancement to Turmeric\'s anti-inflammatory brain support' },
+    { herbId: 'holy-basil', reason: 'Holy Basil complements Turmeric\'s neuroprotective properties with adaptogenic benefits' }
+  ],
+  'ginger-brain': [
+    { herbId: 'turmeric-brain', reason: 'Turmeric adds potent anti-inflammatory support to Ginger\'s circulatory benefits' },
+    { herbId: 'rosemary', reason: 'Rosemary enhances Ginger\'s cognitive effects with memory-boosting compounds' },
+    { herbId: 'peppermint', reason: 'Peppermint adds cooling alertness to balance Ginger\'s warming properties' }
+  ],
+  'lemon-balm': [
+    { herbId: 'skullcap', reason: 'Skullcap enhances Lemon Balm\'s calming effects while maintaining mental clarity' },
+    { herbId: 'holy-basil', reason: 'Holy Basil adds adaptogenic support to Lemon Balm\'s relaxing properties' },
+    { herbId: 'motherwort', reason: 'Motherwort complements Lemon Balm\'s nervous system support with heart benefits' }
+  ],
+  'skullcap': [
+    { herbId: 'lemon-balm', reason: 'Lemon Balm enhances Skullcap\'s calming effects with additional cognitive support' },
+    { herbId: 'ashwagandha-brain', reason: 'Ashwagandha adds adaptogenic strength to Skullcap\'s nervous system support' },
+    { herbId: 'gotu-kola', reason: 'Gotu Kola complements Skullcap\'s calming effects with mental clarity' }
+  ],
+  'holy-basil': [
+    { herbId: 'ashwagandha-brain', reason: 'Ashwagandha deepens Holy Basil\'s adaptogenic properties for stress resilience' },
+    { herbId: 'turmeric-brain', reason: 'Turmeric adds anti-inflammatory support to Holy Basil\'s neuroprotective effects' },
+    { herbId: 'bacopa', reason: 'Bacopa enhances Holy Basil\'s cognitive benefits with memory support' }
+  ],
   
   // Default pairings for herbs without specific matches
   'default': [
@@ -144,6 +170,10 @@ const ComplementaryHerbs: React.FC<ComplementaryHerbsProps> = ({
     // For brain category ashwagandha, use the brain-specific key
     const herbId = activeHerb.id === 'ashwagandha' && activeHerb.category === 'brain' 
       ? 'ashwagandha-brain' 
+      : activeHerb.id === 'turmeric' && activeHerb.category === 'brain'
+      ? 'turmeric-brain'
+      : activeHerb.id === 'ginger' && activeHerb.category === 'brain'
+      ? 'ginger-brain'
       : activeHerb.id;
       
     const pairings = herbPairings[herbId] || herbPairings['default'];
