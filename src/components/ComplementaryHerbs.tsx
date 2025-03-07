@@ -32,6 +32,32 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'ginger', reason: 'Ginger improves circulation alongside Astragalus\'s supportive properties' },
     { herbId: 'garlic', reason: 'Garlic complements Astragalus with additional immune support for heart health' }
   ],
+  // New heart herb pairings
+  'hibiscus': [
+    { herbId: 'hawthorn', reason: 'Hawthorn enhances Hibiscus\'s blood pressure-lowering effects' },
+    { herbId: 'rose', reason: 'Rose adds emotional heart support to Hibiscus\'s physical benefits' },
+    { herbId: 'linden', reason: 'Linden complements Hibiscus for comprehensive cardiovascular support' }
+  ],
+  'linden': [
+    { herbId: 'hawthorn', reason: 'Hawthorn adds strength to Linden\'s gentle heart-supporting properties' },
+    { herbId: 'motherwort', reason: 'Motherwort complements Linden\'s calming effects with additional heart support' },
+    { herbId: 'rose', reason: 'Rose enhances Linden\'s emotional heart support properties' }
+  ],
+  'rose': [
+    { herbId: 'hawthorn', reason: 'Hawthorn adds physical heart support to Rose\'s emotional benefits' },
+    { herbId: 'motherwort', reason: 'Motherwort enhances Rose\'s calming properties for heart health' },
+    { herbId: 'linden', reason: 'Linden complements Rose for gentle, comprehensive heart support' }
+  ],
+  'olive-leaf': [
+    { herbId: 'hawthorn', reason: 'Hawthorn enhances Olive Leaf\'s cardiovascular benefits' },
+    { herbId: 'garlic', reason: 'Garlic complements Olive Leaf for blood pressure and cholesterol support' },
+    { herbId: 'hibiscus', reason: 'Hibiscus adds antioxidant support to Olive Leaf\'s cardiovascular benefits' }
+  ],
+  'bilberry': [
+    { herbId: 'hawthorn', reason: 'Hawthorn complements Bilberry\'s vascular strengthening properties' },
+    { herbId: 'olive-leaf', reason: 'Olive Leaf enhances Bilberry\'s circulatory benefits' },
+    { herbId: 'garlic', reason: 'Garlic adds blood-thinning properties to Bilberry\'s vascular support' }
+  ],
   
   // Stomach herbs
   'ginger': [

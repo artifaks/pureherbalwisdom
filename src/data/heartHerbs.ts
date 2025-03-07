@@ -1,3 +1,4 @@
+
 export const heartHerbs = [
   {
     id: 'hawthorn',
@@ -89,5 +90,71 @@ export const heartHerbs = [
     ],
     oilPreparation: "1. Not traditionally prepared as oil\n2. Better utilized as tincture\n3. Can be added to salves\n4. For external use only",
     tincturePreparation: "1. Use fresh cactus stems, chopped\n2. Cover with 80 proof alcohol\n3. Steep for 4-6 weeks in dark place\n4. Take 5-15 drops under guidance"
+  },
+  // New herbs added below
+  {
+    id: 'hibiscus',
+    name: 'Hibiscus',
+    color: '#E53935',
+    benefits: [
+      'May help lower blood pressure',
+      'Rich in antioxidants that support heart health',
+      'Helps maintain healthy cholesterol levels',
+      'Supports overall cardiovascular function'
+    ],
+    oilPreparation: "1. Use dried hibiscus flowers\n2. Cover with jojoba or olive oil\n3. Infuse for 4 weeks in a cool, dark place\n4. Strain and use for topical applications",
+    tincturePreparation: "1. Fill jar 1/3 with dried hibiscus flowers\n2. Cover with 80 proof alcohol\n3. Steep for 4 weeks, shaking daily\n4. Take 15-30 drops 1-2 times daily"
+  },
+  {
+    id: 'linden',
+    name: 'Linden',
+    color: '#AED581',
+    benefits: [
+      'Traditionally used for heart palpitations',
+      'May help reduce hypertension',
+      'Calming effect on the nervous system',
+      'Supports healthy circulation'
+    ],
+    oilPreparation: "1. Collect fresh linden flowers\n2. Dry completely\n3. Cover with olive oil and solar infuse for 4 weeks\n4. Use for gentle massage over heart area",
+    tincturePreparation: "1. Fill jar halfway with dried linden flowers\n2. Cover completely with brandy or vodka\n3. Steep for 6 weeks in dark place\n4. Take 20-40 drops up to 3 times daily"
+  },
+  {
+    id: 'rose',
+    name: 'Rose',
+    color: '#F06292',
+    benefits: [
+      'Emotionally supportive for the heart',
+      'Helps balance heart energy and circulation',
+      'Traditional remedy for grief and heartache',
+      'Rich in antioxidants that support cardiovascular health'
+    ],
+    oilPreparation: "1. Use fresh rose petals\n2. Cover with jojoba oil\n3. Warm infuse for 2-3 hours\n4. Use as a heart-centered massage oil",
+    tincturePreparation: "1. Fill jar with fresh rose petals\n2. Cover with high-proof alcohol\n3. Steep for 4 weeks, shaking daily\n4. Take 10-20 drops as needed"
+  },
+  {
+    id: 'olive-leaf',
+    name: 'Olive Leaf',
+    color: '#9CCC65',
+    benefits: [
+      'Supports healthy blood pressure levels',
+      'Contains oleuropein that supports cardiovascular health',
+      'Has antioxidant properties',
+      'Traditionally used for heart and circulatory support'
+    ],
+    oilPreparation: "1. Use dried olive leaves\n2. Cover with olive oil in a jar\n3. Infuse for 4-6 weeks in a dark place\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried olive leaves\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops twice daily"
+  },
+  {
+    id: 'bilberry',
+    name: 'Bilberry',
+    color: '#7986CB',
+    benefits: [
+      'Supports cardiovascular health',
+      'Rich in anthocyanins that strengthen blood vessels',
+      'Helps maintain healthy circulation',
+      'Supports overall heart function'
+    ],
+    oilPreparation: "1. Use dried bilberries\n2. Cover with a carrier oil\n3. Infuse for 4 weeks\n4. Use in small amounts for topical application",
+    tincturePreparation: "1. Fill jar 1/4 with dried bilberries\n2. Cover with vodka or brandy\n3. Steep for 4-6 weeks, shaking daily\n4. Take 15-30 drops daily"
   }
 ];
