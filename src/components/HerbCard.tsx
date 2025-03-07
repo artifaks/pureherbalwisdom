@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
 import { HerbCategory } from '@/data/types';
-import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, BookmarkPlus, Bookmark, Brain, MushroomIcon } from 'lucide-react';
+import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, BookmarkPlus, Bookmark, Brain } from 'lucide-react';
 
 interface HerbCardProps {
   id: string;
@@ -50,8 +50,8 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
     'fo-ti': <Leaf size={size} color={color} />,
     'nettle-leaf': <Leaf size={size} color={color} />,
     
-    'cordyceps': <MushroomIcon size={size} color={color} />,
-    'reishi': <MushroomIcon size={size} color={color} />,
+    'cordyceps': <Sprout size={size} color={color} />,
+    'reishi': <Sprout size={size} color={color} />,
     'ginseng-brain': <Sprout size={size} color={color} />,
     'mugwort': <Leaf size={size} color={color} />,
     'periwinkle': <Flower size={size} color={color} />,
