@@ -63,6 +63,12 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
     'rosemary-brain': <Leaf size={size} color={color} />,
     'phosphatidylserine': <Brain size={size} color={color} />,
     'gotu-kola-enhanced': <Leaf size={size} color={color} />,
+    
+    // Additional new brain herbs
+    'ginkgo': <Leaf size={size} color={color} />,
+    'bacopa': <Leaf size={size} color={color} />,
+    'lions-mane': <Sprout size={size} color={color} />,
+    'rhodiola': <Sprout size={size} color={color} />,
   };
 
   return iconMapping[herbId] || <Leaf size={size} color={color} />;
