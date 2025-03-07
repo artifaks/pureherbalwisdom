@@ -1,3 +1,4 @@
+
 import { Herb } from '@/data/types';
 
 // Define pairings data for herbs
@@ -165,12 +166,8 @@ export const herbPairings: Record<string, { herbId: string; reason: string }[]> 
     { herbId: 'black-cohosh', reason: 'Black Cohosh adds hormonal support to False Unicorn Root\'s benefits' }
   ],
   
-  // Default pairings for herbs without specific matches
-  'default': [
-    { herbId: 'hawthorn', reason: 'Hawthorn provides heart support alongside this herb\'s benefits' },
-    { herbId: 'ginger', reason: 'Ginger adds digestive support and improves absorption' },
-    { herbId: 'nettle', reason: 'Nettle contributes mineral support and gentle detoxification' }
-  ],
+  // First default entry - will be replaced by the merged one at the end
+  
   'hawthorne-berry': [
     { herbId: 'hawthorn', reason: 'Traditional and berry forms of Hawthorn complement each other for comprehensive heart support' },
     { herbId: 'rose', reason: 'Rose adds emotional heart support to Hawthorne Berry\'s physical benefits' },
@@ -417,7 +414,7 @@ export const herbPairings: Record<string, { herbId: string; reason: string }[]> 
     }
   ],
 
-  // Default herbs for any herb without specific pairings
+  // Merged default herbs (combining both default entries)
   'default': [
     {
       herbId: 'ginger',
@@ -430,6 +427,15 @@ export const herbPairings: Record<string, { herbId: string; reason: string }[]> 
     {
       herbId: 'ashwagandha',
       reason: 'As an adaptogen, ashwagandha can enhance the effects of many herbs by helping the body manage stress.'
+    },
+    {
+      herbId: 'hawthorn',
+      reason: 'Hawthorn provides heart support alongside this herb\'s benefits'
+    },
+    {
+      herbId: 'nettle',
+      reason: 'Nettle contributes mineral support and gentle detoxification'
     }
   ]
 };
+
