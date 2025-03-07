@@ -1,3 +1,4 @@
+
 export const mensHerbs = [
   {
     id: 'saw-palmetto',
@@ -5,271 +6,232 @@ export const mensHerbs = [
     color: '#8D6E63',
     benefits: [
       'Supports prostate health',
-      'May help with urinary symptoms of BPH',
-      'Can help balance testosterone levels',
-      'Anti-inflammatory properties'
+      'May help maintain healthy urinary function',
+      'Traditionally used for male reproductive health',
+      'Contains plant sterols and fatty acids'
     ],
-    oilPreparation: "1. Crush dried saw palmetto berries\n2. Mix with carrier oil at 1:4 ratio\n3. Warm infuse for 3-4 hours\n4. Strain and store in dark bottles",
-    tincturePreparation: "1. Fill jar halfway with crushed berries\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks in dark place\n4. Take 20-30 drops twice daily"
+    oilPreparation: "1. Use saw palmetto berries, dried\n2. Cover with olive oil\n3. Solar infuse for 3-4 weeks\n4. Take 1 tsp daily",
+    tincturePreparation: "1. Fill jar with crushed berries\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 30-60 drops twice daily"
   },
   {
     id: 'nettle-root',
     name: 'Nettle Root',
     color: '#33691E',
     benefits: [
-      'Supports prostate health',
-      'May reduce inflammatory conditions',
-      'Can help manage benign prostate hyperplasia',
-      'Contains compounds that may inhibit DHT'
+      'Supports prostate and urinary health',
+      'May help maintain healthy testosterone levels',
+      'Rich in minerals including zinc',
+      'Traditionally used for BPH symptoms'
     ],
-    oilPreparation: "1. Use dried nettle root, chopped\n2. Cover with olive oil in jar\n3. Warm infuse for 4-6 hours\n4. Store in cool, dark place",
-    tincturePreparation: "1. Fill jar 1/3 with dried nettle root\n2. Cover with vodka completely\n3. Store 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
+    oilPreparation: "1. Use dried nettle root, chopped\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Massage over lower abdomen",
+    tincturePreparation: "1. Fill jar with chopped nettle root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 30-60 drops twice daily"
   },
   {
     id: 'ginseng',
     name: 'Ginseng',
-    color: '#FFAB91',
+    color: '#A1887F',
     benefits: [
-      'Increases energy and reduces fatigue',
-      'May improve erectile function',
-      'Adaptogen that helps body handle stress',
-      'Supports immune system function'
+      'Supports male vitality and energy',
+      'May help with physical performance',
+      'Adaptogen that supports stress response',
+      'Traditionally used for vigor and stamina'
     ],
-    oilPreparation: "1. Use dried ginseng root\n2. Cover with sesame or olive oil\n3. Slow infuse for 6-8 weeks\n4. Use in small amounts for massage",
-    tincturePreparation: "1. Chop ginseng root finely\n2. Use 1:5 ratio with 50% alcohol\n3. Steep for 8 weeks minimum\n4. Take 20-40 drops daily"
+    oilPreparation: "1. Use dried ginseng root, chopped\n2. Cover with sesame oil\n3. Warm infuse for 2-3 hours\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with chopped ginseng root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'tribulus',
     name: 'Tribulus',
-    color: '#FFD54F',
+    color: '#795548',
     benefits: [
-      'May naturally support testosterone levels',
-      'Traditionally used for libido and vitality',
-      'Supports athletic performance and recovery',
-      'May help with reproductive health'
+      'May support healthy testosterone levels',
+      'Traditionally used for male reproductive health',
+      'Supports physical performance',
+      'Used in Ayurvedic medicine for vitality'
     ],
-    oilPreparation: "1. Use powdered tribulus fruit/root\n2. Mix with jojoba oil at 1:5 ratio\n3. Solar infuse for 3 weeks\n4. Use for topical massage",
-    tincturePreparation: "1. Fill jar 1/3 with tribulus powder\n2. Cover with 80 proof vodka\n3. Steep for 4-6 weeks\n4. Take 20-40 drops 1-2 times daily"
+    oilPreparation: "1. Use dried tribulus fruit and root\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with crushed tribulus\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 30-60 drops daily"
   },
   {
     id: 'ashwagandha',
     name: 'Ashwagandha',
     color: '#BCAAA4',
     benefits: [
-      'Helps body adapt to stress',
-      'Supports healthy testosterone levels',
-      'May improve fertility and reproductive health',
-      'Traditional tonic for male vitality'
+      'Adaptogen that supports stress response',
+      'May help maintain healthy testosterone levels',
+      'Supports energy and endurance',
+      'Traditionally used for male vitality'
     ],
-    oilPreparation: "1. Use powdered ashwagandha root\n2. Mix with sesame oil (traditional)\n3. Low heat for 3-4 hours\n4. Apply to lower back for energy support",
-    tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Add 2 parts honey for palatability\n3. Store for 6 weeks, shaking daily\n4. Take 1/4 teaspoon twice daily"
+    oilPreparation: "1. Use dried ashwagandha root\n2. Cover with sesame oil\n3. Warm infuse for 2-3 hours\n4. Use for full body massage",
+    tincturePreparation: "1. Fill jar with chopped ashwagandha root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 30-60 drops daily"
   },
   {
     id: 'muira-puama',
     name: 'Muira Puama',
-    color: '#795548',
+    color: '#8D6E63',
     benefits: [
-      'Known as "potency wood" in traditional medicine',
-      'Used to enhance male libido and performance',
-      'May support healthy testosterone levels',
-      'Traditional Brazilian remedy for vitality'
+      'Traditional Amazonian herb for male vitality',
+      'Supports healthy libido',
+      'May help with physical performance',
+      'Known as "potency wood" in folk medicine'
     ],
-    oilPreparation: "1. Use dried muira puama bark/root\n2. Infuse in olive oil for 4 weeks\n3. Keep jar in warm place, shaking daily\n4. For external massage use only",
-    tincturePreparation: "1. Fill jar 1/4 with powdered herb\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks minimum\n4. Take 15-40 drops daily"
+    oilPreparation: "1. Use dried muira puama bark\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with chopped bark\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'tongkat-ali',
+    name: 'Tongkat Ali',
+    color: '#6D4C41',
+    benefits: [
+      'May support healthy testosterone levels',
+      'Traditional Malaysian herb for male vitality',
+      'Supports physical performance and energy',
+      'Also known as Longjack or Eurycoma longifolia'
+    ],
+    oilPreparation: "1. Use dried tongkat ali root\n2. Cover with coconut oil\n3. Warm infuse for 3-4 hours\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with chopped tongkat ali root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 10-30 drops daily"
+  },
+  {
+    id: 'maca',
+    name: 'Maca',
+    color: '#D7CCC8',
+    benefits: [
+      'Andean adaptogen for vitality',
+      'Supports energy and stamina',
+      'May help with healthy libido',
+      'Rich in minerals and amino acids'
+    ],
+    oilPreparation: "1. Use maca powder\n2. Mix with carrier oil at 1:4 ratio\n3. For external use only\n4. Use for massage",
+    tincturePreparation: "1. Mix maca powder with glycerin and alcohol\n2. Use 1:2:2 ratio for optimal extraction\n3. Store for 4-6 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon daily"
+  },
+  {
+    id: 'pine-pollen',
+    name: 'Pine Pollen',
+    color: '#FFF59D',
+    benefits: [
+      'Contains natural plant androgens',
+      'Rich in vitamins, minerals and amino acids',
+      'Supports healthy testosterone production',
+      'Ancient Chinese herb for longevity'
+    ],
+    oilPreparation: "1. Mix pine pollen powder with oil\n2. Not traditionally used as an oil\n3. Best used as powder or tincture\n4. For external use only",
+    tincturePreparation: "1. Fill jar with pine pollen powder\n2. Cover with high-proof alcohol\n3. Store for 2 weeks, shaking daily\n4. Take 10-30 drops daily"
+  },
+  {
+    id: 'horny-goat-weed',
+    name: 'Horny Goat Weed',
+    color: '#AED581',
+    benefits: [
+      'Traditional Chinese herb for male vitality',
+      'May support healthy circulation',
+      'Contains icariin which supports male health',
+      'Traditionally used for kidney energy in TCM'
+    ],
+    oilPreparation: "1. Use dried horny goat weed\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with chopped herb\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'fo-ti',
+    name: 'Fo-Ti',
+    color: '#5D4037',
+    benefits: [
+      'Traditional Chinese longevity herb',
+      'Supports healthy hair and aging',
+      'Known as He Shou Wu in TCM',
+      'Traditionally used for male vitality'
+    ],
+    oilPreparation: "1. Use prepared fo-ti root\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for hair and scalp",
+    tincturePreparation: "1. Fill jar with prepared fo-ti root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-30 drops daily"
+  },
+  {
+    id: 'nettle-leaf',
+    name: 'Nettle Leaf',
+    color: '#689F38',
+    benefits: [
+      'Rich in minerals including zinc and iron',
+      'Supports healthy inflammation response',
+      'May help with seasonal allergies',
+      'Traditionally used for overall vitality'
+    ],
+    oilPreparation: "1. Use dried nettle leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for joint massage",
+    tincturePreparation: "1. Fill jar with fresh nettle leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
   },
   {
     id: 'muira-puama-root',
     name: 'Muira Puama Root',
     color: '#8D6E63',
     benefits: [
-      'Traditional Brazilian herb for male vitality',
-      'May support healthy testosterone metabolism',
-      'Used for energy and physical performance',
-      'Traditionally used for libido support'
-    ],
-    oilPreparation: "1. Use dried muira puama bark/root\n2. Infuse in jojoba oil for 6 weeks\n3. Keep jar in warm place, shaking daily\n4. For external massage use only",
-    tincturePreparation: "1. Fill jar 1/4 with chopped root\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks minimum\n4. Take 15-40 drops daily"
-  },
-  {
-    id: 'tongkat-ali',
-    name: 'Tongkat Ali',
-    color: '#5D4037',
-    benefits: [
-      'May naturally support hormonal balance',
-      'Traditional remedy for male energy and stamina',
-      'Supports healthy stress response',
-      'Used in traditional medicine for vitality'
-    ],
-    oilPreparation: "1. Typically not used in oil preparations\n2. Better utilized as powder or tincture\n3. Can be added to coconut oil for massage\n4. External use only",
-    tincturePreparation: "1. Mix 1 part root powder with 5 parts alcohol\n2. Use 50% alcohol minimum\n3. Steep for 6-8 weeks in dark place\n4. Take 10-30 drops daily"
-  },
-  {
-    id: 'maca',
-    name: 'Maca',
-    color: '#F9A825',
-    benefits: [
-      'Supports endurance and stamina',
-      'May help with hormonal balance naturally',
-      'Traditional Peruvian food for fertility and vitality',
-      'Adaptogen that helps with stress response'
-    ],
-    oilPreparation: "1. Not typically used as oil\n2. Best used as powder in foods\n3. Can be added to coconut oil for topical use\n4. External application only",
-    tincturePreparation: "1. Mix maca powder with glycerin at 1:4 ratio\n2. Add 25% alcohol as preservative\n3. Shake daily for 6 weeks\n4. Take 1/4-1/2 teaspoon daily"
-  },
-  {
-    id: 'pine-pollen',
-    name: 'Pine Pollen',
-    color: '#FFF176',
-    benefits: [
-      'Contains natural plant androgens',
-      'Rich in vitamins, minerals and amino acids',
-      'May support hormonal balance',
-      'Traditional Chinese tonic for longevity'
-    ],
-    oilPreparation: "1. Mix pine pollen with jojoba oil\n2. Not typically prepared as oil\n3. Better utilized as powder\n4. Can be added to salves for skin application",
-    tincturePreparation: "1. Fill jar 1/4 with pine pollen powder\n2. Cover with 100 proof alcohol\n3. Steep for 2 weeks, shaking daily\n4. Take 5-15 drops under tongue"
-  },
-  {
-    id: 'horny-goat-weed',
-    name: 'Horny Goat Weed',
-    color: '#9CCC65',
-    benefits: [
-      'May support healthy testosterone levels',
-      'Traditionally used for male vitality',
-      'Contains icariin that supports blood flow',
-      'Used in traditional Chinese medicine'
-    ],
-    oilPreparation: "1. Use dried leaves, chopped finely\n2. Cover with jojoba oil\n3. Warm infuse for 6 hours\n4. For external use only",
-    tincturePreparation: "1. Fill jar 1/4 with dried herb\n2. Cover with high-proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops daily"
-  },
-  {
-    id: 'fo-ti',
-    name: 'Fo-Ti',
-    color: '#795548',
-    benefits: [
-      'Traditional Chinese longevity herb',
-      'May support healthy hormone levels',
-      'Used to support reproductive health',
-      'Helps maintain energy and vitality'
-    ],
-    oilPreparation: "1. Use prepared fo-ti root pieces\n2. Cover with sesame oil\n3. Slow cook for 3-4 hours\n4. Use for massage over lower back",
-    tincturePreparation: "1. Use 1 part prepared root to 5 parts alcohol\n2. Store for 8 weeks in dark place\n3. Shake daily during extraction\n4. Take 15-30 drops twice daily"
-  },
-  {
-    id: 'nettle-leaf',
-    name: 'Nettle Leaf',
-    color: '#2E7D32',
-    benefits: [
-      'Rich in minerals that support male health',
-      'May help maintain healthy hormone balance',
-      'Supports kidney and adrenal function',
-      'Traditional tonic for male vitality'
-    ],
-    oilPreparation: "1. Use dried nettle leaves\n2. Cover with olive oil\n3. Infuse for 3-4 weeks\n4. For external use on muscles and joints",
-    tincturePreparation: "1. Fill jar 1/3 with dried nettle leaves\n2. Cover with apple cider vinegar or vodka\n3. Steep for 4 weeks\n4. Take 30-60 drops daily"
-  },
-  {
-    id: 'pygeum',
-    name: 'Pygeum',
-    color: '#A1887F',
-    benefits: [
-      'Supports prostate health and urinary function',
-      'Traditional African remedy for male health',
-      'May reduce inflammation in the prostate',
-      'Often combined with saw palmetto for enhanced effects'
-    ],
-    oilPreparation: "1. Use powdered pygeum bark\n2. Mix with carrier oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. For external use only over lower abdomen",
-    tincturePreparation: "1. Fill jar 1/4 with pygeum powder\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-40 drops twice daily"
-  },
-  {
-    id: 'cordyceps',
-    name: 'Cordyceps',
-    color: '#FF8F00',
-    benefits: [
-      'Traditional Chinese tonic for male vitality',
-      'Supports energy, stamina and athletic performance',
-      'May enhance oxygen utilization',
-      'Adaptogenic properties for stress management'
-    ],
-    oilPreparation: "1. Not typically used as oil preparation\n2. Best used as powder or tincture\n3. Can be added to salves for muscle application\n4. External use only",
-    tincturePreparation: "1. Use powdered cordyceps mushroom\n2. Mix with 40% alcohol at 1:5 ratio\n3. Add 10% glycerin for better extraction\n4. Take 30-60 drops daily in warm water"
-  },
-  {
-    id: 'damiana-mens',
-    name: 'Damiana',
-    color: '#FFA726',
-    benefits: [
-      'Traditional male libido enhancer',
-      'May support healthy testosterone metabolism',
-      'Helps with stress-related sexual issues',
-      'Used for nervous system support in men'
-    ],
-    oilPreparation: "1. Use dried damiana leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for sensual massage oil",
-    tincturePreparation: "1. Fill jar 1/3 with dried damiana\n2. Cover with brandy or vodka\n3. Store for 4 weeks in dark place\n4. Take 20-40 drops as needed"
-  },
-  {
-    id: 'fenugreek',
-    name: 'Fenugreek',
-    color: '#FFC107',
-    benefits: [
-      'May support healthy testosterone levels',
-      'Traditional herb for male vitality',
+      'Amazonian herb for male vigor',
       'Supports healthy libido and energy',
-      'Contains compounds that support muscle recovery'
+      'Traditional nerve tonic',
+      'Also known as "potency wood"'
     ],
-    oilPreparation: "1. Use ground fenugreek seeds\n2. Cover with sesame oil at 1:4 ratio\n3. Warm infuse for 3 hours\n4. Use for massage over lower abdomen",
-    tincturePreparation: "1. Fill jar 1/3 with ground fenugreek seeds\n2. Cover with vodka completely\n3. Store for 6 weeks, shaking daily\n4. Take 20-30 drops twice daily"
-  },
-  {
-    id: 'he-shou-wu',
-    name: 'He Shou Wu',
-    color: '#4E342E',
-    benefits: [
-      'Traditional Chinese herb for male vitality',
-      'Supports healthy aging and longevity',
-      'May help maintain hair health and pigmentation',
-      'Used in traditional medicine for reproductive health'
-    ],
-    oilPreparation: "1. Use prepared he shou wu root\n2. Cover with sesame oil\n3. Slow cook for 4-6 hours\n4. Use for massage over kidney area (lower back)",
-    tincturePreparation: "1. Chop prepared root finely\n2. Use 1:5 ratio with 40% alcohol\n3. Steep for 8 weeks minimum\n4. Take 15-30 drops twice daily"
-  },
-  {
-    id: 'shilajit',
-    name: 'Shilajit',
-    color: '#212121',
-    benefits: [
-      'Rich in fulvic acid and minerals for male health',
-      'Traditional Ayurvedic tonic for vitality',
-      'Supports energy, stamina and endurance',
-      'May help with testosterone production and sperm health'
-    ],
-    oilPreparation: "1. Not typically used as oil preparation\n2. Best used as powder or resin\n3. Can be dissolved in warm water or milk\n4. Take small amount (rice grain size) daily",
-    tincturePreparation: "1. Mix purified shilajit resin with alcohol\n2. Use 1:3 ratio with 50% alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 5-10 drops in warm water"
+    oilPreparation: "1. Use dried muira puama root\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with chopped root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'oatstraw',
     name: 'Oatstraw',
-    color: '#AED581',
+    color: '#CDDC39',
     benefits: [
-      'Rich in nutrients that support male vitality',
-      'Traditional nerve tonic for men',
-      'Supports healthy energy levels',
-      'Contains compounds that support testosterone'
+      'Rich in minerals for male health',
+      'Supports healthy nervous system',
+      'May help with stress and fatigue',
+      'Traditionally used as a male tonic'
     ],
-    oilPreparation: "1. Use dried oatstraw herb\n2. Cover with olive oil\n3. Infuse for 4 weeks\n4. Use for massage over lower back",
-    tincturePreparation: "1. Fill jar 1/3 with dried oatstraw\n2. Cover with vodka completely\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
+    oilPreparation: "1. Use dried oatstraw\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with chopped oatstraw\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
   },
   {
     id: 'cistanche',
     name: 'Cistanche',
-    color: '#FF7043',
+    color: '#A1887F',
     benefits: [
-      'Traditional Chinese herb for male stamina',
-      'Known as "Desert Ginseng"',
-      'Supports kidney yang energy in TCM',
-      'Used for male reproductive health'
+      'Traditional Chinese herb for male vitality',
+      'Supports kidney and yang energy in TCM',
+      'May support healthy testosterone levels',
+      'Known as "desert ginseng"'
     ],
-    oilPreparation: "1. Use dried cistanche stem\n2. Cover with sesame oil\n3. Slow cook for 4-6 hours\n4. Use for massage over kidney area",
-    tincturePreparation: "1. Fill jar 1/4 with chopped cistanche\n2. Cover with high-proof alcohol\n3. Steep for 8 weeks, shaking daily\n4. Take 15-30 drops twice daily"
+    oilPreparation: "1. Use dried cistanche stem\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for lower back massage",
+    tincturePreparation: "1. Fill jar with chopped cistanche\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'shilajit',
+    name: 'Shilajit',
+    color: '#3E2723',
+    benefits: [
+      'Ancient Ayurvedic mineral resin for vitality',
+      'Rich in fulvic acid and minerals',
+      'Supports energy and endurance',
+      'Traditional male rejuvenative'
+    ],
+    oilPreparation: "1. Mix purified shilajit with sesame oil\n2. Use 1:10 ratio for proper dilution\n3. Warm slightly to incorporate\n4. Use sparingly for massage",
+    tincturePreparation: "1. Dissolve purified shilajit in warm water\n2. Add equal parts vodka as preservative\n3. Store in dark bottle\n4. Take 10-20 drops daily"
+  },
+  {
+    id: 'suma',
+    name: 'Suma',
+    color: '#D7CCC8',
+    benefits: [
+      'Brazilian ginseng for male vitality',
+      'Contains plant sterols and saponins',
+      'Adaptogen for energy and stamina',
+      'Supports healthy hormonal balance'
+    ],
+    oilPreparation: "1. Use dried suma root\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for massage",
+    tincturePreparation: "1. Fill jar with chopped suma root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'cordyceps-mens',
+    name: 'Cordyceps',
+    color: '#795548',
+    benefits: [
+      'Medicinal mushroom for stamina and energy',
+      'Supports healthy oxygen utilization',
+      'Traditional Tibetan male tonic',
+      'May support athletic performance'
+    ],
+    oilPreparation: "1. Use dried cordyceps powder\n2. Not typically used as oil\n3. Better as tincture or powder\n4. For external use only",
+    tincturePreparation: "1. Fill jar with cordyceps powder or pieces\n2. Use dual extraction with alcohol and water\n3. Follow mushroom dual extraction protocol\n4. Take 30-60 drops daily"
   }
 ];

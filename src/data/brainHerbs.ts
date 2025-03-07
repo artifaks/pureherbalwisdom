@@ -1,200 +1,250 @@
 
-import { Herb } from './types';
-
-export const brainHerbs: Herb[] = [
-  {
-    id: 'cordyceps',
-    name: 'Cordyceps',
-    color: '#FF8F00',
-    benefits: [
-      'Traditional Chinese tonic for male vitality',
-      'Supports energy, stamina and athletic performance',
-      'May enhance oxygen utilization',
-      'Adaptogenic properties for stress management'
-    ],
-    oilPreparation: "1. Not typically used as oil preparation\n2. Best used as powder or tincture\n3. Can be added to salves for muscle application\n4. External use only",
-    tincturePreparation: "1. Use powdered cordyceps mushroom\n2. Mix with 40% alcohol at 1:5 ratio\n3. Add 10% glycerin for better extraction\n4. Take 30-60 drops daily in warm water"
-  },
-  {
-    id: 'reishi',
-    name: 'Reishi',
-    color: '#8E24AA',
-    benefits: [
-      'Supports immune function',
-      'May help reduce stress and anxiety',
-      'Traditionally used for longevity',
-      'Contains compounds that support brain health'
-    ],
-    oilPreparation: "1. Use dried reishi slices\n2. Cover with olive oil\n3. Infuse for 4-6 weeks\n4. Use for massage or topical application",
-    tincturePreparation: "1. Fill jar with chopped reishi\n2. Cover with high-proof alcohol\n3. Steep for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
-  },
-  {
-    id: 'ginseng-brain',
-    name: 'Ginseng',
-    color: '#FFAB91',
-    benefits: [
-      'Increases energy and reduces fatigue',
-      'May improve cognitive function',
-      'Adaptogen that helps body handle stress',
-      'Supports immune system function'
-    ],
-    oilPreparation: "1. Use dried ginseng root\n2. Cover with sesame or olive oil\n3. Slow infuse for 6-8 weeks\n4. Use in small amounts for massage",
-    tincturePreparation: "1. Chop ginseng root finely\n2. Use 1:5 ratio with 50% alcohol\n3. Steep for 8 weeks minimum\n4. Take 20-40 drops daily"
-  },
-  {
-    id: 'mugwort-brain',
-    name: 'Mugwort',
-    color: '#7E57C2',
-    benefits: [
-      'Traditional herb for menstrual regulation',
-      'May help with delayed periods',
-      'Used in traditional medicine for reproductive health',
-      'Has relaxing properties for menstrual discomfort'
-    ],
-    oilPreparation: "1. Harvest mugwort leaves and flowers\n2. Dry and chop finely\n3. Cover with olive oil and infuse for 4 weeks\n4. Use externally for lower abdomen massage",
-    tincturePreparation: "1. Fill jar 1/3 with dried mugwort\n2. Cover with 100 proof vodka\n3. Steep for 6-8 weeks in dark place\n4. Take 5-15 drops as needed"
-  },
-  {
-    id: 'periwinkle',
-    name: 'Periwinkle',
-    color: '#4DB6AC',
-    benefits: [
-      'Supports cognitive function',
-      'May help improve memory and focus',
-      'Traditionally used for circulatory health',
-      'Contains compounds that support brain health'
-    ],
-    oilPreparation: "1. Use dried periwinkle leaves\n2. Cover with olive oil\n3. Infuse for 4-6 weeks\n4. Use for topical application",
-    tincturePreparation: "1. Fill jar with dried periwinkle\n2. Cover with high-proof alcohol\n3. Steep for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
-  },
-  {
-    id: 'blueberry',
-    name: 'Blueberry',
-    color: '#3F51B5',
-    benefits: [
-      'Rich in antioxidants that support brain health',
-      'May help improve memory and cognitive function',
-      'Supports overall health and wellness',
-      'Traditionally used for digestive health'
-    ],
-    oilPreparation: "1. Use fresh or dried blueberries\n2. Cover with olive oil\n3. Infuse for 4-6 weeks\n4. Use for culinary purposes or topical application",
-    tincturePreparation: "1. Fill jar with fresh blueberries\n2. Cover with high-proof alcohol\n3. Steep for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
-  },
-  {
-    id: 'green-tea',
-    name: 'Green Tea',
-    color: '#4CAF50',
-    benefits: [
-      'Rich in antioxidants that support brain health',
-      'May help improve focus and concentration',
-      'Supports overall health and wellness',
-      'Traditionally used for digestive health'
-    ],
-    oilPreparation: "1. Use dried green tea leaves\n2. Cover with olive oil\n3. Infuse for 4-6 weeks\n4. Use for culinary purposes or topical application",
-    tincturePreparation: "1. Fill jar with dried green tea leaves\n2. Cover with high-proof alcohol\n3. Steep for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
-  },
-  {
-    id: 'rosemary-brain',
-    name: 'Rosemary',
-    color: '#AED581',
-    benefits: [
-      'Traditionally used for memory enhancement',
-      'Increases cerebral blood flow',
-      'Contains compounds that support nerve function',
-      'Aromatherapy uses for mental clarity'
-    ],
-    oilPreparation: "1. Fill jar with fresh rosemary sprigs\n2. Cover with olive oil completely\n3. Solar infuse for 4 weeks\n4. Use for scalp and temple massage",
-    tincturePreparation: "1. Fill jar 1/3 with fresh rosemary\n2. Cover with 100 proof vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 10-20 drops as needed"
-  },
-  {
-    id: 'gotu-kola',
-    name: 'Gotu Kola',
-    color: '#66BB6A',
-    benefits: [
-      'Traditional brain tonic in Ayurveda',
-      'Supports mental clarity and focus',
-      'May help with memory and concentration',
-      'Supports healthy cerebral circulation'
-    ],
-    oilPreparation: "1. Use fresh or dried gotu kola leaves\n2. Cover with sesame oil (traditional)\n3. Warm infuse for 4 hours\n4. Apply to temples and forehead",
-    tincturePreparation: "1. Fill jar with fresh gotu kola leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops twice daily"
-  },
-  {
-    id: 'brahmi',
-    name: 'Brahmi',
-    color: '#26A69A',
-    benefits: [
-      'Traditional Ayurvedic brain tonic',
-      'Supports memory and cognitive function',
-      'May help with learning and retention',
-      'Used for mental clarity and focus'
-    ],
-    oilPreparation: "1. Use dried brahmi leaves\n2. Cover with coconut oil (traditional)\n3. Slow cook for 3-4 hours\n4. Apply to scalp and temples",
-    tincturePreparation: "1. Fill jar 1/3 with dried brahmi\n2. Cover with vodka completely\n3. Steep for 6 weeks, shaking daily\n4. Take 30-60 drops daily"
-  },
-  {
-    id: 'rosemary-memory',
-    name: 'Rosemary',
-    color: '#AED581',
-    benefits: [
-      'Traditionally used for memory enhancement',
-      'Increases cerebral blood flow',
-      'Contains compounds that support nerve function',
-      'Aromatherapy uses for mental clarity'
-    ],
-    oilPreparation: "1. Fill jar with fresh rosemary sprigs\n2. Cover with olive oil completely\n3. Solar infuse for 4 weeks\n4. Use for scalp and temple massage",
-    tincturePreparation: "1. Fill jar 1/3 with fresh rosemary\n2. Cover with 100 proof vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 10-20 drops as needed"
-  },
+export const brainHerbs = [
   {
     id: 'ginkgo',
     name: 'Ginkgo Biloba',
-    color: '#9CCC65',
+    color: '#9C27B0',
     benefits: [
-      'Improves blood flow to the brain',
-      'May enhance memory and cognitive speed',
-      'Contains powerful antioxidants',
-      'Traditionally used for mental clarity'
+      'Improves circulation to the brain',
+      'May support memory and cognitive function',
+      'Contains antioxidants that protect neurons',
+      'One of the oldest living tree species'
     ],
-    oilPreparation: "1. Use dried ginkgo leaves\n2. Infuse in olive oil for 4-6 weeks\n3. Keep in cool, dark place\n4. Apply to temples for headache relief",
-    tincturePreparation: "1. Fill jar 1/4 with dried ginkgo leaves\n2. Cover with 100 proof vodka\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops 2-3 times daily"
+    oilPreparation: "1. Use dried ginkgo leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3-4 weeks\n4. Use for temple and neck massage",
+    tincturePreparation: "1. Fill jar with chopped ginkgo leaves\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'bacopa',
     name: 'Bacopa Monnieri',
-    color: '#66BB6A',
+    color: '#7E57C2',
     benefits: [
-      'Traditional Ayurvedic brain tonic',
-      'May improve memory formation',
-      'Supports learning and cognitive performance',
-      'Contains adaptogenic compounds'
+      'Traditional Ayurvedic herb for memory',
+      'Supports learning and cognitive function',
+      'Contains bacosides that protect neurons',
+      'Adaptogen that helps manage stress'
     ],
-    oilPreparation: "1. Use dried bacopa herb\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for scalp and head massage",
-    tincturePreparation: "1. Fill jar 1/3 with dried bacopa\n2. Cover with 80 proof alcohol\n3. Macerate for 6-8 weeks\n4. Take 30-40 drops twice daily"
+    oilPreparation: "1. Use dried bacopa herb\n2. Cover with coconut oil\n3. Warm infuse for 3-4 hours\n4. Use for head massage",
+    tincturePreparation: "1. Fill jar with chopped bacopa herb\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'lions-mane',
-    name: 'Lion\'s Mane Mushroom',
-    color: '#FFEB3B',
+    name: 'Lion\'s Mane',
+    color: '#B39DDB',
     benefits: [
-      'Supports nerve growth factor production',
-      'May improve cognitive function',
-      'Traditionally used for mental clarity',
-      'Supports overall brain health'
+      'Medicinal mushroom that supports nerve growth',
+      'May help with nerve regeneration',
+      'Supports healthy brain function',
+      'Traditional Chinese medicine for cognitive health'
     ],
-    oilPreparation: "1. Use dried lion's mane powder\n2. Mix with carrier oil at 1:4 ratio\n3. Not traditionally used as oil\n4. Better utilized in tincture form",
-    tincturePreparation: "1. Fill jar 1/4 with dried lion's mane\n2. Cover with 100 proof vodka\n3. Add 10% food-grade glycerin\n4. Steep for 8 weeks, take 30-60 drops daily"
+    oilPreparation: "1. Use dried lion's mane pieces\n2. Not typically used as oil\n3. Better as dual-extracted tincture\n4. For external use only",
+    tincturePreparation: "1. Fill jar with lion's mane pieces\n2. Use dual-extraction with alcohol and water\n3. Follow mushroom dual-extraction protocol\n4. Take 30-60 drops daily"
   },
   {
     id: 'rhodiola',
     name: 'Rhodiola Rosea',
-    color: '#FF7043',
+    color: '#BA68C8',
     benefits: [
-      'Adaptogenic herb for mental fatigue',
-      'May improve attention and endurance',
-      'Traditionally used to combat stress',
-      'Supports cognitive function during fatigue'
+      'Arctic root adaptogen for mental performance',
+      'Supports focus and attention during stress',
+      'May help with fatigue and mental exhaustion',
+      'Traditional herb for high-altitude regions'
     ],
-    oilPreparation: "1. Use dried rhodiola root\n2. Not typically prepared as oil\n3. Better utilized as tincture\n4. For external use only",
-    tincturePreparation: "1. Use fresh or dried rhodiola root\n2. Cover with 80-100 proof vodka\n3. Steep for 8 weeks in dark place\n4. Take 20-30 drops 1-3 times daily"
+    oilPreparation: "1. Use dried rhodiola root\n2. Cover with jojoba oil\n3. Warm infuse for 3-4 hours\n4. Use for temple and neck massage",
+    tincturePreparation: "1. Fill jar with chopped rhodiola root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'cordyceps',
+    name: 'Cordyceps',
+    color: '#9575CD',
+    benefits: [
+      'Medicinal mushroom that supports energy and stamina',
+      'May help with oxygen utilization in the brain',
+      'Traditional Tibetan medicine for vitality',
+      'Supports mental endurance'
+    ],
+    oilPreparation: "1. Use dried cordyceps pieces\n2. Not typically used as oil\n3. Better as dual-extracted tincture\n4. For external use only",
+    tincturePreparation: "1. Fill jar with cordyceps pieces\n2. Use dual-extraction with alcohol and water\n3. Follow mushroom dual-extraction protocol\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'reishi',
+    name: 'Reishi',
+    color: '#673AB7',
+    benefits: [
+      'Medicinal mushroom that calms the mind',
+      'Supports healthy sleep and relaxation',
+      'Traditional Chinese herb for spiritual awareness',
+      'Adaptogen that helps manage stress'
+    ],
+    oilPreparation: "1. Use dried reishi pieces\n2. Not typically used as oil\n3. Better as dual-extracted tincture\n4. For external use only",
+    tincturePreparation: "1. Fill jar with reishi pieces\n2. Use dual-extraction with alcohol and water\n3. Follow mushroom dual-extraction protocol\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'ginseng-brain',
+    name: 'Ginseng',
+    color: '#9575CD',
+    benefits: [
+      'Adaptogen that supports mental clarity',
+      'May help with focus and attention',
+      'Traditional Chinese herb for brain qi',
+      'Supports healthy energy levels'
+    ],
+    oilPreparation: "1. Use dried ginseng root\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for temple and neck massage",
+    tincturePreparation: "1. Fill jar with chopped ginseng root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 10-30 drops daily"
+  },
+  {
+    id: 'mugwort-brain',
+    name: 'Mugwort',
+    color: '#9C27B0',
+    benefits: [
+      'Traditional herb for vivid dreams',
+      'May help with dream recall',
+      'Used in traditional medicine for mental clarity',
+      'Supports healthy sleep cycles'
+    ],
+    oilPreparation: "1. Use dried mugwort leaves\n2. Cover with almond oil\n3. Solar infuse for 3-4 weeks\n4. Use for temple and third eye massage",
+    tincturePreparation: "1. Fill jar with mugwort leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 5-15 drops before sleep"
+  },
+  {
+    id: 'periwinkle',
+    name: 'Periwinkle',
+    color: '#9FA8DA',
+    benefits: [
+      'Contains vinpocetine that supports brain blood flow',
+      'Traditional herb for memory support',
+      'May help with cognitive function',
+      'Supports healthy brain metabolism'
+    ],
+    oilPreparation: "1. Use dried periwinkle herb\n2. Cover with jojoba oil\n3. Solar infuse for 3-4 weeks\n4. Use for temple massage",
+    tincturePreparation: "1. Fill jar with periwinkle herb\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-20 drops daily"
+  },
+  {
+    id: 'blueberry',
+    name: 'Blueberry',
+    color: '#5E35B1',
+    benefits: [
+      'Rich in antioxidants that protect the brain',
+      'Contains anthocyanins that support brain health',
+      'May help with age-related memory concerns',
+      'Supports healthy inflammation response'
+    ],
+    oilPreparation: "1. Use dried blueberries\n2. Cover with jojoba oil\n3. Warm infuse for 4 hours\n4. Use for facial massage",
+    tincturePreparation: "1. Fill jar with fresh or frozen blueberries\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'green-tea',
+    name: 'Green Tea',
+    color: '#66BB6A',
+    benefits: [
+      'Contains L-theanine that supports calm alertness',
+      'Rich in antioxidants that protect the brain',
+      'Supports healthy cognitive function',
+      'Traditional herb for meditation and focus'
+    ],
+    oilPreparation: "1. Use dried green tea leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3-4 weeks\n4. Use for facial massage",
+    tincturePreparation: "1. Fill jar with green tea leaves\n2. Cover with glycerin and alcohol mix\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'rosemary-brain',
+    name: 'Rosemary',
+    color: '#8E24AA',
+    benefits: [
+      'Contains carnosic acid that protects brain cells',
+      'Traditional herb for memory and focus',
+      'May help with mental clarity',
+      'Supports healthy circulation to the brain'
+    ],
+    oilPreparation: "1. Use dried rosemary leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for scalp and temple massage",
+    tincturePreparation: "1. Fill jar with fresh rosemary\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 15-30 drops daily"
+  },
+  {
+    id: 'gotu-kola',
+    name: 'Gotu Kola',
+    color: '#7986CB',
+    benefits: [
+      'Traditional Ayurvedic herb for brain function',
+      'Supports healthy circulation to the brain',
+      'May help with focus and concentration',
+      'Traditionally used for meditation support'
+    ],
+    oilPreparation: "1. Use dried gotu kola herb\n2. Cover with coconut oil\n3. Warm infuse for 3-4 hours\n4. Use for scalp and brain areas",
+    tincturePreparation: "1. Fill jar with gotu kola herb\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'brahmi',
+    name: 'Brahmi',
+    color: '#9575CD',
+    benefits: [
+      'Traditional Ayurvedic herb for intelligence',
+      'Supports memory and cognitive function',
+      'May help with focus and concentration',
+      'Also known as Bacopa monnieri'
+    ],
+    oilPreparation: "1. Use dried brahmi herb\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for head massage",
+    tincturePreparation: "1. Fill jar with brahmi herb\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'phosphatidylserine',
+    name: 'Phosphatidylserine',
+    color: '#AB47BC',
+    benefits: [
+      'Phospholipid that supports brain cell membranes',
+      'May help with memory and cognitive function',
+      'Supports healthy brain aging',
+      'Essential for brain cell communication'
+    ],
+    oilPreparation: "1. Not typically used as oil\n2. Better as oral supplement\n3. Can be combined with carrier oils\n4. For external use only",
+    tincturePreparation: "1. Not typically made as tincture\n2. Better as liposomal preparation\n3. Best used as supplement\n4. Follow supplement guidelines"
+  },
+  {
+    id: 'gotu-kola-enhanced',
+    name: 'Gotu Kola Enhanced',
+    color: '#5C6BC0',
+    benefits: [
+      'Enhanced formulation for brain health',
+      'Supports healthy circulation to the brain',
+      'Contains triterpenoid compounds',
+      'Traditional herb for mental clarity'
+    ],
+    oilPreparation: "1. Use dried herb with added essential oils\n2. Cover with jojoba oil\n3. Warm infuse for 3-4 hours\n4. Use for brain area massage",
+    tincturePreparation: "1. Fill jar with herbs and supportive adaptogens\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+  },
+  {
+    id: 'sage-brain',
+    name: 'Sage',
+    color: '#7E57C2',
+    benefits: [
+      'Contains compounds that support acetylcholine',
+      'May enhance memory and focus',
+      'Traditional herb for mental clarity',
+      'Contains antioxidants that protect the brain'
+    ],
+    oilPreparation: "1. Use dried sage leaves\n2. Cover with olive oil\n3. Solar infuse for 3 weeks\n4. Use for temple and brain area massage",
+    tincturePreparation: "1. Fill jar with fresh sage leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 15-30 drops daily"
+  },
+  {
+    id: 'rosemary-memory',
+    name: 'Rosemary Memory',
+    color: '#9C27B0',
+    benefits: [
+      'Enhanced rosemary for memory support',
+      'Contains compounds that protect brain cells',
+      'May improve recall and mental clarity',
+      'Traditional herb for students and scholars'
+    ],
+    oilPreparation: "1. Use fresh rosemary with flower tops\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for scalp and temple massage",
+    tincturePreparation: "1. Fill jar with fresh rosemary tops\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops daily"
+  },
+  {
+    id: 'goji-berry',
+    name: 'Goji Berry',
+    color: '#D81B60',
+    benefits: [
+      'Traditional Chinese herb for brain longevity',
+      'Rich in antioxidants that support brain health',
+      'Contains compounds that nourish brain tissue',
+      'Supports overall cognitive function'
+    ],
+    oilPreparation: "1. Use dried goji berries\n2. Cover with jojoba oil\n3. Warm infuse for 3-4 hours\n4. Use for facial massage",
+    tincturePreparation: "1. Fill jar with dried goji berries\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
   }
 ];

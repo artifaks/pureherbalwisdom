@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, Brain, HeartPulse, BookHeart, HandHeart, HeartHandshake } from 'lucide-react';
 import { HerbCategory } from '@/data/types';
@@ -31,6 +32,10 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'pomegranate': <HeartHandshake size={size} color={color} />,
     'reishi-heart': <Sprout size={size} color={color} />,
     'coleus': <Leaf size={size} color={color} />,
+    // New heart herbs
+    'motherwort-heart': <Flower size={size} color={color} />,
+    'yarrow': <Flower2 size={size} color={color} />,
+    'dan-shen': <Leaf size={size} color={color} />,
     
     // Stomach herbs
     'peppermint': <Leaf size={size} color={color} />,
@@ -48,6 +53,10 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'gentian': <Sprout size={size} color={color} />,
     'artichoke-leaf': <Leaf size={size} color={color} />,
     'orange-peel': <Leaf size={size} color={color} />,
+    // New stomach herbs
+    'aloe-vera': <Leaf size={size} color={color} />,
+    'calendula': <Flower2 size={size} color={color} />,
+    'catnip': <Leaf size={size} color={color} />,
     
     // Men's herbs
     'saw-palmetto': <TreeDeciduous size={size} color={color} />,
@@ -65,6 +74,10 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'muira-puama-root': <Sprout size={size} color={color} />,
     'oatstraw': <Sprout size={size} color={color} />,
     'cistanche': <Sprout size={size} color={color} />,
+    // New men's herbs
+    'shilajit': <Sprout size={size} color={color} />,
+    'suma': <Leaf size={size} color={color} />,
+    'cordyceps-mens': <Sprout size={size} color={color} />,
     
     // Brain herbs
     'cordyceps': <Sprout size={size} color={color} />,
@@ -83,6 +96,10 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'bacopa': <Leaf size={size} color={color} />,
     'lions-mane': <Sprout size={size} color={color} />,
     'rhodiola': <Sprout size={size} color={color} />,
+    // New brain herbs
+    'sage-brain': <Leaf size={size} color={color} />,
+    'rosemary-memory': <Leaf size={size} color={color} />,
+    'goji-berry': <Sprout size={size} color={color} />,
     
     // Women's herbs
     'red-raspberry': <Leaf size={size} color={color} />,
@@ -106,6 +123,10 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'lady-mantle': <Leaf size={size} color={color} />,
     'black-haw': <TreeDeciduous size={size} color={color} />,
     'cramp-bark': <Leaf size={size} color={color} />,
+    // New women's herbs
+    'evening-primrose-oil': <Flower size={size} color={color} />,
+    'queens-cup': <Flower2 size={size} color={color} />,
+    'raspberry-seed': <Leaf size={size} color={color} />,
   };
 
   // Handle special cases for herbs with duplicate IDs

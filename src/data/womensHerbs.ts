@@ -271,5 +271,44 @@ export const womensHerbs = [
     ],
     oilPreparation: "1. Use dried cramp bark\n2. Cover with jojoba or olive oil\n3. Warm infuse for 4 hours\n4. Use for abdominal and lower back massage",
     tincturePreparation: "1. Fill jar 1/3 with dried bark\n2. Cover with 100 proof vodka\n3. Store for 6-8 weeks in dark place\n4. Take 30-60 drops during cramping"
+  },
+  {
+    id: 'evening-primrose-oil',
+    name: 'Evening Primrose Oil',
+    color: '#F8BBD0',
+    benefits: [
+      'Contains essential fatty acids for hormonal balance',
+      'Supports skin health and elasticity',
+      'May reduce PMS symptoms and breast tenderness',
+      'Traditionally used for menopausal discomfort'
+    ],
+    oilPreparation: "1. Cold-pressed from seeds (best purchased ready-made)\n2. Use as carrier oil for other herb infusions\n3. Store in refrigerator to prevent rancidity\n4. 1-3 tsp daily for women's hormonal health",
+    tincturePreparation: "1. Not typically made as a tincture\n2. Better used as oil or supplement\n3. Can be mixed with other herbal tinctures\n4. Take as directed by a healthcare provider"
+  },
+  {
+    id: 'queens-cup',
+    name: 'Queen\'s Cup',
+    color: '#9C27B0',
+    benefits: [
+      'Traditionally used to support female reproductive health',
+      'May help regulate menstrual cycles',
+      'Contains compounds supporting hormone balance',
+      'Used in traditional medicine for women\'s vitality'
+    ],
+    oilPreparation: "1. Use dried queen's cup root\n2. Cover with jojoba oil at 1:5 ratio\n3. Warm infuse for 4 hours\n4. Use for massage over lower abdomen",
+    tincturePreparation: "1. Fill jar 1/3 with dried root\n2. Cover with 40% alcohol solution\n3. Steep for 6 weeks, shaking daily\n4. Take 15-30 drops twice daily"
+  },
+  {
+    id: 'raspberry-seed',
+    name: 'Raspberry Seed',
+    color: '#E91E63',
+    benefits: [
+      'Rich in essential fatty acids and vitamin E',
+      'Supports female hormonal health',
+      'Contains antioxidants that benefit reproductive system',
+      'Complements other women\'s herbs for comprehensive support'
+    ],
+    oilPreparation: "1. Cold-pressed from seeds (best purchased ready-made)\n2. Use as carrier oil for massage blends\n3. Store in dark bottle away from heat\n4. Apply to skin or take 1/2 tsp daily",
+    tincturePreparation: "1. Crush dried raspberry seeds\n2. Cover with high-proof alcohol\n3. Steep for 6-8 weeks in dark place\n4. Take 20-30 drops daily"
   }
 ];

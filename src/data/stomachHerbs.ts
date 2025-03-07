@@ -193,5 +193,44 @@ export const stomachHerbs = [
     ],
     oilPreparation: "1. Use dried organic orange peels\n2. Cover with jojoba oil\n3. Solar infuse for 3-4 weeks\n4. Use for abdominal massage",
     tincturePreparation: "1. Fill jar 1/2 with chopped dried peels\n2. Cover with 80 proof vodka\n3. Steep for 4 weeks, shaking daily\n4. Take 10-30 drops as needed"
+  },
+  {
+    id: 'aloe-vera',
+    name: 'Aloe Vera',
+    color: '#81C784',
+    benefits: [
+      'Soothes and heals digestive tract lining',
+      'May help with acid reflux and heartburn',
+      'Contains anti-inflammatory compounds',
+      'Supports healthy gut microbiome'
+    ],
+    oilPreparation: "1. Not typically used as an oil\n2. Fresh gel is more effective\n3. Can be combined with carrier oils for topical use\n4. Use for external digestive massage",
+    tincturePreparation: "1. Use inner leaf gel from fresh aloe\n2. Mix with glycerin and alcohol 1:3:1\n3. Store for 4 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon as needed"
+  },
+  {
+    id: 'calendula',
+    name: 'Calendula',
+    color: '#FFB74D',
+    benefits: [
+      'Soothes irritated digestive tissues',
+      'Anti-inflammatory for digestive tract',
+      'Supports healing of digestive ulcers',
+      'Gentle enough for sensitive systems'
+    ],
+    oilPreparation: "1. Use dried calendula flowers\n2. Cover with olive oil in jar\n3. Solar infuse for 4 weeks\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with fresh calendula flowers\n2. Cover with 80 proof vodka\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops as needed"
+  },
+  {
+    id: 'catnip',
+    name: 'Catnip',
+    color: '#A5D6A7',
+    benefits: [
+      'Calms digestive spasms and cramping',
+      'Relieves gas and bloating',
+      'Supports relaxation during digestive upset',
+      'Gentle enough for children\'s digestive issues'
+    ],
+    oilPreparation: "1. Use dried catnip leaves\n2. Cover with olive oil in jar\n3. Solar infuse for 3 weeks\n4. Use for gentle abdominal massage",
+    tincturePreparation: "1. Fill jar with fresh catnip leaves\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops as needed"
   }
 ];

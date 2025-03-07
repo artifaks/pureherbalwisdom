@@ -1,288 +1,332 @@
+
 export const heartHerbs = [
   {
     id: 'hawthorn',
     name: 'Hawthorn',
     color: '#e94057',
     benefits: [
-      'Supports heart health',
-      'May help lower blood pressure',
+      'Supports heart function',
+      'May help normalize blood pressure',
       'Rich in antioxidants',
-      'Traditionally used for heart rhythm support'
+      'Traditionally used for heart health'
     ],
-    oilPreparation: "1. Use dried hawthorn berries\n2. Cover with olive oil\n3. Warm infuse for 4-6 weeks\n4. Use for heart area massage",
-    tincturePreparation: "1. Fill jar with dried hawthorn berries\n2. Cover with high-proof alcohol\n3. Steep for 6-8 weeks, shaking daily\n4. Take 20-30 drops daily"
+    oilPreparation: "1. Use dried hawthorn berries and flowers\n2. Cover with olive oil\n3. Solar infuse for 3-4 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with hawthorn berries and flowers\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
   },
   {
     id: 'motherwort',
     name: 'Motherwort',
-    color: '#8BC34A',
+    color: '#e63946',
     benefits: [
-      'Supports heart health during hormonal changes',
-      'May help ease anxiety during menopause',
-      'Traditionally used for delayed menstruation',
-      'Calming effect on the nervous system'
+      'Calms and strengthens the heart',
+      'May help with heart palpitations',
+      'Traditionally used for heart health',
+      'Supports healthy cardiovascular function'
     ],
-    oilPreparation: "1. Harvest fresh motherwort leaves\n2. Dry completely and chop\n3. Cover with olive oil and infuse for 6 weeks\n4. Use for massage over heart area and lower back",
-    tincturePreparation: "1. Fill jar 1/3 with dried motherwort herb\n2. Cover with brandy or vodka\n3. Steep for 4-6 weeks in dark place\n4. Take 10-20 drops up to 3 times daily"
+    oilPreparation: "1. Use dried motherwort herb\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with motherwort herb\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'arjuna',
     name: 'Arjuna',
-    color: '#FFAB91',
+    color: '#ff5a5f',
     benefits: [
-      'Supports cardiovascular health',
-      'May help lower cholesterol levels',
-      'Traditionally used for heart function',
-      'Rich in antioxidants'
+      'Ayurvedic herb for heart health',
+      'Supports healthy heart function',
+      'Traditionally used for cardiovascular strength',
+      'Contains antioxidants that support the heart'
     ],
-    oilPreparation: "1. Use dried arjuna bark\n2. Cover with olive oil\n3. Warm infuse for 4-6 weeks\n4. Use for heart area massage",
-    tincturePreparation: "1. Fill jar with dried arjuna bark\n2. Cover with high-proof alcohol\n3. Steep for 6-8 weeks, shaking daily\n4. Take 20-30 drops daily"
+    oilPreparation: "1. Use dried arjuna bark\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with arjuna bark\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'garlic',
     name: 'Garlic',
-    color: '#FFC107',
+    color: '#ffcdb2',
     benefits: [
-      'Supports heart health',
-      'May help lower blood pressure',
-      'Rich in antioxidants',
-      'Traditionally used for cardiovascular support'
+      'Supports healthy cholesterol levels',
+      'May help maintain healthy blood pressure',
+      'Traditionally used for heart health',
+      'Contains compounds that support cardiovascular function'
     ],
-    oilPreparation: "1. Use fresh garlic cloves, crushed\n2. Cover with olive oil\n3. Infuse for 2-3 weeks in a dark place\n4. Use for cooking or as a dressing",
-    tincturePreparation: "1. Fill jar with crushed garlic\n2. Cover with high-proof alcohol\n3. Steep for 4-6 weeks, shaking daily\n4. Take 10-20 drops daily"
+    oilPreparation: "1. Use fresh garlic cloves, chopped\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for massage over heart and feet",
+    tincturePreparation: "1. Fill jar with chopped garlic cloves\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 10-20 drops daily"
   },
   {
     id: 'astragalus',
     name: 'Astragalus',
-    color: '#FF8A65',
+    color: '#f9844a',
     benefits: [
-      'Supports cardiovascular function',
-      'Strengthens the body\'s immune defense',
-      'May help improve heart function',
-      'Traditional Chinese herb for longevity'
+      'Strengthens the cardiovascular system',
+      'Supports healthy immune function',
+      'Traditional Chinese herb for qi and vitality',
+      'May help with stress on the heart'
     ],
-    oilPreparation: "1. Use dried astragalus root slices\n2. Cover with olive oil in jar\n3. Infuse for 4-6 weeks in dark place\n4. Apply to chest area for immune support",
-    tincturePreparation: "1. Fill jar 1/3 with chopped astragalus root\n2. Cover with 100 proof vodka\n3. Steep for 6-8 weeks, shaking daily\n4. Take 20-40 drops twice daily"
+    oilPreparation: "1. Use dried astragalus root\n2. Cover with olive oil\n3. Warm infuse for 3-4 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with chopped astragalus root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 30-60 drops daily"
   },
   {
     id: 'tienchi-ginseng',
     name: 'Tienchi Ginseng',
-    color: '#EF5350',
+    color: '#f8961e',
     benefits: [
       'Supports healthy blood circulation',
-      'May help reduce blood stagnation',
-      'Traditionally used after heart events',
-      'Supports overall cardiovascular health'
+      'Traditional Chinese herb for heart health',
+      'May help with cardiovascular function',
+      'Contains compounds that support the heart'
     ],
-    oilPreparation: "1. Use powdered tienchi ginseng root\n2. Mix with carrier oil at 1:5 ratio\n3. Warm infuse for 3-4 hours\n4. Use for chest massage",
-    tincturePreparation: "1. Fill jar 1/4 with tienchi powder\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 10-30 drops daily"
+    oilPreparation: "1. Use dried tienchi root\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with chopped tienchi root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'cactus-grandiflorus',
-    name: 'Night Blooming Cereus',
-    color: '#81C784',
+    name: 'Cactus Grandiflorus',
+    color: '#90be6d',
     benefits: [
-      'Traditional heart rhythm support',
-      'May help with cardiac function',
-      'Used historically for heart palpitations',
-      'Can support overall heart tone'
+      'Traditional heart remedy',
+      'May help with heart function',
+      'Supports healthy heart rhythm',
+      'Used by herbalists for cardiovascular support'
     ],
-    oilPreparation: "1. Not traditionally prepared as oil\n2. Better utilized as tincture\n3. Can be added to salves\n4. For external use only",
-    tincturePreparation: "1. Use fresh cactus stems, chopped\n2. Cover with 80 proof alcohol\n3. Steep for 4-6 weeks in dark place\n4. Take 5-15 drops under guidance"
+    oilPreparation: "1. Use dried cactus pieces\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with fresh cactus pieces\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 5-15 drops daily"
   },
+  // New heart herbs that were added previously
   {
     id: 'hibiscus',
     name: 'Hibiscus',
-    color: '#E53935',
+    color: '#e63946',
     benefits: [
-      'May help lower blood pressure',
-      'Rich in antioxidants that support heart health',
-      'Helps maintain healthy cholesterol levels',
-      'Supports overall cardiovascular function'
+      'May help maintain healthy blood pressure',
+      'Rich in antioxidants for heart health',
+      'Supports healthy circulation',
+      'Traditionally used for cardiovascular support'
     ],
-    oilPreparation: "1. Use dried hibiscus flowers\n2. Cover with jojoba or olive oil\n3. Infuse for 4 weeks in a cool, dark place\n4. Strain and use for topical applications",
-    tincturePreparation: "1. Fill jar 1/3 with dried hibiscus flowers\n2. Cover with 80 proof alcohol\n3. Steep for 4 weeks, shaking daily\n4. Take 15-30 drops 1-2 times daily"
+    oilPreparation: "1. Use dried hibiscus flowers\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with dried hibiscus flowers\n2. Cover with glycerin and brandy mix\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'linden',
     name: 'Linden',
-    color: '#AED581',
+    color: '#a8dadc',
     benefits: [
-      'Traditionally used for heart palpitations',
-      'May help reduce hypertension',
-      'Calming effect on the nervous system',
-      'Supports healthy circulation'
+      'Calming herb for the heart and nervous system',
+      'May help with heart palpitations',
+      'Traditionally used for hypertension',
+      'Contains flavonoids that support heart health'
     ],
-    oilPreparation: "1. Collect fresh linden flowers\n2. Dry completely\n3. Cover with olive oil and solar infuse for 4 weeks\n4. Use for gentle massage over heart area",
-    tincturePreparation: "1. Fill jar halfway with dried linden flowers\n2. Cover completely with brandy or vodka\n3. Steep for 6 weeks in dark place\n4. Take 20-40 drops up to 3 times daily"
+    oilPreparation: "1. Use dried linden flowers and leaves\n2. Cover with olive oil\n3. Solar infuse for 3-4 weeks\n4. Use for heart and temple massage",
+    tincturePreparation: "1. Fill jar with linden flowers\n2. Cover with brandy or vodka\n3. Store for 4 weeks, shaking daily\n4. Take 30-60 drops daily"
   },
   {
     id: 'rose',
     name: 'Rose',
-    color: '#F06292',
+    color: '#f28482',
     benefits: [
       'Emotionally supportive for the heart',
-      'Helps balance heart energy and circulation',
-      'Traditional remedy for grief and heartache',
-      'Rich in antioxidants that support cardiovascular health'
+      'Rich in antioxidants',
+      'Traditionally used for grief and heartache',
+      'Supports the emotional-physical heart connection'
     ],
-    oilPreparation: "1. Use fresh rose petals\n2. Cover with jojoba oil\n3. Warm infuse for 2-3 hours\n4. Use as a heart-centered massage oil",
-    tincturePreparation: "1. Fill jar with fresh rose petals\n2. Cover with high-proof alcohol\n3. Steep for 4 weeks, shaking daily\n4. Take 10-20 drops as needed"
+    oilPreparation: "1. Use dried rose petals\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for heart area and pulse points",
+    tincturePreparation: "1. Fill jar with fresh rose petals\n2. Cover with brandy or vodka\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'olive-leaf',
     name: 'Olive Leaf',
-    color: '#9CCC65',
+    color: '#80b918',
     benefits: [
-      'Supports healthy blood pressure levels',
-      'Contains oleuropein that supports cardiovascular health',
-      'Has antioxidant properties',
-      'Traditionally used for heart and circulatory support'
+      'Supports healthy blood pressure',
+      'Contains oleuropein for cardiovascular health',
+      'May help maintain healthy cholesterol',
+      'Traditional Mediterranean herb for longevity'
     ],
-    oilPreparation: "1. Use dried olive leaves\n2. Cover with olive oil in a jar\n3. Infuse for 4-6 weeks in a dark place\n4. Use for heart area massage",
-    tincturePreparation: "1. Fill jar 1/3 with dried olive leaves\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops twice daily"
+    oilPreparation: "1. Use dried olive leaves\n2. Cover with olive oil\n3. Solar infuse for 3-4 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with fresh olive leaves\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-30 drops daily"
   },
   {
     id: 'bilberry',
     name: 'Bilberry',
-    color: '#7986CB',
+    color: '#4361ee',
     benefits: [
-      'Supports cardiovascular health',
-      'Rich in anthocyanins that strengthen blood vessels',
-      'Helps maintain healthy circulation',
-      'Supports overall heart function'
+      'Supports healthy circulation',
+      'Contains anthocyanins for vascular health',
+      'May help with capillary strength',
+      'Traditionally used for heart and eye health'
     ],
-    oilPreparation: "1. Use dried bilberries\n2. Cover with a carrier oil\n3. Infuse for 4 weeks\n4. Use in small amounts for topical application",
-    tincturePreparation: "1. Fill jar 1/4 with dried bilberries\n2. Cover with vodka or brandy\n3. Steep for 4-6 weeks, shaking daily\n4. Take 15-30 drops daily"
+    oilPreparation: "1. Use dried bilberries\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for circulatory massage",
+    tincturePreparation: "1. Fill jar with fresh or dried bilberries\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
+  // New heart herbs
   {
     id: 'cacao',
     name: 'Cacao',
-    color: '#6D4C41',
+    color: '#7f4f24',
     benefits: [
-      'Contains flavanols that support heart health',
-      'May help improve blood flow',
-      'Can help reduce blood pressure',
-      'Contains magnesium and other heart-supportive minerals'
+      'Rich in flavonoids that support heart health',
+      'May help maintain healthy blood pressure',
+      'Supports healthy endothelial function',
+      'Contains theobromine that supports circulation'
     ],
-    oilPreparation: "1. Use cacao nibs or powder\n2. Infuse in carrier oil like jojoba\n3. Warm gently for 2 hours\n4. Use for heart-area massage blends",
-    tincturePreparation: "1. Fill jar 1/3 with cacao nibs\n2. Cover with 80-100 proof alcohol\n3. Steep for 4-6 weeks, shaking daily\n4. Take 15-20 drops daily"
+    oilPreparation: "1. Use raw cacao nibs\n2. Cover with jojoba oil\n3. Warm infuse for 2-3 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with crushed cacao nibs\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'cayenne',
     name: 'Cayenne',
-    color: '#FF5722',
+    color: '#d62828',
     benefits: [
-      'Helps improve circulation',
-      'May help regulate blood pressure',
-      'Contains capsaicin that supports heart function',
-      'Traditional remedy for heart health'
+      'Circulatory stimulant for heart health',
+      'May help normalize blood pressure',
+      'Contains capsaicin that supports blood flow',
+      'Traditional herb for cardiovascular support'
     ],
-    oilPreparation: "1. Use dried cayenne powder\n2. Mix 1 tsp with 8 oz carrier oil\n3. Infuse for 2-3 weeks\n4. Use very sparingly for circulation-enhancing massage oil",
-    tincturePreparation: "1. Fill jar 1/5 with cayenne powder\n2. Cover with 100 proof alcohol\n3. Steep for 4 weeks, shaking daily\n4. Take 3-5 drops diluted in water"
+    oilPreparation: "1. Use dried cayenne powder\n2. Mix with olive oil at 1:10 ratio\n3. Warm slightly to incorporate\n4. Use sparingly for circulation massage",
+    tincturePreparation: "1. Fill jar 1/4 with cayenne powder\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 5-15 drops daily"
   },
   {
     id: 'ginger-heart',
     name: 'Ginger',
-    color: '#FFCA28',
+    color: '#f77f00',
     benefits: [
-      'Improves circulation to the heart',
-      'Helps reduce inflammation in cardiovascular system',
-      'May help reduce cholesterol levels',
-      'Supports overall heart function'
+      'Warming herb that stimulates circulation',
+      'Supports cardiovascular health',
+      'Contains gingerols that thin blood naturally',
+      'May help lower cholesterol and triglycerides'
     ],
-    oilPreparation: "1. Grate fresh ginger root\n2. Cover with olive or sesame oil\n3. Warm infuse for 2-3 hours\n4. Use for warming heart-area massage",
-    tincturePreparation: "1. Fill jar halfway with fresh grated ginger\n2. Cover with brandy or vodka\n3. Steep for 6 weeks, shaking daily\n4. Take 10-20 drops daily"
+    oilPreparation: "1. Use fresh ginger root, chopped\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for circulation massage",
+    tincturePreparation: "1. Fill jar with chopped fresh ginger\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-30 drops daily"
   },
   {
     id: 'tulsi-heart',
-    name: 'Holy Basil (Tulsi)',
-    color: '#66BB6A',
+    name: 'Tulsi (Holy Basil)',
+    color: '#2a9d8f',
     benefits: [
-      'Reduces stress that impacts heart health',
-      'Adaptogenic herb that helps regulate blood pressure',
-      'Supports healthy cholesterol levels',
-      'Improves circulation and heart function'
+      'Adaptogen that protects the heart from stress',
+      'May help maintain healthy blood pressure',
+      'Supports healthy inflammation response',
+      'Traditional Ayurvedic herb for heart and spirit'
     ],
-    oilPreparation: "1. Use fresh tulsi leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3-4 weeks\n4. Use for heart-centered, stress-reducing massage",
-    tincturePreparation: "1. Fill jar 2/3 with fresh tulsi leaves\n2. Cover with 80 proof alcohol\n3. Steep for 4 weeks, shaking daily\n4. Take 20-40 drops 2-3 times daily"
+    oilPreparation: "1. Use dried tulsi leaves\n2. Cover with sesame oil\n3. Solar infuse for 3-4 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with fresh tulsi leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'turmeric-heart',
     name: 'Turmeric',
-    color: '#FFC107',
+    color: '#f9c74f',
     benefits: [
-      'Strong anti-inflammatory for cardiovascular system',
-      'May help reduce plaque buildup in arteries',
-      'Supports healthy cholesterol balance',
-      'Improves endothelial function'
+      'Powerful anti-inflammatory for heart health',
+      'May help maintain healthy cholesterol',
+      'Supports healthy blood vessel function',
+      'Contains curcumin that benefits the cardiovascular system'
     ],
-    oilPreparation: "1. Use powdered turmeric or fresh root\n2. Mix with black pepper and olive oil\n3. Warm infuse for 3-4 hours\n4. Use for circulation-enhancing massage",
-    tincturePreparation: "1. Fill jar 1/3 with turmeric powder\n2. Add pinch of black pepper\n3. Cover with 100 proof alcohol\n4. Steep for 6-8 weeks, take 10-30 drops daily"
+    oilPreparation: "1. Use dried turmeric powder\n2. Mix with coconut oil and black pepper\n3. Warm slightly to incorporate\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with fresh turmeric root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
+  // Previously added heart herbs
   {
     id: 'hawthorne-berry',
     name: 'Hawthorne Berry',
-    color: '#e94057',
+    color: '#e63946',
     benefits: [
-      'Supports overall heart function',
-      'May help strengthen blood vessels',
-      'Contains potent heart-supportive flavonoids',
-      'Traditional herb for long-term heart health'
+      'Traditional heart tonic berry',
+      'Rich in proanthocyanidins for heart health',
+      'Supports healthy cardiac function',
+      'May help normalize blood pressure'
     ],
-    oilPreparation: "1. Use dried hawthorne berries\n2. Cover with jojoba oil\n3. Warm infuse for 4-6 weeks\n4. Use for heart area massage",
-    tincturePreparation: "1. Fill jar 1/3 with dried hawthorne berries\n2. Cover with 100 proof alcohol\n3. Steep for 6-8 weeks, shaking daily\n4. Take 15-30 drops daily"
+    oilPreparation: "1. Use dried hawthorne berries\n2. Cover with olive oil\n3. Solar infuse for 4 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with crushed hawthorne berries\n2. Cover with brandy or vodka\n3. Store for 6 weeks, shaking daily\n4. Take 30-60 drops daily"
   },
   {
     id: 'aronia-berry',
     name: 'Aronia Berry',
-    color: '#4A0E67',
+    color: '#5a189a',
     benefits: [
-      'Rich in heart-healthy antioxidants',
-      'Supports healthy blood vessel function',
-      'May help maintain healthy blood pressure',
-      'Contains anthocyanins that support heart health'
+      'Extremely rich in heart-healthy anthocyanins',
+      'Supports vascular integrity',
+      'Contains powerful antioxidants',
+      'May help with healthy blood pressure'
     ],
-    oilPreparation: "1. Use dried aronia berries\n2. Cover with almond oil\n3. Infuse for 4 weeks in dark place\n4. Use for heart-supporting massage oil",
-    tincturePreparation: "1. Fill jar 1/4 with dried aronia berries\n2. Cover with brandy or vodka\n3. Steep for 4-6 weeks, shaking daily\n4. Take 10-20 drops 1-2 times daily"
+    oilPreparation: "1. Use dried aronia berries\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for circulation massage",
+    tincturePreparation: "1. Fill jar with fresh or dried aronia berries\n2. Cover with brandy or vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'pomegranate',
     name: 'Pomegranate',
-    color: '#C70039',
+    color: '#d00000',
     benefits: [
-      'Supports arterial health',
-      'Rich in heart-protective antioxidants',
-      'May help maintain healthy cholesterol levels',
-      'Contains punicalagins that support cardiovascular function'
+      'Rich in polyphenols that support heart health',
+      'May help maintain arterial health',
+      'Contains punicalagins for cardiovascular strength',
+      'Traditional heart tonic in many cultures'
     ],
-    oilPreparation: "1. Use dried pomegranate peels\n2. Cover with carrier oil\n3. Infuse for a month in dark place\n4. Use for circulation-enhancing massage",
-    tincturePreparation: "1. Fill jar 1/3 with pomegranate seeds and peel\n2. Cover with 80 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops daily"
+    oilPreparation: "1. Use dried pomegranate peel\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with pomegranate peels and seeds\n2. Cover with brandy or vodka\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
   },
   {
     id: 'reishi-heart',
     name: 'Reishi',
-    color: '#8B4513',
+    color: '#774936',
     benefits: [
-      'Adaptogen that supports cardiovascular health',
-      'May help modulate blood pressure',
-      'Traditional Chinese heart tonic',
-      'Supports overall cardiovascular wellness'
+      'Adaptogenic mushroom for heart health',
+      'May help maintain healthy blood pressure',
+      'Contains triterpenes that support cardiac function',
+      'Traditional Chinese herb for heart and spirit'
     ],
-    oilPreparation: "1. Use powdered reishi mushroom\n2. Mix with jojoba oil at 1:5 ratio\n3. Warm infuse for 2-3 hours\n4. Use for stress-reducing heart massage",
-    tincturePreparation: "1. Fill jar 1/4 with reishi slices or powder\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks, shaking daily\n4. Take 15-30 drops twice daily"
+    oilPreparation: "1. Use dried reishi pieces\n2. Not typically used as oil\n3. Better as dual-extracted tincture\n4. For external use only",
+    tincturePreparation: "1. Fill jar with reishi pieces\n2. Use dual-extraction with alcohol and water\n3. Follow mushroom dual-extraction protocol\n4. Take 30-60 drops daily"
   },
   {
     id: 'coleus',
-    name: 'Coleus (Forskolin)',
-    color: '#9370DB',
+    name: 'Coleus',
+    color: '#4361ee',
     benefits: [
-      'May help support healthy blood pressure',
-      'Traditionally used for heart health',
-      'Supports healthy circulation',
-      'Contains forskolin that influences heart muscle contraction'
+      'Contains forskolin that supports heart function',
+      'May help maintain healthy blood pressure',
+      'Supports healthy cardiovascular function',
+      'Traditional Ayurvedic herb for heart health'
     ],
-    oilPreparation: "1. Use dried coleus root\n2. Cover with olive oil\n3. Warm infuse for 4 hours\n4. Use for circulation-enhancing massage",
-    tincturePreparation: "1. Fill jar 1/3 with dried coleus root\n2. Cover with high-proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 10-20 drops under professional guidance"
+    oilPreparation: "1. Use dried coleus root\n2. Cover with coconut oil\n3. Warm infuse for 3 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with chopped coleus root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-30 drops daily"
+  },
+  // New heart herbs added now
+  {
+    id: 'motherwort-heart',
+    name: 'Motherwort Heart',
+    color: '#e63946',
+    benefits: [
+      'Enhanced formula for heart palpitations',
+      'Supports heart health during stress',
+      'Contains leonurine for heart rhythm support',
+      'Traditional nervine for heart tension'
+    ],
+    oilPreparation: "1. Use dried motherwort in flower\n2. Cover with olive oil and hawthorn infused oil\n3. Solar infuse for 3 weeks\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with motherwort flowering tops\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 10-30 drops as needed"
+  },
+  {
+    id: 'yarrow',
+    name: 'Yarrow',
+    color: '#a8dadc',
+    benefits: [
+      'Supports healthy blood vessels',
+      'May help regulate circulation',
+      'Contains flavonoids for vascular health',
+      'Traditional herb for cardiovascular support'
+    ],
+    oilPreparation: "1. Use dried yarrow flowers\n2. Cover with olive oil\n3. Solar infuse for 3 weeks\n4. Use for circulation massage",
+    tincturePreparation: "1. Fill jar with fresh yarrow flowers\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops daily"
+  },
+  {
+    id: 'dan-shen',
+    name: 'Dan Shen',
+    color: '#a71e34',
+    benefits: [
+      'Traditional Chinese herb for heart health',
+      'May help with blood circulation',
+      'Contains tanshinones that support heart function',
+      'Used in TCM for cardiovascular health'
+    ],
+    oilPreparation: "1. Use dried dan shen root\n2. Cover with sesame oil\n3. Warm infuse for 4 hours\n4. Use for heart area massage",
+    tincturePreparation: "1. Fill jar with chopped dan shen root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-40 drops daily"
   }
 ];

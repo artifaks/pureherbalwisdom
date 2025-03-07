@@ -15,183 +15,91 @@ interface HerbPairingsMap {
 
 // Sample pairings data - in a real app, this would be more comprehensive
 const herbPairings: HerbPairingsMap = {
-  // Heart herbs
-  'hawthorn': [
-    { herbId: 'motherwort', reason: 'Motherwort complements Hawthorn by adding calming properties to heart support' },
-    { herbId: 'linden', reason: 'Linden pairs with Hawthorn for comprehensive heart and circulatory health' },
-    { herbId: 'garlic', reason: 'Garlic adds cholesterol-lowering benefits to Hawthorn\'s heart-protective effects' }
-  ],
-  'motherwort': [
+  // ... keep existing code (heart herb pairings)
+  
+  // New heart herb pairings
+  'motherwort-heart': [
     { herbId: 'hawthorn', reason: 'Hawthorn enhances Motherwort\'s cardiotonic properties' },
-    { herbId: 'lemon-balm', reason: 'Lemon Balm adds nervous system support to Motherwort\'s heart benefits' },
-    { herbId: 'skullcap', reason: 'Skullcap complements Motherwort\'s calming properties for stress-related heart issues' }
+    { herbId: 'linden', reason: 'Linden complements Motherwort\'s calming nervous system support' },
+    { herbId: 'rose', reason: 'Rose adds emotional heart support to Motherwort\'s physical benefits' }
   ],
-  'astragalus': [
-    { herbId: 'hawthorn', reason: 'Hawthorn enhances Astragalus\'s cardiovascular strengthening effects' },
-    { herbId: 'ginger', reason: 'Ginger improves circulation alongside Astragalus\'s supportive properties' },
-    { herbId: 'garlic', reason: 'Garlic complements Astragalus with additional immune support for heart health' }
+  'yarrow': [
+    { herbId: 'hawthorn', reason: 'Hawthorn adds targeted heart support to Yarrow\'s circulatory benefits' },
+    { herbId: 'cayenne', reason: 'Cayenne enhances Yarrow\'s circulation-supporting properties' },
+    { herbId: 'ginger-heart', reason: 'Ginger adds warming circulation to Yarrow\'s vascular benefits' }
   ],
-  // New heart herb pairings
-  'hibiscus': [
-    { herbId: 'hawthorn', reason: 'Hawthorn enhances Hibiscus\'s blood pressure-lowering effects' },
-    { herbId: 'rose', reason: 'Rose adds emotional heart support to Hibiscus\'s physical benefits' },
-    { herbId: 'linden', reason: 'Linden complements Hibiscus for comprehensive cardiovascular support' }
-  ],
-  'linden': [
-    { herbId: 'hawthorn', reason: 'Hawthorn adds strength to Linden\'s gentle heart-supporting properties' },
-    { herbId: 'motherwort', reason: 'Motherwort complements Linden\'s calming effects with additional heart support' },
-    { herbId: 'rose', reason: 'Rose enhances Linden\'s emotional heart support properties' }
-  ],
-  'rose': [
-    { herbId: 'hawthorn', reason: 'Hawthorn adds physical heart support to Rose\'s emotional benefits' },
-    { herbId: 'motherwort', reason: 'Motherwort enhances Rose\'s calming properties for heart health' },
-    { herbId: 'linden', reason: 'Linden complements Rose for gentle, comprehensive heart support' }
-  ],
-  'olive-leaf': [
-    { herbId: 'hawthorn', reason: 'Hawthorn enhances Olive Leaf\'s cardiovascular benefits' },
-    { herbId: 'garlic', reason: 'Garlic complements Olive Leaf for blood pressure and cholesterol support' },
-    { herbId: 'hibiscus', reason: 'Hibiscus adds antioxidant support to Olive Leaf\'s cardiovascular benefits' }
-  ],
-  'bilberry': [
-    { herbId: 'hawthorn', reason: 'Hawthorn complements Bilberry\'s vascular strengthening properties' },
-    { herbId: 'olive-leaf', reason: 'Olive Leaf enhances Bilberry\'s circulatory benefits' },
-    { herbId: 'garlic', reason: 'Garlic adds blood-thinning properties to Bilberry\'s vascular support' }
+  'dan-shen': [
+    { herbId: 'hawthorn', reason: 'Hawthorn complements Dan Shen\'s cardiotonic properties' },
+    { herbId: 'reishi-heart', reason: 'Reishi adds adaptogenic support to Dan Shen\'s heart benefits' },
+    { herbId: 'astragalus', reason: 'Astragalus enhances Dan Shen\'s blood-moving properties' }
   ],
   
-  // Stomach herbs
-  'ginger': [
-    { herbId: 'peppermint', reason: 'Peppermint enhances Ginger\'s digestive properties while adding cooling effects' },
-    { herbId: 'fennel', reason: 'Fennel complements Ginger for comprehensive digestive support' },
-    { herbId: 'licorice', reason: 'Licorice adds soothing properties to Ginger\'s warming digestive action' }
+  // New stomach herb pairings
+  'aloe-vera': [
+    { herbId: 'marshmallow', reason: 'Marshmallow enhances Aloe\'s soothing properties for the digestive tract' },
+    { herbId: 'slippery-elm', reason: 'Slippery Elm complements Aloe\'s mucilaginous healing effect' },
+    { herbId: 'calendula', reason: 'Calendula adds healing properties to Aloe\'s soothing effects' }
   ],
-  'peppermint': [
-    { herbId: 'chamomile', reason: 'Chamomile adds calming properties to Peppermint\'s digestive benefits' },
-    { herbId: 'ginger', reason: 'Ginger adds warming properties to balance Peppermint\'s cooling effects' },
-    { herbId: 'fennel', reason: 'Fennel works with Peppermint to reduce bloating and digestive discomfort' }
+  'calendula': [
+    { herbId: 'chamomile', reason: 'Chamomile complements Calendula\'s anti-inflammatory properties' },
+    { herbId: 'marshmallow', reason: 'Marshmallow adds soothing mucilage to Calendula\'s healing effects' },
+    { herbId: 'licorice', reason: 'Licorice enhances Calendula\'s healing properties for digestive tissues' }
   ],
-  'gentian': [
-    { herbId: 'artichoke-leaf', reason: 'Artichoke Leaf enhances Gentian\'s digestive bitter effects for optimal digestion' },
-    { herbId: 'dandelion', reason: 'Dandelion adds liver support to Gentian\'s digestive stimulation' },
-    { herbId: 'ginger', reason: 'Ginger adds warming properties to balance Gentian\'s bitter, cooling nature' }
-  ],
-  
-  // Men's herbs
-  'saw-palmetto': [
-    { herbId: 'nettle-root', reason: 'Nettle Root enhances Saw Palmetto\'s prostate supportive properties' },
-    { herbId: 'pygeum', reason: 'Pygeum complements Saw Palmetto for comprehensive prostate health' },
-    { herbId: 'ashwagandha', reason: 'Ashwagandha adds adaptogenic support to Saw Palmetto\'s hormonal benefits' }
-  ],
-  'pygeum': [
-    { herbId: 'saw-palmetto', reason: 'Saw Palmetto works synergistically with Pygeum for prostate support' },
-    { herbId: 'nettle-root', reason: 'Nettle Root enhances Pygeum\'s anti-inflammatory effects' },
-    { herbId: 'cordyceps', reason: 'Cordyceps adds energy and vitality to Pygeum\'s structural support' }
+  'catnip': [
+    { herbId: 'chamomile', reason: 'Chamomile enhances Catnip\'s calming effects on the digestive system' },
+    { herbId: 'fennel', reason: 'Fennel complements Catnip\'s anti-spasmodic properties' },
+    { herbId: 'lemon-balm', reason: 'Lemon Balm adds nervous system support to Catnip\'s digestive benefits' }
   ],
   
-  // Women's herbs
-  'red-raspberry': [
-    { herbId: 'nettle', reason: 'Nettle adds mineral support to Raspberry Leaf\'s female tonic properties' },
-    { herbId: 'red-clover', reason: 'Red Clover complements Raspberry Leaf for hormonal balance' },
-    { herbId: 'vitex', reason: 'Vitex enhances Raspberry Leaf\'s reproductive system support' }
+  // New men's herb pairings
+  'shilajit': [
+    { herbId: 'ashwagandha', reason: 'Ashwagandha enhances Shilajit\'s adaptogenic properties for male vitality' },
+    { herbId: 'ginseng', reason: 'Ginseng complements Shilajit\'s energy-supporting effects' },
+    { herbId: 'cordyceps-mens', reason: 'Cordyceps adds oxygen utilization support to Shilajit\'s mineral benefits' }
   ],
-  'nettle': [
-    { herbId: 'red-raspberry', reason: 'Red Raspberry adds reproductive tone to Nettle\'s mineral support' },
-    { herbId: 'red-clover', reason: 'Red Clover complements Nettle for female hormonal balance' },
-    { herbId: 'schisandra', reason: 'Schisandra adds adaptogenic support to Nettle\'s nourishing properties' }
+  'suma': [
+    { herbId: 'maca', reason: 'Maca enhances Suma\'s adaptogenic properties for male vitality' },
+    { herbId: 'tribulus', reason: 'Tribulus adds hormonal support to Suma\'s adaptogenic properties' },
+    { herbId: 'ashwagandha', reason: 'Ashwagandha complements Suma\'s stress-reducing benefits' }
   ],
-  
-  // Brain herbs
-  'ginkgo': [
-    { herbId: 'bacopa', reason: 'Bacopa complements Ginkgo\'s blood flow benefits with memory enhancement properties' },
-    { herbId: 'lions-mane', reason: 'Lion\'s Mane adds nerve-regenerating properties to Ginkgo\'s circulation benefits' },
-    { herbId: 'rosemary', reason: 'Rosemary enhances Ginkgo\'s cognitive benefits with additional neuroprotection' }
-  ],
-  'bacopa': [
-    { herbId: 'ginkgo', reason: 'Ginkgo adds circulatory support to Bacopa\'s cognitive enhancement effects' },
-    { herbId: 'brahmi', reason: 'Brahmi (Centella) complements Bacopa\'s cognitive effects for enhanced learning' },
-    { herbId: 'ashwagandha', reason: 'Ashwagandha adds stress reduction to Bacopa\'s memory benefits' }
-  ],
-  'lions-mane': [
-    { herbId: 'rosemary', reason: 'Rosemary adds antioxidant protection to Lion\'s Mane\'s neurogenesis effects' },
-    { herbId: 'ginkgo', reason: 'Ginkgo improves delivery of Lion\'s Mane\'s beneficial compounds to the brain' },
-    { herbId: 'rhodiola', reason: 'Rhodiola adds adaptogenic energy to support Lion\'s Mane\'s regenerative effects' }
-  ],
-  'rosemary': [
-    { herbId: 'sage', reason: 'Sage enhances Rosemary\'s memory benefits with additional cognitive support' },
-    { herbId: 'ginkgo', reason: 'Ginkgo adds blood flow support to Rosemary\'s neuroprotective properties' },
-    { herbId: 'bacopa', reason: 'Bacopa complements Rosemary\'s antioxidant benefits with memory enhancement' }
-  ],
-  'sage': [
-    { herbId: 'rosemary', reason: 'Rosemary complements Sage\'s cognitive benefits for enhanced memory function' },
-    { herbId: 'ginkgo', reason: 'Ginkgo adds circulation support to Sage\'s cholinergic enhancement properties' },
-    { herbId: 'lions-mane', reason: 'Lion\'s Mane adds neurogenesis support to Sage\'s cognitive effects' }
-  ],
-  'brahmi': [
-    { herbId: 'bacopa', reason: 'Bacopa and Brahmi work synergistically for comprehensive cognitive enhancement' },
-    { herbId: 'gotu-kola', reason: 'Gotu Kola complements Brahmi for improved learning and mental clarity' },
-    { herbId: 'ashwagandha', reason: 'Ashwagandha adds stress management to Brahmi\'s cognitive benefits' }
-  ],
-  'gotu-kola': [
-    { herbId: 'brahmi', reason: 'Brahmi enhances Gotu Kola\'s effects on mental clarity and focus' },
-    { herbId: 'bacopa', reason: 'Bacopa adds memory enhancement to Gotu Kola\'s cognitive support' },
-    { herbId: 'ashwagandha', reason: 'Ashwagandha complements Gotu Kola with stress reduction properties' }
-  ],
-  'ashwagandha-brain': [
-    { herbId: 'bacopa', reason: 'Bacopa adds memory support to Ashwagandha\'s stress-reducing properties' },
-    { herbId: 'rhodiola', reason: 'Rhodiola enhances Ashwagandha\'s adaptogenic effects for mental performance' },
-    { herbId: 'gotu-kola', reason: 'Gotu Kola complements Ashwagandha\'s calming benefits with mental clarity' }
-  ],
-  // New herb pairings
-  'turmeric-brain': [
-    { herbId: 'ginger-brain', reason: 'Ginger enhances Turmeric\'s bioavailability and adds warming circulation support' },
-    { herbId: 'bacopa', reason: 'Bacopa adds memory enhancement to Turmeric\'s anti-inflammatory brain support' },
-    { herbId: 'holy-basil', reason: 'Holy Basil complements Turmeric\'s neuroprotective properties with adaptogenic benefits' }
-  ],
-  'ginger-brain': [
-    { herbId: 'turmeric-brain', reason: 'Turmeric adds potent anti-inflammatory support to Ginger\'s circulatory benefits' },
-    { herbId: 'rosemary', reason: 'Rosemary enhances Ginger\'s cognitive effects with memory-boosting compounds' },
-    { herbId: 'peppermint', reason: 'Peppermint adds cooling alertness to balance Ginger\'s warming properties' }
-  ],
-  'lemon-balm': [
-    { herbId: 'skullcap', reason: 'Skullcap enhances Lemon Balm\'s calming effects while maintaining mental clarity' },
-    { herbId: 'holy-basil', reason: 'Holy Basil adds adaptogenic support to Lemon Balm\'s relaxing properties' },
-    { herbId: 'motherwort', reason: 'Motherwort complements Lemon Balm\'s nervous system support with heart benefits' }
-  ],
-  'skullcap': [
-    { herbId: 'lemon-balm', reason: 'Lemon Balm enhances Skullcap\'s calming effects with additional cognitive support' },
-    { herbId: 'ashwagandha-brain', reason: 'Ashwagandha adds adaptogenic strength to Skullcap\'s nervous system support' },
-    { herbId: 'gotu-kola', reason: 'Gotu Kola complements Skullcap\'s calming effects with mental clarity' }
-  ],
-  'holy-basil': [
-    { herbId: 'ashwagandha-brain', reason: 'Ashwagandha deepens Holy Basil\'s adaptogenic properties for stress resilience' },
-    { herbId: 'turmeric-brain', reason: 'Turmeric adds anti-inflammatory support to Holy Basil\'s neuroprotective effects' },
-    { herbId: 'bacopa', reason: 'Bacopa enhances Holy Basil\'s cognitive benefits with memory support' }
+  'cordyceps-mens': [
+    { herbId: 'tongkat-ali', reason: 'Tongkat Ali enhances Cordyceps\' effects on male vitality' },
+    { herbId: 'ginseng', reason: 'Ginseng complements Cordyceps\' energy-supporting properties' },
+    { herbId: 'cistanche', reason: 'Cistanche adds warming yang energy to Cordyceps\' stamina benefits' }
   ],
   
-  // New heart herb pairings
-  'cacao': [
-    { herbId: 'cayenne', reason: 'Cayenne enhances Cacao\'s circulation benefits and improves absorption' },
-    { herbId: 'hawthorn', reason: 'Hawthorn complements Cacao\'s heart-protective qualities' },
-    { herbId: 'ginger-heart', reason: 'Ginger adds warming circulation support to Cacao\'s cardiovascular benefits' }
+  // New brain herb pairings
+  'sage-brain': [
+    { herbId: 'rosemary-brain', reason: 'Rosemary enhances Sage\'s cognitive benefits' },
+    { herbId: 'ginkgo', reason: 'Ginkgo adds circulation support to Sage\'s brain-supporting compounds' },
+    { herbId: 'bacopa', reason: 'Bacopa complements Sage\'s acetylcholine support with memory enhancement' }
   ],
-  'cayenne': [
-    { herbId: 'garlic', reason: 'Garlic enhances Cayenne\'s blood-thinning and circulatory benefits' },
-    { herbId: 'turmeric-heart', reason: 'Turmeric adds anti-inflammatory support to Cayenne\'s circulation benefits' },
-    { herbId: 'ginger-heart', reason: 'Ginger complements Cayenne\'s warming circulation support' }
+  'rosemary-memory': [
+    { herbId: 'sage-brain', reason: 'Sage enhances Rosemary\'s memory benefits' },
+    { herbId: 'ginkgo', reason: 'Ginkgo improves delivery of Rosemary\'s beneficial compounds to the brain' },
+    { herbId: 'lions-mane', reason: 'Lion\'s Mane adds neurogenesis support to Rosemary\'s protective effects' }
   ],
-  'ginger-heart': [
-    { herbId: 'turmeric-heart', reason: 'Turmeric enhances Ginger\'s anti-inflammatory cardiovascular benefits' },
-    { herbId: 'cayenne', reason: 'Cayenne amplifies Ginger\'s circulation-enhancing properties' },
-    { herbId: 'hawthorn', reason: 'Hawthorn adds targeted heart support to Ginger\'s circulatory benefits' }
+  'goji-berry': [
+    { herbId: 'blueberry', reason: 'Blueberry complements Goji\'s antioxidant protection for the brain' },
+    { herbId: 'gotu-kola', reason: 'Gotu Kola adds cognitive support to Goji\'s neuroprotective properties' },
+    { herbId: 'reishi', reason: 'Reishi enhances Goji\'s adaptogenic benefits for brain health' }
   ],
-  'tulsi-heart': [
-    { herbId: 'linden', reason: 'Linden enhances Tulsi\'s relaxing effect on the cardiovascular system' },
-    { herbId: 'motherwort', reason: 'Motherwort complements Tulsi\'s stress-reducing heart benefits' },
-    { herbId: 'rose', reason: 'Rose adds emotional heart support to Tulsi\'s adaptogenic properties' }
+  
+  // New women's herb pairings
+  'evening-primrose-oil': [
+    { herbId: 'vitex', reason: 'Vitex complements Evening Primrose Oil\'s hormone-balancing properties' },
+    { herbId: 'black-cohosh', reason: 'Black Cohosh enhances Evening Primrose Oil\'s benefits for menopausal symptoms' },
+    { herbId: 'dong-quai', reason: 'Dong Quai adds blood-moving properties to Evening Primrose Oil\'s anti-inflammatory effects' }
   ],
-  'turmeric-heart': [
-    { herbId: 'ginger-heart', reason: 'Ginger improves bioavailability and adds warming circulation support to Turmeric' },
-    { herbId: 'cayenne', reason: 'Cayenne enhances Turmeric\'s circulatory benefits' },
-    { herbId: 'black-pepper', reason: 'Black Pepper dramatically improves Turmeric\'s absorption and effectiveness' }
+  'queens-cup': [
+    { herbId: 'red-raspberry', reason: 'Red Raspberry enhances Queen\'s Cup\'s reproductive system support' },
+    { herbId: 'vitex', reason: 'Vitex complements Queen\'s Cup\'s hormonal balancing properties' },
+    { herbId: 'shatavari', reason: 'Shatavari adds nourishing properties to Queen\'s Cup\'s tonic effects' }
+  ],
+  'raspberry-seed': [
+    { herbId: 'red-raspberry', reason: 'Red Raspberry leaf enhances Raspberry Seed\'s female reproductive benefits' },
+    { herbId: 'evening-primrose-oil', reason: 'Evening Primrose Oil complements Raspberry Seed\'s essential fatty acid content' },
+    { herbId: 'nettle', reason: 'Nettle adds mineral support to Raspberry Seed\'s nutritive properties' }
   ],
   
   // Default pairings for herbs without specific matches
@@ -261,6 +169,36 @@ const ComplementaryHerbs: React.FC<ComplementaryHerbsProps> = ({
       ? 'tulsi-heart'
       : activeHerb.id === 'turmeric-heart' && activeHerb.category === 'heart'
       ? 'turmeric-heart'
+      : activeHerb.id === 'motherwort-heart' && activeHerb.category === 'heart'
+      ? 'motherwort-heart'
+      : activeHerb.id === 'yarrow' && activeHerb.category === 'heart'
+      ? 'yarrow'
+      : activeHerb.id === 'dan-shen' && activeHerb.category === 'heart'
+      ? 'dan-shen'
+      : activeHerb.id === 'aloe-vera' && activeHerb.category === 'stomach'
+      ? 'aloe-vera'
+      : activeHerb.id === 'calendula' && activeHerb.category === 'stomach'
+      ? 'calendula'
+      : activeHerb.id === 'catnip' && activeHerb.category === 'stomach'
+      ? 'catnip'
+      : activeHerb.id === 'shilajit' && activeHerb.category === 'men'
+      ? 'shilajit'
+      : activeHerb.id === 'suma' && activeHerb.category === 'men'
+      ? 'suma'
+      : activeHerb.id === 'cordyceps-mens' && activeHerb.category === 'men'
+      ? 'cordyceps-mens'
+      : activeHerb.id === 'sage-brain' && activeHerb.category === 'brain'
+      ? 'sage-brain'
+      : activeHerb.id === 'rosemary-memory' && activeHerb.category === 'brain'
+      ? 'rosemary-memory'
+      : activeHerb.id === 'goji-berry' && activeHerb.category === 'brain'
+      ? 'goji-berry'
+      : activeHerb.id === 'evening-primrose-oil' && activeHerb.category === 'women'
+      ? 'evening-primrose-oil'
+      : activeHerb.id === 'queens-cup' && activeHerb.category === 'women'
+      ? 'queens-cup'
+      : activeHerb.id === 'raspberry-seed' && activeHerb.category === 'women'
+      ? 'raspberry-seed'
       : activeHerb.id;
       
     const pairings = herbPairings[herbId] || herbPairings['default'];
