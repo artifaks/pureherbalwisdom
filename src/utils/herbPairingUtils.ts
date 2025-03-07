@@ -121,4 +121,3 @@ export const getComplementaryHerbs = (activeHerb: Herb, allHerbs: Herb[]) => {
     return herb ? { ...pairing, herb } : null;
   }).filter(Boolean);
 };
-
