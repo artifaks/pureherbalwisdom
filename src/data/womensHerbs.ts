@@ -232,5 +232,44 @@ export const womensHerbs = [
     ],
     oilPreparation: "1. Use fresh tulsi leaves, dried slightly\n2. Cover with olive or coconut oil\n3. Solar infuse for 2-3 weeks\n4. Use for heart-centered massage",
     tincturePreparation: "1. Fill jar with fresh tulsi leaves\n2. Cover with vodka completely\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-40 drops twice daily"
+  },
+  {
+    id: 'lady-mantle',
+    name: 'Lady\'s Mantle',
+    color: '#66BB6A',
+    benefits: [
+      'Traditional European herb for women\'s health',
+      'Used for menstrual support and balance',
+      'May help with heavy or irregular periods',
+      'Astringent properties for female tissues'
+    ],
+    oilPreparation: "1. Use dried lady's mantle leaves\n2. Cover with olive oil in jar\n3. Solar infuse for 3-4 weeks\n4. Use for lower abdomen massage",
+    tincturePreparation: "1. Fill jar with fresh leaves when available\n2. Cover with vodka completely\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-40 drops daily during cycle"
+  },
+  {
+    id: 'black-haw',
+    name: 'Black Haw',
+    color: '#5D4037',
+    benefits: [
+      'Traditional uterine tonic',
+      'May help reduce menstrual cramping',
+      'Traditionally used for threatened miscarriage',
+      'Supports healthy female reproductive system'
+    ],
+    oilPreparation: "1. Use dried black haw bark\n2. Cover with olive oil in jar\n3. Warm infuse for 3-4 hours\n4. Use for lower back and abdomen massage",
+    tincturePreparation: "1. Fill jar 1/4 with chopped bark\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks, shaking daily\n4. Take 20-40 drops as needed"
+  },
+  {
+    id: 'cramp-bark',
+    name: 'Cramp Bark',
+    color: '#78909C',
+    benefits: [
+      'Excellent herb for menstrual cramps',
+      'Helps relax smooth muscle tissue',
+      'Used for uterine tension and discomfort',
+      'Traditionally used for reproductive health'
+    ],
+    oilPreparation: "1. Use dried cramp bark\n2. Cover with jojoba or olive oil\n3. Warm infuse for 4 hours\n4. Use for abdominal and lower back massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried bark\n2. Cover with 100 proof vodka\n3. Store for 6-8 weeks in dark place\n4. Take 30-60 drops during cramping"
   }
 ];

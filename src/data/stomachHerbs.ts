@@ -4,298 +4,194 @@ export const stomachHerbs = [
     name: 'Peppermint',
     color: '#4CAF50',
     benefits: [
-      'Relieves indigestion and upset stomach',
-      'Reduces bloating and gas',
-      'Soothes intestinal spasms',
-      'Helps with IBS symptoms'
+      'Helps relieve digestive issues',
+      'May reduce bloating and gas',
+      'Supports healthy appetite',
+      'Traditionally used for nausea'
     ],
-    oilPreparation: "1. Harvest fresh peppermint leaves\n2. Add to carrier oil\n3. Heat gently for 2-3 hours\n4. Strain and store in dark bottles",
-    tincturePreparation: "1. Fill jar with fresh leaves\n2. Cover with alcohol or vinegar\n3. Store for 4-6 weeks\n4. Use 10-15 drops in water"
+    oilPreparation: "1. Use fresh or dried peppermint leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with fresh peppermint leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'ginger',
     name: 'Ginger',
-    color: '#f8cb66',
+    color: '#FFB74D',
     benefits: [
-      'Reduces nausea and vomiting',
-      'Speeds gastric emptying',
-      'Relieves gas and bloating',
-      'Anti-inflammatory for digestive tract'
+      'Supports healthy digestion',
+      'May help with nausea and vomiting',
+      'Traditionally used for upset stomach',
+      'Contains anti-inflammatory properties'
     ],
-    oilPreparation: "1. Grate fresh ginger root\n2. Add to carrier oil\n3. Heat in double boiler\n4. Strain and store",
-    tincturePreparation: "1. Fill jar with grated ginger\n2. Cover with alcohol\n3. Store for 6-8 weeks\n4. Take for nausea or indigestion"
+    oilPreparation: "1. Use fresh ginger root, chopped\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with chopped ginger root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'chamomile',
     name: 'Chamomile',
-    color: '#FFF59D',
+    color: '#FFD54F',
     benefits: [
-      'Soothes stomach cramps',
-      'Reduces acid reflux symptoms',
-      'Helps with stress-related digestive issues',
-      'Anti-inflammatory for digestive tract'
+      'Helps soothe digestive discomfort',
+      'May promote relaxation and sleep',
+      'Traditionally used for stomach cramps',
+      'Contains anti-inflammatory properties'
     ],
-    oilPreparation: "1. Use dried chamomile flowers\n2. Cover with carrier oil\n3. Infuse using low heat\n4. Strain and store properly",
-    tincturePreparation: "1. Fill jar with dried flowers\n2. Cover with vodka\n3. Store for 4 weeks\n4. Take before meals"
+    oilPreparation: "1. Use dried chamomile flowers\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with dried chamomile flowers\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'licorice',
     name: 'Licorice',
-    color: '#D4AC0D',
+    color: '#FFC107',
     benefits: [
-      'Coats and soothes digestive tract lining',
-      'May help with acid reflux and ulcers',
-      'Reduces inflammation in the stomach',
-      'Supports healing of stomach tissues'
+      'Supports digestive health',
+      'May help soothe stomach ulcers',
+      'Traditionally used for respiratory issues',
+      'Contains anti-inflammatory properties'
     ],
-    oilPreparation: "1. Chop dried licorice root\n2. Mix with jojoba or olive oil\n3. Double boiler infuse for 4 hours\n4. Store in dark amber bottles",
-    tincturePreparation: "1. Fill jar 1/4 with chopped licorice root\n2. Cover with vodka or glycerin\n3. Steep for 8 weeks\n4. Use 10-20 drops after meals"
+    oilPreparation: "1. Use dried licorice root\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with chopped licorice root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'fennel',
     name: 'Fennel',
-    color: '#C0CA33',
+    color: '#FF8A65',
     benefits: [
-      'Eases bloating and gas pains',
-      'Supports healthy digestion',
-      'Has antispasmodic effects on digestive tract',
-      'Traditionally used for colic and indigestion'
+      'Helps relieve bloating and gas',
+      'May support healthy digestion',
+      'Traditionally used for menstrual discomfort',
+      'Contains antioxidants and anti-inflammatory properties'
     ],
-    oilPreparation: "1. Crush fennel seeds lightly\n2. Add to olive or almond oil\n3. Warm infuse for 2 hours\n4. Use for digestive massage",
-    tincturePreparation: "1. Use 1 part crushed seeds to 5 parts alcohol\n2. Store for 4-6 weeks, shaking daily\n3. Strain through fine cloth\n4. Take 15-30 drops after meals"
+    oilPreparation: "1. Use dried fennel seeds\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with crushed fennel seeds\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'marshmallow',
     name: 'Marshmallow',
-    color: '#B39DDB',
+    color: '#E1BEE7',
     benefits: [
-      'Creates a protective layer on digestive tract',
-      'Soothes inflammation of stomach and intestines',
-      'Helps with acid reflux and heartburn',
-      'Traditional remedy for gastritis'
+      'Helps soothe digestive tract',
+      'May support healthy mucus membranes',
+      'Traditionally used for coughs and colds',
+      'Contains anti-inflammatory properties'
     ],
-    oilPreparation: "1. Use dried marshmallow root powder\n2. Mix with cold-pressed oil at 1:4 ratio\n3. Macerate for 6 weeks, shaking daily\n4. Strain carefully through cheesecloth",
-    tincturePreparation: "1. Fill jar 1/3 with marshmallow root\n2. Cover with 1:1 alcohol/water mixture\n3. Steep for 6-8 weeks\n4. Take 1/4 teaspoon as needed"
+    oilPreparation: "1. Use dried marshmallow root\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with chopped marshmallow root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'slippery-elm',
     name: 'Slippery Elm',
-    color: '#8D6E63',
+    color: '#FFAB91',
     benefits: [
-      'Creates protective mucilage for digestive tract',
-      'Soothes irritation and inflammation',
-      'Traditional remedy for ulcers and colitis',
-      'Supports overall digestive health'
+      'Helps soothe irritated digestive tract',
+      'May support healthy bowel function',
+      'Traditionally used for sore throat',
+      'Contains mucilage that coats and protects'
     ],
-    oilPreparation: "1. Mix slippery elm powder with carrier oil\n2. Not typically prepared as oil\n3. Best used as powder in warm water\n4. Can add to salves for skin preparations",
-    tincturePreparation: "1. Mix 1 part powdered bark with 5 parts alcohol\n2. Let sit for 4 weeks, shaking daily\n3. Filter through coffee filter\n4. Take 1/2 teaspoon as needed"
+    oilPreparation: "1. Use dried slippery elm bark\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with powdered slippery elm\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'meadowsweet',
     name: 'Meadowsweet',
-    color: '#F5F5DC',
+    color: '#A5D6A7',
     benefits: [
-      'Natural source of salicylic acid compounds',
-      'Reduces excess stomach acid gently',
-      'Traditionally used for heartburn and ulcers',
-      'Soothes and protects the digestive lining'
+      'Helps relieve digestive discomfort',
+      'May support healthy inflammation response',
+      'Traditionally used for heartburn',
+      'Contains salicylic acid, a natural pain reliever'
     ],
-    oilPreparation: "1. Use dried meadowsweet flowers\n2. Cover with olive oil in jar\n3. Solar infuse for 3-4 weeks\n4. Use topically for inflammation",
-    tincturePreparation: "1. Fill jar 1/3 with dried herb\n2. Cover with brandy or vodka\n3. Let sit for 6 weeks in cool place\n4. Take 15-30 drops before meals"
+    oilPreparation: "1. Use dried meadowsweet flowers\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with dried meadowsweet\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'cardamom',
     name: 'Cardamom',
-    color: '#9CCC65',
+    color: '#FF7043',
     benefits: [
-      'Warms digestive system and improves absorption',
-      'Reduces gas and bloating effectively',
-      'Freshens breath and supports oral health',
-      'Ayurvedic remedy for sluggish digestion'
+      'Helps relieve digestive issues',
+      'May support healthy appetite',
+      'Traditionally used for nausea',
+      'Contains antioxidants and anti-inflammatory properties'
     ],
-    oilPreparation: "1. Crush cardamom pods lightly\n2. Mix with sesame oil at 1:5 ratio\n3. Warm for 3 hours on low heat\n4. Strain and store in dark bottle",
-    tincturePreparation: "1. Fill jar 1/4 with crushed cardamom pods\n2. Cover with 80 proof vodka\n3. Steep for 4-6 weeks\n4. Take 10-15 drops after heavy meals"
+    oilPreparation: "1. Use dried cardamom pods\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with crushed cardamom pods\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'lemon-balm',
     name: 'Lemon Balm',
-    color: '#CDDC39',
+    color: '#FFEB3B',
     benefits: [
-      'Calms nervous digestive issues',
-      'Reduces bloating and gas',
-      'Supports healthy digestion',
-      'Has mild sedative properties that help stress-related digestive problems'
+      'Helps reduce anxiety and stress',
+      'May support healthy digestion',
+      'Traditionally used for sleep support',
+      'Contains antioxidants and calming properties'
     ],
-    oilPreparation: "1. Use fresh lemon balm leaves\n2. Cover with olive oil completely\n3. Solar infuse for 2-3 weeks\n4. Strain and use for digestive massage",
-    tincturePreparation: "1. Fill jar with fresh lemon balm leaves\n2. Cover with 80 proof vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops before meals"
+    oilPreparation: "1. Use fresh or dried lemon balm leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with fresh lemon balm leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'angelica',
     name: 'Angelica',
-    color: '#A5D6A7',
+    color: '#D1C4E9',
     benefits: [
-      'Warming digestive tonic',
-      'Helps stimulate appetite',
-      'Relieves gas and bloating',
-      'Traditional remedy for sluggish digestion'
+      'Supports healthy digestion',
+      'May help with gas and bloating',
+      'Traditionally used for respiratory issues',
+      'Contains anti-inflammatory properties'
     ],
-    oilPreparation: "1. Use dried angelica root\n2. Cover with jojoba oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Chop angelica root finely\n2. Use 1:5 ratio with 50% alcohol\n3. Steep for 6 weeks minimum\n4. Take 10-20 drops before meals"
+    oilPreparation: "1. Use dried angelica root\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with chopped angelica root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'dandelion',
     name: 'Dandelion',
-    color: '#FDD835',
+    color: '#FFCA28',
     benefits: [
-      'Supports liver and digestive function',
-      'Mild natural laxative properties',
-      'Helps stimulate bile production',
-      'Traditional remedy for indigestion'
+      'Supports liver health and digestion',
+      'May help with appetite stimulation',
+      'Traditionally used for detoxification',
+      'Contains antioxidants and vitamins'
     ],
-    oilPreparation: "1. Use dried dandelion root\n2. Cover with olive oil\n3. Slow infuse for 4 weeks\n4. Apply to abdomen in clockwise motion",
-    tincturePreparation: "1. Fill jar 1/3 with dried dandelion root\n2. Cover with 100 proof vodka\n3. Store for 6 weeks in dark place\n4. Take 30-60 drops before meals"
+    oilPreparation: "1. Use fresh or dried dandelion leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar with fresh dandelion leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
   },
   {
     id: 'gentian',
-    name: 'Gentian',
-    color: '#FFEB3B',
+    name: 'Gentian Root',
+    color: '#FDD835',
     benefits: [
-      'Stimulates digestive enzymes and bile production',
-      'Helps with appetite loss and digestive weakness',
-      'Traditional remedy for sluggish digestion',
-      'Supports healthy liver function'
+      'Powerful digestive bitter',
+      'Stimulates digestive secretions',
+      'Traditionally used for low appetite',
+      'Supports healthy digestion'
     ],
-    oilPreparation: "1. Use dried gentian root\n2. Infuse in olive oil at 1:5 ratio\n3. Warm for 3 hours on low heat\n4. For external use only as a digestive massage oil",
-    tincturePreparation: "1. Chop gentian root finely\n2. Use 1:5 ratio with 40% alcohol\n3. Steep for 6 weeks minimum\n4. Take 5-10 drops before meals (very bitter!)"
+    oilPreparation: "1. Not commonly used as oil\n2. Better as tincture or tea\n3. Can be added to massage oils\n4. For external use over abdomen",
+    tincturePreparation: "1. Use dried gentian root, chopped\n2. Cover with 40% vodka at 1:5 ratio\n3. Steep for 4-6 weeks\n4. Take 5-10 drops before meals"
   },
   {
     id: 'artichoke-leaf',
     name: 'Artichoke Leaf',
-    color: '#4CAF50',
-    benefits: [
-      'Supports liver and gallbladder function',
-      'Helps with fat digestion and bile production',
-      'May reduce bloating after fatty meals',
-      'Traditional European digestive bitter'
-    ],
-    oilPreparation: "1. Use dried artichoke leaves\n2. Cover with olive oil\n3. Infuse for 3-4 weeks\n4. Strain and use for liver area massage",
-    tincturePreparation: "1. Fill jar 1/3 with dried leaves\n2. Cover with 100 proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-30 drops before meals"
-  },
-  {
-    id: 'chamomile-german',
-    name: 'German Chamomile',
-    color: '#FFECB3',
-    benefits: [
-      'Stronger anti-inflammatory effects than common chamomile',
-      'Particularly effective for inflammatory bowel conditions',
-      'Helps with nervous digestive issues',
-      'Soothes digestive tract lining'
-    ],
-    oilPreparation: "1. Use dried blue chamomile flowers\n2. Cover with jojoba oil completely\n3. Infuse using low heat for 3 hours\n4. Will develop blue color from chamazulene content",
-    tincturePreparation: "1. Fill jar loosely with dried flowers\n2. Cover with 80 proof vodka\n3. Store for 4 weeks in dark place\n4. Take 30-60 drops before bed"
-  },
-  {
-    id: 'aloe-vera',
-    name: 'Aloe Vera',
-    color: '#66BB6A',
-    benefits: [
-      'Soothes irritated digestive tract lining',
-      'May help with acid reflux and heartburn',
-      'Supports healthy gut flora balance',
-      'Traditional remedy for digestive inflammation'
-    ],
-    oilPreparation: "1. Extract fresh aloe gel\n2. Not typically used as oil preparation\n3. Best used fresh or as juice\n4. Can be added to salves for external application",
-    tincturePreparation: "1. Mix fresh aloe gel with glycerin\n2. Add 25% alcohol as preservative\n3. Store for 2 weeks in refrigerator\n4. Take 1 teaspoon as needed for digestive issues"
-  },
-  {
-    id: 'milk-thistle',
-    name: 'Milk Thistle',
-    color: '#AB47BC',
-    benefits: [
-      'Supports liver and digestive function',
-      'Contains silymarin which protects liver cells',
-      'Helps with fat digestion and bile production',
-      'Traditional European remedy for digestive support'
-    ],
-    oilPreparation: "1. Use crushed milk thistle seeds\n2. Cover with olive oil at 1:5 ratio\n3. Warm infuse for 3 hours\n4. Use for massage over liver area",
-    tincturePreparation: "1. Fill jar 1/3 with crushed milk thistle seeds\n2. Cover with 100 proof alcohol\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops before meals"
-  },
-  {
-    id: 'caraway',
-    name: 'Caraway',
-    color: '#795548',
-    benefits: [
-      'Excellent for relieving gas and bloating',
-      'Supports healthy digestion of rich foods',
-      'Calms intestinal spasms naturally',
-      'Traditional European digestive remedy'
-    ],
-    oilPreparation: "1. Crush caraway seeds lightly\n2. Cover with sweet almond oil\n3. Low heat for 2-3 hours\n4. Use for clockwise abdominal massage",
-    tincturePreparation: "1. Fill jar 1/4 with crushed caraway seeds\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 15-20 drops after meals"
-  },
-  {
-    id: 'burdock',
-    name: 'Burdock Root',
-    color: '#8D6E63',
-    benefits: [
-      'Supports digestive function',
-      'Acts as a mild laxative',
-      'Has prebiotic properties',
-      'Traditional remedy for gut inflammation'
-    ],
-    oilPreparation: "1. Clean and finely chop burdock root\n2. Add to olive oil at 1:5 ratio\n3. Infuse in double boiler for 3 hours\n4. Strain and store in amber bottles",
-    tincturePreparation: "1. Fill jar 1/3 with chopped burdock root\n2. Cover with 100 proof alcohol\n3. Macerate for 6-8 weeks\n4. Take 20-30 drops before meals"
-  },
-  {
-    id: 'calendula',
-    name: 'Calendula',
-    color: '#FFA000',
-    benefits: [
-      'Soothes mucous membranes in digestive tract',
-      'Reduces inflammation in stomach and intestines',
-      'Helps heal gastric ulcers',
-      'Supports gut microbiome balance'
-    ],
-    oilPreparation: "1. Use dried calendula flowers\n2. Cover with olive or jojoba oil\n3. Infuse for 4 weeks in sunlight\n4. Strain and use for gut massage",
-    tincturePreparation: "1. Fill jar 2/3 with calendula flowers\n2. Cover with brandy or vodka\n3. Store for 4 weeks in dark place\n4. Take 15-20 drops with warm water"
-  },
-  {
-    id: 'turmeric',
-    name: 'Turmeric',
-    color: '#FF9800',
-    benefits: [
-      'Powerful anti-inflammatory for digestive tract',
-      'Stimulates bile production',
-      'Helps with irritable bowel syndrome',
-      'Supports microbiome diversity'
-    ],
-    oilPreparation: "1. Use fresh grated turmeric root\n2. Mix with coconut oil and black pepper\n3. Heat gently for 1-2 hours\n4. Strain and refrigerate",
-    tincturePreparation: "1. Fill jar 1/4 with fresh turmeric root\n2. Add cracked black pepper\n3. Cover with alcohol\n4. Macerate for 6 weeks, then strain"
-  },
-  {
-    id: 'yarrow',
-    name: 'Yarrow',
-    color: '#DCEDC8',
-    benefits: [
-      'Helps with digestive spasms',
-      'Has bitter properties that stimulate digestion',
-      'Traditional remedy for intestinal inflammation',
-      'Supports liver function'
-    ],
-    oilPreparation: "1. Use dried yarrow flowers and leaves\n2. Cover with olive oil\n3. Infuse for 3 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar 1/2 with yarrow\n2. Cover with 100 proof vodka\n3. Store for 4-6 weeks\n4. Take 10-15 drops before meals"
-  },
-  {
-    id: 'plantain',
-    name: 'Plantain Leaf',
     color: '#7CB342',
     benefits: [
-      'Creates protective mucilage for gut lining',
-      'Soothes inflammation in digestive tract',
-      'Helps with leaky gut syndrome',
-      'Traditional remedy for ulcerative colitis'
+      'Supports healthy liver function',
+      'May help with fat digestion',
+      'Traditionally used for digestive comfort',
+      'Helps stimulate bile production'
     ],
-    oilPreparation: "1. Gather fresh plantain leaves\n2. Wilt slightly, then chop\n3. Cover with olive oil\n4. Infuse for 4 weeks in cool place",
-    tincturePreparation: "1. Fill jar with fresh plantain leaves\n2. Cover with apple cider vinegar or alcohol\n3. Store for 6 weeks\n4. Use 1/4 teaspoon as needed"
+    oilPreparation: "1. Use dried artichoke leaves\n2. Cover with olive oil\n3. Warm infuse for 3-4 hours\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried artichoke leaves\n2. Cover with vodka completely\n3. Store 4-6 weeks, shaking daily\n4. Take 20-30 drops before meals"
+  },
+  {
+    id: 'orange-peel',
+    name: 'Orange Peel',
+    color: '#FF9800',
+    benefits: [
+      'Carminative that helps reduce gas',
+      'Supports healthy digestion',
+      'Pleasant flavor for digestive formulas',
+      'Contains d-limonene that soothes digestive tract'
+    ],
+    oilPreparation: "1. Use dried organic orange peels\n2. Cover with jojoba oil\n3. Solar infuse for 3-4 weeks\n4. Use for abdominal massage",
+    tincturePreparation: "1. Fill jar 1/2 with chopped dried peels\n2. Cover with 80 proof vodka\n3. Steep for 4 weeks, shaking daily\n4. Take 10-30 drops as needed"
   }
 ];

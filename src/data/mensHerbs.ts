@@ -78,6 +78,19 @@ export const mensHerbs = [
     tincturePreparation: "1. Fill jar 1/4 with powdered herb\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks minimum\n4. Take 15-40 drops daily"
   },
   {
+    id: 'muira-puama-root',
+    name: 'Muira Puama Root',
+    color: '#8D6E63',
+    benefits: [
+      'Traditional Brazilian herb for male vitality',
+      'May support healthy testosterone metabolism',
+      'Used for energy and physical performance',
+      'Traditionally used for libido support'
+    ],
+    oilPreparation: "1. Use dried muira puama bark/root\n2. Infuse in jojoba oil for 6 weeks\n3. Keep jar in warm place, shaking daily\n4. For external massage use only",
+    tincturePreparation: "1. Fill jar 1/4 with chopped root\n2. Cover with 100 proof alcohol\n3. Steep for 8 weeks minimum\n4. Take 15-40 drops daily"
+  },
+  {
     id: 'tongkat-ali',
     name: 'Tongkat Ali',
     color: '#5D4037',
@@ -232,6 +245,31 @@ export const mensHerbs = [
     ],
     oilPreparation: "1. Not typically used as oil preparation\n2. Best used as powder or resin\n3. Can be dissolved in warm water or milk\n4. Take small amount (rice grain size) daily",
     tincturePreparation: "1. Mix purified shilajit resin with alcohol\n2. Use 1:3 ratio with 50% alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 5-10 drops in warm water"
+  },
+  {
+    id: 'oatstraw',
+    name: 'Oatstraw',
+    color: '#AED581',
+    benefits: [
+      'Rich in nutrients that support male vitality',
+      'Traditional nerve tonic for men',
+      'Supports healthy energy levels',
+      'Contains compounds that support testosterone'
+    ],
+    oilPreparation: "1. Use dried oatstraw herb\n2. Cover with olive oil\n3. Infuse for 4 weeks\n4. Use for massage over lower back",
+    tincturePreparation: "1. Fill jar 1/3 with dried oatstraw\n2. Cover with vodka completely\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
+  },
+  {
+    id: 'cistanche',
+    name: 'Cistanche',
+    color: '#FF7043',
+    benefits: [
+      'Traditional Chinese herb for male stamina',
+      'Known as "Desert Ginseng"',
+      'Supports kidney yang energy in TCM',
+      'Used for male reproductive health'
+    ],
+    oilPreparation: "1. Use dried cistanche stem\n2. Cover with sesame oil\n3. Slow cook for 4-6 hours\n4. Use for massage over kidney area",
+    tincturePreparation: "1. Fill jar 1/4 with chopped cistanche\n2. Cover with high-proof alcohol\n3. Steep for 8 weeks, shaking daily\n4. Take 15-30 drops twice daily"
   }
 ];
-
