@@ -1,5 +1,5 @@
 
-import { HerbPairing } from '@/data/herbPairings';
+import { HerbPairing } from '@/data/types';
 
 // Heart herb pairings
 export const heartHerbPairings: Record<string, HerbPairing[]> = {

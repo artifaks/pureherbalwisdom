@@ -1,5 +1,5 @@
 
-import { HerbPairing } from '@/data/herbPairings';
+import { HerbPairing } from '@/data/types';
 
 // Default herb pairings for any herb without specific pairings
 export const defaultHerbPairings: HerbPairing[] = [

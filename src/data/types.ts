@@ -10,3 +10,8 @@ export interface Herb {
 }
 
 export type HerbCategory = 'heart' | 'stomach' | 'mens' | 'womens' | 'brain';
+
+export interface HerbPairing {
+  herbId: string;
+  reason: string;
+}
