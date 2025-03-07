@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Herb } from '@/data/types';
 import HerbCard from './HerbCard';
@@ -181,11 +182,11 @@ const ComplementaryHerbs: React.FC<ComplementaryHerbsProps> = ({
       ? 'calendula'
       : activeHerb.id === 'catnip' && activeHerb.category === 'stomach'
       ? 'catnip'
-      : activeHerb.id === 'shilajit' && activeHerb.category === 'men'
+      : activeHerb.id === 'shilajit' && activeHerb.category === 'mens'
       ? 'shilajit'
-      : activeHerb.id === 'suma' && activeHerb.category === 'men'
+      : activeHerb.id === 'suma' && activeHerb.category === 'mens'
       ? 'suma'
-      : activeHerb.id === 'cordyceps-mens' && activeHerb.category === 'men'
+      : activeHerb.id === 'cordyceps-mens' && activeHerb.category === 'mens'
       ? 'cordyceps-mens'
       : activeHerb.id === 'sage-brain' && activeHerb.category === 'brain'
       ? 'sage-brain'
@@ -193,11 +194,11 @@ const ComplementaryHerbs: React.FC<ComplementaryHerbsProps> = ({
       ? 'rosemary-memory'
       : activeHerb.id === 'goji-berry' && activeHerb.category === 'brain'
       ? 'goji-berry'
-      : activeHerb.id === 'evening-primrose-oil' && activeHerb.category === 'women'
+      : activeHerb.id === 'evening-primrose-oil' && activeHerb.category === 'womens'
       ? 'evening-primrose-oil'
-      : activeHerb.id === 'queens-cup' && activeHerb.category === 'women'
+      : activeHerb.id === 'queens-cup' && activeHerb.category === 'womens'
       ? 'queens-cup'
-      : activeHerb.id === 'raspberry-seed' && activeHerb.category === 'women'
+      : activeHerb.id === 'raspberry-seed' && activeHerb.category === 'womens'
       ? 'raspberry-seed'
       : activeHerb.id;
       
