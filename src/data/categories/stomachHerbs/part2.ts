@@ -1,4 +1,3 @@
-
 import { Herb } from '@/data/types';
 
 // Second part of stomach herbs (items 11-20)
@@ -14,7 +13,8 @@ export const stomachHerbsPart2: Herb[] = [
       'Contains anti-inflammatory properties'
     ],
     oilPreparation: "1. Use dried angelica root\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with chopped angelica root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with chopped angelica root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'dandelion',
@@ -27,7 +27,8 @@ export const stomachHerbsPart2: Herb[] = [
       'Contains antioxidants and vitamins'
     ],
     oilPreparation: "1. Use fresh or dried dandelion leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with fresh dandelion leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with fresh dandelion leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'gentian',
@@ -40,7 +41,8 @@ export const stomachHerbsPart2: Herb[] = [
       'Supports healthy digestion'
     ],
     oilPreparation: "1. Not commonly used as oil\n2. Better as tincture or tea\n3. Can be added to massage oils\n4. For external use over abdomen",
-    tincturePreparation: "1. Use dried gentian root, chopped\n2. Cover with 40% vodka at 1:5 ratio\n3. Steep for 4-6 weeks\n4. Take 5-10 drops before meals"
+    tincturePreparation: "1. Use dried gentian root, chopped\n2. Cover with 40% vodka at 1:5 ratio\n3. Steep for 4-6 weeks\n4. Take 5-10 drops before meals",
+    category: 'stomach'
   },
   {
     id: 'artichoke-leaf',
@@ -53,7 +55,8 @@ export const stomachHerbsPart2: Herb[] = [
       'Helps stimulate bile production'
     ],
     oilPreparation: "1. Use dried artichoke leaves\n2. Cover with olive oil\n3. Warm infuse for 3-4 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar 1/3 with dried artichoke leaves\n2. Cover with vodka completely\n3. Store 4-6 weeks, shaking daily\n4. Take 20-30 drops before meals"
+    tincturePreparation: "1. Fill jar 1/3 with dried artichoke leaves\n2. Cover with vodka completely\n3. Store 4-6 weeks, shaking daily\n4. Take 20-30 drops before meals",
+    category: 'stomach'
   },
   {
     id: 'orange-peel',
@@ -66,7 +69,8 @@ export const stomachHerbsPart2: Herb[] = [
       'Contains d-limonene that soothes digestive tract'
     ],
     oilPreparation: "1. Use dried organic orange peels\n2. Cover with jojoba oil\n3. Solar infuse for 3-4 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar 1/2 with chopped dried peels\n2. Cover with 80 proof vodka\n3. Steep for 4 weeks, shaking daily\n4. Take 10-30 drops as needed"
+    tincturePreparation: "1. Fill jar 1/2 with chopped dried peels\n2. Cover with 80 proof vodka\n3. Steep for 4 weeks, shaking daily\n4. Take 10-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'aloe-vera',
@@ -79,7 +83,8 @@ export const stomachHerbsPart2: Herb[] = [
       'Supports healthy gut microbiome'
     ],
     oilPreparation: "1. Not typically used as an oil\n2. Fresh gel is more effective\n3. Can be combined with carrier oils for topical use\n4. Use for external digestive massage",
-    tincturePreparation: "1. Use inner leaf gel from fresh aloe\n2. Mix with glycerin and alcohol 1:3:1\n3. Store for 4 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon as needed"
+    tincturePreparation: "1. Use inner leaf gel from fresh aloe\n2. Mix with glycerin and alcohol 1:3:1\n3. Store for 4 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon as needed",
+    category: 'stomach'
   },
   {
     id: 'calendula',
@@ -92,7 +97,8 @@ export const stomachHerbsPart2: Herb[] = [
       'Gentle enough for sensitive systems'
     ],
     oilPreparation: "1. Use dried calendula flowers\n2. Cover with olive oil in jar\n3. Solar infuse for 4 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with fresh calendula flowers\n2. Cover with 80 proof vodka\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with fresh calendula flowers\n2. Cover with 80 proof vodka\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'catnip',
@@ -105,7 +111,8 @@ export const stomachHerbsPart2: Herb[] = [
       'Gentle enough for children\'s digestive issues'
     ],
     oilPreparation: "1. Use dried catnip leaves\n2. Cover with olive oil in jar\n3. Solar infuse for 3 weeks\n4. Use for gentle abdominal massage",
-    tincturePreparation: "1. Fill jar with fresh catnip leaves\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops as needed"
+    tincturePreparation: "1. Fill jar with fresh catnip leaves\n2. Cover with vodka completely\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'triphala',
@@ -118,7 +125,8 @@ export const stomachHerbsPart2: Herb[] = [
       'May help with digestive discomfort and bloating'
     ],
     oilPreparation: "1. Use triphala powder\n2. Mix with sesame oil\n3. Not typically used as oil\n4. For external abdominal massage only",
-    tincturePreparation: "1. Mix triphala powder with glycerin and alcohol\n2. Use 1:2:2 ratio for proper extraction\n3. Store for 4 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon before bed"
+    tincturePreparation: "1. Mix triphala powder with glycerin and alcohol\n2. Use 1:2:2 ratio for proper extraction\n3. Store for 4 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon before bed",
+    category: 'stomach'
   },
   {
     id: 'fenugreek',
@@ -131,6 +139,7 @@ export const stomachHerbsPart2: Herb[] = [
       'Traditionally used for digestive complaints'
     ],
     oilPreparation: "1. Use ground fenugreek seeds\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with crushed fenugreek seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops before meals"
+    tincturePreparation: "1. Fill jar with crushed fenugreek seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops before meals",
+    category: 'stomach'
   }
 ];

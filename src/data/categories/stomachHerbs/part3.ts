@@ -1,4 +1,3 @@
-
 import { Herb } from '@/data/types';
 
 // Third part of stomach herbs (items 21-30)
@@ -14,7 +13,8 @@ export const stomachHerbsPart3: Herb[] = [
       'Traditional digestive herb in many cultures'
     ],
     oilPreparation: "1. Use crushed coriander seeds\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops after meals"
+    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'burdock-root',
@@ -27,7 +27,8 @@ export const stomachHerbsPart3: Herb[] = [
       'Rich in prebiotic fibers for gut health'
     ],
     oilPreparation: "1. Use dried burdock root pieces\n2. Cover with olive oil\n3. Warm infuse for 4 hours\n4. Use for abdominal lymphatic massage",
-    tincturePreparation: "1. Fill jar with chopped burdock root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops before meals"
+    tincturePreparation: "1. Fill jar with chopped burdock root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops before meals",
+    category: 'stomach'
   },
   {
     id: 'plantain-leaf',
@@ -40,7 +41,8 @@ export const stomachHerbsPart3: Herb[] = [
       'Gentle enough for sensitive systems'
     ],
     oilPreparation: "1. Use fresh plantain leaves\n2. Cover with olive oil\n3. Solar infuse for 3 weeks\n4. Use for gentle abdominal massage",
-    tincturePreparation: "1. Fill jar with fresh plantain leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with fresh plantain leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'caraway-seed',
@@ -53,7 +55,8 @@ export const stomachHerbsPart3: Herb[] = [
       'Traditional remedy for improving digestion of heavy foods'
     ],
     oilPreparation: "1. Use crushed caraway seeds\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 10-20 drops after meals"
+    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 10-20 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'cinnamon-bark-stomach',
@@ -66,7 +69,8 @@ export const stomachHerbsPart3: Herb[] = [
       'Supports healthy blood sugar which affects digestion'
     ],
     oilPreparation: "1. Use cinnamon bark pieces\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use diluted for gentle abdominal massage",
-    tincturePreparation: "1. Fill jar with cinnamon bark pieces\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 5-15 drops after meals"
+    tincturePreparation: "1. Fill jar with cinnamon bark pieces\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 5-15 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'cardamom-pods',
@@ -79,7 +83,8 @@ export const stomachHerbsPart3: Herb[] = [
       'Supports healthy metabolism and appetite'
     ],
     oilPreparation: "1. Use crushed cardamom pods\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with crushed cardamom pods\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-20 drops after meals"
+    tincturePreparation: "1. Fill jar with crushed cardamom pods\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-20 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'cumin-seed',
@@ -92,7 +97,8 @@ export const stomachHerbsPart3: Herb[] = [
       'May help with digestive inflammation'
     ],
     oilPreparation: "1. Use crushed cumin seeds\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops after heavy meals"
+    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops after heavy meals",
+    category: 'stomach'
   },
   {
     id: 'anise-seed',
@@ -105,7 +111,8 @@ export const stomachHerbsPart3: Herb[] = [
       'Supports healthy appetite and digestion'
     ],
     oilPreparation: "1. Use crushed anise seeds\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 10-20 drops after meals"
+    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 10-20 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'dill-seed',
@@ -118,7 +125,8 @@ export const stomachHerbsPart3: Herb[] = [
       'Supports healthy digestion of heavy foods'
     ],
     oilPreparation: "1. Use crushed dill seeds\n2. Cover with olive oil\n3. Warm infuse for 2 hours\n4. Use for gentle abdominal massage",
-    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 10-20 drops after meals"
+    tincturePreparation: "1. Fill jar with lightly crushed seeds\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 10-20 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'senna-leaf',
@@ -131,6 +139,7 @@ export const stomachHerbsPart3: Herb[] = [
       'Short-term use for digestive sluggishness'
     ],
     oilPreparation: "1. Not typically used as oil\n2. Better as tea or tincture\n3. For internal use only\n4. Follow dosage guidelines carefully",
-    tincturePreparation: "1. Fill jar with dried senna leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 5-10 drops at bedtime as needed"
+    tincturePreparation: "1. Fill jar with dried senna leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 5-10 drops at bedtime as needed",
+    category: 'stomach'
   }
 ];

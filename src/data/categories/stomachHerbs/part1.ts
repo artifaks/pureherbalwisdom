@@ -14,7 +14,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Traditionally used for nausea'
     ],
     oilPreparation: "1. Use fresh or dried peppermint leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with fresh peppermint leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with fresh peppermint leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'ginger',
@@ -27,7 +28,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains anti-inflammatory properties'
     ],
     oilPreparation: "1. Use fresh ginger root, chopped\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with chopped ginger root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with chopped ginger root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'chamomile',
@@ -40,7 +42,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains anti-inflammatory properties'
     ],
     oilPreparation: "1. Use dried chamomile flowers\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with dried chamomile flowers\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with dried chamomile flowers\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'licorice',
@@ -53,7 +56,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains anti-inflammatory properties'
     ],
     oilPreparation: "1. Use dried licorice root\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with chopped licorice root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with chopped licorice root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'fennel',
@@ -66,7 +70,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains antioxidants and anti-inflammatory properties'
     ],
     oilPreparation: "1. Use dried fennel seeds\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with crushed fennel seeds\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with crushed fennel seeds\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'marshmallow',
@@ -79,7 +84,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains anti-inflammatory properties'
     ],
     oilPreparation: "1. Use dried marshmallow root\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with chopped marshmallow root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with chopped marshmallow root\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'slippery-elm',
@@ -92,7 +98,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains mucilage that coats and protects'
     ],
     oilPreparation: "1. Use dried slippery elm bark\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with powdered slippery elm\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with powdered slippery elm\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'meadowsweet',
@@ -105,7 +112,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains salicylic acid, a natural pain reliever'
     ],
     oilPreparation: "1. Use dried meadowsweet flowers\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with dried meadowsweet\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with dried meadowsweet\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'cardamom',
@@ -118,7 +126,8 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains antioxidants and anti-inflammatory properties'
     ],
     oilPreparation: "1. Use dried cardamom pods\n2. Cover with olive oil\n3. Warm infuse for 2-3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with crushed cardamom pods\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with crushed cardamom pods\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   },
   {
     id: 'lemon-balm',
@@ -131,6 +140,7 @@ export const stomachHerbsPart1: Herb[] = [
       'Contains antioxidants and calming properties'
     ],
     oilPreparation: "1. Use fresh or dried lemon balm leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with fresh lemon balm leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed"
+    tincturePreparation: "1. Fill jar with fresh lemon balm leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 20-30 drops as needed",
+    category: 'stomach'
   }
 ];

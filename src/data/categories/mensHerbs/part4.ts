@@ -1,7 +1,6 @@
-
 import { Herb } from '@/data/types';
 
-// Fourth part of men's herbs (new herbs)
+// Fourth part of men's herbs
 export const mensHerbsPart4: Herb[] = [
   {
     id: 'shatavari-mens',
@@ -14,7 +13,8 @@ export const mensHerbsPart4: Herb[] = [
       'Traditional Ayurvedic herb for all genders'
     ],
     oilPreparation: "1. Use dried shatavari root\n2. Cover with sesame oil\n3. Warm infuse for 3 hours\n4. Use for full body massage",
-    tincturePreparation: "1. Fill jar with chopped shatavari root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with chopped shatavari root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'rhodiola-mens',
@@ -27,7 +27,8 @@ export const mensHerbsPart4: Herb[] = [
       'Traditional herb for endurance and vitality'
     ],
     oilPreparation: "1. Use dried rhodiola root\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for massage",
-    tincturePreparation: "1. Fill jar with chopped rhodiola root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with chopped rhodiola root\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'yohimbe-bark',
@@ -40,7 +41,8 @@ export const mensHerbsPart4: Herb[] = [
       'Use with caution and professional guidance'
     ],
     oilPreparation: "1. Use small amount of yohimbe bark\n2. Not typically used as oil\n3. Better as tincture or supplement\n4. For external use only",
-    tincturePreparation: "1. Fill jar with small amount of chopped bark\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 5-10 drops with professional guidance"
+    tincturePreparation: "1. Fill jar with small amount of chopped bark\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 5-10 drops with professional guidance",
+    category: 'mens'
   },
   {
     id: 'schisandra-mens',
@@ -53,7 +55,8 @@ export const mensHerbsPart4: Herb[] = [
       'Supports healthy stress response'
     ],
     oilPreparation: "1. Use dried schisandra berries\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for massage",
-    tincturePreparation: "1. Fill jar with dried schisandra berries\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with dried schisandra berries\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'mucuna-mens',
@@ -66,7 +69,8 @@ export const mensHerbsPart4: Herb[] = [
       'Supports overall hormonal balance'
     ],
     oilPreparation: "1. Use mucuna seed powder\n2. Not typically used as oil\n3. Better as internal supplement\n4. For external use only",
-    tincturePreparation: "1. Fill jar with mucuna seed powder\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-20 drops daily"
+    tincturePreparation: "1. Fill jar with mucuna seed powder\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-20 drops daily",
+    category: 'mens'
   },
   {
     id: 'catuaba-bark',
@@ -79,7 +83,8 @@ export const mensHerbsPart4: Herb[] = [
       'Used in South American traditional medicine'
     ],
     oilPreparation: "1. Use dried catuaba bark\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for massage",
-    tincturePreparation: "1. Fill jar with chopped catuaba bark\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with chopped catuaba bark\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'tongkat-ali-plus',
@@ -92,7 +97,8 @@ export const mensHerbsPart4: Herb[] = [
       'Traditional blend for energy and stamina'
     ],
     oilPreparation: "1. Use herb blend with tongkat ali\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for massage",
-    tincturePreparation: "1. Fill jar with herb blend\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 10-30 drops daily"
+    tincturePreparation: "1. Fill jar with herb blend\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 10-30 drops daily",
+    category: 'mens'
   },
   {
     id: 'moringa-mens',
@@ -105,7 +111,8 @@ export const mensHerbsPart4: Herb[] = [
       'Traditional herb for wellness and stamina'
     ],
     oilPreparation: "1. Use dried moringa leaves\n2. Cover with olive oil\n3. Solar infuse for 3 weeks\n4. Use for full body massage",
-    tincturePreparation: "1. Fill jar with dried moringa leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with dried moringa leaves\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'panax-ginseng-mens',
@@ -118,7 +125,8 @@ export const mensHerbsPart4: Herb[] = [
       'May support healthy circulation and function'
     ],
     oilPreparation: "1. Use dried panax ginseng root\n2. Cover with sesame oil\n3. Warm infuse for 3 hours\n4. Use for full body massage",
-    tincturePreparation: "1. Fill jar with chopped ginseng root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 10-30 drops daily"
+    tincturePreparation: "1. Fill jar with chopped ginseng root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 10-30 drops daily",
+    category: 'mens'
   },
   {
     id: 'american-ginseng-mens',
@@ -131,6 +139,7 @@ export const mensHerbsPart4: Herb[] = [
       'Supports overall wellness and endurance'
     ],
     oilPreparation: "1. Use dried american ginseng root\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for full body massage",
-    tincturePreparation: "1. Fill jar with chopped ginseng root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 15-30 drops daily"
+    tincturePreparation: "1. Fill jar with chopped ginseng root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 15-30 drops daily",
+    category: 'mens'
   }
 ];

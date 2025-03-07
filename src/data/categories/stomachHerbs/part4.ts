@@ -1,4 +1,3 @@
-
 import { Herb } from '@/data/types';
 
 // Fourth part of stomach herbs (new herbs)
@@ -14,7 +13,8 @@ export const stomachHerbsPart4: Herb[] = [
       'Supports recovery from digestive inflammation'
     ],
     oilPreparation: "1. Not typically used as oil\n2. Better as internal preparation\n3. Can be mixed with oils for external use\n4. Use for abdominal massage",
-    tincturePreparation: "1. Best prepared as powder mixed with water\n2. Mix with honey and small amount of alcohol\n3. Take 1-2 teaspoons as needed\n4. Store in refrigerator"
+    tincturePreparation: "1. Best prepared as powder mixed with water\n2. Mix with honey and small amount of alcohol\n3. Take 1-2 teaspoons as needed\n4. Store in refrigerator",
+    category: 'stomach'
   },
   {
     id: 'licorice-dgl',
@@ -27,7 +27,8 @@ export const stomachHerbsPart4: Herb[] = [
       'Soothes digestive irritation without affecting blood pressure'
     ],
     oilPreparation: "1. Not typically used as oil\n2. Better as internal preparation\n3. Can be mixed with carrier oils\n4. For external use only",
-    tincturePreparation: "1. Use DGL licorice powder\n2. Mix with glycerin as primary solvent\n3. Add small amount of alcohol as preservative\n4. Take 1/4-1/2 teaspoon before meals"
+    tincturePreparation: "1. Use DGL licorice powder\n2. Mix with glycerin as primary solvent\n3. Add small amount of alcohol as preservative\n4. Take 1/4-1/2 teaspoon before meals",
+    category: 'stomach'
   },
   {
     id: 'ginger-turmeric-blend',
@@ -40,7 +41,8 @@ export const stomachHerbsPart4: Herb[] = [
       'Traditional digestive remedy with enhanced effects'
     ],
     oilPreparation: "1. Use equal parts dried ginger and turmeric\n2. Cover with coconut oil\n3. Warm infuse for 3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with equal parts ginger and turmeric\n2. Add black pepper for enhanced absorption\n3. Cover with high-proof alcohol\n4. Take 20-30 drops after meals"
+    tincturePreparation: "1. Fill jar with equal parts ginger and turmeric\n2. Add black pepper for enhanced absorption\n3. Cover with high-proof alcohol\n4. Take 20-30 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'aloe-vera-plus',
@@ -53,7 +55,8 @@ export const stomachHerbsPart4: Herb[] = [
       'May help with acid reflux and digestive discomfort'
     ],
     oilPreparation: "1. Not typically used as oil\n2. Better as internal preparation\n3. For external use only\n4. Use for abdominal massage",
-    tincturePreparation: "1. Use inner leaf gel with herbs\n2. Mix with glycerin and alcohol\n3. Store in refrigerator\n4. Take 1/4-1/2 teaspoon as needed"
+    tincturePreparation: "1. Use inner leaf gel with herbs\n2. Mix with glycerin and alcohol\n3. Store in refrigerator\n4. Take 1/4-1/2 teaspoon as needed",
+    category: 'stomach'
   },
   {
     id: 'digestive-bitters-blend',
@@ -66,7 +69,8 @@ export const stomachHerbsPart4: Herb[] = [
       'Traditionally used before or after meals for digestion'
     ],
     oilPreparation: "1. Not typically used as oil\n2. Better as tincture\n3. For internal use\n4. Follow digestive bitter protocol",
-    tincturePreparation: "1. Combine gentian, artichoke, dandelion and orange peel\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 5-10 drops before meals"
+    tincturePreparation: "1. Combine gentian, artichoke, dandelion and orange peel\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 5-10 drops before meals",
+    category: 'stomach'
   },
   {
     id: 'marshmallow-slippery-elm',
@@ -79,7 +83,8 @@ export const stomachHerbsPart4: Herb[] = [
       'Traditional blend for sensitive stomachs'
     ],
     oilPreparation: "1. Not typically used as oil\n2. Better as internal preparation\n3. For external use only\n4. Use for gentle abdominal massage",
-    tincturePreparation: "1. Best prepared as powder mixed with water\n2. Can be extracted in glycerin and alcohol\n3. Store in dark bottle\n4. Take 1/2 teaspoon as needed"
+    tincturePreparation: "1. Best prepared as powder mixed with water\n2. Can be extracted in glycerin and alcohol\n3. Store in dark bottle\n4. Take 1/2 teaspoon as needed",
+    category: 'stomach'
   },
   {
     id: 'peppermint-fennel-blend',
@@ -92,7 +97,8 @@ export const stomachHerbsPart4: Herb[] = [
       'Traditional blend for digestive complaints'
     ],
     oilPreparation: "1. Use equal parts peppermint and fennel\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with equal parts herbs\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops after meals"
+    tincturePreparation: "1. Fill jar with equal parts herbs\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 15-30 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'triphala-plus',
@@ -105,7 +111,8 @@ export const stomachHerbsPart4: Herb[] = [
       'Gentle yet effective for digestive balance'
     ],
     oilPreparation: "1. Not typically used as oil\n2. Better as internal preparation\n3. For external use only\n4. Use for abdominal massage",
-    tincturePreparation: "1. Use triphala powder with ginger and fennel\n2. Mix with glycerin and alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon before bed"
+    tincturePreparation: "1. Use triphala powder with ginger and fennel\n2. Mix with glycerin and alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 1/4-1/2 teaspoon before bed",
+    category: 'stomach'
   },
   {
     id: 'digestive-chai-blend',
@@ -118,7 +125,8 @@ export const stomachHerbsPart4: Herb[] = [
       'Traditionally used after meals for digestion'
     ],
     oilPreparation: "1. Use equal parts cardamom, cinnamon, ginger and clove\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for abdominal massage",
-    tincturePreparation: "1. Fill jar with spice blend\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-20 drops after meals"
+    tincturePreparation: "1. Fill jar with spice blend\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 10-20 drops after meals",
+    category: 'stomach'
   },
   {
     id: 'chamomile-lavender-blend',
@@ -131,6 +139,7 @@ export const stomachHerbsPart4: Herb[] = [
       'Gentle enough for sensitive individuals'
     ],
     oilPreparation: "1. Use equal parts chamomile and lavender\n2. Cover with jojoba oil\n3. Solar infuse for 3 weeks\n4. Use for abdominal and solar plexus massage",
-    tincturePreparation: "1. Fill jar with equal parts herbs\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops as needed"
+    tincturePreparation: "1. Fill jar with equal parts herbs\n2. Cover with high-proof alcohol\n3. Store for 4 weeks, shaking daily\n4. Take 20-40 drops as needed",
+    category: 'stomach'
   }
 ];

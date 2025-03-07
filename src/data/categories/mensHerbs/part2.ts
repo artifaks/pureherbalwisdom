@@ -1,7 +1,6 @@
-
 import { Herb } from '@/data/types';
 
-// Second part of men's herbs (items 11-20)
+// Second part of men's herbs
 export const mensHerbsPart2: Herb[] = [
   {
     id: 'fo-ti',
@@ -14,7 +13,8 @@ export const mensHerbsPart2: Herb[] = [
       'Traditionally used for male vitality'
     ],
     oilPreparation: "1. Use prepared fo-ti root\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for hair and scalp",
-    tincturePreparation: "1. Fill jar with prepared fo-ti root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-30 drops daily"
+    tincturePreparation: "1. Fill jar with prepared fo-ti root\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-30 drops daily",
+    category: 'mens'
   },
   {
     id: 'nettle-leaf',
@@ -27,7 +27,8 @@ export const mensHerbsPart2: Herb[] = [
       'Traditionally used for overall vitality'
     ],
     oilPreparation: "1. Use dried nettle leaves\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for joint massage",
-    tincturePreparation: "1. Fill jar with fresh nettle leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
+    tincturePreparation: "1. Fill jar with fresh nettle leaves\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily",
+    category: 'mens'
   },
   {
     id: 'muira-puama-root',
@@ -40,7 +41,8 @@ export const mensHerbsPart2: Herb[] = [
       'Also known as "potency wood"'
     ],
     oilPreparation: "1. Use dried muira puama root\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for massage",
-    tincturePreparation: "1. Fill jar with chopped root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with chopped root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'oatstraw',
@@ -53,7 +55,8 @@ export const mensHerbsPart2: Herb[] = [
       'Traditionally used as a male tonic'
     ],
     oilPreparation: "1. Use dried oatstraw\n2. Cover with olive oil\n3. Solar infuse for 2-3 weeks\n4. Use for massage",
-    tincturePreparation: "1. Fill jar with chopped oatstraw\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily"
+    tincturePreparation: "1. Fill jar with chopped oatstraw\n2. Cover with high-proof alcohol\n3. Store for 4-6 weeks, shaking daily\n4. Take 30-60 drops daily",
+    category: 'mens'
   },
   {
     id: 'cistanche',
@@ -66,7 +69,8 @@ export const mensHerbsPart2: Herb[] = [
       'Known as "desert ginseng"'
     ],
     oilPreparation: "1. Use dried cistanche stem\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for lower back massage",
-    tincturePreparation: "1. Fill jar with chopped cistanche\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with chopped cistanche\n2. Cover with high-proof alcohol\n3. Store for 8 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'shilajit',
@@ -79,7 +83,8 @@ export const mensHerbsPart2: Herb[] = [
       'Traditional male rejuvenative'
     ],
     oilPreparation: "1. Mix purified shilajit with sesame oil\n2. Use 1:10 ratio for proper dilution\n3. Warm slightly to incorporate\n4. Use sparingly for massage",
-    tincturePreparation: "1. Dissolve purified shilajit in warm water\n2. Add equal parts vodka as preservative\n3. Store in dark bottle\n4. Take 10-20 drops daily"
+    tincturePreparation: "1. Dissolve purified shilajit in warm water\n2. Add equal parts vodka as preservative\n3. Store in dark bottle\n4. Take 10-20 drops daily",
+    category: 'mens'
   },
   {
     id: 'suma',
@@ -92,7 +97,8 @@ export const mensHerbsPart2: Herb[] = [
       'Supports healthy hormonal balance'
     ],
     oilPreparation: "1. Use dried suma root\n2. Cover with olive oil\n3. Warm infuse for 3 hours\n4. Use for massage",
-    tincturePreparation: "1. Fill jar with chopped suma root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with chopped suma root\n2. Cover with high-proof alcohol\n3. Store for 6-8 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'cordyceps-mens',
@@ -105,7 +111,8 @@ export const mensHerbsPart2: Herb[] = [
       'May support athletic performance'
     ],
     oilPreparation: "1. Use dried cordyceps powder\n2. Not typically used as oil\n3. Better as tincture or powder\n4. For external use only",
-    tincturePreparation: "1. Fill jar with cordyceps powder or pieces\n2. Use dual extraction with alcohol and water\n3. Follow mushroom dual extraction protocol\n4. Take 30-60 drops daily"
+    tincturePreparation: "1. Fill jar with cordyceps powder or pieces\n2. Use dual extraction with alcohol and water\n3. Follow mushroom dual extraction protocol\n4. Take 30-60 drops daily",
+    category: 'mens'
   },
   {
     id: 'tribulus-enhanced',
@@ -118,7 +125,8 @@ export const mensHerbsPart2: Herb[] = [
       'Traditional herb for male vitality and performance'
     ],
     oilPreparation: "1. Use tribulus fruit extract\n2. Mix with carrier oil\n3. Not typically used as oil\n4. For external massage use only",
-    tincturePreparation: "1. Fill jar with tribulus extract and herbs\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily"
+    tincturePreparation: "1. Fill jar with tribulus extract and herbs\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 20-40 drops daily",
+    category: 'mens'
   },
   {
     id: 'horny-goat-enhanced',
@@ -131,6 +139,7 @@ export const mensHerbsPart2: Herb[] = [
       'Traditional Chinese herb for male vitality'
     ],
     oilPreparation: "1. Use dried herb blend\n2. Cover with jojoba oil\n3. Warm infuse for 3 hours\n4. Use for massage",
-    tincturePreparation: "1. Fill jar with herb blend\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 15-30 drops daily"
+    tincturePreparation: "1. Fill jar with herb blend\n2. Cover with high-proof alcohol\n3. Store for 6 weeks, shaking daily\n4. Take 15-30 drops daily",
+    category: 'mens'
   }
 ];
