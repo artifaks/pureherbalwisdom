@@ -280,6 +280,76 @@ export const brainHerbs: Herb[] = [
     oilPreparation: "1. Use dried periwinkle leaves\n2. Not typically used as an oil preparation\n3. Better as tincture or tea\n4. Can combine dried herb with carrier oils for aromatherapy",
     tincturePreparation: "1. Fill jar 1/2 with periwinkle herb\n2. Cover with 100 proof alcohol\n3. Macerate for 4 weeks\n4. Take 10-15 drops as needed",
     category: 'brain'
+  },
+  {
+    id: 'blueberry',
+    name: 'Blueberry Extract',
+    color: '#5C6BC0',
+    benefits: [
+      'Rich in antioxidants that protect brain cells',
+      'Improves memory and cognitive function',
+      'Reduces oxidative stress in neural tissue',
+      'Supports healthy brain aging'
+    ],
+    oilPreparation: "1. Fresh blueberries aren't typically made into oil\n2. Can be infused in carrier oils for topical use\n3. Mix with jojoba oil and vitamin E\n4. Store in cool, dark place",
+    tincturePreparation: "1. Fill jar 3/4 with fresh blueberries\n2. Cover completely with 80 proof vodka\n3. Macerate for 4 weeks, shaking daily\n4. Take 20-30 drops daily",
+    category: 'brain'
+  },
+  {
+    id: 'green-tea',
+    name: 'Green Tea',
+    color: '#A5D6A7',
+    benefits: [
+      'Contains L-theanine which improves focus and attention',
+      'Rich in catechins that protect brain cells',
+      'Moderate caffeine content enhances alertness without jitters',
+      'Supports memory and cognitive processing'
+    ],
+    oilPreparation: "1. Dried green tea leaves aren't typically used for oil\n2. Can be combined with carrier oils for aromatherapy\n3. Infuse dried leaves in jojoba oil for 3 weeks\n4. Use for scalp and temple massage",
+    tincturePreparation: "1. Fill jar 1/2 with dried green tea leaves\n2. Cover with 80 proof vodka\n3. Steep for 3-4 weeks\n4. Take 15-25 drops as needed",
+    category: 'brain'
+  },
+  {
+    id: 'rosemary-brain',
+    name: 'Rosemary Essential Oil',
+    color: '#81C784',
+    benefits: [
+      'Enhances memory recall when inhaled',
+      'Improves concentration and mental clarity',
+      'Contains compounds that protect acetylcholine',
+      'Traditionally used to support brain function'
+    ],
+    oilPreparation: "1. Steam distill fresh rosemary leaves\n2. Can be diluted in jojoba or coconut oil at 2% dilution\n3. Store in dark glass bottles\n4. Use for inhalation or diluted temple massage",
+    tincturePreparation: "1. For brain support, essential oil is more effective\n2. Can make standard tincture with fresh leaves\n3. Steep in 100 proof alcohol for 6 weeks\n4. Take 10-15 drops as needed",
+    category: 'brain'
+  },
+  {
+    id: 'phosphatidylserine',
+    name: 'Phosphatidylserine',
+    color: '#FFB74D',
+    benefits: [
+      'Vital component of cell membranes in the brain',
+      'Supports cognitive function and memory',
+      'May help with age-related cognitive decline',
+      'Important for neurotransmitter release and communication'
+    ],
+    oilPreparation: "1. Not typically prepared as an oil\n2. Usually taken as supplement form\n3. Can be mixed with MCT oil for enhanced absorption\n4. Store in refrigerator for freshness",
+    tincturePreparation: "1. Not commonly made as a tincture\n2. Usually taken as standardized extract\n3. Can combine with other brain herbs in tinctures\n4. Best used under professional guidance",
+    category: 'brain'
+  },
+  {
+    id: 'gotu-kola-enhanced',
+    name: 'Gotu Kola Extract',
+    color: '#8BC34A',
+    benefits: [
+      'Enhanced circulation to the brain',
+      'Supports production of BDNF for neural growth',
+      'Traditional longevity herb for mental function',
+      'Adaptogenic support for mental fatigue'
+    ],
+    oilPreparation: "1. Use fresh gotu kola leaves\n2. Infuse in organic sesame oil\n3. Use low heat method for 4 hours\n4. Apply to crown of head in Ayurvedic tradition",
+    tincturePreparation: "1. Use fresh gotu kola if possible\n2. Fill jar 2/3 with herb\n3. Cover with 100 proof alcohol\n4. Macerate for 6 weeks, take 20-30 drops daily",
+    category: 'brain'
   }
 ];
 

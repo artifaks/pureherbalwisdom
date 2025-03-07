@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
@@ -55,6 +56,13 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
     'ginseng-brain': <Sprout size={size} color={color} />,
     'mugwort': <Leaf size={size} color={color} />,
     'periwinkle': <Flower size={size} color={color} />,
+    
+    // New brain herbs
+    'blueberry': <Leaf size={size} color={color} />,
+    'green-tea': <Leaf size={size} color={color} />,
+    'rosemary-brain': <Leaf size={size} color={color} />,
+    'phosphatidylserine': <Brain size={size} color={color} />,
+    'gotu-kola-enhanced': <Leaf size={size} color={color} />,
   };
 
   return iconMapping[herbId] || <Leaf size={size} color={color} />;
