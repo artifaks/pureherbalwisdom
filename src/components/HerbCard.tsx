@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
 import { HerbCategory } from '@/data/types';
-import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, BookmarkPlus, Bookmark, Brain } from 'lucide-react';
+import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, BookmarkPlus, Bookmark, Brain, MushroomIcon } from 'lucide-react';
 
 interface HerbCardProps {
   id: string;
@@ -15,20 +14,16 @@ interface HerbCardProps {
   benefits?: string[];
   isSaved?: boolean;
   onToggleSave?: () => void;
-  size?: 'small' | 'default';  // Add the size prop
+  size?: 'small' | 'default';
 }
 
-// Function to get the appropriate herb icon based on herb ID
 const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
-  // Map herbs to their corresponding icons
   const iconMapping: Record<string, React.ReactNode> = {
-    // Heart herbs (examples)
     'hawthorn': <Leaf size={size} color={color} />,
     'motherwort': <Flower size={size} color={color} />,
     'arjuna': <TreeDeciduous size={size} color={color} />,
     'garlic': <Sprout size={size} color={color} />,
     
-    // Stomach herbs
     'peppermint': <Leaf size={size} color={color} />,
     'ginger': <Sprout size={size} color={color} />,
     'chamomile': <Flower size={size} color={color} />,
@@ -42,7 +37,6 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
     'angelica': <FlowerIcon size={size} color={color} />,
     'dandelion': <Flower size={size} color={color} />,
     
-    // Men's herbs
     'saw-palmetto': <TreeDeciduous size={size} color={color} />,
     'nettle-root': <Sprout size={size} color={color} />,
     'ginseng': <Sprout size={size} color={color} />,
@@ -55,27 +49,31 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
     'horny-goat-weed': <Leaf size={size} color={color} />,
     'fo-ti': <Leaf size={size} color={color} />,
     'nettle-leaf': <Leaf size={size} color={color} />,
+    
+    'cordyceps': <MushroomIcon size={size} color={color} />,
+    'reishi': <MushroomIcon size={size} color={color} />,
+    'ginseng-brain': <Sprout size={size} color={color} />,
+    'mugwort': <Leaf size={size} color={color} />,
+    'periwinkle': <Flower size={size} color={color} />,
   };
 
-  // Return the specific icon or a default leaf icon
   return iconMapping[herbId] || <Leaf size={size} color={color} />;
 };
 
-// Get category-specific colors
 const getCategoryColor = (category?: HerbCategory): string => {
   switch(category) {
     case 'heart':
-      return '#e94057'; // Red for heart herbs
+      return '#e94057';
     case 'stomach':
-      return '#4CAF50'; // Green for digestive herbs
+      return '#4CAF50';
     case 'mens':
-      return '#8D6E63'; // Brown for men's herbs
+      return '#8D6E63';
     case 'womens':
-      return '#C2185B'; // Pink for women's herbs
+      return '#C2185B';
     case 'brain':
-      return '#9C27B0'; // Purple for brain herbs
+      return '#9C27B0';
     default:
-      return '#757575'; // Default gray
+      return '#757575';
   }
 };
 
@@ -89,16 +87,13 @@ const HerbCard: React.FC<HerbCardProps> = ({
   benefits,
   isSaved = false,
   onToggleSave,
-  size = 'default'  // Add default value
+  size = 'default'
 }) => {
-  // Get the primary benefit (first in the array)
   const primaryBenefit = benefits && benefits.length > 0 ? benefits[0] : '';
-  // Use category color instead of individual herb color for border
   const categoryColor = getCategoryColor(category);
 
-  // Handler for bookmark click
   const handleBookmarkClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent triggering the card click
+    e.stopPropagation();
     if (onToggleSave) {
       onToggleSave();
     }
@@ -109,10 +104,10 @@ const HerbCard: React.FC<HerbCardProps> = ({
       className={cn(
         "herb-card relative flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl",
         "bg-white herb-card-shadow transition-all duration-300",
-        "active:bg-gray-50 touch-manipulation", // Improved touch feedback
+        "active:bg-gray-50 touch-manipulation",
         isActive ? "active ring-2 ring-accent/50 scale-105 z-10" : "hover:bg-gray-50/80 hover:scale-102 hover:shadow-md",
-        "w-full cursor-pointer", // Full width on all devices
-        size === 'small' ? "p-2 sm:p-3" : "p-3 sm:p-4" // Apply different padding based on size
+        "w-full cursor-pointer",
+        size === 'small' ? "p-2 sm:p-3" : "p-3 sm:p-4"
       )}
       style={{ 
         borderTop: `4px solid ${categoryColor}`
@@ -121,7 +116,6 @@ const HerbCard: React.FC<HerbCardProps> = ({
       aria-selected={isActive}
       role="button"
     >
-      {/* Bookmark button */}
       <button 
         className="absolute top-2 right-2 text-gray-400 hover:text-accent transition-colors z-20"
         onClick={handleBookmarkClick}
@@ -145,7 +139,6 @@ const HerbCard: React.FC<HerbCardProps> = ({
         size === 'small' ? "text-xs" : "text-sm"
       )}>{name}</span>
       
-      {/* Primary benefit line - optimized for mobile */}
       {primaryBenefit && size !== 'small' && (
         <p className="text-xs text-gray-600 mt-1 text-center line-clamp-2 max-w-[95%] leading-tight">
           {primaryBenefit}

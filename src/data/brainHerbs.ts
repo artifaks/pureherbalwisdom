@@ -1,4 +1,3 @@
-
 import { Herb } from './types';
 
 export const brainHerbs: Herb[] = [
@@ -142,7 +141,6 @@ export const brainHerbs: Herb[] = [
     tincturePreparation: "1. Fill jar 3/4 with fresh peppermint\n2. Cover with vodka\n3. Macerate for 3-4 weeks\n4. Take 10-15 drops as needed",
     category: 'brain'
   },
-  // New herbs
   {
     id: 'turmeric-brain',
     name: 'Turmeric',
@@ -211,6 +209,76 @@ export const brainHerbs: Herb[] = [
     ],
     oilPreparation: "1. Use fresh holy basil leaves\n2. Infuse in sesame oil at 1:4 ratio\n3. Keep in warm place for 2 weeks\n4. Apply to crown of head and temples",
     tincturePreparation: "1. Fill jar 2/3 with fresh holy basil\n2. Cover with 80 proof vodka\n3. Macerate for 4 weeks\n4. Take 20-40 drops twice daily",
+    category: 'brain'
+  },
+  {
+    id: 'cordyceps',
+    name: 'Cordyceps',
+    color: '#FFB74D',
+    benefits: [
+      'Enhances oxygen utilization in the brain',
+      'Improves mental energy and stamina',
+      'Supports learning and memory',
+      'Has neuroprotective properties'
+    ],
+    oilPreparation: "1. Cordyceps is not typically used in oil form\n2. Better used as powder or tincture\n3. Can be combined with MCT oil for nootropic effects\n4. Store in cool, dark place",
+    tincturePreparation: "1. Use dried cordyceps pieces\n2. Double extract first in alcohol, then water\n3. Combine both extracts at 1:1 ratio\n4. Take 30-40 drops daily",
+    category: 'brain'
+  },
+  {
+    id: 'reishi',
+    name: 'Reishi Mushroom',
+    color: '#A1887F',
+    benefits: [
+      'Supports neural calm and focus',
+      'Adaptogenic support for mental clarity',
+      'Contains compounds that support brain health',
+      'Traditionally used for spiritual awareness'
+    ],
+    oilPreparation: "1. Reishi is not typically prepared as an oil\n2. Better used as tincture or decoction\n3. Can be infused in MCT oil\n4. For topical use only",
+    tincturePreparation: "1. Fill jar 1/3 with dried reishi slices\n2. Cover with 100 proof alcohol\n3. Macerate for 8 weeks\n4. Take 20-40 drops twice daily",
+    category: 'brain'
+  },
+  {
+    id: 'ginseng-brain',
+    name: 'Korean Ginseng',
+    color: '#FF8A65',
+    benefits: [
+      'Enhances cognitive function and mental performance',
+      'Supports healthy brain energy metabolism',
+      'Adaptogenic support for mental stamina',
+      'Traditionally used to enhance mental vitality'
+    ],
+    oilPreparation: "1. Use dried ginseng root powder\n2. Mix with sesame oil at 1:8 ratio\n3. Heat gently for 3-4 hours\n4. Use for scalp massage to stimulate circulation",
+    tincturePreparation: "1. Fill jar 1/4 with ginseng root\n2. Cover completely with 100 proof alcohol\n3. Macerate for 6-8 weeks\n4. Take 10-20 drops in morning",
+    category: 'brain'
+  },
+  {
+    id: 'mugwort',
+    name: 'Mugwort',
+    color: '#90A4AE',
+    benefits: [
+      'Traditionally used to enhance dream recall and lucidity',
+      'May support neural pathway formation',
+      'Contains compounds that support the nervous system',
+      'Used in traditional medicine for mental clarity'
+    ],
+    oilPreparation: "1. Use dried mugwort leaves\n2. Infuse in olive or jojoba oil for 3 weeks\n3. Keep in dark place, shaking daily\n4. Use for temple massage before sleep",
+    tincturePreparation: "1. Fill jar 1/2 with fresh mugwort\n2. Cover with 80 proof vodka\n3. Steep for 4-6 weeks\n4. Take 5-10 drops before bedtime",
+    category: 'brain'
+  },
+  {
+    id: 'periwinkle',
+    name: 'Periwinkle',
+    color: '#B39DDB',
+    benefits: [
+      'Contains vinpocetine which supports cerebral blood flow',
+      'May help with memory and cognitive performance',
+      'Supports healthy oxygen utilization in the brain',
+      'Traditional European herb for mental support'
+    ],
+    oilPreparation: "1. Use dried periwinkle leaves\n2. Not typically used as an oil preparation\n3. Better as tincture or tea\n4. Can combine dried herb with carrier oils for aromatherapy",
+    tincturePreparation: "1. Fill jar 1/2 with periwinkle herb\n2. Cover with 100 proof alcohol\n3. Macerate for 4 weeks\n4. Take 10-15 drops as needed",
     category: 'brain'
   }
 ];
