@@ -1,3 +1,4 @@
+
 import { Herb } from './types';
 
 export const brainHerbs: Herb[] = [
@@ -41,7 +42,7 @@ export const brainHerbs: Herb[] = [
     tincturePreparation: "1. Chop ginseng root finely\n2. Use 1:5 ratio with 50% alcohol\n3. Steep for 8 weeks minimum\n4. Take 20-40 drops daily"
   },
   {
-    id: 'mugwort',
+    id: 'mugwort-brain',
     name: 'Mugwort',
     color: '#7E57C2',
     benefits: [
@@ -143,5 +144,57 @@ export const brainHerbs: Herb[] = [
     ],
     oilPreparation: "1. Fill jar with fresh rosemary sprigs\n2. Cover with olive oil completely\n3. Solar infuse for 4 weeks\n4. Use for scalp and temple massage",
     tincturePreparation: "1. Fill jar 1/3 with fresh rosemary\n2. Cover with 100 proof vodka\n3. Store for 4-6 weeks, shaking daily\n4. Take 10-20 drops as needed"
+  },
+  {
+    id: 'ginkgo',
+    name: 'Ginkgo Biloba',
+    color: '#9CCC65',
+    benefits: [
+      'Improves blood flow to the brain',
+      'May enhance memory and cognitive speed',
+      'Contains powerful antioxidants',
+      'Traditionally used for mental clarity'
+    ],
+    oilPreparation: "1. Use dried ginkgo leaves\n2. Infuse in olive oil for 4-6 weeks\n3. Keep in cool, dark place\n4. Apply to temples for headache relief",
+    tincturePreparation: "1. Fill jar 1/4 with dried ginkgo leaves\n2. Cover with 100 proof vodka\n3. Steep for 6 weeks, shaking daily\n4. Take 20-30 drops 2-3 times daily"
+  },
+  {
+    id: 'bacopa',
+    name: 'Bacopa Monnieri',
+    color: '#66BB6A',
+    benefits: [
+      'Traditional Ayurvedic brain tonic',
+      'May improve memory formation',
+      'Supports learning and cognitive performance',
+      'Contains adaptogenic compounds'
+    ],
+    oilPreparation: "1. Use dried bacopa herb\n2. Cover with sesame oil\n3. Warm infuse for 3-4 hours\n4. Use for scalp and head massage",
+    tincturePreparation: "1. Fill jar 1/3 with dried bacopa\n2. Cover with 80 proof alcohol\n3. Macerate for 6-8 weeks\n4. Take 30-40 drops twice daily"
+  },
+  {
+    id: 'lions-mane',
+    name: 'Lion\'s Mane Mushroom',
+    color: '#FFEB3B',
+    benefits: [
+      'Supports nerve growth factor production',
+      'May improve cognitive function',
+      'Traditionally used for mental clarity',
+      'Supports overall brain health'
+    ],
+    oilPreparation: "1. Use dried lion's mane powder\n2. Mix with carrier oil at 1:4 ratio\n3. Not traditionally used as oil\n4. Better utilized in tincture form",
+    tincturePreparation: "1. Fill jar 1/4 with dried lion's mane\n2. Cover with 100 proof vodka\n3. Add 10% food-grade glycerin\n4. Steep for 8 weeks, take 30-60 drops daily"
+  },
+  {
+    id: 'rhodiola',
+    name: 'Rhodiola Rosea',
+    color: '#FF7043',
+    benefits: [
+      'Adaptogenic herb for mental fatigue',
+      'May improve attention and endurance',
+      'Traditionally used to combat stress',
+      'Supports cognitive function during fatigue'
+    ],
+    oilPreparation: "1. Use dried rhodiola root\n2. Not typically prepared as oil\n3. Better utilized as tincture\n4. For external use only",
+    tincturePreparation: "1. Use fresh or dried rhodiola root\n2. Cover with 80-100 proof vodka\n3. Steep for 8 weeks in dark place\n4. Take 20-30 drops 1-3 times daily"
   }
 ];

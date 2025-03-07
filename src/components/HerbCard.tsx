@@ -67,20 +67,19 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
     'cordyceps': <Sprout size={size} color={color} />,
     'reishi': <Sprout size={size} color={color} />,
     'ginseng-brain': <Sprout size={size} color={color} />,
-    'mugwort': <Leaf size={size} color={color} />,
+    'mugwort-brain': <Leaf size={size} color={color} />, // Renamed to avoid duplicate with women's herb
     'periwinkle': <Flower size={size} color={color} />,
     'blueberry': <Leaf size={size} color={color} />,
     'green-tea': <Leaf size={size} color={color} />,
     'rosemary-brain': <Leaf size={size} color={color} />,
+    'gotu-kola': <Leaf size={size} color={color} />,
+    'brahmi': <Leaf size={size} color={color} />,
     'phosphatidylserine': <Brain size={size} color={color} />,
     'gotu-kola-enhanced': <Leaf size={size} color={color} />,
     'ginkgo': <Leaf size={size} color={color} />,
     'bacopa': <Leaf size={size} color={color} />,
     'lions-mane': <Sprout size={size} color={color} />,
     'rhodiola': <Sprout size={size} color={color} />,
-    'gotu-kola': <Leaf size={size} color={color} />,
-    'brahmi': <Leaf size={size} color={color} />,
-    'rosemary-memory': <Leaf size={size} color={color} />,
     
     // Women's herbs
     'red-raspberry': <Leaf size={size} color={color} />,
@@ -88,10 +87,10 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
     'black-cohosh': <Sprout size={size} color={color} />,
     'dong-quai': <Sprout size={size} color={color} />,
     'evening-primrose': <Flower size={size} color={color} />,
-    'mugwort': <Leaf size={size} color={color} />,
+    'mugwort-womens': <Leaf size={size} color={color} />, // Renamed to avoid duplicate with brain herb
     'shatavari': <Leaf size={size} color={color} />,
     'wild-yam': <Sprout size={size} color={color} />,
-    'motherwort': <Flower size={size} color={color} />,
+    'motherwort-womens': <Flower size={size} color={color} />, // Renamed to avoid duplicate with heart herb
     'vitex': <Sprout size={size} color={color} />,
     'red-clover': <Flower size={size} color={color} />,
     'damiana': <Leaf size={size} color={color} />,
@@ -105,6 +104,19 @@ const getHerbIcon = (herbId: string, color: string, size: number = 24) => {
     'black-haw': <TreeDeciduous size={size} color={color} />,
     'cramp-bark': <Leaf size={size} color={color} />,
   };
+
+  // Handle special cases for herbs with duplicate IDs
+  if (herbId === 'mugwort' && iconMapping['mugwort-brain']) {
+    return iconMapping['mugwort-brain'];
+  } else if (herbId === 'mugwort' && iconMapping['mugwort-womens']) {
+    return iconMapping['mugwort-womens'];
+  } else if (herbId === 'motherwort' && iconMapping['motherwort-womens']) {
+    return iconMapping['motherwort-womens'];
+  } else if (herbId === 'rosemary-memory') {
+    return iconMapping['rosemary-brain'];
+  } else if (herbId === 'ginseng') {
+    return iconMapping['ginseng'];
+  }
 
   return iconMapping[herbId] || <Leaf size={size} color={color} />;
 };
