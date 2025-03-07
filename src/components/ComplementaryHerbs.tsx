@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Herb } from '@/data/types';
 import HerbCard from './HerbCard';
@@ -168,6 +167,33 @@ const herbPairings: HerbPairingsMap = {
     { herbId: 'bacopa', reason: 'Bacopa enhances Holy Basil\'s cognitive benefits with memory support' }
   ],
   
+  // New heart herb pairings
+  'cacao': [
+    { herbId: 'cayenne', reason: 'Cayenne enhances Cacao\'s circulation benefits and improves absorption' },
+    { herbId: 'hawthorn', reason: 'Hawthorn complements Cacao\'s heart-protective qualities' },
+    { herbId: 'ginger-heart', reason: 'Ginger adds warming circulation support to Cacao\'s cardiovascular benefits' }
+  ],
+  'cayenne': [
+    { herbId: 'garlic', reason: 'Garlic enhances Cayenne\'s blood-thinning and circulatory benefits' },
+    { herbId: 'turmeric-heart', reason: 'Turmeric adds anti-inflammatory support to Cayenne\'s circulation benefits' },
+    { herbId: 'ginger-heart', reason: 'Ginger complements Cayenne\'s warming circulation support' }
+  ],
+  'ginger-heart': [
+    { herbId: 'turmeric-heart', reason: 'Turmeric enhances Ginger\'s anti-inflammatory cardiovascular benefits' },
+    { herbId: 'cayenne', reason: 'Cayenne amplifies Ginger\'s circulation-enhancing properties' },
+    { herbId: 'hawthorn', reason: 'Hawthorn adds targeted heart support to Ginger\'s circulatory benefits' }
+  ],
+  'tulsi-heart': [
+    { herbId: 'linden', reason: 'Linden enhances Tulsi\'s relaxing effect on the cardiovascular system' },
+    { herbId: 'motherwort', reason: 'Motherwort complements Tulsi\'s stress-reducing heart benefits' },
+    { herbId: 'rose', reason: 'Rose adds emotional heart support to Tulsi\'s adaptogenic properties' }
+  ],
+  'turmeric-heart': [
+    { herbId: 'ginger-heart', reason: 'Ginger improves bioavailability and adds warming circulation support to Turmeric' },
+    { herbId: 'cayenne', reason: 'Cayenne enhances Turmeric\'s circulatory benefits' },
+    { herbId: 'black-pepper', reason: 'Black Pepper dramatically improves Turmeric\'s absorption and effectiveness' }
+  ],
+  
   // Default pairings for herbs without specific matches
   'default': [
     { herbId: 'hawthorn', reason: 'Hawthorn provides heart support alongside this herb\'s benefits' },
@@ -200,6 +226,16 @@ const ComplementaryHerbs: React.FC<ComplementaryHerbsProps> = ({
       ? 'turmeric-brain'
       : activeHerb.id === 'ginger' && activeHerb.category === 'brain'
       ? 'ginger-brain'
+      : activeHerb.id === 'cacao' && activeHerb.category === 'heart'
+      ? 'cacao'
+      : activeHerb.id === 'cayenne' && activeHerb.category === 'heart'
+      ? 'cayenne'
+      : activeHerb.id === 'ginger-heart' && activeHerb.category === 'heart'
+      ? 'ginger-heart'
+      : activeHerb.id === 'tulsi-heart' && activeHerb.category === 'heart'
+      ? 'tulsi-heart'
+      : activeHerb.id === 'turmeric-heart' && activeHerb.category === 'heart'
+      ? 'turmeric-heart'
       : activeHerb.id;
       
     const pairings = herbPairings[herbId] || herbPairings['default'];

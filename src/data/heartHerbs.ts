@@ -1,4 +1,3 @@
-
 export const heartHerbs = [
   {
     id: 'hawthorn',
@@ -91,7 +90,6 @@ export const heartHerbs = [
     oilPreparation: "1. Not traditionally prepared as oil\n2. Better utilized as tincture\n3. Can be added to salves\n4. For external use only",
     tincturePreparation: "1. Use fresh cactus stems, chopped\n2. Cover with 80 proof alcohol\n3. Steep for 4-6 weeks in dark place\n4. Take 5-15 drops under guidance"
   },
-  // New herbs added below
   {
     id: 'hibiscus',
     name: 'Hibiscus',
@@ -156,5 +154,70 @@ export const heartHerbs = [
     ],
     oilPreparation: "1. Use dried bilberries\n2. Cover with a carrier oil\n3. Infuse for 4 weeks\n4. Use in small amounts for topical application",
     tincturePreparation: "1. Fill jar 1/4 with dried bilberries\n2. Cover with vodka or brandy\n3. Steep for 4-6 weeks, shaking daily\n4. Take 15-30 drops daily"
+  },
+  {
+    id: 'cacao',
+    name: 'Cacao',
+    color: '#6D4C41',
+    benefits: [
+      'Contains flavanols that support heart health',
+      'May help improve blood flow',
+      'Can help reduce blood pressure',
+      'Contains magnesium and other heart-supportive minerals'
+    ],
+    oilPreparation: "1. Use cacao nibs or powder\n2. Infuse in carrier oil like jojoba\n3. Warm gently for 2 hours\n4. Use for heart-area massage blends",
+    tincturePreparation: "1. Fill jar 1/3 with cacao nibs\n2. Cover with 80-100 proof alcohol\n3. Steep for 4-6 weeks, shaking daily\n4. Take 15-20 drops daily"
+  },
+  {
+    id: 'cayenne',
+    name: 'Cayenne',
+    color: '#FF5722',
+    benefits: [
+      'Helps improve circulation',
+      'May help regulate blood pressure',
+      'Contains capsaicin that supports heart function',
+      'Traditional remedy for heart health'
+    ],
+    oilPreparation: "1. Use dried cayenne powder\n2. Mix 1 tsp with 8 oz carrier oil\n3. Infuse for 2-3 weeks\n4. Use very sparingly for circulation-enhancing massage oil",
+    tincturePreparation: "1. Fill jar 1/5 with cayenne powder\n2. Cover with 100 proof alcohol\n3. Steep for 4 weeks, shaking daily\n4. Take 3-5 drops diluted in water"
+  },
+  {
+    id: 'ginger-heart',
+    name: 'Ginger',
+    color: '#FFCA28',
+    benefits: [
+      'Improves circulation to the heart',
+      'Helps reduce inflammation in cardiovascular system',
+      'May help reduce cholesterol levels',
+      'Supports overall heart function'
+    ],
+    oilPreparation: "1. Grate fresh ginger root\n2. Cover with olive or sesame oil\n3. Warm infuse for 2-3 hours\n4. Use for warming heart-area massage",
+    tincturePreparation: "1. Fill jar halfway with fresh grated ginger\n2. Cover with brandy or vodka\n3. Steep for 6 weeks, shaking daily\n4. Take 10-20 drops daily"
+  },
+  {
+    id: 'tulsi-heart',
+    name: 'Holy Basil (Tulsi)',
+    color: '#66BB6A',
+    benefits: [
+      'Reduces stress that impacts heart health',
+      'Adaptogenic herb that helps regulate blood pressure',
+      'Supports healthy cholesterol levels',
+      'Improves circulation and heart function'
+    ],
+    oilPreparation: "1. Use fresh tulsi leaves\n2. Cover with jojoba oil\n3. Solar infuse for 3-4 weeks\n4. Use for heart-centered, stress-reducing massage",
+    tincturePreparation: "1. Fill jar 2/3 with fresh tulsi leaves\n2. Cover with 80 proof alcohol\n3. Steep for 4 weeks, shaking daily\n4. Take 20-40 drops 2-3 times daily"
+  },
+  {
+    id: 'turmeric-heart',
+    name: 'Turmeric',
+    color: '#FFC107',
+    benefits: [
+      'Strong anti-inflammatory for cardiovascular system',
+      'May help reduce plaque buildup in arteries',
+      'Supports healthy cholesterol balance',
+      'Improves endothelial function'
+    ],
+    oilPreparation: "1. Use powdered turmeric or fresh root\n2. Mix with black pepper and olive oil\n3. Warm infuse for 3-4 hours\n4. Use for circulation-enhancing massage",
+    tincturePreparation: "1. Fill jar 1/3 with turmeric powder\n2. Add pinch of black pepper\n3. Cover with 100 proof alcohol\n4. Steep for 6-8 weeks, take 10-30 drops daily"
   }
 ];

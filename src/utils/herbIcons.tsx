@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Leaf, Flower, FlowerIcon, Sprout, TreeDeciduous, Flower2, Brain, HeartPulse, BookHeart, HandHeart, HeartHandshake } from 'lucide-react';
 import { HerbCategory } from '@/data/types';
@@ -14,12 +13,18 @@ export const getHerbIcon = (herbId: string, color: string, size: number = 24) =>
     'astragalus': <Sprout size={size} color={color} />,
     'tienchi-ginseng': <Sprout size={size} color={color} />,
     'cactus-grandiflorus': <Flower2 size={size} color={color} />,
-    // New heart herbs
+    // Heart herbs added previously
     'hibiscus': <Flower2 size={size} color={color} />,
     'linden': <Leaf size={size} color={color} />,
     'rose': <Flower size={size} color={color} />,
     'olive-leaf': <Leaf size={size} color={color} />,
     'bilberry': <HeartPulse size={size} color={color} />,
+    // New heart herbs added now
+    'cacao': <HeartHandshake size={size} color={color} />,
+    'cayenne': <HeartPulse size={size} color={color} />,
+    'ginger-heart': <Sprout size={size} color={color} />,
+    'tulsi-heart': <Leaf size={size} color={color} />,
+    'turmeric-heart': <Sprout size={size} color={color} />,
     
     // Stomach herbs
     'peppermint': <Leaf size={size} color={color} />,
