@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
@@ -6,17 +7,28 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Loader2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useToast } from '@/components/ui/use-toast';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [signupMessage, setSignupMessage] = useState<{ type: 'success' | 'error', message: string } | null>(null);
-  const { user, signIn, signUp } = useAuth();
+  const { user, signIn, signUp, signOut, isLoading } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    // If user is already logged in, redirect to resources after a short delay
+    if (user) {
+      const timer = setTimeout(() => {
+        navigate('/resources');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [user, navigate]);
 
   // If user is already logged in, show resources link option
   if (user) {
@@ -28,7 +40,7 @@ const Auth = () => {
               <BookOpen className="h-10 w-10 text-amber-600" />
             </div>
             <h1 className="text-3xl font-bold">You're already logged in</h1>
-            <p className="text-gray-600 mt-2">You can access these pages:</p>
+            <p className="text-gray-600 mt-2">You'll be redirected automatically, or you can access these pages:</p>
           </div>
           
           <div className="space-y-4">
@@ -38,11 +50,19 @@ const Auth = () => {
               </Button>
             </Link>
             
-            <Link to="/">
-              <Button variant="outline" className="w-full">
-                Return to Home
-              </Button>
-            </Link>
+            <Button 
+              variant="outline" 
+              className="w-full" 
+              onClick={async () => {
+                try {
+                  await signOut();
+                } catch (error) {
+                  console.error("Error signing out:", error);
+                }
+              }}
+            >
+              Sign Out
+            </Button>
           </div>
         </div>
       </div>
@@ -52,20 +72,16 @@ const Auth = () => {
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      setIsLoading(true);
       await signIn(email, password);
       navigate('/resources');
     } catch (error) {
       console.error('Error signing in:', error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      setIsLoading(true);
       setSignupMessage(null);
       // Always pass false for isAdmin parameter - no users can sign up as admin
       await signUp(email, password, username, false);
@@ -74,14 +90,17 @@ const Auth = () => {
         type: 'success', 
         message: 'Account created successfully! Check your email to confirm your account.' 
       });
+      
+      // Clear form
+      setEmail('');
+      setPassword('');
+      setUsername('');
     } catch (error: any) {
       console.error('Error signing up:', error);
       setSignupMessage({ 
         type: 'error', 
         message: error.message || 'An error occurred during signup.'
       });
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -102,15 +121,15 @@ const Auth = () => {
             <TabsTrigger value="signup">Sign Up</TabsTrigger>
           </TabsList>
           <TabsContent value="signin">
-            <Card>
-              <CardHeader>
+            <Card className="border-amber-100 shadow-md">
+              <CardHeader className="bg-amber-50 rounded-t-lg">
                 <CardTitle>Sign In</CardTitle>
                 <CardDescription>
                   Enter your email and password to access your account.
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleSignIn}>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 pt-6">
                   <div className="space-y-2">
                     <Label htmlFor="signin-email">Email</Label>
                     <Input
@@ -120,6 +139,7 @@ const Auth = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      className="border-amber-200 focus-visible:ring-amber-400"
                     />
                   </div>
                   <div className="space-y-2">
@@ -130,6 +150,7 @@ const Auth = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
+                      className="border-amber-200 focus-visible:ring-amber-400"
                     />
                   </div>
                 </CardContent>
@@ -139,24 +160,29 @@ const Auth = () => {
                     type="submit"
                     disabled={isLoading}
                   >
-                    {isLoading ? 'Signing In...' : 'Sign In'}
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Signing In...
+                      </>
+                    ) : 'Sign In'}
                   </Button>
                 </CardFooter>
               </form>
             </Card>
           </TabsContent>
           <TabsContent value="signup">
-            <Card>
-              <CardHeader>
+            <Card className="border-amber-100 shadow-md">
+              <CardHeader className="bg-amber-50 rounded-t-lg">
                 <CardTitle>Create an Account</CardTitle>
                 <CardDescription>
                   Sign up to access premium herbal resources.
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleSignUp}>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 pt-6">
                   {signupMessage && (
-                    <Alert className={signupMessage.type === 'success' ? 'bg-green-50' : 'bg-red-50'}>
+                    <Alert className={signupMessage.type === 'success' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}>
                       <AlertDescription>
                         {signupMessage.message}
                       </AlertDescription>
@@ -171,6 +197,7 @@ const Auth = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      className="border-amber-200 focus-visible:ring-amber-400"
                     />
                   </div>
                   <div className="space-y-2">
@@ -182,6 +209,7 @@ const Auth = () => {
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       required
+                      className="border-amber-200 focus-visible:ring-amber-400"
                     />
                   </div>
                   <div className="space-y-2">
@@ -192,6 +220,7 @@ const Auth = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
+                      className="border-amber-200 focus-visible:ring-amber-400"
                     />
                     <p className="text-xs text-gray-500">Password must be at least 6 characters</p>
                   </div>
@@ -202,7 +231,12 @@ const Auth = () => {
                     type="submit"
                     disabled={isLoading}
                   >
-                    {isLoading ? 'Creating Account...' : 'Create Account'}
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Creating Account...
+                      </>
+                    ) : 'Create Account'}
                   </Button>
                 </CardFooter>
               </form>
