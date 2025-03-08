@@ -9,7 +9,6 @@ type AuthContextType = {
   signOut: () => Promise<void>;
   isLoading: boolean;
   isAdmin: boolean;
-  updateUserToAdmin: (email: string) => Promise<boolean>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -19,13 +18,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user] = useState<User | null>({
     id: 'mock-user-id',
     app_metadata: {},
-    user_metadata: { isAdmin: true },
+    user_metadata: {},
     aud: 'authenticated',
     created_at: '',
   } as User);
   
   const [isLoading] = useState(false);
-  const [isAdmin] = useState(true);
+  const [isAdmin] = useState(false);
 
   // Mock functions that do nothing
   const signIn = async () => {
@@ -40,11 +39,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     console.log('Sign out functionality has been removed');
   };
 
-  const updateUserToAdmin = async () => {
-    console.log('Update user to admin functionality has been removed');
-    return true;
-  };
-
   return (
     <AuthContext.Provider
       value={{
@@ -54,7 +48,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signOut,
         isLoading,
         isAdmin,
-        updateUserToAdmin,
       }}
     >
       {children}
