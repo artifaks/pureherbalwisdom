@@ -15,14 +15,14 @@ const testimonials = [
     name: 'Dr. Michael Chen',
     role: 'Integrative Medicine',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80',
-    quote: 'I appreciate the scientific backing behind each herb profile. The information is presented in a way that's accessible to both practitioners and patients.',
+    quote: "I appreciate the scientific backing behind each herb profile. The information is presented in a way that's accessible to both practitioners and patients.",
     stars: 5
   },
   {
     name: 'Jamie K.',
     role: 'Herbal Enthusiast',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80',
-    quote: 'I've discovered amazing herbal combinations I never knew about. My sleep quality has improved dramatically since finding and using the herb pairings recommended here.',
+    quote: "I've discovered amazing herbal combinations I never knew about. My sleep quality has improved dramatically since finding and using the herb pairings recommended here.",
     stars: 5
   }
 ];
