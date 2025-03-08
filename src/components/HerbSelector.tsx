@@ -25,7 +25,8 @@ const HerbSelector: React.FC<HerbSelectorProps> = ({
     stomach: herbs.filter(herb => herb.category === 'stomach'),
     mens: herbs.filter(herb => herb.category === 'mens'),
     womens: herbs.filter(herb => herb.category === 'womens'),
-    brain: herbs.filter(herb => herb.category === 'brain')
+    brain: herbs.filter(herb => herb.category === 'brain'),
+    tea: herbs.filter(herb => herb.category === 'tea')
   };
 
   // Define category labels and colors
@@ -49,6 +50,10 @@ const HerbSelector: React.FC<HerbSelectorProps> = ({
     brain: {
       label: 'Brain & Cognitive Health',
       bgColor: 'bg-purple-50/80'
+    },
+    tea: {
+      label: 'Herbal Teas',
+      bgColor: 'bg-amber-50/80'
     }
   };
 

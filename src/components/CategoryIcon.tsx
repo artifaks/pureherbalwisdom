@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Heart, Leaf, Flower, Sprout, Brain } from 'lucide-react';
+import { Heart, Leaf, Flower, Sprout, Brain, Coffee } from 'lucide-react';
 import { HerbCategory } from '@/data/types';
 
 interface CategoryIconProps {
@@ -21,6 +21,8 @@ const CategoryIcon: React.FC<CategoryIconProps> = ({ category, size = 24, classN
       return <Flower size={size} className={`text-herb-womens ${className}`} />;
     case 'brain':
       return <Brain size={size} className={`text-herb-brain ${className}`} />;
+    case 'tea':
+      return <Coffee size={size} className={`text-amber-600 ${className}`} />;
     default:
       return <Heart size={size} className={className} />;
   }

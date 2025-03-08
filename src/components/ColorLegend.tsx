@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Heart, Leaf, Sprout, Flower, Brain } from 'lucide-react';
+import { Heart, Leaf, Sprout, Flower, Brain, Coffee } from 'lucide-react';
 import { HerbCategory } from '@/data/types';
 
 const ColorLegend: React.FC = () => {
@@ -45,13 +45,20 @@ const ColorLegend: React.FC = () => {
       color: '#9C27B0',
       icon: <Brain size={16} className="text-herb-brain" />,
       description: 'Cognitive function & focus herbs'
+    },
+    {
+      category: 'tea',
+      name: "Herbal Teas",
+      color: '#F59E0B',
+      icon: <Coffee size={16} className="text-amber-600" />,
+      description: 'Therapeutic tea blends & infusions'
     }
   ];
 
   return (
     <div className="color-legend bg-amber-50/50 p-3 sm:p-4 rounded-lg border border-amber-100 mb-3 sm:mb-4 mx-3 sm:mx-6">
       <h3 className="text-amber-800 text-xs sm:text-sm font-medium mb-2">Herb Category Color Guide</h3>
-      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3">
         {categories.map((cat) => (
           <div key={cat.category} className="flex items-center">
             <div 
