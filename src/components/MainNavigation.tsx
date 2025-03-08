@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { BookOpen, Home, Leaf } from 'lucide-react';
+import { BookOpen, Home, Leaf, Search, Heart, User } from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
 
 interface NavItemProps {
@@ -22,7 +22,7 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, icon }) => {
       `}
     >
       {icon}
-      <span>{label}</span>
+      <span className="hidden sm:inline">{label}</span>
     </NavLink>
   );
 };
@@ -37,16 +37,18 @@ const MainNavigation: React.FC = () => {
         <div className="flex items-center">
           <NavLink to="/" className="flex items-center">
             <Leaf className="h-6 w-6 text-amber-600" />
-            <span className="ml-2 text-xl font-semibold text-gray-800">Herb Guide</span>
+            <span className="ml-2 text-xl font-semibold text-gray-800">Wellness is Golden</span>
           </NavLink>
         </div>
         
         {/* Navigation Items */}
-        <div className="flex items-center space-x-2">
-          <NavItem to="/" label="Herbs" icon={<Home className="h-5 w-5" />} />
+        <div className="flex items-center space-x-1 md:space-x-2">
+          <NavItem to="/" label="Herb Guide" icon={<Home className="h-5 w-5" />} />
+          <NavItem to="#" label="Symptom Matcher" icon={<Search className="h-5 w-5" />} />
+          <NavItem to="#" label="Saved Herbs" icon={<Heart className="h-5 w-5" />} />
           <NavItem to="/resources" label="E-Books & Resources" icon={<BookOpen className="h-5 w-5" />} />
           {user && (
-            <NavItem to="/auth" label="Account" icon={<BookOpen className="h-5 w-5" />} />
+            <NavItem to="/auth" label="Account" icon={<User className="h-5 w-5" />} />
           )}
         </div>
       </div>
