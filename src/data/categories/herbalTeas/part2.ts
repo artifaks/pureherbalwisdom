@@ -13,7 +13,10 @@ export const herbalTeasPart2: Herb[] = [
       'Contains antioxidants that support overall wellness',
       'Traditional tropical remedy for various ailments'
     ],
-    preparation: "1. Use 1 tablespoon dried lemongrass per cup\n2. Pour boiling water over herbs\n3. Steep covered for 5-7 minutes\n4. Strain and enjoy, can add honey"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1 tablespoon dried lemongrass per cup\n2. Pour boiling water over herbs\n3. Steep covered for 5-7 minutes\n4. Strain and enjoy, can add honey",
+    effects: ['Calming', 'Digestive support', 'Antioxidant'],
+    bestTimeToConsume: "Morning or afternoon, especially in warm weather"
   },
   {
     id: 'tulsi-rose-tea',
@@ -25,7 +28,10 @@ export const herbalTeasPart2: Herb[] = [
       'Traditional Ayurvedic blend for heart and mind',
       'Delicate floral flavor with spicy undertones'
     ],
-    preparation: "1. Use 1 teaspoon dried tulsi and 1 teaspoon rose petals\n2. Pour just-boiled water over herbs\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy, can add honey"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1 teaspoon dried tulsi and 1 teaspoon rose petals\n2. Pour just-boiled water over herbs\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy, can add honey",
+    effects: ['Heart-opening', 'Emotionally balancing', 'Adaptogenic'],
+    bestTimeToConsume: "Mid-day or during stressful periods"
   },
   {
     id: 'elderberry-tea',
@@ -37,7 +43,10 @@ export const herbalTeasPart2: Herb[] = [
       'Contains antioxidants that support overall health',
       'Pleasant fruity flavor with mild sweetness'
     ],
-    preparation: "1. Use 1-2 teaspoons dried elderberries per cup\n2. Add to cold water and bring to simmer\n3. Simmer gently for 15 minutes\n4. Strain, add honey if desired"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1-2 teaspoons dried elderberries per cup\n2. Add to cold water and bring to simmer\n3. Simmer gently for 15 minutes\n4. Strain, add honey if desired",
+    effects: ['Immune boosting', 'Antioxidant', 'Anti-inflammatory'],
+    bestTimeToConsume: "Morning or when feeling under the weather"
   },
   {
     id: 'hibiscus-ginger-tea',
@@ -49,7 +58,10 @@ export const herbalTeasPart2: Herb[] = [
       'Rich in vitamin C and antioxidants',
       'Refreshing hot or cold as iced tea'
     ],
-    preparation: "1. Use 1 teaspoon hibiscus and 1/2 teaspoon ginger\n2. Pour boiling water over herbs\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy hot or cold"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1 teaspoon hibiscus and 1/2 teaspoon ginger\n2. Pour boiling water over herbs\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy hot or cold",
+    effects: ['Cardiovascular support', 'Digestive aid', 'Cooling'],
+    bestTimeToConsume: "Mid-day or as a refreshing iced tea in hot weather"
   },
   {
     id: 'licorice-mint-tea',
@@ -61,6 +73,9 @@ export const herbalTeasPart2: Herb[] = [
       'Traditionally used for respiratory support',
       'Naturally sweet without added sweeteners'
     ],
-    preparation: "1. Use 1/2 teaspoon licorice root and 1 teaspoon peppermint\n2. Pour boiling water over herbs\n3. Steep covered for 10 minutes\n4. Strain and enjoy"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1/2 teaspoon licorice root and 1 teaspoon peppermint\n2. Pour boiling water over herbs\n3. Steep covered for 10 minutes\n4. Strain and enjoy",
+    effects: ['Soothing', 'Respiratory support', 'Digestive aid'],
+    bestTimeToConsume: "After meals or when experiencing throat discomfort"
   }
 ];

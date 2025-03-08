@@ -5,12 +5,12 @@ import Footer from '@/components/Footer';
 import { herbalTeas } from '@/data/herbalTeas';
 import { cn } from '@/lib/utils';
 import { Leaf, Clock, Coffee, Droplet, Check } from 'lucide-react';
-import { HerbalTea } from '@/data/types';
+import { Herb } from '@/data/types';
 
 const HerbalTeas: React.FC = () => {
-  const [selectedTea, setSelectedTea] = useState<HerbalTea | null>(null);
+  const [selectedTea, setSelectedTea] = useState<Herb | null>(null);
 
-  const openTeaDetails = (tea: HerbalTea) => {
+  const openTeaDetails = (tea: Herb) => {
     setSelectedTea(tea);
   };
 
@@ -51,7 +51,7 @@ const HerbalTeas: React.FC = () => {
                 <p className="text-gray-600 mb-3">{tea.benefits[0]}</p>
                 <div className="flex items-center text-sm text-gray-500">
                   <Clock className="h-4 w-4 mr-1" />
-                  <span>Best time: {tea.bestTimeToConsume.split(',')[0]}</span>
+                  <span>Best time: {tea.bestTimeToConsume ? tea.bestTimeToConsume.split(',')[0] : "Anytime"}</span>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ const HerbalTeas: React.FC = () => {
                       <Coffee size={18} className="mr-3 text-amber-600" />
                       Preparation
                     </h3>
-                    <pre className="whitespace-pre-wrap text-gray-700 font-sans">{selectedTea.preparation}</pre>
+                    <pre className="whitespace-pre-wrap text-gray-700 font-sans">{selectedTea.tincturePreparation}</pre>
                   </div>
                   
                   <div className="glass p-6 rounded-xl">
@@ -112,12 +112,12 @@ const HerbalTeas: React.FC = () => {
                     </h3>
                     <div className="mb-4">
                       <p className="text-gray-700">
-                        <span className="font-medium">Effects:</span> {selectedTea.effects.join(', ')}
+                        <span className="font-medium">Effects:</span> {selectedTea.effects ? selectedTea.effects.join(', ') : "Various healing properties"}
                       </p>
                     </div>
                     <div>
                       <p className="text-gray-700">
-                        <span className="font-medium">Best time to consume:</span> {selectedTea.bestTimeToConsume}
+                        <span className="font-medium">Best time to consume:</span> {selectedTea.bestTimeToConsume || "Anytime"}
                       </p>
                     </div>
                   </div>

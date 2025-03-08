@@ -13,7 +13,10 @@ export const herbalTeasPart1: Herb[] = [
       'Gentle and safe for all ages',
       'Traditionally used for relaxation'
     ],
-    preparation: "1. Use 1 tablespoon dried chamomile flowers per cup\n2. Pour boiling water over flowers\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy before bedtime"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1 tablespoon dried chamomile flowers per cup\n2. Pour boiling water over flowers\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy before bedtime",
+    effects: ['Relaxing', 'Sleep-inducing', 'Anti-inflammatory'],
+    bestTimeToConsume: "Evening, 30-60 minutes before bedtime"
   },
   {
     id: 'peppermint-tea',
@@ -25,7 +28,10 @@ export const herbalTeasPart1: Herb[] = [
       'Opens respiratory passages',
       'Traditionally used for digestive comfort'
     ],
-    preparation: "1. Use 1 tablespoon fresh or 1 teaspoon dried peppermint\n2. Pour boiling water over leaves\n3. Steep covered for 5-7 minutes\n4. Strain and enjoy after meals"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1 tablespoon fresh or 1 teaspoon dried peppermint\n2. Pour boiling water over leaves\n3. Steep covered for 5-7 minutes\n4. Strain and enjoy after meals",
+    effects: ['Digestive aid', 'Mental clarity', 'Cooling'],
+    bestTimeToConsume: "After meals or mid-morning for focus"
   },
   {
     id: 'ginger-tea',
@@ -37,7 +43,10 @@ export const herbalTeasPart1: Herb[] = [
       'Traditional remedy for nausea and motion sickness',
       'Immune-supporting properties'
     ],
-    preparation: "1. Use 1-inch fresh ginger root, sliced thin\n2. Simmer in water for 10-15 minutes\n3. Add honey and lemon if desired\n4. Strain and enjoy throughout the day"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1-inch fresh ginger root, sliced thin\n2. Simmer in water for 10-15 minutes\n3. Add honey and lemon if desired\n4. Strain and enjoy throughout the day",
+    effects: ['Warming', 'Anti-nausea', 'Digestive stimulant'],
+    bestTimeToConsume: "Morning or when feeling cold or nauseous"
   },
   {
     id: 'lemon-balm-tea',
@@ -49,7 +58,10 @@ export const herbalTeasPart1: Herb[] = [
       'Supports healthy digestion',
       'Traditionally used for nervous tension'
     ],
-    preparation: "1. Use 1-2 tablespoons fresh or 1 tablespoon dried lemon balm\n2. Pour boiling water over leaves\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy throughout the day"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1-2 tablespoons fresh or 1 tablespoon dried lemon balm\n2. Pour boiling water over leaves\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy throughout the day",
+    effects: ['Calming', 'Uplifting', 'Digestive support'],
+    bestTimeToConsume: "Afternoon or early evening"
   },
   {
     id: 'holy-basil-tea',
@@ -61,6 +73,9 @@ export const herbalTeasPart1: Herb[] = [
       'Traditional Ayurvedic remedy for wellness',
       'Supports healthy immune function'
     ],
-    preparation: "1. Use 1 tablespoon fresh or 1 teaspoon dried holy basil\n2. Pour boiling water over leaves\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy throughout the day"
+    oilPreparation: "Not applicable for herbal teas",
+    tincturePreparation: "1. Use 1 tablespoon fresh or 1 teaspoon dried holy basil\n2. Pour boiling water over leaves\n3. Steep covered for 5-10 minutes\n4. Strain and enjoy throughout the day",
+    effects: ['Adaptogenic', 'Stress-reducing', 'Immune supporting'],
+    bestTimeToConsume: "Morning or mid-day"
   }
 ];

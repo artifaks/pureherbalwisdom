@@ -7,14 +7,9 @@ import { brainHerbs } from './brainHerbs';
 import { herbalTeas } from './herbalTeas';
 import { Herb } from './types';
 
-// Convert herbal teas to the Herb format
+// The herbal teas are already in Herb format, no need to convert
 const herbalTeasAsHerbs: Herb[] = herbalTeas.map(tea => ({
-  id: tea.id,
-  name: tea.name,
-  color: tea.color,
-  benefits: tea.benefits,
-  oilPreparation: "Not applicable for herbal teas.",
-  tincturePreparation: tea.preparation,
+  ...tea,
   category: 'tea' as const
 }));
 

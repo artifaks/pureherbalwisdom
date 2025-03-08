@@ -7,6 +7,8 @@ export interface Herb {
   oilPreparation: string;
   tincturePreparation: string;
   category?: HerbCategory;
+  effects?: string[];
+  bestTimeToConsume?: string;
 }
 
 export type HerbCategory = 'heart' | 'stomach' | 'mens' | 'womens' | 'brain' | 'tea';
