@@ -1,13 +1,12 @@
-
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Navigate, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
-import { BookOpen, Shield } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const Auth = () => {
@@ -19,7 +18,7 @@ const Auth = () => {
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
 
-  // If user is already logged in, show admin link option
+  // If user is already logged in, show resources link option
   if (user) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center p-4">
@@ -36,13 +35,6 @@ const Auth = () => {
             <Link to="/resources">
               <Button className="w-full bg-amber-500 hover:bg-amber-600">
                 Go to Resources
-              </Button>
-            </Link>
-            
-            <Link to="/admin">
-              <Button className="w-full flex items-center justify-center gap-2">
-                <Shield className="h-5 w-5" />
-                Access Admin Page
               </Button>
             </Link>
             
