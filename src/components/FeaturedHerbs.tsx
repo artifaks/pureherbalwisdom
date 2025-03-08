@@ -9,7 +9,7 @@ import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 const featuredHerbsData = [
   {
     name: 'Lavender',
-    image: 'https://images.unsplash.com/photo-1594631269077-032f38a42fa7?auto=format&fit=crop&w=300&q=80',
+    image: '/lovable-uploads/ce78786c-c28c-4f36-878c-68976a466ff8.png',
     description: 'Known for its calming effects on the nervous system, helping reduce anxiety and promote better sleep.',
     tags: ['Anxiety Relief', 'Sleep Aid', 'Aromatherapy'],
     icon: Moon, // Sleep icon
