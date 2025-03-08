@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { BookOpen, Home, Leaf, Search, Heart, User } from 'lucide-react';
+import { BookOpen, Home, Leaf, Search, Heart, User, Coffee } from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
 
 interface NavItemProps {
@@ -46,6 +46,7 @@ const MainNavigation: React.FC = () => {
           <NavItem to="/" label="Herb Guide" icon={<Home className="h-5 w-5" />} />
           <NavItem to="/search" label="Search" icon={<Search className="h-5 w-5" />} />
           <NavItem to="/symptom-matcher" label="Symptom Matcher" icon={<Search className="h-5 w-5" />} />
+          <NavItem to="/herbal-teas" label="Herbal Teas" icon={<Coffee className="h-5 w-5" />} />
           <NavItem to="#" label="Saved Herbs" icon={<Heart className="h-5 w-5" />} />
           <NavItem to="/resources" label="E-Books & Resources" icon={<BookOpen className="h-5 w-5" />} />
           {user && (
