@@ -44,6 +44,7 @@ const MainNavigation: React.FC = () => {
         {/* Navigation Items */}
         <div className="flex items-center space-x-1 md:space-x-2">
           <NavItem to="/" label="Herb Guide" icon={<Home className="h-5 w-5" />} />
+          <NavItem to="/search" label="Search" icon={<Search className="h-5 w-5" />} />
           <NavItem to="/symptom-matcher" label="Symptom Matcher" icon={<Search className="h-5 w-5" />} />
           <NavItem to="#" label="Saved Herbs" icon={<Heart className="h-5 w-5" />} />
           <NavItem to="/resources" label="E-Books & Resources" icon={<BookOpen className="h-5 w-5" />} />
