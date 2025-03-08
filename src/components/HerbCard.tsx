@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import CategoryIcon from './CategoryIcon';
 import { HerbCategory } from '@/data/types';
@@ -36,28 +37,15 @@ const HerbCard: React.FC<HerbCardProps> = ({
 
   const handleBookmarkClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    e.preventDefault(); // Prevent navigation when clicking bookmark
     if (onToggleSave) {
       onToggleSave();
     }
   };
 
-  return (
-    <div
-      className={cn(
-        "herb-card relative flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl",
-        "bg-white herb-card-shadow transition-all duration-300",
-        "active:bg-gray-50 touch-manipulation",
-        isActive ? "active ring-2 ring-accent/50 scale-105 z-10" : "hover:bg-gray-50/80 hover:scale-102 hover:shadow-md",
-        "w-full cursor-pointer",
-        size === 'small' ? "p-2 sm:p-3" : "p-3 sm:p-4"
-      )}
-      style={{ 
-        borderTop: `4px solid ${categoryColor}`
-      }}
-      onClick={onClick}
-      aria-selected={isActive}
-      role="button"
-    >
+  // Card content that will be wrapped with either a div or Link
+  const cardContent = (
+    <>
       <BookmarkButton 
         isSaved={isSaved} 
         size={size} 
@@ -89,15 +77,53 @@ const HerbCard: React.FC<HerbCardProps> = ({
              category === 'stomach' ? 'Stomach' : 
              category === 'mens' ? "Men's" : 
              category === 'womens' ? "Women's" :
-             category === 'brain' ? "Brain" : ""}
+             category === 'brain' ? "Brain" : "Tea"}
           </span>
         </div>
       )}
       {isActive && (
         <div className="absolute inset-0 rounded-xl bg-accent/5 animate-pulse-soft" />
       )}
-    </div>
+    </>
   );
+
+  // Base className for card
+  const cardClassName = cn(
+    "herb-card relative flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl",
+    "bg-white herb-card-shadow transition-all duration-300",
+    "active:bg-gray-50 touch-manipulation",
+    isActive ? "active ring-2 ring-accent/50 scale-105 z-10" : "hover:bg-gray-50/80 hover:scale-102 hover:shadow-md",
+    "w-full cursor-pointer",
+    size === 'small' ? "p-2 sm:p-3" : "p-3 sm:p-4"
+  );
+
+  // If in a modal context, use the onClick, otherwise Link to the herb detail page
+  if (isActive) {
+    return (
+      <div
+        className={cardClassName}
+        style={{ borderTop: `4px solid ${categoryColor}` }}
+        onClick={onClick}
+        aria-selected={isActive}
+        role="button"
+      >
+        {cardContent}
+      </div>
+    );
+  } else {
+    return (
+      <Link
+        to={`/herbs/${id}`}
+        className={cardClassName}
+        style={{ borderTop: `4px solid ${categoryColor}` }}
+        onClick={onClick}
+        aria-selected={isActive}
+        role="button"
+      >
+        {cardContent}
+      </Link>
+    );
+  }
 };
 
 export default HerbCard;

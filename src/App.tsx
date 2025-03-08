@@ -11,6 +11,7 @@ import { Toaster } from "@/components/ui/toaster";
 import SymptomMatcher from "@/pages/SymptomMatcher";
 import Search from "@/pages/Search";
 import HerbalTeas from "@/pages/HerbalTeas";
+import HerbDetailPage from "@/pages/HerbDetailPage";
 import { AuthProvider } from "@/hooks/use-auth";
 
 // Create a client for React Query
@@ -30,6 +31,7 @@ function App() {
             <Route path="/symptom-matcher" element={<SymptomMatcher />} />
             <Route path="/search" element={<Search />} />
             <Route path="/herbal-teas" element={<HerbalTeas />} />
+            <Route path="/herbs/:herbId" element={<HerbDetailPage />} />
             <Route path="/admin" element={<Navigate to="/" replace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

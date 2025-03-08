@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Herb } from '@/data/types';
 import HerbCard from './HerbCard';
 
@@ -38,9 +39,12 @@ const ComplementaryHerbItem: React.FC<ComplementaryHerbItemProps> = ({
         />
       </div>
       <div className="sm:w-5/6">
-        <h4 className="font-medium text-gray-800 mb-1 text-center sm:text-left">
+        <Link 
+          to={`/herbs/${pairing.herb.id}`}
+          className="font-medium text-gray-800 mb-1 text-center sm:text-left block hover:text-amber-700"
+        >
           {pairing.herb.name} + {activeHerb.name}
-        </h4>
+        </Link>
         <p className="text-gray-600 text-sm sm:text-base">{pairing.reason}</p>
       </div>
     </div>
