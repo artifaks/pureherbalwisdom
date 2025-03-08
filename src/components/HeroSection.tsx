@@ -12,13 +12,13 @@ const HeroSection: React.FC = () => {
       
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="flex items-center justify-center mb-6">
-          <Leaf className="h-10 w-10 text-amber-500 mr-2" />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-800 via-amber-600 to-amber-500 bg-clip-text text-transparent">
+          <Leaf className="h-10 w-10 text-amber-600 mr-2" />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-900 via-amber-700 to-amber-600 bg-clip-text text-transparent">
             Unlock the Power of Herbs
           </h1>
         </div>
         
-        <h2 className="text-2xl md:text-3xl text-amber-700 font-semibold mb-4">
+        <h2 className="text-2xl md:text-3xl text-amber-800 font-semibold mb-4">
           Your Natural Healing Guide
         </h2>
         
@@ -30,7 +30,7 @@ const HeroSection: React.FC = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
           <Button 
-            className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
+            className="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
             asChild
             size="lg"
           >
@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
           
           <Button 
             variant="outline" 
-            className="border-amber-500 text-amber-700 hover:bg-amber-50 font-semibold px-6 py-3 rounded-lg shadow-sm transition-all duration-300"
+            className="border-amber-600 text-amber-800 hover:bg-amber-50 font-semibold px-6 py-3 rounded-lg shadow-sm transition-all duration-300"
             asChild
             size="lg"
           >

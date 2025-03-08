@@ -16,11 +16,26 @@ const Index = () => {
       <HeroSection />
       <FeaturedHerbs />
       <FeatureHighlights />
-      <Testimonials />
-      <FinalCTA />
-      <div id="herb-guide">
-        <HerbVisualizer />
+      
+      {/* Light background shift for Testimonials section */}
+      <div className="bg-gradient-to-b from-transparent to-gray-50/70 py-1">
+        <Testimonials />
       </div>
+      
+      {/* Section divider */}
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="h-px bg-gradient-to-r from-transparent via-amber-200 to-transparent my-8"></div>
+      </div>
+      
+      <FinalCTA />
+      
+      {/* Subtle background color shift before herb guide */}
+      <div className="bg-gradient-to-b from-transparent to-amber-50/30 pt-8">
+        <div id="herb-guide">
+          <HerbVisualizer />
+        </div>
+      </div>
+      
       <Footer />
     </div>
   );

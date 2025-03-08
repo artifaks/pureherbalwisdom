@@ -30,30 +30,42 @@ const HerbSelector: React.FC<HerbSelectorProps> = ({
   };
 
   // Define category labels and colors
-  const categoryConfig: Record<HerbCategory, { label: string; bgColor: string }> = {
+  const categoryConfig: Record<HerbCategory, { label: string; bgColor: string; borderColor: string; titleBg: string }> = {
     heart: { 
       label: 'Herbs for Heart Health', 
-      bgColor: 'bg-red-50/80' 
+      bgColor: 'bg-red-50/90',
+      borderColor: 'border-red-200',
+      titleBg: 'bg-red-100/70'
     },
     stomach: { 
       label: 'Digestive Support Herbs', 
-      bgColor: 'bg-green-50/80' 
+      bgColor: 'bg-green-50/90',
+      borderColor: 'border-green-200',
+      titleBg: 'bg-green-100/70'
     },
     mens: { 
       label: 'Men\'s Wellness', 
-      bgColor: 'bg-blue-50/80' 
+      bgColor: 'bg-blue-50/90',
+      borderColor: 'border-blue-200',
+      titleBg: 'bg-blue-100/70'
     },
     womens: { 
       label: 'Women\'s Health', 
-      bgColor: 'bg-pink-50/80' 
+      bgColor: 'bg-pink-50/90',
+      borderColor: 'border-pink-200',
+      titleBg: 'bg-pink-100/70'
     },
     brain: {
       label: 'Brain & Cognitive Health',
-      bgColor: 'bg-purple-50/80'
+      bgColor: 'bg-purple-50/90',
+      borderColor: 'border-purple-200',
+      titleBg: 'bg-purple-100/70'
     },
     tea: {
       label: 'Herbal Teas',
-      bgColor: 'bg-amber-50/80'
+      bgColor: 'bg-amber-50/90',
+      borderColor: 'border-amber-200',
+      titleBg: 'bg-amber-100/70'
     }
   };
 
@@ -74,29 +86,42 @@ const HerbSelector: React.FC<HerbSelectorProps> = ({
   return (
     <div className="glass-dark mx-3 sm:mx-6 my-4 p-2 sm:p-4 rounded-xl overflow-auto">
       {categoriesToShow.map(([category, herbList]) => (
-        <div key={category} className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-lg transition-all duration-300 ${categoryConfig[category as HerbCategory].bgColor} ${activeHerb?.category === category ? 'ring-2 ring-accent/30 shadow-md' : ''}`}>
-          <div className="flex items-center mb-2 sm:mb-3">
-            <CategoryIcon category={category as HerbCategory} size={18} className="mr-2" />
-            <h2 className="text-base sm:text-lg font-semibold text-gray-800">
-              {categoryConfig[category as HerbCategory].label}
-            </h2>
+        <div key={category} 
+          className={`mb-6 sm:mb-8 rounded-lg transition-all duration-300 overflow-hidden border ${categoryConfig[category as HerbCategory].borderColor} 
+          ${categoryConfig[category as HerbCategory].bgColor} ${activeHerb?.category === category ? 'ring-2 ring-accent/30 shadow-md' : 'shadow-sm'}`}
+        >
+          <div className={`px-4 py-3 ${categoryConfig[category as HerbCategory].titleBg} border-b ${categoryConfig[category as HerbCategory].borderColor}`}>
+            <div className="flex items-center">
+              <CategoryIcon category={category as HerbCategory} size={20} className="mr-2" />
+              <h2 className="text-base sm:text-lg font-semibold text-gray-800">
+                {categoryConfig[category as HerbCategory].label}
+              </h2>
+            </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
-            {herbList.map((herb) => (
-              <HerbCard
-                key={herb.id}
-                id={herb.id}
-                name={herb.name}
-                color={herb.color}
-                isActive={activeHerb?.id === herb.id}
-                onClick={() => handleHerbSelect(herb)}
-                category={herb.category}
-                benefits={herb.benefits}
-                isSaved={isHerbSaved(herb.id)}
-                onToggleSave={() => onToggleSave(herb)}
-              />
-            ))}
+          
+          <div className="p-3 sm:p-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
+              {herbList.map((herb) => (
+                <HerbCard
+                  key={herb.id}
+                  id={herb.id}
+                  name={herb.name}
+                  color={herb.color}
+                  isActive={activeHerb?.id === herb.id}
+                  onClick={() => handleHerbSelect(herb)}
+                  category={herb.category}
+                  benefits={herb.benefits}
+                  isSaved={isHerbSaved(herb.id)}
+                  onToggleSave={() => onToggleSave(herb)}
+                />
+              ))}
+            </div>
           </div>
+          
+          {/* Section divider after each category */}
+          {category !== categoriesToShow[categoriesToShow.length - 1][0] && (
+            <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mt-2"></div>
+          )}
         </div>
       ))}
     </div>

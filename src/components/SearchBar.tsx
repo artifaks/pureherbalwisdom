@@ -46,9 +46,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
   useEffect(() => {
     if (searchQuery.length > 1) {
       const matchedHerbs = herbs.filter(herb => 
-        herb.name.toLowerCase().includes(searchQuery.toLowerCase())
+        herb.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        herb.benefits.some(benefit => benefit.toLowerCase().includes(searchQuery.toLowerCase()))
       );
-      setSuggestions(matchedHerbs);
+      setSuggestions(matchedHerbs.slice(0, 5)); // Limit to 5 suggestions
       setShowSuggestions(true);
     } else {
       setSuggestions([]);
@@ -64,7 +65,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
     }
     
     const results = herbs.filter(herb => 
-      herb.name.toLowerCase().includes(searchQuery.toLowerCase())
+      herb.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      herb.benefits.some(benefit => benefit.toLowerCase().includes(searchQuery.toLowerCase()))
     );
     
     onSearchResults(results);
@@ -86,19 +88,19 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
   };
   
   return (
-    <div className="w-full bg-white/95 backdrop-blur-sm sticky top-0 z-30 border-b border-gray-200 shadow-sm py-3 px-4">
+    <div className="w-full bg-white/95 backdrop-blur-sm sticky top-0 z-30 border-b border-gray-200 shadow-md py-4 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col space-y-3">
           {/* Search Bar */}
           <div className="flex items-center relative" ref={searchRef}>
             <div className="relative flex-1">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
+                <Search className="h-5 w-5 text-amber-500" />
               </div>
               <input
                 type="text"
-                placeholder="Search herbs..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                placeholder="Search herbs by name or benefit..."
+                className="w-full pl-10 pr-4 py-3 border-2 border-amber-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-400 shadow-sm transition-all duration-200"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={(e) => {
@@ -106,18 +108,23 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
                 }}
               />
               {showSuggestions && suggestions.length > 0 && (
-                <div className="absolute mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
+                <div className="absolute mt-1 w-full bg-white border border-amber-200 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto animate-in fade-in duration-200">
                   {suggestions.map((herb) => (
                     <div
                       key={herb.id}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
+                      className="px-4 py-3 hover:bg-amber-50 cursor-pointer flex items-center border-b border-amber-100 last:border-b-0"
                       onClick={() => handleSuggestionClick(herb)}
                     >
                       <div 
-                        className="w-3 h-3 rounded-full mr-2" 
+                        className="w-3 h-3 rounded-full mr-3 flex-shrink-0" 
                         style={{ backgroundColor: herb.color }}
                       />
-                      <span>{herb.name}</span>
+                      <div>
+                        <div className="font-medium text-gray-800">{herb.name}</div>
+                        <div className="text-xs text-gray-500 mt-0.5">
+                          {herb.benefits[0]?.substring(0, 60)}...
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -125,32 +132,32 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
             </div>
             <Button 
               onClick={handleSearch}
-              className="rounded-l-none rounded-r-lg"
+              className="rounded-l-none rounded-r-lg bg-amber-500 hover:bg-amber-600 h-[46px]"
             >
               Search
             </Button>
             <Button
               variant="outline"
               size="icon"
-              className="ml-2 relative"
+              className="ml-2 relative border-2 border-amber-300 h-[46px] w-[46px]"
               onClick={() => setShowFilters(!showFilters)}
             >
-              <Filter className="h-5 w-5" />
+              <Filter className="h-5 w-5 text-amber-600" />
               {Object.values(filters).some(value => value !== '') && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full"></span>
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-amber-500 rounded-full"></span>
               )}
             </Button>
           </div>
           
           {/* Filters */}
           {showFilters && (
-            <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 animate-slide-in">
+            <div className="bg-amber-50/80 p-4 rounded-lg border border-amber-200 animate-in slide-in shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Condition Filter */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Condition</label>
                   <select
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full border border-amber-200 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white"
                     value={filters.condition}
                     onChange={(e) => handleFilterChange('condition', e.target.value)}
                   >
@@ -167,7 +174,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Preparation Method</label>
                   <select
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full border border-amber-200 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white"
                     value={filters.preparationMethod}
                     onChange={(e) => handleFilterChange('preparationMethod', e.target.value)}
                   >
@@ -184,7 +191,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Potency</label>
                   <select
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full border border-amber-200 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white"
                     value={filters.potency}
                     onChange={(e) => handleFilterChange('potency', e.target.value)}
                   >
@@ -205,13 +212,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
                     setFilters(resetFilters);
                     onFilterChange(resetFilters);
                   }}
-                  className="mr-2"
+                  className="mr-2 border-amber-300 text-amber-700"
                 >
                   Reset Filters
                 </Button>
                 <Button
                   size="sm"
                   onClick={() => setShowFilters(false)}
+                  className="bg-amber-500 hover:bg-amber-600"
                 >
                   Apply Filters
                 </Button>
