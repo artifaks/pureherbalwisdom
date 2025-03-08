@@ -38,7 +38,8 @@ const HerbDetailModal: React.FC<HerbDetailModalProps> = ({
     stomach: {name: 'Digestive Health', color: 'text-green-600'},
     mens: {name: 'Men\'s Health', color: 'text-blue-600'},
     womens: {name: 'Women\'s Health', color: 'text-pink-600'},
-    brain: {name: 'Brain Health', color: 'text-purple-600'}
+    brain: {name: 'Brain Health', color: 'text-purple-600'},
+    tea: {name: 'Herbal Tea', color: 'text-amber-600'}
   }[activeHerb.category || 'heart'];
 
   // Close modal when clicking backdrop
@@ -51,7 +52,7 @@ const HerbDetailModal: React.FC<HerbDetailModalProps> = ({
   return (
     <div 
       className={cn(
-        "fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 sm:p-6",
+        "fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-2 sm:p-6",
         "animate-fade-in backdrop-blur-sm transition-all duration-300",
         isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
@@ -67,61 +68,61 @@ const HerbDetailModal: React.FC<HerbDetailModalProps> = ({
         {/* Close button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-white/90 text-gray-700 
+          className="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-gray-700 
                     hover:bg-gray-100 transition-colors z-10"
           aria-label="Close modal"
         >
           <X size={20} />
         </button>
 
-        <div className="p-6 sm:p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {/* Herb Title and Navigation Tabs */}
-          <div className="mb-8">
-            <div className="flex items-center mb-6">
+          <div className="mb-6 sm:mb-8">
+            <div className="flex items-center mb-4 sm:mb-6">
               <div 
-                className="w-14 h-14 rounded-full mr-5 flex items-center justify-center animate-scale-in"
+                className="w-10 h-10 sm:w-14 sm:h-14 rounded-full mr-3 sm:mr-5 flex items-center justify-center animate-scale-in"
                 style={{ backgroundColor: activeHerb.color }}
               />
               <div>
-                <h2 className="text-3xl font-bold text-gray-800 animate-slide-in">{activeHerb.name}</h2>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 animate-slide-in">{activeHerb.name}</h2>
                 <div className="flex items-center mt-1">
                   <CategoryIcon category={activeHerb.category || 'heart'} size={16} className={`mr-2 ${categoryDisplay.color}`} />
-                  <span className={`text-sm ${categoryDisplay.color}`}>{categoryDisplay.name}</span>
+                  <span className={`text-xs sm:text-sm ${categoryDisplay.color}`}>{categoryDisplay.name}</span>
                 </div>
               </div>
             </div>
             
-            <div className="relative mb-8 border-b">
-              <div className="flex space-x-2">
+            <div className="relative mb-6 sm:mb-8 border-b overflow-x-auto pb-1 sm:pb-0">
+              <div className="flex space-x-1 sm:space-x-2 min-w-max">
                 <button
                   className={cn(
-                    "tab-button flex items-center px-6 py-4 rounded-t-lg focus-ring",
+                    "tab-button flex items-center px-3 sm:px-6 py-2 sm:py-4 rounded-t-lg focus-ring whitespace-nowrap",
                     activeTab === 'benefits' ? "text-accent font-medium" : "text-gray-600 hover:text-gray-800"
                   )}
                   onClick={() => setActiveTab('benefits')}
                 >
-                  <Heart size={18} className="mr-2" />
-                  Benefits
+                  <Heart size={16} className="mr-1 sm:mr-2" />
+                  <span className="text-sm sm:text-base">Benefits</span>
                 </button>
                 <button
                   className={cn(
-                    "tab-button flex items-center px-6 py-4 rounded-t-lg focus-ring",
+                    "tab-button flex items-center px-3 sm:px-6 py-2 sm:py-4 rounded-t-lg focus-ring whitespace-nowrap",
                     activeTab === 'oil' ? "text-accent font-medium" : "text-gray-600 hover:text-gray-800"
                   )}
                   onClick={() => setActiveTab('oil')}
                 >
-                  <Droplet size={18} className="mr-2" />
-                  Herbal Oil
+                  <Droplet size={16} className="mr-1 sm:mr-2" />
+                  <span className="text-sm sm:text-base">Herbal Oil</span>
                 </button>
                 <button
                   className={cn(
-                    "tab-button flex items-center px-6 py-4 rounded-t-lg focus-ring",
+                    "tab-button flex items-center px-3 sm:px-6 py-2 sm:py-4 rounded-t-lg focus-ring whitespace-nowrap",
                     activeTab === 'tincture' ? "text-accent font-medium" : "text-gray-600 hover:text-gray-800"
                   )}
                   onClick={() => setActiveTab('tincture')}
                 >
-                  <Beaker size={18} className="mr-2" />
-                  Tincture
+                  <Beaker size={16} className="mr-1 sm:mr-2" />
+                  <span className="text-sm sm:text-base">Tincture</span>
                 </button>
               </div>
               <div 
@@ -135,7 +136,7 @@ const HerbDetailModal: React.FC<HerbDetailModalProps> = ({
           </div>
           
           {/* Tab Content */}
-          <div className="glass rounded-xl p-8 content-shadow">
+          <div className="glass rounded-xl p-4 sm:p-6 md:p-8 content-shadow">
             <TabContent tab={activeTab} herb={activeHerb} />
           </div>
           

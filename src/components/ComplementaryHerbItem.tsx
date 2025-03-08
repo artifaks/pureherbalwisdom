@@ -23,7 +23,7 @@ const ComplementaryHerbItem: React.FC<ComplementaryHerbItemProps> = ({
 }) => {
   return (
     <div className="flex flex-col sm:flex-row gap-4 bg-white/70 p-4 rounded-lg hover:bg-white/90 transition-colors">
-      <div className="sm:w-1/6 flex justify-center">
+      <div className="flex justify-center sm:w-1/6">
         <HerbCard
           id={pairing.herb.id}
           name={pairing.herb.name}
@@ -38,8 +38,10 @@ const ComplementaryHerbItem: React.FC<ComplementaryHerbItemProps> = ({
         />
       </div>
       <div className="sm:w-5/6">
-        <h4 className="font-medium text-gray-800 mb-1">{pairing.herb.name} + {activeHerb.name}</h4>
-        <p className="text-gray-600">{pairing.reason}</p>
+        <h4 className="font-medium text-gray-800 mb-1 text-center sm:text-left">
+          {pairing.herb.name} + {activeHerb.name}
+        </h4>
+        <p className="text-gray-600 text-sm sm:text-base">{pairing.reason}</p>
       </div>
     </div>
   );

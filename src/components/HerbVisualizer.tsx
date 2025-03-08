@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import HerbSelector from './HerbSelector';
 import WellnessBanner from './WellnessBanner';
@@ -166,7 +167,7 @@ const HerbVisualizer: React.FC = () => {
       />
       
       {/* Main Content Area with Call to Action */}
-      <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:px-12 lg:py-6">
+      <div className="flex-1 overflow-y-auto p-3 md:p-6 lg:px-12 lg:py-6">
         {activeHerb === null && <CallToAction />}
       </div>
       

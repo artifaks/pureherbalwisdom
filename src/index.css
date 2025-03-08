@@ -94,6 +94,16 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-tap-highlight-color: transparent;
   }
+  
+  /* Mobile optimizations */
+  html, body {
+    @apply overflow-x-hidden;
+  }
+  
+  /* Better touch elements */
+  button, a, [role="button"] {
+    @apply touch-manipulation;
+  }
 }
 
 @layer utilities {
@@ -130,6 +140,15 @@
     --tw-scale-y: 1.02;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
+  
+  /* Mobile-specific utilities */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
 }
 
 .herb-card {
@@ -151,6 +170,31 @@
 @media (max-width: 640px) {
   .herb-card:active {
     background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Improve tap targets on mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Adjust font sizes for mobile */
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  /* Reduce padding and margins for mobile */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
