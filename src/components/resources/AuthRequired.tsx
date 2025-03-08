@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { BookOpen } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const AuthRequired: React.FC = () => {
   return (
@@ -19,6 +21,12 @@ const AuthRequired: React.FC = () => {
           <p className="text-gray-600 mb-6">
             Explore our collection of herbal e-books and resources.
           </p>
+          <p className="text-gray-600 mb-6">
+            Authentication has been temporarily disabled. You can freely browse all resources.
+          </p>
+          <Link to="/">
+            <Button variant="outline">Return to Home</Button>
+          </Link>
         </div>
       </div>
     </div>

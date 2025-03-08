@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
 import Admin from './pages/Admin';
+import Auth from './pages/Auth';
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </TooltipProvider>
