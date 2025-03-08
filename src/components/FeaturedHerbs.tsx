@@ -30,6 +30,22 @@ const featuredHerbsData = [
     tags: ['Anti-Inflammatory', 'Antioxidant', 'Joint Health'],
     icon: Shield, // Protection/Antioxidant icon
     iconColor: 'text-amber-600'
+  },
+  {
+    name: 'Ashwagandha',
+    image: 'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=300&q=80',
+    description: 'An adaptogenic herb that helps the body manage stress and promotes mental clarity and focus.',
+    tags: ['Stress Relief', 'Energy', 'Focus'],
+    icon: Brain, // Brain/Focus icon
+    iconColor: 'text-blue-500'
+  },
+  {
+    name: 'Chamomile',
+    image: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=300&q=80',
+    description: 'A gentle herb with calming properties that helps soothe digestion and promote relaxation and sleep.',
+    tags: ['Relaxation', 'Digestive Aid', 'Sleep Support'],
+    icon: Sparkles, // Calming icon
+    iconColor: 'text-yellow-400'
   }
 ];
 
