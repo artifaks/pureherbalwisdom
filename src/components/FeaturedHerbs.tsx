@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from './ui/button';
-import { Leaf, ArrowRight, Heart } from 'lucide-react';
+import { Leaf, ArrowRight, Heart, Moon, Sparkles, Zap, Flame, Shield, Brain } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
@@ -11,19 +11,25 @@ const featuredHerbsData = [
     name: 'Lavender',
     image: 'https://images.unsplash.com/photo-1594631269077-032f38a42fa7?auto=format&fit=crop&w=300&q=80',
     description: 'Known for its calming effects on the nervous system, helping reduce anxiety and promote better sleep.',
-    tags: ['Anxiety Relief', 'Sleep Aid', 'Aromatherapy']
+    tags: ['Anxiety Relief', 'Sleep Aid', 'Aromatherapy'],
+    icon: Moon, // Sleep icon
+    iconColor: 'text-purple-500'
   },
   {
     name: 'Ginger',
     image: 'https://images.unsplash.com/photo-1573414404852-1840ae22db94?auto=format&fit=crop&w=300&q=80',
     description: 'A powerful digestive aid that helps reduce nausea, inflammation, and supports the immune system.',
-    tags: ['Digestive Health', 'Anti-Inflammatory', 'Immune Support']
+    tags: ['Digestive Health', 'Anti-Inflammatory', 'Immune Support'],
+    icon: Flame, // Energy/Digestive icon
+    iconColor: 'text-orange-500'
   },
   {
     name: 'Turmeric',
     image: 'https://images.unsplash.com/photo-1615485500784-8e97deb1eb10?auto=format&fit=crop&w=300&q=80',
     description: 'Contains curcumin, which has powerful anti-inflammatory effects and is a strong antioxidant.',
-    tags: ['Anti-Inflammatory', 'Antioxidant', 'Joint Health']
+    tags: ['Anti-Inflammatory', 'Antioxidant', 'Joint Health'],
+    icon: Shield, // Protection/Antioxidant icon
+    iconColor: 'text-amber-600'
   }
 ];
 
@@ -44,22 +50,29 @@ const FeaturedHerbs: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredHerbsData.map((herb, index) => (
             <Card key={index} className="overflow-hidden transition-all duration-300 hover:shadow-lg border-amber-100">
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden relative">
                 <img 
                   src={herb.image} 
                   alt={herb.name}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
+                <div className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md">
+                  {React.createElement(herb.icon, { className: `h-5 w-5 ${herb.iconColor}` })}
+                </div>
               </div>
               <CardHeader className="pb-2">
-                <h3 className="text-xl font-semibold text-amber-800">{herb.name}</h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-xl font-semibold text-amber-800">{herb.name}</h3>
+                  {React.createElement(herb.icon, { className: `h-5 w-5 ${herb.iconColor}` })}
+                </div>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {herb.tags.map((tag, tagIndex) => (
                     <Badge 
                       key={tagIndex} 
                       variant="outline" 
-                      className="bg-amber-50 text-amber-700 border-amber-200"
+                      className="bg-amber-50 text-amber-700 border-amber-200 flex items-center"
                     >
+                      {tagIndex === 0 && React.createElement(herb.icon, { className: `h-3 w-3 ${herb.iconColor} mr-1` })}
                       {tag}
                     </Badge>
                   ))}
