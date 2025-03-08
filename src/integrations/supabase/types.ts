@@ -224,6 +224,30 @@ export type Database = {
           },
         ]
       }
+      saved_herbs: {
+        Row: {
+          artifaks: string
+          created_at: string | null
+          herb_id: string
+          id: string
+          notes: string | null
+        }
+        Insert: {
+          artifaks: string
+          created_at?: string | null
+          herb_id: string
+          id?: string
+          notes?: string | null
+        }
+        Update: {
+          artifaks?: string
+          created_at?: string | null
+          herb_id?: string
+          id?: string
+          notes?: string | null
+        }
+        Relationships: []
+      }
       subscriptions: {
         Row: {
           cancel_at_period_end: boolean | null
