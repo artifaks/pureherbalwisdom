@@ -205,7 +205,9 @@ const SymptomMatcher: React.FC = () => {
                     <div className="h-3" style={{ backgroundColor: herb.color }}></div>
                     <div className="p-4">
                       <h3 className="font-semibold text-lg text-gray-800 mb-2">{herb.name}</h3>
-                      <p className="text-sm text-gray-600 mb-3 line-clamp-2">{herb.briefDescription}</p>
+                      <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                        {herb.benefits[0] || "Natural herbal remedy"}
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {herb.benefits.slice(0, 3).map((benefit, index) => (
                           <span 
