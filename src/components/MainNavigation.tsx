@@ -28,6 +28,8 @@ const NavItem: React.FC<NavItemProps> = ({ to, label, icon }) => {
 };
 
 const MainNavigation: React.FC = () => {
+  const { user } = useAuth();
+  
   return (
     <nav className="glass sticky top-0 z-20 py-3 px-4 mb-6">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -43,6 +45,9 @@ const MainNavigation: React.FC = () => {
         <div className="flex items-center space-x-2">
           <NavItem to="/" label="Herbs" icon={<Home className="h-5 w-5" />} />
           <NavItem to="/resources" label="E-Books & Resources" icon={<BookOpen className="h-5 w-5" />} />
+          {user && (
+            <NavItem to="/auth" label="Account" icon={<BookOpen className="h-5 w-5" />} />
+          )}
         </div>
       </div>
     </nav>
