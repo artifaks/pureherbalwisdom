@@ -1,10 +1,10 @@
 
-import { heartHerbs } from './heartHerbs';
-import { stomachHerbs } from './stomachHerbs';
-import { mensHerbs } from './mensHerbs';
-import { womensHerbs } from './womensHerbs';
-import { brainHerbs } from './brainHerbs';
-import { herbalTeas } from './herbalTeas';
+import { heartHerbs } from './categories/heartHerbs';
+import { stomachHerbs } from './categories/stomachHerbs';
+import { mensHerbs } from './categories/mensHerbs';
+import { womensHerbs } from './categories/womensHerbs';
+import { brainHerbs } from './categories/brainHerbs';
+import { herbalTeas } from './categories/herbalTeas';
 import { Herb } from './types';
 
 // The herbal teas are already in Herb format, no need to convert
@@ -26,4 +26,6 @@ export const allHerbs: Herb[] = [
 // For debugging
 console.log("Total herbs:", allHerbs.length);
 console.log("Brain herbs count:", brainHerbs.length);
+console.log("Heart herbs count:", heartHerbs.length);
+console.log("Stomach herbs count:", stomachHerbs.length);
 console.log("Herbal teas count:", herbalTeasAsHerbs.length);
