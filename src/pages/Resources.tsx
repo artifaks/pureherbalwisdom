@@ -1,3 +1,4 @@
+
 import React, { useEffect, useCallback, useState } from 'react';
 import { useEbooks } from '@/hooks/useEbooks';
 import MainNavigation from '@/components/MainNavigation';
@@ -39,30 +40,14 @@ const Resources = () => {
     isAdmin,
     handleDeleteEbook,
     fetchResources,
+    refreshData
   } = useEbooks();
-
-  // Force a reload when resource modification operations occur
-  const [forceRefresh, setForceRefresh] = useState(0);
-  
-  const refreshData = useCallback(() => {
-    console.log("Refreshing resource data...");
-    setForceRefresh(prev => prev + 1);
-    fetchResources(); // Explicitly fetch resources when refresh is triggered
-  }, [fetchResources]);
 
   // Initial fetch on component mount
   useEffect(() => {
     console.log("Resources component mounted, fetching resources...");
     fetchResources();
   }, [fetchResources]);
-
-  // Re-fetch data when forceRefresh changes
-  useEffect(() => {
-    if (forceRefresh > 0) {
-      console.log("Force refreshing resources...");
-      fetchResources();
-    }
-  }, [forceRefresh, fetchResources]);
 
   if (isLoading) {
     return <AuthRequired />;
