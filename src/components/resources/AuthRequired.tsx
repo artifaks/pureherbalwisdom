@@ -17,12 +17,9 @@ const AuthRequired: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <div className="bg-white/70 rounded-xl p-8 shadow-sm max-w-3xl mx-auto">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Welcome to Resources</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Loading Resources...</h2>
           <p className="text-gray-600 mb-6">
-            Explore our collection of herbal e-books and resources.
-          </p>
-          <p className="text-gray-600 mb-6">
-            Authentication has been temporarily disabled. You can freely browse all resources.
+            Please wait while we fetch the resources for you.
           </p>
           <Link to="/">
             <Button variant="outline">Return to Home</Button>

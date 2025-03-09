@@ -9,7 +9,7 @@ import { useAuth } from '@/hooks/use-auth';
 
 export const useEbooks = () => {
   const { toast } = useToast();
-  const { user } = useAuth();
+  const { user, bypassAuth } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [resources, setResources] = useState<Ebook[]>([]);
@@ -199,7 +199,7 @@ export const useEbooks = () => {
   };
 
   const handleDownload = async (resource: Ebook) => {
-    if (!user) {
+    if (!user && !bypassAuth) {
       toast({
         title: "Authentication Required",
         description: "Please sign in to download this e-book.",
@@ -208,7 +208,7 @@ export const useEbooks = () => {
       return;
     }
     
-    if (!purchasedBooks[resource.id]) {
+    if (!purchasedBooks[resource.id] && !bypassAuth) {
       handlePurchase(resource);
       return;
     }

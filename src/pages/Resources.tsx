@@ -1,4 +1,3 @@
-
 import React, { useEffect, useCallback, useState } from 'react';
 import { useEbooks } from '@/hooks/useEbooks';
 import MainNavigation from '@/components/MainNavigation';
@@ -65,7 +64,7 @@ const Resources = () => {
     }
   }, [forceRefresh, fetchResources]);
 
-  if (!user) {
+  if (isLoading) {
     return <AuthRequired />;
   }
 

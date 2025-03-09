@@ -11,6 +11,7 @@ type AuthContextType = {
   signOut: () => Promise<void>;
   isLoading: boolean;
   isAdmin: boolean;
+  bypassAuth: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -19,6 +20,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [bypassAuth, setBypassAuth] = useState(true); // Enable auth bypass by default
   const { toast } = useToast();
 
   // Initialize user from supabase session
@@ -143,6 +145,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signOut,
         isLoading,
         isAdmin,
+        bypassAuth,
       }}
     >
       {children}

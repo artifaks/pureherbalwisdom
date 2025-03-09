@@ -93,6 +93,38 @@ export type Database = {
         }
         Relationships: []
       }
+      featured_herbs: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          display_order: number
+          herb_id: string
+          id: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          display_order: number
+          herb_id: string
+          id?: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          display_order?: number
+          herb_id?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_herb"
+            columns: ["herb_id"]
+            isOneToOne: false
+            referencedRelation: "herbs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       herbs: {
         Row: {
           common_name: string
@@ -192,6 +224,8 @@ export type Database = {
           ebook_id: string
           id: string
           payment_status: string
+          price: number | null
+          purchase_date: string | null
           stripe_session_id: string | null
           updated_at: string
           user_id: string
@@ -201,6 +235,8 @@ export type Database = {
           ebook_id: string
           id?: string
           payment_status?: string
+          price?: number | null
+          purchase_date?: string | null
           stripe_session_id?: string | null
           updated_at?: string
           user_id: string
@@ -210,6 +246,8 @@ export type Database = {
           ebook_id?: string
           id?: string
           payment_status?: string
+          price?: number | null
+          purchase_date?: string | null
           stripe_session_id?: string | null
           updated_at?: string
           user_id?: string
