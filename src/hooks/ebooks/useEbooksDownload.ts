@@ -62,6 +62,8 @@ export const useEbooksDownload = (
     }
     
     try {
+      console.log("Starting purchase flow for:", resource.title);
+      
       const response = await supabase.functions.invoke('create-checkout', {
         body: { 
           ebook: resource,
@@ -71,12 +73,16 @@ export const useEbooksDownload = (
       
       if (response.error) throw new Error(response.error.message);
       
+      console.log("Checkout session created:", response.data.sessionId);
+      
       await purchaseService.createPurchaseRecord(
         user.id, 
         resource.id, 
         response.data.sessionId
       );
       
+      // Redirect to Stripe checkout
+      console.log("Redirecting to Stripe checkout:", response.data.url);
       window.location.href = response.data.url;
     } catch (error: any) {
       console.error("Error creating checkout session:", error);
@@ -89,8 +95,13 @@ export const useEbooksDownload = (
   };
 
   const handleDownload = async (resource: Ebook) => {
-    // First check if user needs to authenticate
+    console.log("Download requested for:", resource.title);
+    console.log("User authenticated:", !!user);
+    console.log("BypassAuth status:", bypassAuth);
+    
+    // Check if user needs to authenticate
     if (!user && !bypassAuth) {
+      console.log("Authentication required, redirecting to auth page");
       toast({
         title: "Authentication Required",
         description: "Please sign in to download this e-book.",
@@ -99,16 +110,15 @@ export const useEbooksDownload = (
       return;
     }
     
-    // CRITICAL FIX: Always redirect to purchase flow when not authenticated or not purchased
-    // and bypassAuth is not enabled - this ensures payments are always processed
-    if (!bypassAuth) {
-      // Explicitly check purchased status - only allow downloads for purchased books
-      if (!purchasedBooks[resource.id]) {
-        console.log("Book not purchased, redirecting to payment flow");
-        handlePurchase(resource);
-        return; // Exit early - critical to prevent download
-      }
+    // Check if this is a purchase request (non-purchased book)
+    if (!bypassAuth && !purchasedBooks[resource.id]) {
+      console.log("Book not purchased, initiating purchase flow");
+      // Modify EbookCard.tsx button to show "Purchase" instead of "Download"
+      handlePurchase(resource);
+      return; // Crucial - prevent proceeding to download
     }
+    
+    console.log("Proceeding with download, purchase verified or bypassed");
     
     // Only proceed with download after all checks pass
     if (resource.fileUrl) {
