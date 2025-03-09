@@ -1,3 +1,4 @@
+
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -51,7 +52,10 @@ export const useEbooksDownload = (
   }, [searchParams, user, navigate, toast, setPurchasedBooks]);
 
   const handlePurchase = async (resource: Ebook) => {
+    console.log("Starting purchase process for:", resource.title);
+    
     if (!user) {
+      console.log("No user - redirecting to auth");
       toast({
         title: "Authentication Required",
         description: "Please sign in to purchase this e-book.",
@@ -94,9 +98,10 @@ export const useEbooksDownload = (
   };
 
   const handleDownload = async (resource: Ebook) => {
-    console.log("Download requested for:", resource.title);
+    console.log("Download/Purchase requested for:", resource.title);
     console.log("User authenticated:", !!user);
     console.log("BypassAuth status:", bypassAuth);
+    console.log("Is purchased:", purchasedBooks[resource.id]);
     
     // Check if user needs to authenticate
     if (!user && !bypassAuth) {
@@ -109,10 +114,10 @@ export const useEbooksDownload = (
       return;
     }
     
-    // Check if this is a purchase request (non-purchased book)
+    // Explicitly check if this should trigger the purchase flow
     if (!purchasedBooks[resource.id] && !bypassAuth) {
       console.log("Book not purchased, initiating purchase flow");
-      handlePurchase(resource);
+      await handlePurchase(resource);
       return; // Crucial - prevent proceeding to download
     }
     
