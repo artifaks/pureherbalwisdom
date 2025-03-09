@@ -10,7 +10,6 @@ import { purchaseService } from '@/services/purchaseService';
 
 export const useEbooks = () => {
   const { user, isAdmin, bypassAuth } = useAuth();
-  const [purchasedBooks, setPurchasedBooks] = useState<Record<string, boolean>>({});
   
   // Import functionality from other hooks
   const { 
@@ -18,7 +17,9 @@ export const useEbooks = () => {
     isLoading,
     fetchResources,
     refreshData,
-    handleDeleteEbook
+    handleDeleteEbook,
+    purchasedBooks,
+    setPurchasedBooks
   } = useEbooksFetch();
   
   const {
@@ -74,15 +75,17 @@ export const useEbooks = () => {
     
     // If bypassAuth is true, mark all books as purchased
     if (bypassAuth && resources) {
+      console.log("BypassAuth is true, marking all books as purchased");
       const allPurchased: Record<string, boolean> = {};
       resources.forEach(resource => {
         allPurchased[resource.id] = true;
       });
       setPurchasedBooks(allPurchased);
     } else if (user && resources) {
+      console.log("Checking purchase status for user:", user.id);
       checkPurchasedBooks();
     }
-  }, [user, resources, bypassAuth]);
+  }, [user, resources, bypassAuth, setPurchasedBooks]);
   
   return {
     user,

@@ -5,12 +5,9 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Ebook } from '@/types/ebook';
 import { useAuth } from '@/hooks/use-auth';
+import { purchaseService } from '@/services/purchaseService';
 
-export const useEbooksEdit = (
-  resources: Ebook[], 
-  setResources: React.Dispatch<React.SetStateAction<Ebook[]>>,
-  fetchResources: () => Promise<void>
-) => {
+export const useEbooksEdit = (refreshData: () => void) => {
   const { toast } = useToast();
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -120,18 +117,6 @@ export const useEbooksEdit = (
         throw error;
       }
       
-      // Update the resources state with the updated ebook
-      const updatedResources = resources.map(resource => {
-        if (resource.id === editingResource.id) {
-          return {
-            ...editingResource,
-            coverUrl: updatedCoverUrl
-          };
-        }
-        return resource;
-      });
-      
-      setResources(updatedResources);
       setEditingResource(null);
       setSelectedCover(null);
       
@@ -141,7 +126,7 @@ export const useEbooksEdit = (
       });
 
       // Ensure data is in sync with database
-      fetchResources();
+      refreshData();
     } catch (error: any) {
       console.error("Error updating e-book:", error);
       toast({
@@ -169,16 +154,13 @@ export const useEbooksEdit = (
       
       await purchaseService.deleteEbook(resource.id);
       
-      // Update the UI immediately
-      setResources(prevResources => prevResources.filter(r => r.id !== resource.id));
-
       toast({
         title: "E-book Deleted",
         description: `"${resource.title}" has been deleted successfully.`,
       });
       
       // Force a reload of resources to ensure state is in sync with database
-      fetchResources();
+      refreshData();
       
     } catch (error: any) {
       console.error('Error deleting e-book:', error);
@@ -215,6 +197,3 @@ export const useEbooksEdit = (
     sanitizeFileName
   };
 };
-
-// Import needed for deleteEbook
-import { purchaseService } from '@/services/purchaseService';

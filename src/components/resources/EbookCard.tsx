@@ -24,20 +24,6 @@ const EbookCard: React.FC<EbookCardProps> = ({
   onEditClick,
   onDeleteClick 
 }) => {
-  // Create a handler that routes to the correct action based on purchase status
-  const handleActionClick = () => {
-    console.log("Action button clicked for:", resource.title);
-    console.log("Is purchased status:", isPurchased);
-    
-    if (isPurchased) {
-      console.log("Routing to download flow");
-      onDownload(resource);
-    } else {
-      console.log("Routing to purchase flow");
-      onPurchase(resource);
-    }
-  };
-
   return (
     <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className={`p-1 ${resource.popular ? 'bg-amber-500' : 'bg-gray-100'}`}>
@@ -86,22 +72,23 @@ const EbookCard: React.FC<EbookCardProps> = ({
               </Button>
             )}
           </div>
-          <Button 
-            onClick={handleActionClick}
-            className={isPurchased ? "bg-amber-500 hover:bg-amber-600 text-white" : "bg-green-500 hover:bg-green-600 text-white"}
-          >
-            {isPurchased ? (
-              <>
-                <Download className="mr-1 h-4 w-4" />
-                Download
-              </>
-            ) : (
-              <>
-                <ShoppingCart className="mr-1 h-4 w-4" />
-                Purchase
-              </>
-            )}
-          </Button>
+          {isPurchased ? (
+            <Button 
+              onClick={() => onDownload(resource)}
+              className="bg-amber-500 hover:bg-amber-600 text-white"
+            >
+              <Download className="mr-1 h-4 w-4" />
+              Download
+            </Button>
+          ) : (
+            <Button 
+              onClick={() => onPurchase(resource)}
+              className="bg-green-500 hover:bg-green-600 text-white"
+            >
+              <ShoppingCart className="mr-1 h-4 w-4" />
+              Purchase
+            </Button>
+          )}
         </div>
       </div>
     </Card>

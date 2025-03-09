@@ -56,28 +56,30 @@ export const useEbooksFetch = () => {
     }
   }, [toast, user]);
 
-  useEffect(() => {
+  // Refresh data function
+  const refreshData = useCallback(() => {
     fetchResources();
   }, [fetchResources]);
 
-  useEffect(() => {
-    const checkPurchases = async () => {
-      if (!user) return;
+  // Delete ebook function
+  const handleDeleteEbook = async (resource: Ebook) => {
+    try {
+      console.log("Attempting to delete ebook with ID:", resource.id);
+      await purchaseService.deleteEbook(resource.id);
       
-      const purchases: Record<string, boolean> = {};
+      // Update the UI immediately
+      setResources(prevResources => prevResources.filter(r => r.id !== resource.id));
       
-      for (const resource of resources) {
-        const isPurchased = await purchaseService.checkPurchaseStatus(user.id, resource.id);
-        purchases[resource.id] = isPurchased;
-      }
-      
-      setPurchasedBooks(purchases);
-    };
-    
-    if (user && resources.length > 0) {
-      checkPurchases();
+      return true;
+    } catch (error: any) {
+      console.error('Error deleting e-book:', error);
+      throw error;
     }
-  }, [user, resources]);
+  };
+
+  useEffect(() => {
+    fetchResources();
+  }, [fetchResources]);
 
   return {
     resources,
@@ -85,6 +87,8 @@ export const useEbooksFetch = () => {
     purchasedBooks,
     setPurchasedBooks,
     isLoading,
-    fetchResources
+    fetchResources,
+    refreshData,
+    handleDeleteEbook
   };
 };

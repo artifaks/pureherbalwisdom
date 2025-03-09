@@ -1,189 +1,136 @@
 
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
+import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/hooks/use-auth';
+import { supabase } from '@/integrations/supabase/client';
 import { purchaseService } from '@/services/purchaseService';
 import { Ebook } from '@/types/ebook';
-import { useAuth } from '@/hooks/use-auth';
-import { useEffect } from 'react';
 
 export const useEbooksDownload = (
-  purchasedBooks: Record<string, boolean>, 
+  purchasedBooks: Record<string, boolean>,
   setPurchasedBooks: React.Dispatch<React.SetStateAction<Record<string, boolean>>>
 ) => {
   const { toast } = useToast();
-  const { user, bypassAuth } = useAuth();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const { user, bypassAuth } = useAuth();
 
-  // Handle purchase verification from URL params
-  useEffect(() => {
-    const sessionId = searchParams.get('session_id');
-    const ebookId = searchParams.get('ebook_id');
-    
-    if (sessionId && ebookId && user) {
-      const verifyPayment = async () => {
-        try {
-          await purchaseService.verifyPurchase(user.id, String(ebookId), sessionId);
-          
-          setPurchasedBooks(prev => ({
-            ...prev,
-            [ebookId]: true
-          }));
-          
-          toast({
-            title: "Purchase Successful!",
-            description: "Your e-book is now available for download.",
-          });
-          
-          navigate('/resources', { replace: true });
-        } catch (error) {
-          console.error("Error verifying payment:", error);
-          toast({
-            title: "Verification Failed",
-            description: "There was an issue verifying your purchase. Please contact support.",
-            variant: "destructive",
-          });
-        }
-      };
-      
-      verifyPayment();
-    }
-  }, [searchParams, user, navigate, toast, setPurchasedBooks]);
+  // Completely separate function ONLY for downloading
+  const handleDownload = async (resource: Ebook) => {
+    console.log("DOWNLOAD FLOW: Download requested for:", resource.title);
+    console.log("DOWNLOAD FLOW: User authenticated:", !!user);
+    console.log("DOWNLOAD FLOW: BypassAuth status:", bypassAuth);
+    console.log("DOWNLOAD FLOW: Is purchased:", purchasedBooks[resource.id] || false);
 
-  // PURCHASE FUNCTION - Only handles purchase, never downloads
-  const handlePurchase = async (resource: Ebook) => {
-    console.log("PURCHASE FLOW: Starting purchase process for:", resource.title);
-    
-    // Check if already purchased to prevent duplicate purchases
-    if (purchasedBooks[resource.id]) {
-      console.log("PURCHASE FLOW: Resource already purchased, redirecting to download");
-      toast({
-        title: "Already Purchased",
-        description: "You already own this e-book. You can download it now.",
-      });
-      handleDownload(resource);
-      return;
-    }
-    
-    // Check authentication
-    if (!user) {
-      console.log("PURCHASE FLOW: No user - redirecting to auth");
+    // Check if the user is authenticated or if we're bypassing auth
+    if (!user && !bypassAuth) {
+      console.log("DOWNLOAD FLOW: Not authenticated, redirecting to auth");
       toast({
         title: "Authentication Required",
-        description: "Please sign in to purchase this e-book.",
+        description: "Please sign in to download e-books.",
       });
       navigate('/auth');
       return;
     }
-    
-    try {
-      console.log("PURCHASE FLOW: Creating checkout session for:", resource.title);
-      
-      const response = await supabase.functions.invoke('create-checkout', {
-        body: { 
-          ebook: resource,
-          returnUrl: window.location.origin + '/resources'
-        }
-      });
-      
-      if (response.error) throw new Error(response.error.message);
-      
-      console.log("PURCHASE FLOW: Checkout session created:", response.data.sessionId);
-      
-      await purchaseService.createPurchaseRecord(
-        user.id, 
-        resource.id, 
-        response.data.sessionId
-      );
-      
-      // Redirect to Stripe checkout
-      console.log("PURCHASE FLOW: Redirecting to Stripe checkout:", response.data.url);
-      window.location.href = response.data.url;
-    } catch (error: any) {
-      console.error("PURCHASE FLOW: Error creating checkout session:", error);
+
+    // Check if the book is purchased or if we're bypassing auth
+    if (!purchasedBooks[resource.id] && !bypassAuth) {
+      console.log("DOWNLOAD FLOW: Not purchased, redirecting to purchase flow");
       toast({
-        title: "Checkout Failed",
-        description: error.message || "There was an error processing your purchase",
+        title: "Purchase Required",
+        description: `You need to purchase "${resource.title}" first.`,
+      });
+      return;
+    }
+
+    console.log("DOWNLOAD FLOW: Proceeding with download, purchase verified or bypassed");
+    try {
+      const { data, error } = await supabase.storage
+        .from('e-books')
+        .download(resource.fileUrl);
+      
+      if (error) {
+        throw error;
+      }
+      
+      // Create a download link for the file
+      const url = URL.createObjectURL(data);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.download = resource.title.replace(/\s+/g, '_') + '.pdf';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      URL.revokeObjectURL(url);
+      
+      toast({
+        title: "Download Started",
+        description: `"${resource.title}" is being downloaded.`,
+      });
+    } catch (error: any) {
+      console.error("Error downloading e-book:", error);
+      toast({
+        title: "Download Failed",
+        description: error.message || "There was an error downloading the e-book",
         variant: "destructive",
       });
     }
   };
 
-  // DOWNLOAD FUNCTION - Only handles downloads, never purchases
-  const handleDownload = async (resource: Ebook) => {
-    console.log("DOWNLOAD FLOW: Download requested for:", resource.title);
-    console.log("DOWNLOAD FLOW: User authenticated:", !!user);
-    console.log("DOWNLOAD FLOW: BypassAuth status:", bypassAuth);
-    console.log("DOWNLOAD FLOW: Is purchased:", purchasedBooks[resource.id]);
-    
-    // Check if user needs to authenticate
-    if (!user && !bypassAuth) {
-      console.log("DOWNLOAD FLOW: Authentication required, redirecting to auth page");
+  // Completely separate function ONLY for purchasing
+  const handlePurchase = async (resource: Ebook) => {
+    console.log("PURCHASE FLOW: Purchase requested for:", resource.title);
+    console.log("PURCHASE FLOW: User authenticated:", !!user);
+    console.log("PURCHASE FLOW: Is already purchased:", purchasedBooks[resource.id] || false);
+
+    // Don't allow purchase if the book is already purchased
+    if (purchasedBooks[resource.id]) {
+      console.log("PURCHASE FLOW: Book already purchased, redirecting to download flow");
+      toast({
+        title: "Already Purchased",
+        description: `You already own "${resource.title}". You can download it.`,
+      });
+      return;
+    }
+
+    // Check if the user is authenticated
+    if (!user) {
+      console.log("PURCHASE FLOW: Not authenticated, redirecting to auth");
       toast({
         title: "Authentication Required",
-        description: "Please sign in to download this e-book.",
+        description: "Please sign in to purchase e-books.",
       });
       navigate('/auth');
       return;
     }
-    
-    // Check if purchased - never proceed with download if not purchased and not bypassed
-    if (!purchasedBooks[resource.id] && !bypassAuth) {
-      console.log("DOWNLOAD FLOW: Book not purchased, redirecting to purchase flow");
-      toast({
-        title: "Purchase Required",
-        description: "You need to purchase this e-book before downloading.",
-      });
-      // Redirect to purchase flow
-      handlePurchase(resource);
-      return;
-    }
-    
-    console.log("DOWNLOAD FLOW: Proceeding with download, purchase verified or bypassed");
-    
-    // Only proceed with download after all checks pass
-    if (resource.fileUrl) {
-      try {
-        const { data, error } = await supabase.storage
-          .from('e-books')
-          .download(resource.fileUrl);
-        
-        if (error) {
-          throw error;
-        }
-        
-        const url = URL.createObjectURL(data);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = resource.title + '.pdf';
-        document.body.appendChild(a);
-        a.click();
-        URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-        
+
+    console.log("PURCHASE FLOW: Proceeding with purchase flow");
+    try {
+      const redirectUrl = await purchaseService.createCheckoutSession(
+        user.id,
+        resource.id
+      );
+      
+      if (redirectUrl) {
         toast({
-          title: "Download Started",
-          description: `"${resource.title}" is now downloading.`,
+          title: "Redirecting to Checkout",
+          description: "You'll be redirected to complete your purchase.",
         });
-      } catch (error) {
-        console.error('Error downloading file:', error);
-        toast({
-          title: "Download Failed",
-          description: "There was an error downloading the file. Please try again.",
-          variant: "destructive",
-        });
+        window.location.href = redirectUrl;
+      } else {
+        throw new Error("Failed to create checkout session");
       }
-    } else {
+    } catch (error: any) {
+      console.error("Error creating checkout session:", error);
       toast({
-        title: "Coming Soon!",
-        description: `The download for "${resource.title}" will be available soon.`,
+        title: "Checkout Failed",
+        description: error.message || "There was an error creating the checkout session",
+        variant: "destructive",
       });
     }
   };
 
   return {
-    handlePurchase,
-    handleDownload
+    handleDownload,
+    handlePurchase
   };
 };
