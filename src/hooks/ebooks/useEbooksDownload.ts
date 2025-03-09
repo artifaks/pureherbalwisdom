@@ -89,6 +89,7 @@ export const useEbooksDownload = (
   };
 
   const handleDownload = async (resource: Ebook) => {
+    // First check if user needs to authenticate
     if (!user && !bypassAuth) {
       toast({
         title: "Authentication Required",
@@ -98,18 +99,18 @@ export const useEbooksDownload = (
       return;
     }
     
-    // FIX: Only allow downloads for purchased books or when auth is bypassed
-    // Remove the 'if (!purchasedBooks[resource.id] && !bypassAuth)' condition that was allowing
-    // downloads to happen even if the book wasn't purchased
+    // CRITICAL FIX: Always redirect to purchase flow when not authenticated or not purchased
+    // and bypassAuth is not enabled - this ensures payments are always processed
     if (!bypassAuth) {
-      // Check if the book is purchased
+      // Explicitly check purchased status - only allow downloads for purchased books
       if (!purchasedBooks[resource.id]) {
-        // If not purchased, redirect to payment flow
+        console.log("Book not purchased, redirecting to payment flow");
         handlePurchase(resource);
-        return;
+        return; // Exit early - critical to prevent download
       }
     }
     
+    // Only proceed with download after all checks pass
     if (resource.fileUrl) {
       try {
         const { data, error } = await supabase.storage
