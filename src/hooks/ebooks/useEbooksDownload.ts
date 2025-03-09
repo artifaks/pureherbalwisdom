@@ -52,10 +52,10 @@ export const useEbooksDownload = (
   }, [searchParams, user, navigate, toast, setPurchasedBooks]);
 
   const handlePurchase = async (resource: Ebook) => {
-    console.log("Starting purchase process for:", resource.title);
+    console.log("PURCHASE FLOW: Starting purchase process for:", resource.title);
     
     if (!user) {
-      console.log("No user - redirecting to auth");
+      console.log("PURCHASE FLOW: No user - redirecting to auth");
       toast({
         title: "Authentication Required",
         description: "Please sign in to purchase this e-book.",
@@ -65,7 +65,7 @@ export const useEbooksDownload = (
     }
     
     try {
-      console.log("Starting purchase flow for:", resource.title);
+      console.log("PURCHASE FLOW: Creating checkout session for:", resource.title);
       
       const response = await supabase.functions.invoke('create-checkout', {
         body: { 
@@ -76,7 +76,7 @@ export const useEbooksDownload = (
       
       if (response.error) throw new Error(response.error.message);
       
-      console.log("Checkout session created:", response.data.sessionId);
+      console.log("PURCHASE FLOW: Checkout session created:", response.data.sessionId);
       
       await purchaseService.createPurchaseRecord(
         user.id, 
@@ -85,10 +85,10 @@ export const useEbooksDownload = (
       );
       
       // Redirect to Stripe checkout
-      console.log("Redirecting to Stripe checkout:", response.data.url);
+      console.log("PURCHASE FLOW: Redirecting to Stripe checkout:", response.data.url);
       window.location.href = response.data.url;
     } catch (error: any) {
-      console.error("Error creating checkout session:", error);
+      console.error("PURCHASE FLOW: Error creating checkout session:", error);
       toast({
         title: "Checkout Failed",
         description: error.message || "There was an error processing your purchase",
@@ -98,14 +98,14 @@ export const useEbooksDownload = (
   };
 
   const handleDownload = async (resource: Ebook) => {
-    console.log("Download/Purchase requested for:", resource.title);
-    console.log("User authenticated:", !!user);
-    console.log("BypassAuth status:", bypassAuth);
-    console.log("Is purchased:", purchasedBooks[resource.id]);
+    console.log("FLOW: Download/Purchase requested for:", resource.title);
+    console.log("FLOW: User authenticated:", !!user);
+    console.log("FLOW: BypassAuth status:", bypassAuth);
+    console.log("FLOW: Is purchased:", purchasedBooks[resource.id]);
     
     // Check if user needs to authenticate
     if (!user && !bypassAuth) {
-      console.log("Authentication required, redirecting to auth page");
+      console.log("FLOW: Authentication required, redirecting to auth page");
       toast({
         title: "Authentication Required",
         description: "Please sign in to download this e-book.",
@@ -114,14 +114,15 @@ export const useEbooksDownload = (
       return;
     }
     
-    // Explicitly check if this should trigger the purchase flow
+    // IMPORTANT FIX: Separate paths for purchase and download completely
     if (!purchasedBooks[resource.id] && !bypassAuth) {
-      console.log("Book not purchased, initiating purchase flow");
-      await handlePurchase(resource);
+      console.log("FLOW: Book not purchased, initiating purchase flow");
+      // Don't use await here as we're redirecting
+      handlePurchase(resource);
       return; // Crucial - prevent proceeding to download
     }
     
-    console.log("Proceeding with download, purchase verified or bypassed");
+    console.log("FLOW: Proceeding with download, purchase verified or bypassed");
     
     // Only proceed with download after all checks pass
     if (resource.fileUrl) {
