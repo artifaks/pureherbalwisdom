@@ -22,6 +22,12 @@ const EbookCard: React.FC<EbookCardProps> = ({
   onEditClick,
   onDeleteClick 
 }) => {
+  // This handleResourceAction function now separates the button click behavior
+  // from the actual download/purchase function call
+  const handleResourceAction = () => {
+    onDownload(resource);
+  };
+
   return (
     <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className={`p-1 ${resource.popular ? 'bg-amber-500' : 'bg-gray-100'}`}>
@@ -71,7 +77,7 @@ const EbookCard: React.FC<EbookCardProps> = ({
             )}
           </div>
           <Button 
-            onClick={() => onDownload(resource)}
+            onClick={handleResourceAction}
             className={isPurchased ? "bg-amber-500 hover:bg-amber-600 text-white" : "bg-green-500 hover:bg-green-600 text-white"}
           >
             {isPurchased ? (

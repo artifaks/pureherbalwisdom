@@ -1,4 +1,3 @@
-
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -111,9 +110,8 @@ export const useEbooksDownload = (
     }
     
     // Check if this is a purchase request (non-purchased book)
-    if (!bypassAuth && !purchasedBooks[resource.id]) {
+    if (!purchasedBooks[resource.id] && !bypassAuth) {
       console.log("Book not purchased, initiating purchase flow");
-      // Modify EbookCard.tsx button to show "Purchase" instead of "Download"
       handlePurchase(resource);
       return; // Crucial - prevent proceeding to download
     }
