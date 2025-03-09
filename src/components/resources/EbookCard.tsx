@@ -11,6 +11,7 @@ interface EbookCardProps {
   resource: Ebook;
   isPurchased: boolean;
   onDownload: (resource: Ebook) => void;
+  onPurchase: (resource: Ebook) => void; // Separate function for purchasing
   onEditClick: (resource: Ebook) => void;
   onDeleteClick?: (resource: Ebook) => void;
 }
@@ -18,10 +19,25 @@ interface EbookCardProps {
 const EbookCard: React.FC<EbookCardProps> = ({ 
   resource, 
   isPurchased, 
-  onDownload, 
+  onDownload,
+  onPurchase, // Use separate purchase handler
   onEditClick,
   onDeleteClick 
 }) => {
+  // Create a handler that routes to the correct action based on purchase status
+  const handleActionClick = () => {
+    console.log("Action button clicked for:", resource.title);
+    console.log("Is purchased status:", isPurchased);
+    
+    if (isPurchased) {
+      console.log("Routing to download flow");
+      onDownload(resource);
+    } else {
+      console.log("Routing to purchase flow");
+      onPurchase(resource);
+    }
+  };
+
   return (
     <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className={`p-1 ${resource.popular ? 'bg-amber-500' : 'bg-gray-100'}`}>
@@ -71,7 +87,7 @@ const EbookCard: React.FC<EbookCardProps> = ({
             )}
           </div>
           <Button 
-            onClick={() => onDownload(resource)}
+            onClick={handleActionClick}
             className={isPurchased ? "bg-amber-500 hover:bg-amber-600 text-white" : "bg-green-500 hover:bg-green-600 text-white"}
           >
             {isPurchased ? (

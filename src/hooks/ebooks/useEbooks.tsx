@@ -1,54 +1,31 @@
 
-import { useState, useCallback } from 'react';
-import { useEbooksFetch } from './useEbooksFetch';
-import { useEbooksEdit } from './useEbooksEdit';
-import { useEbooksAdd } from './useEbooksAdd';
-import { useEbooksDownload } from './useEbooksDownload';
+import { useState, useCallback, useEffect } from 'react';
 import { useAuth } from '@/hooks/use-auth';
+import { useEbooksDownload } from './useEbooksDownload';
+import { useEbooksAdd } from './useEbooksAdd';
+import { useEbooksEdit } from './useEbooksEdit';
+import { useEbooksFetch } from './useEbooksFetch';
+import { Ebook } from '@/types/ebook';
+import { purchaseService } from '@/services/purchaseService';
 
 export const useEbooks = () => {
-  const { user } = useAuth();
+  const { user, isAdmin, bypassAuth } = useAuth();
+  const [purchasedBooks, setPurchasedBooks] = useState<Record<string, boolean>>({});
   
-  // Force a reload when resource modification operations occur
-  const [forceRefresh, setForceRefresh] = useState(0);
-  
-  // Get core ebooks functionality
-  const {
-    resources,
-    setResources,
-    purchasedBooks,
-    setPurchasedBooks,
+  // Import functionality from other hooks
+  const { 
+    resources, 
     isLoading,
-    fetchResources
+    fetchResources,
+    refreshData,
+    handleDeleteEbook
   } = useEbooksFetch();
-
-  // Refreshing function for child hooks to use
-  const refreshData = useCallback(() => {
-    console.log("Refreshing resource data...");
-    setForceRefresh(prev => prev + 1);
-    fetchResources(); // Explicitly fetch resources when refresh is triggered
-  }, [fetchResources]);
-
-  // Get editing functionality
+  
   const {
-    editingResource,
-    setEditingResource,
-    selectedCover,
-    setSelectedCover,
-    isUploading: isEditUploading,
-    isAdmin,
-    handleCoverChange: handleEditCoverChange,
-    handleDescriptionChange,
-    handleTitleChange,
-    handlePriceChange: handleEditPriceChange,
-    handleEditClick,
-    handleEditCancel,
-    handleEditSubmit,
-    handleDeleteEbook,
-    sanitizeFileName
-  } = useEbooksEdit(resources, setResources, fetchResources);
-
-  // Get adding functionality
+    handlePurchase,
+    handleDownload
+  } = useEbooksDownload(purchasedBooks, setPurchasedBooks);
+  
   const {
     isAddingBook,
     setIsAddingBook,
@@ -56,41 +33,57 @@ export const useEbooks = () => {
     setNewBook,
     selectedFile,
     setSelectedFile,
-    selectedCover: addSelectedCover,
-    setSelectedCover: setAddSelectedCover,
-    isUploading: isAddUploading,
+    selectedCover,
+    setSelectedCover,
+    isUploading,
     handleFileChange,
-    handleCoverChange: handleAddCoverChange,
-    handlePriceChange: handleAddPriceChange,
-    handleAddBookSubmit
-  } = useEbooksAdd(resources, setResources, sanitizeFileName, fetchResources);
-
-  // Get download functionality
+    handleCoverChange,
+    handleAddBookSubmit,
+    handlePriceChange
+  } = useEbooksAdd(refreshData);
+  
   const {
-    handleDownload
-  } = useEbooksDownload(purchasedBooks, setPurchasedBooks);
-
-  // Reconcile the two isUploading states
-  const isUploading = isEditUploading || isAddUploading;
-
-  // Combine the two handleCoverChange functions
-  const handleCoverChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (editingResource) {
-      handleEditCoverChange(e);
-    } else {
-      handleAddCoverChange(e);
+    editingResource,
+    setEditingResource,
+    handleEditClick,
+    handleEditCancel,
+    handleEditSubmit,
+    handleDescriptionChange,
+    handleTitleChange
+  } = useEbooksEdit(refreshData);
+  
+  // Check purchase status when user or resources change
+  useEffect(() => {
+    const checkPurchasedBooks = async () => {
+      if (user && resources && resources.length > 0) {
+        const purchased: Record<string, boolean> = {};
+        
+        for (const resource of resources) {
+          try {
+            const isPurchased = await purchaseService.checkPurchaseStatus(user.id, resource.id);
+            purchased[resource.id] = isPurchased;
+          } catch (error) {
+            console.error(`Error checking purchase status for book ${resource.id}:`, error);
+            purchased[resource.id] = false;
+          }
+        }
+        
+        setPurchasedBooks(purchased);
+      }
+    };
+    
+    // If bypassAuth is true, mark all books as purchased
+    if (bypassAuth && resources) {
+      const allPurchased: Record<string, boolean> = {};
+      resources.forEach(resource => {
+        allPurchased[resource.id] = true;
+      });
+      setPurchasedBooks(allPurchased);
+    } else if (user && resources) {
+      checkPurchasedBooks();
     }
-  };
-
-  // Combine the two handlePriceChange functions
-  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (editingResource) {
-      handleEditPriceChange(e);
-    } else {
-      handleAddPriceChange(e);
-    }
-  };
-
+  }, [user, resources, bypassAuth]);
+  
   return {
     user,
     resources,
@@ -101,24 +94,25 @@ export const useEbooks = () => {
     setNewBook,
     selectedFile,
     setSelectedFile,
-    selectedCover: editingResource ? selectedCover : addSelectedCover,
-    setSelectedCover: editingResource ? setSelectedCover : setAddSelectedCover,
+    selectedCover,
+    setSelectedCover,
     isUploading,
     editingResource,
     setEditingResource,
     purchasedBooks,
     handleFileChange,
     handleCoverChange,
-    handleDescriptionChange,
     handleDownload,
+    handlePurchase,
     handleAddBookSubmit,
     handleEditClick,
     handleEditCancel,
     handleEditSubmit,
     handlePriceChange,
+    handleDescriptionChange,
+    handleTitleChange,
     isAdmin,
     handleDeleteEbook,
-    handleTitleChange,
     fetchResources,
     refreshData
   };

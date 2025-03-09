@@ -51,9 +51,22 @@ export const useEbooksDownload = (
     }
   }, [searchParams, user, navigate, toast, setPurchasedBooks]);
 
+  // PURCHASE FUNCTION - Only handles purchase, never downloads
   const handlePurchase = async (resource: Ebook) => {
     console.log("PURCHASE FLOW: Starting purchase process for:", resource.title);
     
+    // Check if already purchased to prevent duplicate purchases
+    if (purchasedBooks[resource.id]) {
+      console.log("PURCHASE FLOW: Resource already purchased, redirecting to download");
+      toast({
+        title: "Already Purchased",
+        description: "You already own this e-book. You can download it now.",
+      });
+      handleDownload(resource);
+      return;
+    }
+    
+    // Check authentication
     if (!user) {
       console.log("PURCHASE FLOW: No user - redirecting to auth");
       toast({
@@ -97,15 +110,16 @@ export const useEbooksDownload = (
     }
   };
 
+  // DOWNLOAD FUNCTION - Only handles downloads, never purchases
   const handleDownload = async (resource: Ebook) => {
-    console.log("FLOW: Download/Purchase requested for:", resource.title);
-    console.log("FLOW: User authenticated:", !!user);
-    console.log("FLOW: BypassAuth status:", bypassAuth);
-    console.log("FLOW: Is purchased:", purchasedBooks[resource.id]);
+    console.log("DOWNLOAD FLOW: Download requested for:", resource.title);
+    console.log("DOWNLOAD FLOW: User authenticated:", !!user);
+    console.log("DOWNLOAD FLOW: BypassAuth status:", bypassAuth);
+    console.log("DOWNLOAD FLOW: Is purchased:", purchasedBooks[resource.id]);
     
     // Check if user needs to authenticate
     if (!user && !bypassAuth) {
-      console.log("FLOW: Authentication required, redirecting to auth page");
+      console.log("DOWNLOAD FLOW: Authentication required, redirecting to auth page");
       toast({
         title: "Authentication Required",
         description: "Please sign in to download this e-book.",
@@ -114,15 +128,19 @@ export const useEbooksDownload = (
       return;
     }
     
-    // IMPORTANT FIX: Separate paths for purchase and download completely
+    // Check if purchased - never proceed with download if not purchased and not bypassed
     if (!purchasedBooks[resource.id] && !bypassAuth) {
-      console.log("FLOW: Book not purchased, initiating purchase flow");
-      // Don't use await here as we're redirecting
+      console.log("DOWNLOAD FLOW: Book not purchased, redirecting to purchase flow");
+      toast({
+        title: "Purchase Required",
+        description: "You need to purchase this e-book before downloading.",
+      });
+      // Redirect to purchase flow
       handlePurchase(resource);
-      return; // Crucial - prevent proceeding to download
+      return;
     }
     
-    console.log("FLOW: Proceeding with download, purchase verified or bypassed");
+    console.log("DOWNLOAD FLOW: Proceeding with download, purchase verified or bypassed");
     
     // Only proceed with download after all checks pass
     if (resource.fileUrl) {
