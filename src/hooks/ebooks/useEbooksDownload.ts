@@ -98,9 +98,16 @@ export const useEbooksDownload = (
       return;
     }
     
-    if (!purchasedBooks[resource.id] && !bypassAuth) {
-      handlePurchase(resource);
-      return;
+    // FIX: Only allow downloads for purchased books or when auth is bypassed
+    // Remove the 'if (!purchasedBooks[resource.id] && !bypassAuth)' condition that was allowing
+    // downloads to happen even if the book wasn't purchased
+    if (!bypassAuth) {
+      // Check if the book is purchased
+      if (!purchasedBooks[resource.id]) {
+        // If not purchased, redirect to payment flow
+        handlePurchase(resource);
+        return;
+      }
     }
     
     if (resource.fileUrl) {
