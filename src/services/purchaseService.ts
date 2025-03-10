@@ -7,17 +7,5 @@ import { migrationService } from './purchase/migrationService';
 export const purchaseService = {
   ...ebookService,
   ...paymentService,
-  ...migrationService,
-  
-  // Add a direct download function that bypasses payment checks
-  async directDownload(ebookId: string) {
-    try {
-      const { data, error } = await ebookService.getEbookById(ebookId);
-      if (error) throw error;
-      return data;
-    } catch (error) {
-      console.error('Error in direct download:', error);
-      throw error;
-    }
-  }
+  ...migrationService
 };

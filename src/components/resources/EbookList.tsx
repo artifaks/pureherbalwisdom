@@ -42,7 +42,7 @@ const EbookList: React.FC<EbookListProps> = ({
         <EbookCard
           key={resource.id}
           resource={resource}
-          isPurchased={true} // Always set to true to enable download
+          isPurchased={purchasedBooks[resource.id] || false}
           onDownload={handleDownload}
           onEditClick={handleEditClick}
           onDeleteClick={handleDeleteClick}

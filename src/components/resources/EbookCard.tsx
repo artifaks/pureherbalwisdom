@@ -74,8 +74,17 @@ const EbookCard: React.FC<EbookCardProps> = ({
             onClick={() => onDownload(resource)}
             className="bg-amber-500 hover:bg-amber-600 text-white"
           >
-            <Download className="mr-1 h-4 w-4" />
-            Download
+            {isPurchased ? (
+              <>
+                <Download className="mr-1 h-4 w-4" />
+                Download
+              </>
+            ) : (
+              <>
+                <Download className="mr-1 h-4 w-4" />
+                Purchase
+              </>
+            )}
           </Button>
         </div>
       </div>
