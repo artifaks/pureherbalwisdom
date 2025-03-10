@@ -9,7 +9,6 @@ interface EbookListProps {
   purchasedBooks: Record<string, boolean>;
   isUploading: boolean;
   handleDownload: (resource: Ebook) => void;
-  handlePurchase: (resource: Ebook) => void; // Add separate purchase handler
   handleEditClick: (resource: Ebook) => void;
   handleDeleteClick?: (resource: Ebook) => void;
   refreshData?: () => void;
@@ -20,7 +19,6 @@ const EbookList: React.FC<EbookListProps> = ({
   purchasedBooks,
   isUploading, 
   handleDownload,
-  handlePurchase, // Use separate purchase handler
   handleEditClick,
   handleDeleteClick,
   refreshData
@@ -44,9 +42,8 @@ const EbookList: React.FC<EbookListProps> = ({
         <EbookCard
           key={resource.id}
           resource={resource}
-          isPurchased={purchasedBooks[resource.id] || false}
+          isPurchased={true} // Always set to true to enable download
           onDownload={handleDownload}
-          onPurchase={handlePurchase} // Pass the purchase handler
           onEditClick={handleEditClick}
           onDeleteClick={handleDeleteClick}
         />

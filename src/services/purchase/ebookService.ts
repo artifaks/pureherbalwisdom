@@ -23,6 +23,22 @@ export const ebookService = {
     }
   },
   
+  // Function to get a specific ebook by ID
+  async getEbookById(ebookId: string) {
+    try {
+      const { data, error } = await supabase
+        .from('ebooks')
+        .select('*')
+        .eq('id', ebookId)
+        .single();
+      
+      return { data, error };
+    } catch (error) {
+      console.error('Error fetching ebook by ID:', error);
+      return { data: null, error };
+    }
+  },
+  
   // Function to update an ebook title
   async updateEbookTitle(ebookId: string, newTitle: string): Promise<void> {
     try {

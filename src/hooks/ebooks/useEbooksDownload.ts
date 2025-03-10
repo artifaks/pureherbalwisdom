@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/use-auth';
@@ -19,7 +18,6 @@ export const useEbooksDownload = (
     console.log("DOWNLOAD FLOW: Download requested for:", resource.title);
     console.log("DOWNLOAD FLOW: User authenticated:", !!user);
     console.log("DOWNLOAD FLOW: BypassAuth status:", bypassAuth);
-    console.log("DOWNLOAD FLOW: Is purchased:", purchasedBooks[resource.id] || false);
 
     // Check if the user is authenticated or if we're bypassing auth
     if (!user && !bypassAuth) {
@@ -32,17 +30,7 @@ export const useEbooksDownload = (
       return;
     }
 
-    // Check if the book is purchased or if we're bypassing auth
-    if (!purchasedBooks[resource.id] && !bypassAuth) {
-      console.log("DOWNLOAD FLOW: Not purchased, redirecting to purchase flow");
-      toast({
-        title: "Purchase Required",
-        description: `You need to purchase "${resource.title}" first.`,
-      });
-      return;
-    }
-
-    console.log("DOWNLOAD FLOW: Proceeding with download, purchase verified or bypassed");
+    console.log("DOWNLOAD FLOW: Proceeding with download");
     try {
       const { data, error } = await supabase.storage
         .from('e-books')
@@ -76,63 +64,9 @@ export const useEbooksDownload = (
     }
   };
 
-  // Completely separate function ONLY for purchasing
+  // Keep purchase function for backward compatibility, but make it just call handleDownload
   const handlePurchase = async (resource: Ebook) => {
-    console.log("PURCHASE FLOW: Purchase requested for:", resource.title);
-    
-    // First check if user is authenticated
-    if (!user) {
-      console.log("PURCHASE FLOW: Not authenticated, redirecting to auth");
-      toast({
-        title: "Authentication Required",
-        description: "Please sign in to purchase e-books.",
-      });
-      navigate('/auth');
-      return;
-    }
-
-    // Don't allow purchase if already purchased
-    if (purchasedBooks[resource.id]) {
-      console.log("PURCHASE FLOW: Book already purchased");
-      toast({
-        title: "Already Purchased",
-        description: `You already own "${resource.title}". You can download it.`,
-      });
-      return;
-    }
-
-    try {
-      // Show loading toast
-      toast({
-        title: "Processing",
-        description: "Preparing your checkout session...",
-      });
-
-      const redirectUrl = await purchaseService.createCheckoutSession(
-        user.id,
-        resource.id
-      );
-
-      if (redirectUrl) {
-        console.log("PURCHASE FLOW: Redirect URL received:", redirectUrl);
-        toast({
-          title: "Redirecting to Checkout",
-          description: "You'll be redirected to complete your purchase.",
-        });
-
-        // Use window.location.href for a full page redirect
-        window.location.href = redirectUrl;
-      } else {
-        throw new Error("Failed to create checkout session");
-      }
-    } catch (error: any) {
-      console.error("PURCHASE FLOW: Error:", error);
-      toast({
-        title: "Checkout Failed",
-        description: error.message || "There was an error creating the checkout session",
-        variant: "destructive",
-      });
-    }
+    handleDownload(resource);
   };
 
   return {

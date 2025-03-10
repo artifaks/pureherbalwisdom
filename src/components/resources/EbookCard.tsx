@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Download, Edit, Trash2, ShoppingCart } from 'lucide-react';
+import { Download, Edit, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { BookOpen } from 'lucide-react';
@@ -11,7 +11,6 @@ interface EbookCardProps {
   resource: Ebook;
   isPurchased: boolean;
   onDownload: (resource: Ebook) => void;
-  onPurchase: (resource: Ebook) => void; // Separate function for purchasing
   onEditClick: (resource: Ebook) => void;
   onDeleteClick?: (resource: Ebook) => void;
 }
@@ -20,7 +19,6 @@ const EbookCard: React.FC<EbookCardProps> = ({
   resource, 
   isPurchased, 
   onDownload,
-  onPurchase, // Use separate purchase handler
   onEditClick,
   onDeleteClick 
 }) => {
@@ -72,23 +70,13 @@ const EbookCard: React.FC<EbookCardProps> = ({
               </Button>
             )}
           </div>
-          {isPurchased ? (
-            <Button 
-              onClick={() => onDownload(resource)}
-              className="bg-amber-500 hover:bg-amber-600 text-white"
-            >
-              <Download className="mr-1 h-4 w-4" />
-              Download
-            </Button>
-          ) : (
-            <Button 
-              onClick={() => onPurchase(resource)}
-              className="bg-green-500 hover:bg-green-600 text-white"
-            >
-              <ShoppingCart className="mr-1 h-4 w-4" />
-              Purchase
-            </Button>
-          )}
+          <Button 
+            onClick={() => onDownload(resource)}
+            className="bg-amber-500 hover:bg-amber-600 text-white"
+          >
+            <Download className="mr-1 h-4 w-4" />
+            Download
+          </Button>
         </div>
       </div>
     </Card>

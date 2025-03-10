@@ -30,7 +30,6 @@ const Resources = () => {
     handleFileChange,
     handleCoverChange,
     handleDownload,
-    handlePurchase, // Use the separate purchase handler
     handleAddBookSubmit,
     handleEditClick,
     handleEditCancel,
@@ -118,7 +117,6 @@ const Resources = () => {
             purchasedBooks={purchasedBooks}
             isUploading={isUploading}
             handleDownload={handleDownload}
-            handlePurchase={handlePurchase} // Pass the separate purchase handler
             handleEditClick={isAdmin ? handleEditClick : undefined}
             handleDeleteClick={isAdmin ? async (resource) => {
               try {
