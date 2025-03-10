@@ -22,6 +22,7 @@ export const useEbooks = () => {
     setPurchasedBooks
   } = useEbooksFetch();
   
+  // Now correctly pass the purchasedBooks and setPurchasedBooks to useEbooksDownload
   const {
     handlePurchase,
     handleDownload

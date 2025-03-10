@@ -105,6 +105,7 @@ export const useEbooksDownload = (
 
     console.log("PURCHASE FLOW: Proceeding with purchase flow");
     try {
+      // Use the createCheckoutSession method we just added to purchaseService
       const redirectUrl = await purchaseService.createCheckoutSession(
         user.id,
         resource.id

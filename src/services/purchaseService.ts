@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 import { Ebook } from '@/types/ebook';
 
@@ -60,6 +59,59 @@ export const purchaseService = {
     }
   },
   
+  // Function to create a checkout session with Stripe
+  async createCheckoutSession(userId: string, ebookId: string): Promise<string | null> {
+    try {
+      // Find the ebook details first
+      const { data: ebookData, error: ebookError } = await supabase
+        .from('ebooks')
+        .select('*')
+        .eq('id', ebookId)
+        .single();
+      
+      if (ebookError || !ebookData) {
+        console.error('Error fetching ebook for checkout:', ebookError);
+        throw new Error('Ebook not found');
+      }
+      
+      // Format the ebook object for the checkout function
+      const ebook = {
+        id: ebookData.id,
+        title: ebookData.title,
+        description: ebookData.description || '',
+        price: `$${ebookData.price.toFixed(2)}`,
+        type: ebookData.type || 'ebook',
+        popular: ebookData.popular || false,
+        fileUrl: ebookData.file_url,
+        coverUrl: ebookData.cover_url
+      };
+      
+      // Get the current origin for the return URL
+      const returnUrl = `${window.location.origin}/resources`;
+      
+      // Call the Supabase Edge Function to create a checkout session
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
+        body: { ebook, returnUrl }
+      });
+      
+      if (error) {
+        console.error('Error invoking create-checkout function:', error);
+        throw error;
+      }
+      
+      // Store the session information in the database
+      if (data && data.sessionId) {
+        await purchaseService.createPurchaseRecord(userId, ebookId, data.sessionId);
+      }
+      
+      // Return the URL for redirection
+      return data?.url || null;
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
+      throw error;
+    }
+  },
+  
   // Function to get all ebooks from Supabase
   async getAllEbooks() {
     try {
@@ -96,7 +148,7 @@ export const purchaseService = {
     return;
   },
   
-  // Function to delete an ebook - improved with better error handling and validation
+  // Function to delete an ebook
   async deleteEbook(ebookId: string): Promise<void> {
     try {
       console.log("PurchaseService: Deleting ebook with ID:", ebookId);
