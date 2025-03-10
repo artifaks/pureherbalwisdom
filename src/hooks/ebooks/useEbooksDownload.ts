@@ -105,20 +105,32 @@ export const useEbooksDownload = (
 
     console.log("PURCHASE FLOW: Proceeding with purchase flow");
     try {
-      // Use the createCheckoutSession method we just added to purchaseService
+      // Show a loading toast to indicate processing
+      toast({
+        title: "Processing",
+        description: "Preparing your checkout session...",
+      });
+      
+      // Use the createCheckoutSession method
       const redirectUrl = await purchaseService.createCheckoutSession(
         user.id,
         resource.id
       );
       
       if (redirectUrl) {
+        console.log("PURCHASE FLOW: Redirect URL received:", redirectUrl);
         toast({
           title: "Redirecting to Checkout",
           description: "You'll be redirected to complete your purchase.",
         });
-        window.location.href = redirectUrl;
+        
+        // Use a slight delay before redirect to ensure the toast is visible
+        setTimeout(() => {
+          // Use window.location.href for a full page redirect to Stripe
+          window.location.href = redirectUrl;
+        }, 500);
       } else {
-        throw new Error("Failed to create checkout session");
+        throw new Error("Failed to create checkout session - no redirect URL received");
       }
     } catch (error: any) {
       console.error("Error creating checkout session:", error);
