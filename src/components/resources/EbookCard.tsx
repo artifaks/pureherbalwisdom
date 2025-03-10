@@ -22,6 +22,8 @@ const EbookCard: React.FC<EbookCardProps> = ({
   onEditClick,
   onDeleteClick 
 }) => {
+  console.log("EbookCard rendering with isPurchased:", isPurchased, "for book:", resource.title);
+  
   return (
     <Card className="flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className={`p-1 ${resource.popular ? 'bg-amber-500' : 'bg-gray-100'}`}>
