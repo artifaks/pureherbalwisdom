@@ -79,20 +79,8 @@ export const useEbooksDownload = (
   // Completely separate function ONLY for purchasing
   const handlePurchase = async (resource: Ebook) => {
     console.log("PURCHASE FLOW: Purchase requested for:", resource.title);
-    console.log("PURCHASE FLOW: User authenticated:", !!user);
-    console.log("PURCHASE FLOW: Is already purchased:", purchasedBooks[resource.id] || false);
-
-    // Don't allow purchase if the book is already purchased
-    if (purchasedBooks[resource.id]) {
-      console.log("PURCHASE FLOW: Book already purchased, redirecting to download flow");
-      toast({
-        title: "Already Purchased",
-        description: `You already own "${resource.title}". You can download it.`,
-      });
-      return;
-    }
-
-    // Check if the user is authenticated
+    
+    // First check if user is authenticated
     if (!user) {
       console.log("PURCHASE FLOW: Not authenticated, redirecting to auth");
       toast({
@@ -103,37 +91,42 @@ export const useEbooksDownload = (
       return;
     }
 
-    console.log("PURCHASE FLOW: Proceeding with purchase flow");
+    // Don't allow purchase if already purchased
+    if (purchasedBooks[resource.id]) {
+      console.log("PURCHASE FLOW: Book already purchased");
+      toast({
+        title: "Already Purchased",
+        description: `You already own "${resource.title}". You can download it.`,
+      });
+      return;
+    }
+
     try {
-      // Show a loading toast to indicate processing
+      // Show loading toast
       toast({
         title: "Processing",
         description: "Preparing your checkout session...",
       });
-      
-      // Use the createCheckoutSession method
+
       const redirectUrl = await purchaseService.createCheckoutSession(
         user.id,
         resource.id
       );
-      
+
       if (redirectUrl) {
         console.log("PURCHASE FLOW: Redirect URL received:", redirectUrl);
         toast({
           title: "Redirecting to Checkout",
           description: "You'll be redirected to complete your purchase.",
         });
-        
-        // Use a slight delay before redirect to ensure the toast is visible
-        setTimeout(() => {
-          // Use window.location.href for a full page redirect to Stripe
-          window.location.href = redirectUrl;
-        }, 500);
+
+        // Use window.location.href for a full page redirect
+        window.location.href = redirectUrl;
       } else {
-        throw new Error("Failed to create checkout session - no redirect URL received");
+        throw new Error("Failed to create checkout session");
       }
     } catch (error: any) {
-      console.error("Error creating checkout session:", error);
+      console.error("PURCHASE FLOW: Error:", error);
       toast({
         title: "Checkout Failed",
         description: error.message || "There was an error creating the checkout session",
