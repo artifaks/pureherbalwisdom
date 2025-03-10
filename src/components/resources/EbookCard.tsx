@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Download, Edit, Trash2 } from 'lucide-react';
+import { Download, Edit, Trash2, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { BookOpen } from 'lucide-react';
@@ -81,7 +81,7 @@ const EbookCard: React.FC<EbookCardProps> = ({
               </>
             ) : (
               <>
-                <Download className="mr-1 h-4 w-4" />
+                <ShoppingCart className="mr-1 h-4 w-4" />
                 Purchase
               </>
             )}
