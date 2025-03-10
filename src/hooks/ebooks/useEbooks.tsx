@@ -14,6 +14,7 @@ export const useEbooks = () => {
   // Import functionality from other hooks
   const { 
     resources, 
+    setResources,
     isLoading,
     fetchResources,
     refreshData,
@@ -27,6 +28,14 @@ export const useEbooks = () => {
     handlePurchase,
     handleDownload
   } = useEbooksDownload(purchasedBooks, setPurchasedBooks);
+  
+  // Utility function for sanitizing filenames
+  const sanitizeFileName = (fileName: string): string => {
+    return fileName
+      .replace(/['":]/g, '') // Remove apostrophes, quotes, and colons
+      .replace(/\s+/g, '_') // Replace spaces with underscores
+      .replace(/[^\w.-]/g, ''); // Remove any remaining non-alphanumeric characters except underscores, periods, and hyphens
+  };
   
   const {
     isAddingBook,
@@ -42,7 +51,7 @@ export const useEbooks = () => {
     handleCoverChange,
     handleAddBookSubmit,
     handlePriceChange
-  } = useEbooksAdd(refreshData);
+  } = useEbooksAdd(resources, setResources, sanitizeFileName, fetchResources);
   
   const {
     editingResource,
