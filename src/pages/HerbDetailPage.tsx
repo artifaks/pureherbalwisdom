@@ -161,26 +161,26 @@ const HerbDetailPage: React.FC = () => {
               
               <h1 className="text-3xl sm:text-4xl font-bold mb-4">{herb.name}</h1>
               
-              <p className="text-gray-600 mb-4 max-w-3xl">
+              <p className="text-gray-600 dark:text-amber-200 mb-4 max-w-3xl text-base md:text-lg">
                 {herb.benefits[0]} 
                 {herb.benefits.length > 1 && ` and ${herb.benefits.length - 1} other benefits.`}
               </p>
               
               <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-                <Button size="sm" variant="outline" className="rounded-full">
-                  <Heart className="h-4 w-4 mr-1" />
+                <Button size="sm" variant="outline" className="rounded-full dark:border-amber-700/50 dark:text-amber-300 dark:hover:bg-amber-800/30">
+                  <Heart className="h-4 w-4 mr-2" />
                   Benefits
                 </Button>
-                <Button size="sm" variant="outline" className="rounded-full">
-                  <Droplet className="h-4 w-4 mr-1" />
+                <Button size="sm" variant="outline" className="rounded-full dark:border-amber-700/50 dark:text-amber-300 dark:hover:bg-amber-800/30">
+                  <Droplet className="h-4 w-4 mr-2" />
                   Oil Preparation
                 </Button>
-                <Button size="sm" variant="outline" className="rounded-full">
-                  <Beaker className="h-4 w-4 mr-1" />
+                <Button size="sm" variant="outline" className="rounded-full dark:border-amber-700/50 dark:text-amber-300 dark:hover:bg-amber-800/30">
+                  <Beaker className="h-4 w-4 mr-2" />
                   Tincture
                 </Button>
-                <Button size="sm" variant="outline" className="rounded-full">
-                  <BookOpen className="h-4 w-4 mr-1" />
+                <Button size="sm" variant="outline" className="rounded-full dark:border-amber-700/50 dark:text-amber-300 dark:hover:bg-amber-800/30">
+                  <BookOpen className="h-4 w-4 mr-2" />
                   History
                 </Button>
               </div>
@@ -200,22 +200,22 @@ const HerbDetailPage: React.FC = () => {
           <TabsContent value="overview" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="glass rounded-xl p-6">
-                <h2 className="text-xl font-semibold mb-4 flex items-center">
-                  <Heart size={18} className="mr-3 text-herb-heart" />
+                <h2 className="text-xl font-bold mb-4 flex items-center dark:text-amber-300">
+                  <Heart size={20} className="mr-3 text-herb-heart dark:text-amber-400" />
                   Health Benefits
                 </h2>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {herb.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-start bg-white/50 p-3 rounded-lg">
-                      <span className="text-accent mr-3 text-xl font-bold">•</span>
-                      <span className="text-gray-700">{benefit}</span>
+                    <li key={idx} className="flex items-start bg-white/50 dark:bg-amber-900/20 p-4 rounded-lg">
+                      <span className="text-accent dark:text-amber-400 mr-3 text-xl font-bold">•</span>
+                      <span className="text-gray-700 dark:text-amber-100">{benefit}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               
               <div className="glass rounded-xl p-6">
-                <h2 className="text-xl font-semibold mb-4">Benefits Visualization</h2>
+                <h2 className="text-xl font-bold mb-4 dark:text-amber-300">Benefits Visualization</h2>
                 <BenefitsChart herb={herb} />
               </div>
             </div>
@@ -224,22 +224,22 @@ const HerbDetailPage: React.FC = () => {
           <TabsContent value="preparations" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="glass rounded-xl p-6">
-                <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <Droplet size={18} className="mr-3 text-cyan-500" />
+                <h3 className="text-xl font-bold mb-4 flex items-center dark:text-amber-300">
+                  <Droplet size={20} className="mr-3 text-cyan-500 dark:text-amber-400" />
                   Oil Preparation
                 </h3>
-                <div className="bg-white/50 p-4 rounded-lg">
-                  <pre className="whitespace-pre-wrap text-gray-700 font-sans">{herb.oilPreparation}</pre>
+                <div className="bg-white/50 dark:bg-amber-900/20 p-4 rounded-lg">
+                  <pre className="whitespace-pre-wrap text-gray-700 dark:text-amber-100 font-sans">{herb.oilPreparation}</pre>
                 </div>
               </div>
               
               <div className="glass rounded-xl p-6">
-                <h3 className="text-xl font-semibold mb-4 flex items-center">
-                  <Beaker size={18} className="mr-3 text-purple-500" />
+                <h3 className="text-xl font-bold mb-4 flex items-center dark:text-amber-300">
+                  <Beaker size={20} className="mr-3 text-purple-500 dark:text-amber-400" />
                   Tincture Preparation
                 </h3>
-                <div className="bg-white/50 p-4 rounded-lg">
-                  <pre className="whitespace-pre-wrap text-gray-700 font-sans">{herb.tincturePreparation}</pre>
+                <div className="bg-white/50 dark:bg-amber-900/20 p-4 rounded-lg">
+                  <pre className="whitespace-pre-wrap text-gray-700 dark:text-amber-100 font-sans">{herb.tincturePreparation}</pre>
                 </div>
               </div>
               
@@ -269,7 +269,7 @@ const HerbDetailPage: React.FC = () => {
         
         {/* Complementary Herbs Section */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Complementary Herbs</h2>
+          <h2 className="text-2xl font-bold mb-4 dark:text-amber-300">Complementary Herbs</h2>
           <ComplementaryHerbs 
             activeHerb={herb} 
             allHerbs={allHerbs}
@@ -281,24 +281,24 @@ const HerbDetailPage: React.FC = () => {
         
         {/* External Resources */}
         <div className="glass rounded-xl p-6 mb-8">
-          <h2 className="text-2xl font-semibold mb-4">External Resources</h2>
+          <h2 className="text-2xl font-bold mb-4 dark:text-amber-300">External Resources</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <Button variant="outline" className="flex items-center justify-center gap-2" asChild>
+            <Button variant="outline" className="flex items-center justify-center gap-2 dark:border-amber-700/50 dark:text-amber-300 dark:hover:bg-amber-800/30" asChild>
               <a href={`https://www.ncbi.nlm.nih.gov/pmc/?term=${herb.name}+medicinal+properties`} target="_blank" rel="noopener noreferrer">
                 PubMed Research
-                <ExternalLink className="h-4 w-4" />
+                <ExternalLink className="h-4 w-4 ml-1" />
               </a>
             </Button>
-            <Button variant="outline" className="flex items-center justify-center gap-2" asChild>
+            <Button variant="outline" className="flex items-center justify-center gap-2 dark:border-amber-700/50 dark:text-amber-300 dark:hover:bg-amber-800/30" asChild>
               <a href={`https://plants.usda.gov/java/nameSearch?keywordquery=${herb.name}&mode=sciname&sort=1`} target="_blank" rel="noopener noreferrer">
                 USDA Plant Database
-                <ExternalLink className="h-4 w-4" />
+                <ExternalLink className="h-4 w-4 ml-1" />
               </a>
             </Button>
-            <Button variant="outline" className="flex items-center justify-center gap-2" asChild>
+            <Button variant="outline" className="flex items-center justify-center gap-2 dark:border-amber-700/50 dark:text-amber-300 dark:hover:bg-amber-800/30" asChild>
               <a href={`https://examine.com/supplements/${herb.name.toLowerCase().replace(' ', '-')}`} target="_blank" rel="noopener noreferrer">
                 Examine.com
-                <ExternalLink className="h-4 w-4" />
+                <ExternalLink className="h-4 w-4 ml-1" />
               </a>
             </Button>
           </div>

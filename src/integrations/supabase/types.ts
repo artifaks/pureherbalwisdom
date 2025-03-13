@@ -9,6 +9,102 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      ebooks: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          author: string | null
+          cover_image_url: string | null
+          file_url: string
+          file_type: string
+          file_size: number | null
+          is_premium: boolean | null
+          tags: string[] | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          title: string
+          description?: string | null
+          author?: string | null
+          cover_image_url?: string | null
+          file_url: string
+          file_type: string
+          file_size?: number | null
+          is_premium?: boolean | null
+          tags?: string[] | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          author?: string | null
+          cover_image_url?: string | null
+          file_url?: string
+          file_type?: string
+          file_size?: number | null
+          is_premium?: boolean | null
+          tags?: string[] | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      ebook_categories: {
+        Row: {
+          id: string
+          name: string
+          description: string | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          name: string
+          description?: string | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string | null
+          created_at?: string | null
+        }
+        Relationships: []
+      }
+      ebook_category_junction: {
+        Row: {
+          ebook_id: string
+          category_id: string
+        }
+        Insert: {
+          ebook_id: string
+          category_id: string
+        }
+        Update: {
+          ebook_id?: string
+          category_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ebook_category_junction_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "ebook_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ebook_category_junction_ebook_id_fkey"
+            columns: ["ebook_id"]
+            isOneToOne: false
+            referencedRelation: "ebooks"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       blog_posts: {
         Row: {
           content: string
@@ -18,6 +114,10 @@ export type Database = {
           title: string
           updated_at: string
           user_id: string
+          image_url: string | null
+          tags: string[] | null
+          featured: boolean | null
+          author: string | null
         }
         Insert: {
           content: string
@@ -27,6 +127,10 @@ export type Database = {
           title: string
           updated_at?: string
           user_id: string
+          image_url?: string | null
+          tags?: string[] | null
+          featured?: boolean | null
+          author?: string | null
         }
         Update: {
           content?: string
@@ -36,6 +140,10 @@ export type Database = {
           title?: string
           updated_at?: string
           user_id?: string
+          image_url?: string | null
+          tags?: string[] | null
+          featured?: boolean | null
+          author?: string | null
         }
         Relationships: []
       }
@@ -54,42 +162,6 @@ export type Database = {
           created_at?: string
           id?: string
           stripe_customer_id?: string | null
-        }
-        Relationships: []
-      }
-      ebooks: {
-        Row: {
-          cover_url: string | null
-          created_at: string
-          description: string | null
-          file_url: string | null
-          id: string
-          popular: boolean
-          price: number
-          title: string
-          type: string
-        }
-        Insert: {
-          cover_url?: string | null
-          created_at?: string
-          description?: string | null
-          file_url?: string | null
-          id?: string
-          popular?: boolean
-          price: number
-          title: string
-          type: string
-        }
-        Update: {
-          cover_url?: string | null
-          created_at?: string
-          description?: string | null
-          file_url?: string | null
-          id?: string
-          popular?: boolean
-          price?: number
-          title?: string
-          type?: string
         }
         Relationships: []
       }
@@ -217,50 +289,6 @@ export type Database = {
           username?: string | null
         }
         Relationships: []
-      }
-      purchases: {
-        Row: {
-          created_at: string
-          ebook_id: string
-          id: string
-          payment_status: string
-          price: number | null
-          purchase_date: string | null
-          stripe_session_id: string | null
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          ebook_id: string
-          id?: string
-          payment_status?: string
-          price?: number | null
-          purchase_date?: string | null
-          stripe_session_id?: string | null
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          ebook_id?: string
-          id?: string
-          payment_status?: string
-          price?: number | null
-          purchase_date?: string | null
-          stripe_session_id?: string | null
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "purchases_ebook_id_fkey"
-            columns: ["ebook_id"]
-            isOneToOne: false
-            referencedRelation: "ebooks"
-            referencedColumns: ["id"]
-          },
-        ]
       }
       saved_herbs: {
         Row: {

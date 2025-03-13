@@ -59,18 +59,18 @@ const HerbCard: React.FC<HerbCardProps> = ({
         {getHerbIcon(id, categoryColor, size === 'small' ? 18 : 24)}
       </div>
       <span className={cn(
-        "font-medium text-gray-800 text-center",
+        "font-medium text-gray-800 dark:text-white text-center",
         size === 'small' ? "text-xs" : "text-sm"
       )}>{name}</span>
       
       {primaryBenefit && size !== 'small' && (
-        <p className="text-xs text-gray-600 mt-1 text-center line-clamp-2 max-w-[95%] leading-tight">
+        <p className="text-xs text-gray-600 dark:text-gray-200 mt-1 text-center line-clamp-2 max-w-[95%] leading-tight">
           {primaryBenefit}
         </p>
       )}
       
       {category && size !== 'small' && (
-        <div className="flex items-center mt-2 text-xs text-gray-500">
+        <div className="flex items-center mt-2 text-xs text-gray-500 dark:text-gray-300">
           <CategoryIcon category={category} size={12} className="mr-1" />
           <span>
             {category === 'heart' ? 'Heart' : 
@@ -90,9 +90,9 @@ const HerbCard: React.FC<HerbCardProps> = ({
   // Base className for card
   const cardClassName = cn(
     "herb-card relative flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl",
-    "bg-white herb-card-shadow transition-all duration-300",
-    "active:bg-gray-50 touch-manipulation",
-    isActive ? "active ring-2 ring-accent/50 scale-105 z-10" : "hover:bg-gray-50/80 hover:scale-102 hover:shadow-md",
+    "bg-white dark:bg-gray-800 herb-card-shadow transition-all duration-300",
+    "active:bg-gray-50 dark:active:bg-gray-700 touch-manipulation",
+    isActive ? "active ring-2 ring-accent/50 scale-105 z-10" : "hover:bg-gray-50/80 dark:hover:bg-gray-700/90 hover:scale-102 hover:shadow-md",
     "w-full cursor-pointer",
     size === 'small' ? "p-2 sm:p-3" : "p-3 sm:p-4"
   );

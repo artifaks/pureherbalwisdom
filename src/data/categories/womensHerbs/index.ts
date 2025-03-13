@@ -5,6 +5,7 @@ import { womensHerbsPart2 } from './part2';
 import { womensHerbsPart3 } from './part3';
 import { womensHerbsPart4 } from './part4';
 import { womensHerbsPart5 } from './part5';
+import { womensHerbsPart6 } from './part6';
 
 // Combine all women's herbs into a single export
 export const womensHerbs: Herb[] = [
@@ -12,5 +13,6 @@ export const womensHerbs: Herb[] = [
   ...womensHerbsPart2,
   ...womensHerbsPart3,
   ...womensHerbsPart4,
-  ...womensHerbsPart5
+  ...womensHerbsPart5,
+  ...womensHerbsPart6
 ];

@@ -8,6 +8,7 @@ type AuthContextType = {
   user: User | null;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, username: string, isAdmin?: boolean) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
   isLoading: boolean;
   isAdmin: boolean;
@@ -20,7 +21,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [bypassAuth, setBypassAuth] = useState(true); // Enable auth bypass by default
+  const [bypassAuth, setBypassAuth] = useState(false); // Disable auth bypass to enforce real authentication
   const { toast } = useToast();
 
   // Initialize user from supabase session
@@ -31,8 +32,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (data.session?.user) {
         setUser(data.session.user);
         
-        // For demo purposes, we'll set mock admin status based on email
-        setIsAdmin(data.session.user.email?.includes("admin") || false);
+        // Check if user is admin
+        const isAdminUser = data.session.user.email === "artifaks7@gmail.com";
+        setIsAdmin(isAdminUser);
       }
     };
     
@@ -43,8 +45,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       (event, session) => {
         if (session?.user) {
           setUser(session.user);
-          // For demo purposes
-          setIsAdmin(session.user.email?.includes("admin") || false);
+          // Check if user is admin
+          const isAdminUser = session.user.email === "artifaks7@gmail.com";
+          setIsAdmin(isAdminUser);
         } else {
           setUser(null);
           setIsAdmin(false);
@@ -115,6 +118,42 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const signInWithGoogle = async () => {
+    try {
+      setIsLoading(true);
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin + '/auth/callback'
+        }
+      });
+      
+      if (error) throw error;
+    } catch (error: any) {
+      // Provide more helpful error messages for common issues
+      let errorMessage = error.message || "There was an error signing in with Google";
+      let errorTitle = "Google sign in failed";
+      
+      // Check for specific error types
+      if (error.message?.includes("provider is not enabled")) {
+        errorTitle = "Google provider not enabled";
+        errorMessage = "The Google authentication provider is not enabled in your Supabase project. Please check the documentation for setup instructions.";
+      } else if (error.message?.includes("network")) {
+        errorTitle = "Network error";
+        errorMessage = "There was a network error while trying to sign in with Google. Please check your internet connection and try again.";
+      }
+      
+      toast({
+        title: errorTitle,
+        description: errorMessage,
+        variant: "destructive",
+      });
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const signOut = async () => {
     try {
       setIsLoading(true);
@@ -142,6 +181,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         user,
         signIn,
         signUp,
+        signInWithGoogle,
         signOut,
         isLoading,
         isAdmin,

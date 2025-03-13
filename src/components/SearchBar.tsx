@@ -9,6 +9,7 @@ interface SearchBarProps {
   herbs: Herb[];
   onSearchResults: (results: Herb[]) => void;
   onFilterChange: (filters: FilterOptions) => void;
+  isSticky?: boolean;
 }
 
 export interface FilterOptions {
@@ -17,7 +18,7 @@ export interface FilterOptions {
   potency: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterChange }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterChange, isSticky = false }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState<Herb[]>([]);
@@ -88,7 +89,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
   };
   
   return (
-    <div className="w-full bg-white/95 backdrop-blur-sm sticky top-0 z-30 border-b border-gray-200 shadow-md py-4 px-4">
+    <div className={`w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm ${isSticky ? 'sticky top-0' : ''} z-30 border-b border-gray-200 dark:border-gray-700 shadow-md py-4 px-4 transition-all duration-300`}>
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col space-y-3">
           {/* Search Bar */}
@@ -100,7 +101,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
               <input
                 type="text"
                 placeholder="Search herbs by name or benefit..."
-                className="w-full pl-10 pr-4 py-3 border-2 border-amber-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-400 shadow-sm transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 border-2 border-amber-300 dark:border-amber-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-600 focus:border-amber-400 dark:focus:border-amber-700 shadow-sm transition-all duration-200 bg-white dark:bg-gray-800 text-gray-900 dark:text-amber-100"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={(e) => {
@@ -108,11 +109,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
                 }}
               />
               {showSuggestions && suggestions.length > 0 && (
-                <div className="absolute mt-1 w-full bg-white border border-amber-200 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto animate-in fade-in duration-200">
+                <div className="absolute mt-1 w-full bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-700/50 rounded-md shadow-lg z-50 max-h-60 overflow-y-auto animate-in fade-in duration-200">
                   {suggestions.map((herb) => (
                     <div
                       key={herb.id}
-                      className="px-4 py-3 hover:bg-amber-50 cursor-pointer flex items-center border-b border-amber-100 last:border-b-0"
+                      className="px-4 py-3 hover:bg-amber-50 dark:hover:bg-amber-900/20 cursor-pointer flex items-center border-b border-amber-100 dark:border-amber-800/30 last:border-b-0"
                       onClick={() => handleSuggestionClick(herb)}
                     >
                       <div 
@@ -120,8 +121,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
                         style={{ backgroundColor: herb.color }}
                       />
                       <div>
-                        <div className="font-medium text-gray-800">{herb.name}</div>
-                        <div className="text-xs text-gray-500 mt-0.5">
+                        <div className="font-medium text-gray-800 dark:text-amber-200">{herb.name}</div>
+                        <div className="text-xs text-gray-500 dark:text-amber-300/70 mt-0.5">
                           {herb.benefits[0]?.substring(0, 60)}...
                         </div>
                       </div>
@@ -132,14 +133,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
             </div>
             <Button 
               onClick={handleSearch}
-              className="rounded-l-none rounded-r-lg bg-amber-500 hover:bg-amber-600 h-[46px]"
+              className="rounded-l-none rounded-r-lg bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 h-[46px] text-white"
             >
               Search
             </Button>
             <Button
               variant="outline"
               size="icon"
-              className="ml-2 relative border-2 border-amber-300 h-[46px] w-[46px]"
+              className="ml-2 relative border-2 border-amber-300 dark:border-amber-700 h-[46px] w-[46px] dark:bg-gray-800 dark:hover:bg-gray-700"
               onClick={() => setShowFilters(!showFilters)}
             >
               <Filter className="h-5 w-5 text-amber-600" />
@@ -151,13 +152,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
           
           {/* Filters */}
           {showFilters && (
-            <div className="bg-amber-50/80 p-4 rounded-lg border border-amber-200 animate-in slide-in shadow-sm">
+            <div className="bg-amber-50/80 dark:bg-amber-900/20 p-4 rounded-lg border border-amber-200 dark:border-amber-700/50 animate-in slide-in shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Condition Filter */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Condition</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-amber-200/80 mb-1">Condition</label>
                   <select
-                    className="w-full border border-amber-200 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white"
+                    className="w-full border border-amber-200 dark:border-amber-700/50 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white dark:bg-gray-800 dark:text-amber-100"
                     value={filters.condition}
                     onChange={(e) => handleFilterChange('condition', e.target.value)}
                   >
@@ -172,9 +173,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
                 
                 {/* Preparation Method Filter */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Preparation Method</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-amber-200/80 mb-1">Preparation Method</label>
                   <select
-                    className="w-full border border-amber-200 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white"
+                    className="w-full border border-amber-200 dark:border-amber-700/50 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white dark:bg-gray-800 dark:text-amber-100"
                     value={filters.preparationMethod}
                     onChange={(e) => handleFilterChange('preparationMethod', e.target.value)}
                   >
@@ -189,9 +190,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ herbs, onSearchResults, onFilterC
                 
                 {/* Potency Filter */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Potency</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-amber-200/80 mb-1">Potency</label>
                   <select
-                    className="w-full border border-amber-200 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white"
+                    className="w-full border border-amber-200 dark:border-amber-700/50 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500 bg-white dark:bg-gray-800 dark:text-amber-100"
                     value={filters.potency}
                     onChange={(e) => handleFilterChange('potency', e.target.value)}
                   >

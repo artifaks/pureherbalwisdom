@@ -12,16 +12,12 @@ interface BlogPostListProps {
   posts: BlogPost[];
   isAdmin: boolean;
   isAuthenticated: boolean;
-  onEditClick: (post: BlogPost) => void;
-  onDeleteClick: (post: BlogPost) => void;
 }
 
 const BlogPostList: React.FC<BlogPostListProps> = ({ 
   posts, 
   isAdmin,
-  isAuthenticated,
-  onEditClick,
-  onDeleteClick
+  isAuthenticated
 }) => {
   if (posts.length === 0) {
     return (
@@ -58,10 +54,24 @@ const BlogPostList: React.FC<BlogPostListProps> = ({
       )}
       
       {posts.map((post) => (
-        <Card key={post.id} className="overflow-hidden border border-gray-200 hover:shadow-md transition duration-200">
+        <Card key={post.id} className="overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-md transition duration-200">
+          {post.image_url && (
+            <div className="w-full h-48 overflow-hidden">
+              <img 
+                src={post.image_url} 
+                alt={post.title} 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // If image fails to load, hide the container
+                  (e.target as HTMLImageElement).style.display = 'none';
+                  (e.target as HTMLImageElement).parentElement!.style.display = 'none';
+                }}
+              />
+            </div>
+          )}
           <CardHeader className="pb-3">
-            <CardTitle className="text-2xl font-bold text-gray-800">{post.title}</CardTitle>
-            <CardDescription className="flex items-center text-sm text-gray-500 mt-2 space-x-4">
+            <CardTitle className="text-2xl font-bold text-gray-800 dark:text-gray-100">{post.title}</CardTitle>
+            <CardDescription className="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-2 space-x-4">
               <span className="flex items-center">
                 <Calendar className="h-4 w-4 mr-1" />
                 {post.created_at ? (
@@ -80,36 +90,26 @@ const BlogPostList: React.FC<BlogPostListProps> = ({
           </CardHeader>
           <CardContent>
             <div className="mb-4">
-              <p className="text-gray-600">{post.excerpt || post.content.substring(0, 150)}...</p>
+              <p className="text-gray-600 dark:text-gray-300">{post.excerpt || post.content.substring(0, 150)}...</p>
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between bg-gray-50 py-3 px-6">
+          <CardFooter className="flex justify-between bg-gray-50 dark:bg-gray-800 py-3 px-6">
             <Link to={`/blog/${post.id}`}>
               <Button variant="outline" className="text-amber-600 border-amber-300 hover:bg-amber-50">
                 Read More
               </Button>
             </Link>
             {isAdmin && (
-              <div className="flex space-x-2">
+              <Link to={`/blog#admin-${post.id}`}>
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => onEditClick(post)}
                   className="text-blue-600 hover:text-blue-800 hover:bg-blue-50"
                 >
                   <Edit className="h-4 w-4 mr-1" />
-                  Edit
+                  Manage
                 </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => onDeleteClick(post)}
-                  className="text-red-600 hover:text-red-800 hover:bg-red-50"
-                >
-                  <Trash2 className="h-4 w-4 mr-1" />
-                  Delete
-                </Button>
-              </div>
+              </Link>
             )}
           </CardFooter>
         </Card>
