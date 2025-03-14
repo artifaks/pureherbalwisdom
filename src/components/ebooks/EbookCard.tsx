@@ -1,109 +1,132 @@
 import React from 'react';
-import { Ebook } from '@/types/ebook';
+import { Book, Download, ShoppingCart } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Download, Lock, BookOpen, File } from 'lucide-react';
-import { formatFileSize } from '@/lib/utils';
+import { Ebook } from '@/types/ebook';
+import { useCart } from '@/contexts/CartContext';
+import { useToast } from '@/components/ui/use-toast';
+import { hasUserPurchasedEbook } from '@/api/purchases';
 
 interface EbookCardProps {
   ebook: Ebook;
-  onDownload: () => void;
+  onDownload: (ebook: Ebook) => Promise<boolean | void>;
   isAuthenticated: boolean;
+  userId?: string; // Add userId prop
 }
 
-const EbookCard: React.FC<EbookCardProps> = ({ ebook, onDownload, isAuthenticated }) => {
-  // Determine if user can download this ebook
-  const canDownload = !ebook.is_premium || isAuthenticated;
-  
-  // Format the file size for display
-  const formattedSize = ebook.file_size ? formatFileSize(ebook.file_size) : 'Unknown size';
-  
-  // Get file extension for display
-  const fileExtension = ebook.file_type.toUpperCase();
-  
+const EbookCard: React.FC<EbookCardProps> = ({ 
+  ebook, 
+  onDownload, 
+  isAuthenticated,
+  userId
+}) => {
+  const { addToCart, removeFromCart, isInCart } = useCart();
+  const { toast } = useToast();
+  const inCart = isInCart(ebook.id);
+
+  const handleAction = async () => {
+    if (!isAuthenticated) {
+      toast({
+        title: 'Login Required',
+        description: 'Please log in to purchase ebooks.',
+        variant: 'default'
+      });
+      window.location.href = `/auth?redirectTo=${encodeURIComponent('/ebooks')}&purchaseIntent=true&ebookId=${ebook.id}`;
+      return;
+    }
+
+    if (!inCart) {
+      addToCart({
+        id: ebook.id,
+        name: ebook.title,
+        price: ebook.price || 0,
+        image: ebook.cover_image_url
+      });
+
+      toast({
+        title: 'Added to Cart',
+        description: `"${ebook.title}" has been added to your cart.`,
+        variant: 'default'
+      });
+    } else {
+      toast({
+        title: 'Already in Cart',
+        description: `"${ebook.title}" is already in your cart.`,
+        variant: 'default'
+      });
+    }
+  };
+
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg bg-white dark:bg-amber-900/40 border-amber-100 dark:border-amber-800/50 h-full flex flex-col">
-      <div className="relative h-48 overflow-hidden bg-amber-100 dark:bg-amber-800/30">
-        {ebook.cover_image_url ? (
-          <img 
-            src={ebook.cover_image_url} 
-            alt={ebook.title}
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          />
-        ) : (
-          <div className="flex items-center justify-center h-full">
-            <BookOpen className="h-20 w-20 text-amber-300 dark:text-amber-700" />
-          </div>
-        )}
-        
-        {ebook.is_premium && (
-          <div className="absolute top-2 right-2">
-            <Badge className="bg-amber-600 hover:bg-amber-700 text-white flex items-center gap-1">
-              <Lock className="h-3 w-3" />
-              Premium
-            </Badge>
-          </div>
-        )}
-      </div>
-      
-      <CardHeader className="pb-2">
-        <h3 className="text-lg font-semibold text-amber-800 dark:text-amber-300 line-clamp-2">{ebook.title}</h3>
+    <Card className="h-full flex flex-col overflow-hidden transition-shadow hover:shadow-md dark:bg-amber-900/40 dark:border-amber-800/50">
+      <CardHeader className="pb-3">
+        <div className="flex justify-between items-start">
+          <h3 className="text-lg font-semibold text-amber-800 dark:text-amber-300 line-clamp-2">
+            {ebook.title}
+          </h3>
+          <Badge className="bg-amber-500 hover:bg-amber-600 text-white">
+            ${ebook.price?.toFixed(2)}
+          </Badge>
+        </div>
         {ebook.author && (
-          <p className="text-sm text-gray-600 dark:text-amber-200/70">By {ebook.author}</p>
-        )}
-      </CardHeader>
-      
-      <CardContent className="flex-grow">
-        {ebook.description && (
-          <p className="text-gray-600 dark:text-amber-200/80 text-sm line-clamp-3 mb-3">
-            {ebook.description}
+          <p className="text-sm text-gray-600 dark:text-amber-200/70">
+            by {ebook.author}
           </p>
         )}
-        
-        <div className="flex items-center text-xs text-gray-500 dark:text-amber-200/60 mt-2">
-          <File className="h-3 w-3 mr-1" />
-          <span>{fileExtension} • {formattedSize}</span>
-        </div>
-        
-        {ebook.tags && ebook.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-3">
-            {ebook.tags.slice(0, 3).map((tag, index) => (
-              <Badge key={index} variant="outline" className="text-xs bg-amber-50 dark:bg-amber-900/60 border-amber-200 dark:border-amber-700 text-amber-700 dark:text-amber-300">
-                {tag}
-              </Badge>
-            ))}
-            {ebook.tags.length > 3 && (
-              <Badge variant="outline" className="text-xs bg-amber-50 dark:bg-amber-900/60 border-amber-200 dark:border-amber-700 text-amber-700 dark:text-amber-300">
-                +{ebook.tags.length - 3} more
-              </Badge>
-            )}
-          </div>
-        )}
-      </CardContent>
-      
-      <CardFooter className="pt-2 border-t border-amber-100 dark:border-amber-800/30">
-        <Button 
-          onClick={onDownload}
-          className={`w-full flex items-center justify-center gap-2 ${
-            canDownload 
-              ? 'bg-amber-600 hover:bg-amber-700 text-white' 
-              : 'bg-amber-200 dark:bg-amber-800 text-amber-700 dark:text-amber-300 cursor-not-allowed'
-          }`}
-          disabled={!canDownload}
-        >
-          {canDownload ? (
-            <>
-              <Download className="h-4 w-4" />
-              Download
-            </>
+      </CardHeader>
+
+      <CardContent className="flex-grow pb-3">
+        <div className="bg-amber-100 dark:bg-amber-800/30 rounded-md p-6 mb-4 flex justify-center items-center">
+          {ebook.cover_image_url ? (
+            <img 
+              src={ebook.cover_image_url} 
+              alt={`${ebook.title} cover`} 
+              className="max-h-48 max-w-full object-contain"
+            />
           ) : (
-            <>
-              <Lock className="h-4 w-4" />
-              Sign in to Download
-            </>
+            <Book className="h-24 w-24 text-amber-400 dark:text-amber-600" />
           )}
-        </Button>
+        </div>
+
+        <p className="text-gray-700 dark:text-amber-200/90 text-sm line-clamp-3 mb-2">
+          {ebook.description}
+        </p>
+
+        <div className="flex flex-wrap gap-1 mt-2">
+          {ebook.categories?.map(category => (
+            <Badge key={category.id} variant="outline" className="text-xs border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-300">
+              {category.name}
+            </Badge>
+          ))}
+          {ebook.tags && ebook.tags.map(tag => (
+            <Badge key={tag} variant="outline" className="text-xs border-gray-300 dark:border-amber-700/50 text-gray-600 dark:text-amber-200/70">
+              #{tag}
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+
+      <CardFooter className="pt-0 flex justify-between items-center">
+        <div className="text-sm text-gray-600 dark:text-amber-200/70">
+          {ebook.file_type && (
+            <span className="mr-2">{ebook.file_type}</span>
+          )}
+          {ebook.file_size && (
+            <span>{Math.round(ebook.file_size / 1024 / 1024 * 10) / 10} MB</span>
+          )}
+        </div>
+
+        <div className="flex space-x-2">
+          <Button 
+            size="sm" 
+            className="bg-amber-600 hover:bg-amber-700 text-white"
+            onClick={handleAction}
+          >
+            <ShoppingCart className="h-4 w-4 mr-1" />
+            {!isAuthenticated ? 'Sign In' : `Purchase ($${ebook.price?.toFixed(2)})`}
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );

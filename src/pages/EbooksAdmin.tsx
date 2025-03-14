@@ -134,21 +134,67 @@ const EbooksAdmin: React.FC = () => {
       try {
         // 1. Upload the ebook file
         const ebookFileName = `${Date.now()}_${ebookFile.name}`;
-        const { error: ebookUploadError } = await supabase.storage
-          .from('ebooks')
-          .upload(`files/${ebookFileName}`, ebookFile);
+        console.log(`Attempting to upload ebook file: ${ebookFileName} to ebooks/files/`);
         
-        if (ebookUploadError) throw ebookUploadError;
+        // Check if the bucket exists first
+        const { data: buckets, error: bucketsError } = await supabase.storage.listBuckets();
+        
+        if (bucketsError) {
+          console.error('Error checking storage buckets:', bucketsError);
+          throw new Error(`Storage bucket check failed: ${bucketsError.message}`);
+        }
+        
+        const ebooksBucketExists = buckets?.some(bucket => bucket.name === 'ebooks');
+        if (!ebooksBucketExists) {
+          console.error('Ebooks bucket does not exist');
+          throw new Error('The ebooks storage bucket does not exist. Please create it in your Supabase dashboard.');
+        }
+        
+        // Attempt the upload with detailed options
+        const { data: uploadData, error: ebookUploadError } = await supabase.storage
+          .from('ebooks')
+          .upload(`files/${ebookFileName}`, ebookFile, {
+            cacheControl: '3600',
+            upsert: false,
+            contentType: ebookFile.type // Explicitly set the content type
+          });
+        
+        if (ebookUploadError) {
+          console.error('Detailed ebook upload error:', ebookUploadError);
+          console.error('Error message:', ebookUploadError.message);
+          console.error('Error status:', ebookUploadError.status);
+          // Log the full error object for debugging
+          console.error('Full error object:', JSON.stringify(ebookUploadError, null, 2));
+          throw ebookUploadError;
+        }
+        
+        console.log('Ebook upload successful:', uploadData);
         
         // 2. Upload the cover image if provided
         let coverImageUrl = null;
         if (coverImage) {
           const coverFileName = `${Date.now()}_${coverImage.name}`;
-          const { error: coverUploadError } = await supabase.storage
-            .from('ebooks')
-            .upload(`covers/${coverFileName}`, coverImage);
+          console.log(`Attempting to upload cover image: ${coverFileName} to ebooks/covers/`);
           
-          if (coverUploadError) throw coverUploadError;
+          // Attempt the cover image upload with detailed options
+          const { data: coverUploadData, error: coverUploadError } = await supabase.storage
+            .from('ebooks')
+            .upload(`covers/${coverFileName}`, coverImage, {
+              cacheControl: '3600',
+              upsert: false,
+              contentType: coverImage.type // Explicitly set the content type
+            });
+          
+          if (coverUploadError) {
+            console.error('Detailed cover upload error:', coverUploadError);
+            console.error('Error message:', coverUploadError.message);
+            console.error('Error status:', coverUploadError.status);
+            // Log the full error object for debugging
+            console.error('Full error object:', JSON.stringify(coverUploadError, null, 2));
+            throw coverUploadError;
+          }
+          
+          console.log('Cover image upload successful:', coverUploadData);
           
           // Get the public URL
           const { data: coverData } = supabase.storage
@@ -427,7 +473,8 @@ const EbooksAdmin: React.FC = () => {
       
       {/* Add E-Book Dialog */}
       <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto" aria-describedby="add-ebook-dialog-description">
+          <div id="add-ebook-dialog-description" className="sr-only">Form to add a new ebook to the store</div>
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-amber-800 dark:text-amber-300">
               Add New E-Book
@@ -696,7 +743,8 @@ const EbooksAdmin: React.FC = () => {
       
       {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md" aria-describedby="delete-ebook-dialog-description">
+          <div id="delete-ebook-dialog-description" className="sr-only">Confirmation dialog for deleting an ebook</div>
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-amber-800 dark:text-amber-300">
               Confirm Deletion

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,16 +20,29 @@ const Auth = () => {
   const { user, signIn, signUp, signOut, signInWithGoogle, isLoading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
+  const redirectTo = searchParams.get('redirectTo') || '/resources';
+  const purchaseIntent = searchParams.get('purchaseIntent') === 'true';
+  const ebookId = searchParams.get('ebookId');
 
   useEffect(() => {
-    // If user is already logged in, redirect to resources after a short delay
+    // If user is already logged in, redirect to the specified path after a short delay
     if (user) {
       const timer = setTimeout(() => {
-        navigate('/resources');
-      }, 3000);
+        navigate(redirectTo);
+        
+        // If there was a purchase intent, show a helpful message
+        if (purchaseIntent) {
+          toast({
+            title: 'Ready to complete your purchase',
+            description: 'You can now continue with your ebook purchase.',
+            variant: 'default'
+          });
+        }
+      }, 1500); // Reduced delay for better UX
       return () => clearTimeout(timer);
     }
-  }, [user, navigate]);
+  }, [user, navigate, redirectTo, purchaseIntent, toast]);
 
   // If user is already logged in, show resources link option
   if (user) {
@@ -74,9 +87,17 @@ const Auth = () => {
     e.preventDefault();
     try {
       await signIn(email, password);
-      navigate('/resources');
+      
+      // Navigate to the redirect URL (will happen in useEffect)
+      // If there was a purchase intent, the useEffect will show a toast
+      
     } catch (error) {
       console.error('Error signing in:', error);
+      toast({
+        title: 'Sign in failed',
+        description: 'Please check your email and password and try again.',
+        variant: 'destructive'
+      });
     }
   };
 
@@ -89,7 +110,9 @@ const Auth = () => {
       
       setSignupMessage({ 
         type: 'success', 
-        message: 'Account created successfully! Check your email to confirm your account.' 
+        message: purchaseIntent
+          ? 'Account created successfully! Check your email to confirm your account, then sign in to complete your purchase.'
+          : 'Account created successfully! Check your email to confirm your account.'
       });
       
       // Clear form
@@ -113,7 +136,11 @@ const Auth = () => {
             <BookOpen className="h-10 w-10 text-amber-600" />
           </div>
           <h1 className="text-3xl font-bold">Herbal E-Books & Resources</h1>
-          <p className="text-gray-600 mt-2">Sign in to access premium herbal resources</p>
+          <p className="text-gray-600 mt-2">
+            {purchaseIntent 
+              ? 'Sign in to complete your purchase' 
+              : 'Sign in to access premium herbal resources'}
+          </p>
         </div>
 
         <Tabs defaultValue="signin" className="w-full">

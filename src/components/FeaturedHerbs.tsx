@@ -412,7 +412,8 @@ const FeaturedHerbs: React.FC = () => {
       </div>
       {/* Email Subscription Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-md bg-white dark:bg-[#1f1a14] border-amber-100 dark:border-amber-700/40">
+        <DialogContent className="sm:max-w-md bg-white dark:bg-[#1f1a14] border-amber-100 dark:border-amber-700/40" aria-describedby="herb-collection-dialog-description">
+          <div id="herb-collection-dialog-description" className="sr-only">Dialog to save herb to your collection</div>
           <DialogHeader>
             <DialogTitle className="text-2xl font-semibold text-amber-800 dark:text-amber-300">
               Save {selectedHerb} to Your Collection

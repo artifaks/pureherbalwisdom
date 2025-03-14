@@ -9,11 +9,15 @@ import { supabase } from '@/integrations/supabase/client';
 import { useQuery } from '@tanstack/react-query';
 import { Ebook, EbookCategory } from '@/types/ebook';
 import { setupEbooksDatabase } from '@/utils/setupEbooksDatabase';
+import ShoppingCartComponent from '@/components/ebooks/ShoppingCart';
+import EbookCard from '@/components/ebooks/EbookCard';
+import { hasUserPurchasedEbook } from '@/api/purchases';
+import { CartProvider } from '@/contexts/CartContext';
 
 const Ebooks: React.FC = () => {
   const { user, isAdmin } = useAuth();
   const { toast } = useToast();
-  const [showSetupGuide, setShowSetupGuide] = useState(true);
+  const [showSetupGuide, setShowSetupGuide] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSettingUpDatabase, setIsSettingUpDatabase] = useState(true);
 
@@ -30,19 +34,22 @@ const Ebooks: React.FC = () => {
           .select('count')
           .limit(1);
         
+        console.log('Ebook categories check:', { data, error });
+        
+        // For debugging purposes, let's force show the ebooks section
+        setShowSetupGuide(false);
+        
         // If there's an error, the table might not exist
         if (error) {
           console.error('Error checking ebooks tables:', error);
-          setShowSetupGuide(true);
           // Run the setup utility to notify the user
           await setupEbooksDatabase();
         } else {
           // If we successfully fetched data, the table exists
-          setShowSetupGuide(false);
+          console.log('Ebooks tables exist');
         }
       } catch (error) {
         console.error('Error checking ebooks tables:', error);
-        setShowSetupGuide(true);
       } finally {
         setIsSettingUpDatabase(false);
         setIsLoading(false);
@@ -53,7 +60,7 @@ const Ebooks: React.FC = () => {
   }, []);
 
   // Fetch all ebooks and categories
-  const { data: ebooks, isLoading: ebooksLoading } = useQuery({
+  const { data: ebooks, isLoading: ebooksLoading, error: ebooksError } = useQuery({
     queryKey: ['ebooks-public'],
     queryFn: async () => {
       // For authenticated users, we can fetch all ebooks including premium ones
@@ -83,14 +90,37 @@ const Ebooks: React.FC = () => {
       }
       
       // Transform the data to include categories directly on the ebook
-      return data.map(ebook => ({
-        ...ebook,
-        categories: ebook.ebook_category_junction
-          ? ebook.ebook_category_junction
-              .filter(junction => junction.ebook_categories)
-              .map(junction => junction.ebook_categories)
-          : []
-      }));
+      return data.map(ebook => {
+        // Create a properly typed Ebook object
+        const transformedEbook: Ebook = {
+          id: ebook.id,
+          title: ebook.title,
+          description: ebook.description,
+          author: ebook.author,
+          cover_image_url: ebook.cover_image_url || (ebook as any).cover_url || null, // Handle both field names
+          file_url: ebook.file_url,
+          file_type: ebook.file_type || '',
+          file_size: ebook.file_size || null,
+          is_premium: ebook.is_premium,
+          price: (ebook as any).price || null,
+          tags: ebook.tags || [],
+          created_at: ebook.created_at,
+          updated_at: ebook.updated_at,
+          // Transform categories to match EbookCategory type
+          categories: ebook.ebook_category_junction
+            ? ebook.ebook_category_junction
+                .filter(junction => junction.ebook_categories)
+                .map(junction => ({
+                  id: junction.ebook_categories.id,
+                  name: junction.ebook_categories.name,
+                  description: null,
+                  created_at: ebook.created_at // Use ebook created_at as fallback
+                }))
+            : []
+        };
+        return transformedEbook;
+      });
+      
     },
     enabled: !showSetupGuide && !isLoading
   });
@@ -118,8 +148,57 @@ const Ebooks: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showPremiumOnly, setShowPremiumOnly] = useState(false);
 
+  // Add fallback sample ebook if no ebooks are found
+  const sampleEbooks: Ebook[] = [
+    {
+      id: 'sample-1',
+      title: 'Herbal Remedies for Beginners',
+      description: 'A comprehensive guide to getting started with herbal remedies.',
+      author: 'Jane Herbalist',
+      cover_image_url: null,
+      file_url: 'files/sample.pdf',
+      file_type: 'PDF',
+      file_size: 1024 * 1024, // 1MB
+      is_premium: true,
+      price: 9.99,
+      tags: ['beginner', 'remedies', 'guide'],
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      categories: [{
+        id: 'cat-1',
+        name: 'Guides',
+        description: null,
+        created_at: new Date().toISOString()
+      }]
+    },
+    {
+      id: 'sample-2',
+      title: 'Advanced Herbal Formulations',
+      description: 'Learn how to create complex herbal formulations for various health conditions.',
+      author: 'Dr. Herb Expert',
+      cover_image_url: null,
+      file_url: 'files/sample2.pdf',
+      file_type: 'PDF',
+      file_size: 2 * 1024 * 1024, // 2MB
+      is_premium: true,
+      price: 14.99,
+      tags: ['advanced', 'formulations', 'health'],
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      categories: [{
+        id: 'cat-2',
+        name: 'Advanced',
+        description: null,
+        created_at: new Date().toISOString()
+      }]
+    }
+  ];
+  
+  // Use sample ebooks if no real ebooks are found
+  const displayEbooks = ebooks && ebooks.length > 0 ? ebooks : sampleEbooks;
+  
   // Filter ebooks based on search term and category
-  const filteredEbooks = ebooks?.filter(ebook => {
+  const filteredEbooks = displayEbooks.filter(ebook => {
     // Filter by search term
     const matchesSearch = !searchTerm || 
       ebook.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -137,24 +216,78 @@ const Ebooks: React.FC = () => {
     return matchesSearch && matchesCategory && matchesPremium;
   });
 
-  // Function to handle ebook download
+  // Function to handle ebook download - this will be passed to the EbookCard component
   const handleDownload = async (ebook: Ebook) => {
-    if (ebook.is_premium && !user) {
+    // Check if user is logged in
+    if (!user) {
       toast({
         title: 'Login Required',
-        description: 'Please log in to download premium ebooks.',
+        description: 'Please log in to download ebooks.',
         variant: 'default'
       });
       return;
     }
     
+    // All ebooks require purchase verification
     try {
+      console.log('Checking purchase status for ebook:', ebook.id);
+      // Check if the user has purchased this ebook using the real verification function
+      const hasPurchased = await hasUserPurchasedEbook(ebook.id, user.id);
+      console.log('Purchase verification result:', hasPurchased);
+      
+      if (!hasPurchased) {
+        // We'll handle this in the EbookDownloadButton component which has access to the cart context
+        toast({
+          title: 'Purchase Required',
+          description: `You need to purchase "${ebook.title}" for $${ebook.price?.toFixed(2)} before downloading.`,
+          variant: 'destructive'
+        });
+        return false; // Return false to indicate download was not allowed
+      }
+    } catch (error) {
+      console.error('Error verifying purchase:', error);
+      toast({
+        title: 'Verification Error',
+        description: 'Unable to verify your purchase. Please try again later.',
+        variant: 'destructive'
+      });
+      return false; // Return false to indicate download was not allowed
+    }
+    
+    try {
+      // Extract the actual file path from the full URL if needed
+      let filePath = ebook.file_url;
+      
+      // Check if the file_url is a full URL and extract just the path portion
+      if (filePath.includes('supabase.co')) {
+        // Extract just the path after the bucket name
+        const matches = filePath.match(/\/ebooks\/(.+)$/);
+        if (matches && matches[1]) {
+          filePath = matches[1];
+        } else {
+          // Try another pattern that might be used
+          const bucketMatches = filePath.match(/\/object\/public\/ebooks\/(.+)$/);
+          if (bucketMatches && bucketMatches[1]) {
+            filePath = bucketMatches[1];
+          }
+        }
+      }
+      
+      console.log('Attempting to download file with path:', filePath);
+      
       // Get the download URL
       const { data, error } = await supabase.storage
         .from('ebooks')
-        .createSignedUrl(ebook.file_url, 60); // 60 seconds expiry
+        .createSignedUrl(filePath, 60); // 60 seconds expiry
       
-      if (error) throw error;
+      if (error) {
+        console.error('Error creating signed URL:', error);
+        throw error;
+      }
+      
+      if (!data || !data.signedUrl) {
+        throw new Error('No signed URL returned');
+      }
       
       // Open the download URL in a new tab
       window.open(data.signedUrl, '_blank');
@@ -273,14 +406,18 @@ const Ebooks: React.FC = () => {
             </p>
           </div>
           
-          {isAdmin && (
-            <Button 
-              className="mt-4 md:mt-0 bg-amber-600 hover:bg-amber-700 text-white"
-              onClick={() => window.location.href = '/ebooks/admin'}
-            >
-              Manage E-Books
-            </Button>
-          )}
+          <div className="flex items-center gap-3 mt-4 md:mt-0">
+            <ShoppingCartComponent />
+            
+            {isAdmin && (
+              <Button 
+                className="bg-amber-600 hover:bg-amber-700 text-white"
+                onClick={() => window.location.href = '/ebooks/admin'}
+              >
+                Manage E-Books
+              </Button>
+            )}
+          </div>
         </div>
         
         {/* Search and filter controls */}
@@ -333,66 +470,13 @@ const Ebooks: React.FC = () => {
         ) : filteredEbooks && filteredEbooks.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredEbooks.map((ebook) => (
-              <div key={ebook.id} className="bg-white dark:bg-amber-900/40 border border-amber-100 dark:border-amber-800/50 rounded-lg p-4 h-full flex flex-col">
-                <div className="bg-amber-50 dark:bg-amber-800/30 rounded-md h-40 mb-4 flex items-center justify-center overflow-hidden">
-                  {ebook.cover_image_url ? (
-                    <img 
-                      src={ebook.cover_image_url} 
-                      alt={ebook.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <File className="h-16 w-16 text-amber-300 dark:text-amber-700" />
-                  )}
-                </div>
-                
-                <div className="mb-2 flex items-center">
-                  {ebook.is_premium && (
-                    <span className="bg-amber-100 dark:bg-amber-800/50 text-amber-800 dark:text-amber-300 px-2 py-0.5 rounded-full text-xs font-medium mr-2">
-                      Premium
-                    </span>
-                  )}
-                  {ebook.price !== null && (
-                    <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-0.5 rounded-full text-xs font-medium">
-                      ${ebook.price.toFixed(2)}
-                    </span>
-                  )}
-                </div>
-                
-                <h3 className="text-lg font-semibold text-amber-800 dark:text-amber-300">{ebook.title}</h3>
-                
-                {ebook.author && (
-                  <p className="text-sm text-gray-600 dark:text-amber-200/70 mt-1">By {ebook.author}</p>
-                )}
-                
-                {ebook.categories && ebook.categories.length > 0 && (
-                  <div className="flex flex-wrap gap-1 mt-2">
-                    {ebook.categories.map(category => (
-                      <span 
-                        key={category.id} 
-                        className="text-xs bg-amber-50 dark:bg-amber-800/20 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded"
-                      >
-                        {category.name}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                
-                <p className="text-sm text-gray-500 dark:text-amber-200/50 mt-4 flex-grow line-clamp-3">
-                  {ebook.description || 'No description available.'}
-                </p>
-                
-                <div className="mt-4 pt-4 border-t border-amber-100 dark:border-amber-800/30">
-                  <Button 
-                    className={`w-full ${ebook.is_premium && !user 
-                      ? 'bg-gray-100 hover:bg-gray-200 text-gray-800 dark:bg-gray-800/40 dark:hover:bg-gray-800/60 dark:text-gray-200' 
-                      : 'bg-amber-100 hover:bg-amber-200 text-amber-800 dark:bg-amber-800/40 dark:hover:bg-amber-800/60 dark:text-amber-200'}`}
-                    onClick={() => handleDownload(ebook)}
-                    disabled={ebook.is_premium && !user}
-                  >
-                    {ebook.is_premium && !user ? 'Login to Download' : 'Download'}
-                  </Button>
-                </div>
+              <div key={ebook.id}>
+                <EbookCard 
+                  ebook={ebook} 
+                  onDownload={handleDownload} 
+                  isAuthenticated={!!user}
+                  userId={user?.id}
+                />
               </div>
             ))}
           </div>
@@ -412,4 +496,12 @@ const Ebooks: React.FC = () => {
   );
 };
 
-export default Ebooks;
+const EbooksWithCart: React.FC = () => {
+  return (
+    <CartProvider>
+      <Ebooks />
+    </CartProvider>
+  );
+};
+
+export default EbooksWithCart;

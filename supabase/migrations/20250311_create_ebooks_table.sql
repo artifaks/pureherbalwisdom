@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS public.admin_users (
 
 -- Insert your admin email if it doesn't exist
 INSERT INTO public.admin_users (email)
-VALUES ('your-admin-email@example.com')
+VALUES ('admin@herbharmony.com')
 ON CONFLICT (email) DO NOTHING;
 
 -- Create ebooks table if it doesn't exist

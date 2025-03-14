@@ -118,6 +118,9 @@ const MainNavigation: React.FC = () => {
           <div className="animate-bounce-in" style={{animationDelay: '900ms'}}>
             <NavItem to="/herbal-teas" label="Herbal Teas" icon={<Coffee className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
           </div>
+          <div className="animate-bounce-in" style={{animationDelay: '950ms'}}>
+            <NavItem to="/ebooks" label="Ebooks" icon={<BookOpen className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
+          </div>
           <div className="animate-bounce-in" style={{animationDelay: '1000ms'}}>
             <NavItem to="#" label="Saved Herbs" icon={<Heart className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
           </div>
@@ -143,8 +146,8 @@ const MainNavigation: React.FC = () => {
             <NavItem to="/" label="Herb Guide" icon={<Home className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             <NavItem to="/search" label="Search" icon={<Search className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             <NavItem to="/symptom-matcher" label="Symptom Matcher" icon={<Search className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
-            {/* Blog and Ebooks links removed as requested */}
             <NavItem to="/herbal-teas" label="Herbal Teas" icon={<Coffee className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
+            <NavItem to="/ebooks" label="Ebooks" icon={<BookOpen className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             <NavItem to="#" label="Saved Herbs" icon={<Heart className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             {user ? (
               <NavItem to="/auth" label="Account" icon={<User className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />

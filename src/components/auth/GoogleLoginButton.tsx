@@ -2,23 +2,47 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/use-auth';
 import { Loader2 } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 
 interface GoogleLoginButtonProps {
   className?: string;
+  redirectParams?: boolean; // Whether to pass redirect parameters to the signInWithGoogle function
 }
 
-const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ className = '' }) => {
+const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ className = '', redirectParams = true }) => {
   const { signInWithGoogle, isLoading } = useAuth();
   const [localLoading, setLocalLoading] = React.useState(false);
+  const [searchParams] = useSearchParams();
+  
+  // Get redirect parameters from URL if they exist
+  const redirectTo = searchParams.get('redirectTo');
+  const purchaseIntent = searchParams.get('purchaseIntent') === 'true';
+  const ebookId = searchParams.get('ebookId');
 
   const handleGoogleLogin = async () => {
     try {
       setLocalLoading(true);
-      await signInWithGoogle();
+      
+      // Only pass redirect parameters if redirectParams is true
+      if (redirectParams && (redirectTo || purchaseIntent)) {
+        // Build redirect URL with purchase intent parameters if they exist
+        let redirectUrl = redirectTo || '/resources';
+        
+        // Add purchase intent parameters to the callback URL
+        const callbackParams = new URLSearchParams();
+        if (redirectTo) callbackParams.append('redirectTo', redirectTo);
+        if (purchaseIntent) callbackParams.append('purchaseIntent', 'true');
+        if (ebookId) callbackParams.append('ebookId', ebookId);
+        
+        await signInWithGoogle(callbackParams.toString());
+      } else {
+        await signInWithGoogle();
+      }
     } catch (error) {
       console.error('Google login error:', error);
+      setLocalLoading(false); // Reset loading state on error
     }
-    // Note: We don't set localLoading to false here because the page will redirect
+    // Note: We don't set localLoading to false on success because the page will redirect
   };
 
   return (
