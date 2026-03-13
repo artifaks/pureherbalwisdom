@@ -18,6 +18,7 @@ import Ebooks from "@/pages/Ebooks";
 import EbooksAdmin from "@/pages/EbooksAdmin";
 import EbooksDiagnostic from "@/pages/EbooksDiagnostic";
 import { AuthProvider } from "@/hooks/use-auth";
+import HerbStore from "@/pages/HerbStore";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 // Create a client for React Query
@@ -40,6 +41,8 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/herbal-teas" element={<HerbalTeas />} />
               <Route path="/herbs/:herbId" element={<HerbDetailPage />} />
+              <Route path="/herb/:herbId" element={<HerbDetailPage />} />
+              <Route path="/herb-store" element={<HerbStore />} />
               <Route path="/ebooks" element={<Ebooks />} />
               <Route path="/ebooks/admin" element={<EbooksAdmin />} />
               <Route path="/ebooks/diagnostic" element={<EbooksDiagnostic />} />

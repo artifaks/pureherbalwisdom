@@ -16,6 +16,7 @@ import BookmarkButton from '@/components/BookmarkButton';
 import { getCategoryColor } from '@/utils/herbIcons';
 import CategoryIcon from '@/components/CategoryIcon';
 import HerbFooter from '@/components/HerbFooter';
+import AffiliateShopSection from '@/components/AffiliateShopSection';
 
 const HerbDetailPage: React.FC = () => {
   const { herbId } = useParams<{ herbId: string }>();
@@ -267,6 +268,9 @@ const HerbDetailPage: React.FC = () => {
           </TabsContent>
         </Tabs>
         
+        {/* Affiliate Shop Section */}
+        <AffiliateShopSection herbName={herb.name} />
+
         {/* Complementary Herbs Section */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-4 dark:text-amber-300">Complementary Herbs</h2>
