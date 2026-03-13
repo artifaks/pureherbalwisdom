@@ -8,12 +8,14 @@ import Testimonials from '@/components/Testimonials';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import HerbVisualizer from '@/components/HerbVisualizer';
+import HerbOfTheDay from '@/components/HerbOfTheDay';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       <MainNavigation />
       <HeroSection />
+      <HerbOfTheDay />
       <FeaturedHerbs />
       <FeatureHighlights />
       

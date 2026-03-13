@@ -17,6 +17,10 @@ import HerbDetailPage from "@/pages/HerbDetailPage";
 import Ebooks from "@/pages/Ebooks";
 import EbooksAdmin from "@/pages/EbooksAdmin";
 import EbooksDiagnostic from "@/pages/EbooksDiagnostic";
+import PlantIdentifier from "@/pages/PlantIdentifier";
+import SavedHerbs from "@/pages/SavedHerbs";
+import HerbCabinet from "@/pages/HerbCabinet";
+import InteractionChecker from "@/pages/InteractionChecker";
 import { AuthProvider } from "@/hooks/use-auth";
 import HerbStore from "@/pages/HerbStore";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -40,6 +44,10 @@ function App() {
               <Route path="/symptom-matcher" element={<SymptomMatcher />} />
               <Route path="/search" element={<Search />} />
               <Route path="/herbal-teas" element={<HerbalTeas />} />
+              <Route path="/plant-identifier" element={<PlantIdentifier />} />
+              <Route path="/saved-herbs" element={<SavedHerbs />} />
+              <Route path="/herb-cabinet" element={<HerbCabinet />} />
+              <Route path="/interaction-checker" element={<InteractionChecker />} />
               <Route path="/herbs/:herbId" element={<HerbDetailPage />} />
               <Route path="/herb/:herbId" element={<HerbDetailPage />} />
               <Route path="/herb-store" element={<HerbStore />} />
