@@ -11,4 +11,7 @@ export interface BlogPost {
   image_url?: string;
   tags?: string[] | string;
   featured?: boolean;
+  slug?: string;
+  meta_title?: string;
+  meta_description?: string;
 }

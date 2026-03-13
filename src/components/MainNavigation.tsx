@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Leaf, Search, Heart, User, Coffee, Menu, X, LogIn, BookOpen, BookText } from 'lucide-react';
+import { Home, Leaf, Search, Heart, User, Coffee, Menu, X, LogIn, BookOpen, BookText, Camera, Bookmark, Archive, GitCompare, PenLine } from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
@@ -114,23 +114,34 @@ const MainNavigation: React.FC = () => {
           <div className="animate-bounce-in" style={{animationDelay: '800ms'}}>
             <NavItem to="/symptom-matcher" label="Symptom Matcher" icon={<Search className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
           </div>
-          {/* Blog and Ebooks links removed as requested */}
+          <div className="animate-bounce-in" style={{animationDelay: '850ms'}}>
+            <NavItem to="/blog" label="Blog" icon={<PenLine className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
+          </div>
           <div className="animate-bounce-in" style={{animationDelay: '900ms'}}>
             <NavItem to="/herbal-teas" label="Herbal Teas" icon={<Coffee className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
           </div>
+          <div className="animate-bounce-in" style={{animationDelay: '950ms'}}>
+            <NavItem to="/plant-identifier" label="Plant ID" icon={<Camera className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
+          </div>
           <div className="animate-bounce-in" style={{animationDelay: '1000ms'}}>
-            <NavItem to="#" label="Saved Herbs" icon={<Heart className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
+            <NavItem to="/interaction-checker" label="Interactions" icon={<GitCompare className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
+          </div>
+          <div className="animate-bounce-in" style={{animationDelay: '1050ms'}}>
+            <NavItem to="/herb-cabinet" label="My Cabinet" icon={<Archive className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
+          </div>
+          <div className="animate-bounce-in" style={{animationDelay: '1100ms'}}>
+            <NavItem to="/saved-herbs" label="Saved Herbs" icon={<Bookmark className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
           </div>
           {user ? (
-            <div className="animate-bounce-in" style={{animationDelay: '1100ms'}}>
+            <div className="animate-bounce-in" style={{animationDelay: '1150ms'}}>
               <NavItem to="/auth" label="Account" icon={<User className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
             </div>
           ) : (
-            <div className="animate-bounce-in" style={{animationDelay: '1100ms'}}>
+            <div className="animate-bounce-in" style={{animationDelay: '1150ms'}}>
               <NavItem to="/auth" label="Login" icon={<LogIn className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
             </div>
           )}
-          <div className="ml-2 animate-bounce-in" style={{animationDelay: '1200ms'}}>
+          <div className="ml-2 animate-bounce-in" style={{animationDelay: '1250ms'}}>
             <ThemeToggle />
           </div>
         </div>
@@ -143,9 +154,12 @@ const MainNavigation: React.FC = () => {
             <NavItem to="/" label="Herb Guide" icon={<Home className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             <NavItem to="/search" label="Search" icon={<Search className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             <NavItem to="/symptom-matcher" label="Symptom Matcher" icon={<Search className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
-            {/* Blog and Ebooks links removed as requested */}
+            <NavItem to="/blog" label="Blog" icon={<PenLine className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             <NavItem to="/herbal-teas" label="Herbal Teas" icon={<Coffee className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
-            <NavItem to="#" label="Saved Herbs" icon={<Heart className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
+            <NavItem to="/plant-identifier" label="Plant ID" icon={<Camera className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
+            <NavItem to="/interaction-checker" label="Interactions" icon={<GitCompare className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
+            <NavItem to="/herb-cabinet" label="My Cabinet" icon={<Archive className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
+            <NavItem to="/saved-herbs" label="Saved Herbs" icon={<Bookmark className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             {user ? (
               <NavItem to="/auth" label="Account" icon={<User className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             ) : (
