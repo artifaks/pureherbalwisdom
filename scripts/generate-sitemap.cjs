@@ -19,6 +19,7 @@ const staticRoutes = [
   { path: '/interaction-checker', priority: '0.8', changefreq: 'monthly' },
   { path: '/herb-store', priority: '0.8', changefreq: 'weekly' },
   { path: '/ebooks', priority: '0.7', changefreq: 'weekly' },
+  { path: '/herbal-tools', priority: '0.8', changefreq: 'weekly' },
 ];
 
 function generateSitemap() {

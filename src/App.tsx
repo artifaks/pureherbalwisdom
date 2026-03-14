@@ -23,6 +23,7 @@ import HerbCabinet from "@/pages/HerbCabinet";
 import InteractionChecker from "@/pages/InteractionChecker";
 import { AuthProvider } from "@/hooks/use-auth";
 import HerbStore from "@/pages/HerbStore";
+import HerbalTools from "@/pages/HerbalTools";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 // Create a client for React Query
@@ -51,6 +52,7 @@ function App() {
               <Route path="/herbs/:herbId" element={<HerbDetailPage />} />
               <Route path="/herb/:herbId" element={<HerbDetailPage />} />
               <Route path="/herb-store" element={<HerbStore />} />
+              <Route path="/herbal-tools" element={<HerbalTools />} />
               <Route path="/ebooks" element={<Ebooks />} />
               <Route path="/ebooks/admin" element={<EbooksAdmin />} />
               <Route path="/ebooks/diagnostic" element={<EbooksDiagnostic />} />

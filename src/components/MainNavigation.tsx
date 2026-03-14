@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Leaf, Search, Heart, User, Coffee, Menu, X, LogIn, BookOpen, BookText, Camera, Bookmark, Archive, GitCompare, PenLine } from 'lucide-react';
+import { Home, Leaf, Search, Heart, User, Coffee, Menu, X, LogIn, BookOpen, BookText, Camera, Bookmark, Archive, GitCompare, PenLine, Wrench } from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
@@ -132,6 +132,9 @@ const MainNavigation: React.FC = () => {
           <div className="animate-bounce-in" style={{animationDelay: '1100ms'}}>
             <NavItem to="/saved-herbs" label="Saved Herbs" icon={<Bookmark className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
           </div>
+          <div className="animate-bounce-in" style={{animationDelay: '1125ms'}}>
+            <NavItem to="/herbal-tools" label="Tools & Supplies" icon={<Wrench className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
+          </div>
           {user ? (
             <div className="animate-bounce-in" style={{animationDelay: '1150ms'}}>
               <NavItem to="/auth" label="Account" icon={<User className="h-5 w-5 dark:text-amber-400 group-hover:text-amber-600 dark:group-hover:text-amber-300 transition-colors" />} />
@@ -160,6 +163,7 @@ const MainNavigation: React.FC = () => {
             <NavItem to="/interaction-checker" label="Interactions" icon={<GitCompare className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             <NavItem to="/herb-cabinet" label="My Cabinet" icon={<Archive className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             <NavItem to="/saved-herbs" label="Saved Herbs" icon={<Bookmark className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
+            <NavItem to="/herbal-tools" label="Tools & Supplies" icon={<Wrench className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             {user ? (
               <NavItem to="/auth" label="Account" icon={<User className="h-5 w-5 dark:text-amber-400 transition-colors" />} onClick={closeMenu} />
             ) : (
